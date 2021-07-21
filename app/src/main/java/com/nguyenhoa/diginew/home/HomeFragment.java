@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nguyenhoa.diginew.R;
@@ -72,6 +73,8 @@ public class HomeFragment extends Fragment {
 //        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
+        TextView tv;
+//        tv.setB
         carouselView = v.findViewById(R.id.carouselView);
         carouselView.setPageCount(sample.length);
         carouselView.setImageListener(imageListener);
