@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nguyenhoa.diginew">
+    package="com.nguyenhoa.diginew" >
 
     <application
         android:allowBackup="true"
@@ -8,13 +8,26 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Diginew">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Diginew" >
+        <activity android:name=".splash.Terms" >
+        </activity>
+        <activity android:name=".splash.SubjectsFavorite" />
+        <activity android:name=".splash.Splash2" >
+
+        </activity>
+        <activity android:name=".splash.Splash1" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".discover.MyTv"/>
+        <activity android:name=".discover.DigiHealth" />
+        <activity android:name=".discover.DigiMovie" />
+        <activity android:name=".discover.DigiClip" />
+        <activity android:name=".discover.DigiMusic" />
+        <activity android:name=".MainActivity" >
         </activity>
     </application>
 
