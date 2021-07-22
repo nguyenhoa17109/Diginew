@@ -19,7 +19,7 @@
     <GridView
         android:id="@+id/gvSubjects"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:numColumns="2"
         android:padding="10dp"
         tools:listitem="@layout/item_subjects"/>

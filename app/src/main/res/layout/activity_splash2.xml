@@ -31,6 +31,7 @@
         android:layout_below="@id/btLoginFb"
         android:textAlignment="center"
         android:text="hihihihihhih"
+        android:textColorHighlight="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="15sp"
@@ -43,6 +44,6 @@
         android:textAlignment="center"
         android:text="Bo qua"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="100dp"
         android:textSize="15sp" />
 </RelativeLayout>

@@ -6,20 +6,16 @@
     android:layout_height="match_parent"
     android:background="#7d99fd"
     tools:context=".splash.Splash1">
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:id="@+id/ivSplash1"
-        android:src="@drawable/img_start"
-        android:layout_centerHorizontal="true" />
-    <TextView
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/slideSplash1"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/tvSplash1"
-        android:textAlignment="center"
-        android:text="chao hihihiihi"
-        android:textSize="20sp"
-        android:layout_below="@id/ivSplash1"/>
+        android:layout_height="500dp"
+        app:sliderAutoCycleEnabled="true"
+        app:sliderStartAutoCycle="true"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderScrollTimeInSec="2"
+        />
+
     <Button
         android:layout_width="150dp"
         android:layout_height="50dp"
@@ -28,7 +24,7 @@
         android:textColor="#849fff"
         android:textStyle="bold"
         android:id="@+id/btStart"
-        android:layout_below="@id/tvSplash1"
-        android:layout_marginTop="150dp"
+        android:layout_below="@id/slideSplash1"
+        android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"/>
 </RelativeLayout>

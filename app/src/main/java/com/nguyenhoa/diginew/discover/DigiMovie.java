@@ -28,7 +28,7 @@ public class DigiMovie extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DigiMovie.this, DiscoverFragment.class));
+                finish();
             }
         });
     }

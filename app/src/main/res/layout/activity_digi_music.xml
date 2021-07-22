@@ -27,7 +27,7 @@
         android:textSize="20sp"
         android:text="DUOng ngoc anh1435555"
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="300dp"/>
     <Button
         android:layout_marginTop="10dp"
         android:layout_width="150dp"
