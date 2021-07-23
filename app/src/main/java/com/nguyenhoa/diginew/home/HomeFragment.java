@@ -1,20 +1,28 @@
 package com.nguyenhoa.diginew.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.SearchActivity;
+import com.nguyenhoa.diginew.model.MyList;
+import com.nguyenhoa.diginew.model.News;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +30,9 @@ import com.synnapps.carouselview.ImageListener;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
+    private ImageView ivSearch, ivUser;
     private CarouselView carouselView;
+    private ListView listView;
     private int[] sample = {R.drawable.img_clip, R.drawable.img_health, R.drawable.img_movie};
 
     // TODO: Rename parameter arguments, choose names that match
@@ -73,7 +83,7 @@ public class HomeFragment extends Fragment {
 //        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        TextView tv;
+//        TextView tv;
 //        tv.setB
         carouselView = v.findViewById(R.id.carouselView);
         carouselView.setPageCount(sample.length);
@@ -85,6 +95,27 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "Clicked item: "+ position, Toast.LENGTH_SHORT).show();
             }
         });
+
+        ivSearch = v.findViewById(R.id.ivSearch);
+        ivUser = v.findViewById(R.id.ivUser);
+        ivSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        ivUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        listView = v.findViewById(R.id.lvNews);
+        NewsAdapter adapter = new NewsAdapter(getContext(), setData());
+//        Log.d("AL", ""+MyList.listNews.size());
+        listView.setAdapter(adapter);
         return v;
     }
 
@@ -100,5 +131,15 @@ public class HomeFragment extends Fragment {
         }
     };
 
+    private ArrayList<News> setData(){
+        ArrayList<News> listNews = new ArrayList<>();
+        listNews.add(new News("text", "Vietnamnet", 6,
+                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
+                R.drawable.img_clip, "abc"));
+        listNews.add(new News("text", "Vietnamnet", 6,
+                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
+                R.drawable.img_clip, "abc"));
+        return listNews;
+    }
 
 }

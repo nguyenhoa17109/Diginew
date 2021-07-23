@@ -3,4 +3,10 @@
     <string name="time">phút trước</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="otp">Vui lòng nhập OTP xác nhận đăng kí gói cước Premium</string>
+    <string name="confirm">Xác Nhận</string>
+    <string name="cancel">Bỏ Qua</string>
+    <string name="download">Tải Ngay</string>
+    <string name="reference"><u>Tham khảo các gói cước khác</u></string>
+
 </resources>
