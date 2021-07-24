@@ -21,13 +21,13 @@ public class SlideSplashAdapter extends SliderViewAdapter<Holder> {
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent) {
+    public SlideSplashAdapter.Holder onCreateViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slideshow_splash1, parent, false);
         return new Holder(view);
     }
 
     @Override
-    public void onBindViewHolder(Holder viewHolder, int position) {
+    public void onBindViewHolder(SlideSplashAdapter.Holder viewHolder, int position) {
         viewHolder.imageView.setImageResource(image[position]);
         viewHolder.textView.setText(names[position]);
     }
@@ -37,7 +37,7 @@ public class SlideSplashAdapter extends SliderViewAdapter<Holder> {
         return names.length;
     }
 
-    public class Holder extends ViewHolder {
+    public class Holder extends SliderViewAdapter.ViewHolder {
         ImageView imageView;
         TextView textView;
 

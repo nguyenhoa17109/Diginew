@@ -16,12 +16,9 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isFirst = prefs.getBoolean("splash", true);
-        if(isFirst){
-            setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash);
 
-            new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     Intent splash = new Intent(Splash.this,Splash1.class);
@@ -30,11 +27,4 @@ public class Splash extends AppCompatActivity {
                 }
             },2000);
         }
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("splash", Boolean.FALSE);
-        editor.commit();
-
-        Intent splash = new Intent(Splash.this,Splash1.class);
-        startActivity(splash);
-    }
 }
