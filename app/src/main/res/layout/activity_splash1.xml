@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7d99fd"
+    tools:context=".splash.Splash1">
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/slideSplash1"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:sliderAutoCycleEnabled="true"
+        app:sliderStartAutoCycle="true"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderScrollTimeInSec="2"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Bắt đầu"
+        android:backgroundTint="@color/white"
+        android:textColor="#849fff"
+        android:textStyle="bold"
+        android:id="@+id/btStart"
+        android:layout_below="@id/slideSplash1"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
