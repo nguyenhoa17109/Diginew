@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private NavAdapter adapter;
  
   
-    //hoa
+    //na hi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
