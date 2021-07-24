@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".discover.MyTv">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_marginTop="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="MyTV"
+        android:textSize="30sp"/>
+    <ImageView
+        android:id="@+id/ivMytv"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/img_mytv"/>
+    <TextView
+        android:id="@+id/tvMytv"
+        android:layout_below="@id/ivMytv"
+        android:textSize="20sp"
+        android:text="DUOng ngoc anh1435555"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMytv"
+        android:text="mở app"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>

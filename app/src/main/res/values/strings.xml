@@ -9,4 +9,6 @@
     <string name="download">Tải Ngay</string>
     <string name="reference"><u>Tham khảo các gói cước khác</u></string>
 
+    <string name="facebook_app_id">981928272570289</string>
+    <string name="fb_login_protocol_scheme">fb981928272570289</string>
 </resources>

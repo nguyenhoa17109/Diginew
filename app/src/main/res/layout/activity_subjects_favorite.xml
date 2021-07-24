@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".splash.SubjectsFavorite"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/img_logo_color"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Chon chu de yeu thich"
+        android:textSize="20sp"/>
+    <GridView
+        android:id="@+id/gvSubjects"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:numColumns="2"
+        android:padding="10dp"
+        tools:listitem="@layout/item_subjects"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tiep tuc"
+        android:id="@+id/btToHome"
+        />
+</LinearLayout>

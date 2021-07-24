@@ -26,8 +26,8 @@ public class Splash1 extends AppCompatActivity {
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(Splash1.this, Splash2.class);
-//                startActivity(intent);
+                Intent intent = new Intent(Splash1.this, Splash2.class);
+                startActivity(intent);
             }
         });
 
