@@ -20,10 +20,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
     private Context context;
     private ArrayList<News> list;
 
+
+
     public NewsAdapter( Context context, ArrayList<News> list) {
         super(context, R.layout.item_news, list);
         this.context = context;
         this.list = list;
+
     }
 
     @NonNull

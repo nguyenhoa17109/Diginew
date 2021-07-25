@@ -9,11 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.SearchActivity;
 import com.nguyenhoa.diginew.model.MyList;
@@ -22,6 +24,7 @@ import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -83,8 +86,7 @@ public class HomeFragment extends Fragment {
 //        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-//        TextView tv;
-//        tv.setB
+
         carouselView = v.findViewById(R.id.carouselView);
         carouselView.setPageCount(sample.length);
         carouselView.setImageListener(imageListener);
@@ -114,8 +116,16 @@ public class HomeFragment extends Fragment {
 
         listView = v.findViewById(R.id.lvNews);
         NewsAdapter adapter = new NewsAdapter(getContext(), setData());
-//        Log.d("AL", ""+MyList.listNews.size());
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                News news = (News) adapterView.getItemAtPosition(i);
+                Intent intent = new Intent(getActivity(), NewsActivity.class);
+                intent.putExtra("News",  news);
+                startActivity(intent);
+            }
+        });
         return v;
     }
 

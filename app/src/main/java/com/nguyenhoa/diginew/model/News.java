@@ -1,6 +1,8 @@
 package com.nguyenhoa.diginew.model;
 
-public class News {
+import java.io.Serializable;
+
+public class News implements Serializable {
     private String source;
     private int times;
     private String title;

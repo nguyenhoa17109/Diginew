@@ -50,7 +50,7 @@ public class Splash2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         FacebookSdk.sdkInitialize(getApplicationContext());
-
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_splash2);
 
         firebaseAuth = FirebaseAuth.getInstance();

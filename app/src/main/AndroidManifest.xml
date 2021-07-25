@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nguyenhoa.diginew">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:largeHeap="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diginew">
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".SearchActivity" />
         <activity android:name=".splash.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,22 +21,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".splash.Splash1"></activity>
-        <activity android:name=".splash.Splash2"></activity>
+        <activity android:name=".splash.Splash1" />
+        <activity android:name=".splash.Splash2" />
         <activity
             android:name=".splash.Terms"
-            android:parentActivityName=".splash.Splash2"></activity>
+            android:parentActivityName=".splash.Splash2" />
         <activity android:name=".splash.SubjectsFavorite" />
-
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".discover.MyTv" />
         <activity android:name=".discover.DigiHealth" />
         <activity android:name=".discover.DigiMovie" />
         <activity android:name=".discover.DigiClip" />
         <activity android:name=".discover.DigiMusic" />
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

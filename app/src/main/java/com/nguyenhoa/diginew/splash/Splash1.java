@@ -20,6 +20,7 @@ public class Splash1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_splash1);
 
         btStart = findViewById(R.id.btStart);
