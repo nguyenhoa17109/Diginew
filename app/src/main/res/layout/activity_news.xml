@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/gray_200"
+    tools:context=".NewsActivity">
+
+    <ScrollView
+        android:id="@+id/scroll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/background_corner">
+
+                <TextView
+                    android:id="@+id/tvTitleNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Thêm 2 bệnh nhân COVID-19 khỏi bệnh,
+                 Việt Nam đã có 171 ca khỏi"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:id="@+id/tvNewsSource"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vnexpress" />
+
+                    <TextView
+                        android:id="@+id/tvNewsTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="6 phut truoc" />
+                </TableRow>
+
+                <TextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="11 triệu lao động được thụ hưởng từ nhóm chính sách hỗ trợ bảo hiểm; hơn 52.000 lao động bị tạm hoãn hợp đồng đã được nhận hỗ trợ.
+
+Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương binh và Xã hội Đào Ngọc Dung cho biết, sau 15 ngày triển khai gói hỗ trợ 26.000 tỷ đồng, tính đến 24/7, nhóm chính sách hỗ trợ từ quỹ bảo hiểm tai nạn lao động, bảo hiểm bệnh nghề nghiệp đã hoàn thành rà soát, hỗ trợ cho 375.000 đơn vị sử dụng lao động với kinh phí 4.300 tỷ đồng. 11 triệu người lao động được thụ hưởng. Hiện chính sách thứ nhất này đã kết thúc.
+
+Các đơn vị chức năng đã hỗ trợ kịp thời tiền ăn cho tất cả người điều trị F0 và cách ly F1. Hơn 52.000 người bị tạm hoãn hợp đồng lao động, nghỉ không hưởng lương tại gần 6.000 doanh nghiệp đã được hưởng chính sách. 5.500 hộ sản xuất kinh doanh được nhận tiền hỗ trợ. Ngân hàng Nhà nước đã triển khai tái cấp vốn.
+Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương binh và Xã hội Đào Ngọc Dung cho biết, sau 15 ngày triển khai gói hỗ trợ 26.000 tỷ đồng, tính đến 24/7, nhóm chính sách hỗ trợ từ quỹ bảo hiểm tai nạn lao động, bảo hiểm bệnh nghề nghiệp đã hoàn thành rà soát, hỗ trợ cho 375.000 đơn vị sử dụng lao động với kinh phí 4.300 tỷ đồng. 11 triệu người lao động được thụ hưởng. Hiện chính sách thứ nhất này đã kết thúc"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@drawable/background_corner"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đề xuất cho bạn" />
+                <TextView
+                    android:id="@+id/tvContent1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="11 triệu lao động được thụ hưởng từ nhóm chính sách hỗ trợ bảo hiểm; hơn 52.000 lao động bị tạm hoãn hợp đồng đã được nhận hỗ trợ.
+
+Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương binh và Xã hội Đào Ngọc Dung cho biết, sau 15 ngày triển khai gói hỗ trợ 26.000 tỷ đồng, tính đến 24/7, nhóm chính sách hỗ trợ từ quỹ bảo hiểm tai nạn lao động, bảo hiểm bệnh nghề nghiệp đã hoàn thành rà soát, hỗ trợ cho 375.000 đơn vị sử dụng lao động với kinh phí 4.300 tỷ đồng. 11 triệu người lao động được thụ hưởng. Hiện chính sách thứ nhất này đã kết thúc.
+
+Các đơn vị chức năng đã hỗ trợ kịp thời tiền ăn cho tất cả người điều trị F0 và cách ly F1. Hơn 52.000 người bị tạm hoãn hợp đồng lao động, nghỉ không hưởng lương tại gần 6.000 doanh nghiệp đã được hưởng chính sách. 5.500 hộ sản xuất kinh doanh được nhận tiền hỗ trợ. Ngân hàng Nhà nước đã triển khai tái cấp vốn.
+Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương binh và Xã hội Đào Ngọc Dung cho biết, sau 15 ngày triển khai gói hỗ trợ 26.000 tỷ đồng, tính đến 24/7, nhóm chính sách hỗ trợ từ quỹ bảo hiểm tai nạn lao động, bảo hiểm bệnh nghề nghiệp đã hoàn thành rà soát, hỗ trợ cho 375.000 đơn vị sử dụng lao động với kinh phí 4.300 tỷ đồng. 11 triệu người lao động được thụ hưởng. Hiện chính sách thứ nhất này đã kết thúc"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/scroll1"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivAccount"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_account" />
+
+        <EditText
+            android:id="@+id/etCmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Bình luận.."
+            android:inputType="text"
+            android:singleLine="false" />
+
+        <TextView
+            android:id="@+id/tvLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_like"
+            android:gravity="center"
+            android:text="200" />
+
+        <TextView
+            android:id="@+id/tvCmt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableEnd="@drawable/ic_cmts"
+            android:gravity="center"
+            android:text="200" />
+
+        <ImageView
+            android:id="@+id/ivShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_share" />
+    </LinearLayout>
+
+</RelativeLayout>
