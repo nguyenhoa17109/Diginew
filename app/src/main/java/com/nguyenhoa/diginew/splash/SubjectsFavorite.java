@@ -8,18 +8,19 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.MainActivity;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.Subject;
+
+import java.util.ArrayList;
 
 public class SubjectsFavorite extends AppCompatActivity {
     Button btToHome;
-    GridView gridView;
+    RecyclerView recyclerView;
     SubjectsAdapter adapter;
-    String[] numberSubjects = {"Đời sống", "Kinh tế", "Sức khỏe", "Xã hội", "Khoa hoc", "Giải trí", "Công nghệ", "Thể thao", "Tâm sự"};
-    int[] numberImgs = {R.drawable.sj_life, R.drawable.sj_business, R.drawable.sj_health,
-            R.drawable.sj_all, R.drawable.sj_science, R.drawable.sj_entertainment,
-            R.drawable.sj_technology, R.drawable.sj_sport, R.drawable.sj_confidence};
+    ArrayList<Subject> arrayList;
 
     public SubjectsFavorite(){
 
@@ -31,17 +32,23 @@ public class SubjectsFavorite extends AppCompatActivity {
         setContentView(R.layout.activity_subjects_favorite);
 
         btToHome = findViewById(R.id.btToHome);
-        gridView = findViewById(R.id.gvSubjects);
+        recyclerView = findViewById(R.id.rvSubjectsFV);
 
-        adapter = new SubjectsAdapter(SubjectsFavorite.this, numberSubjects, numberImgs);
-        gridView.setAdapter(adapter);
+        arrayList = new ArrayList<>();
+        arrayList.add(new Subject("Đời sống", R.drawable.sj_life));
+        arrayList.add(new Subject("Kinh tế", R.drawable.sj_business));
+        arrayList.add(new Subject("Sức khỏe", R.drawable.sj_health));
+        arrayList.add(new Subject("Xã hội", R.drawable.sj_all));
+        arrayList.add(new Subject("Khoa học", R.drawable.sj_science));
+        arrayList.add(new Subject("Giải trí", R.drawable.sj_entertainment));
+        arrayList.add(new Subject("Công nghệ", R.drawable.sj_technology));
+        arrayList.add(new Subject("Thể thao", R.drawable.sj_sport));
+        arrayList.add(new Subject("Tâm sự", R.drawable.sj_confidence));
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
+        adapter = new SubjectsAdapter(SubjectsFavorite.this, arrayList);
+        recyclerView.setAdapter(adapter);
+
 
         btToHome.setOnClickListener(new View.OnClickListener() {
             @Override
