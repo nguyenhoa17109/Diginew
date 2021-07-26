@@ -143,10 +143,10 @@ public class HomeFragment extends Fragment {
 
     private ArrayList<News> setData(){
         ArrayList<News> listNews = new ArrayList<>();
-        listNews.add(new News("text", "Vietnamnet", 6,
+        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
                 "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                 R.drawable.img_clip, "abc"));
-        listNews.add(new News("text", "Vietnamnet", 6,
+        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
                 "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                 R.drawable.img_clip, "abc"));
         return listNews;

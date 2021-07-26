@@ -61,23 +61,25 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
     private void getDataNews(String topic){
         newsArrayList.clear();
         if(topic == "Đời sống"){
-            newsArrayList.add(new News("text", "Vietnamnet", 6,
+            newsArrayList.add(new News("Đời sống", "text", "Vietnamnet", 6,
                     "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                     R.drawable.img_clip, "abc"));
-            newsArrayList.add(new News("text", "Vietnamnet", 6,
+            newsArrayList.add(new News("Đời sống","text", "Vietnamnet", 6,
+
                     "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                     R.drawable.img_clip, "abc"));
 
             newsAdapter.notifyDataSetChanged();
         }
         else if(topic == "Kinh tế"){
-            newsArrayList.add(new News("text", "Vietnamnet", 6,
+            newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6,
                     "Kinh te ne", 100, 200,
                     R.drawable.img_clip, "abc"));
-            newsArrayList.add(new News("text", "Vietnamnet", 6,
+            newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6,
                     "Kinh te ne", 100, 200,
                     R.drawable.img_clip, "abc"));
-            newsArrayList.add(new News("text", "Vietnamnet", 6,
+            newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6,
+
                     "Kinh te ne", 100, 200,
                     R.drawable.img_clip, "abc"));
 
@@ -85,7 +87,8 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
         }
         else if(topic == "Sức khỏe"){
-            newsArrayList.add(new News("text", "Vietnamnet", 6,
+            newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", 6,
+
                     "Suc khoe ne", 100, 200,
                     R.drawable.img_clip, "abc"));
 

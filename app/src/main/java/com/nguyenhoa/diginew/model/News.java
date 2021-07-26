@@ -11,9 +11,11 @@ public class News implements Serializable {
     private int imgs;
     private String content;
     private String type;
+    private String topic;
 
-    public News(String type, String source, int times,
+    public News(String topic, String type, String source, int times,
                 String title, int likes, int cmts, int imgs, String content) {
+        this.topic = topic;
         this.type = type;
         this.source = source;
         this.times = times;
@@ -22,6 +24,14 @@ public class News implements Serializable {
         this.cmts = cmts;
         this.imgs = imgs;
         this.content = content;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
     }
 
     public String getSource() {
