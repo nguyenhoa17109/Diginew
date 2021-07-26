@@ -10,12 +10,12 @@
     android:background="@color/gray_200"
     tools:context=".NewsActivity">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
@@ -26,14 +26,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="10dp"
+                android:padding="20dp"
                 android:background="@drawable/background_corner">
 
                 <TextView
                     android:id="@+id/tvTitleNews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="10dp"
                     android:text="Thêm 2 bệnh nhân COVID-19 khỏi bệnh,
                  Việt Nam đã có 171 ca khỏi"
                     android:textColor="@color/black"
@@ -79,7 +79,177 @@ Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvSearch1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Covid-19"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Viet Nam covid"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Virut"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvSearch21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Prime"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Breakdown"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Anthony Fauci"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvSearch31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Wisconsin"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Washington"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Coronavirus"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/tvSearch41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nepal"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch42"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Animal"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+
+                    <TextView
+                        android:id="@+id/tvSearch43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Entertainment"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_corner"
+                        android:padding="7dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_margin="5dp"/>
+                </TableRow>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:padding="10dp"
                 android:background="@drawable/background_corner"
                 android:orientation="vertical">
@@ -87,28 +257,26 @@ Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Đề xuất cho bạn" />
-                <TextView
-                    android:id="@+id/tvContent1"
+                    android:text="Đề xuất cho bạn"
+                    android:textSize="30sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcNews"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_corner_top"
+                    android:padding="10dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="11 triệu lao động được thụ hưởng từ nhóm chính sách hỗ trợ bảo hiểm; hơn 52.000 lao động bị tạm hoãn hợp đồng đã được nhận hỗ trợ.
+                    android:layout_marginBottom="60dp">
 
-Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương binh và Xã hội Đào Ngọc Dung cho biết, sau 15 ngày triển khai gói hỗ trợ 26.000 tỷ đồng, tính đến 24/7, nhóm chính sách hỗ trợ từ quỹ bảo hiểm tai nạn lao động, bảo hiểm bệnh nghề nghiệp đã hoàn thành rà soát, hỗ trợ cho 375.000 đơn vị sử dụng lao động với kinh phí 4.300 tỷ đồng. 11 triệu người lao động được thụ hưởng. Hiện chính sách thứ nhất này đã kết thúc.
-
-Các đơn vị chức năng đã hỗ trợ kịp thời tiền ăn cho tất cả người điều trị F0 và cách ly F1. Hơn 52.000 người bị tạm hoãn hợp đồng lao động, nghỉ không hưởng lương tại gần 6.000 doanh nghiệp đã được hưởng chính sách. 5.500 hộ sản xuất kinh doanh được nhận tiền hỗ trợ. Ngân hàng Nhà nước đã triển khai tái cấp vốn.
-Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương binh và Xã hội Đào Ngọc Dung cho biết, sau 15 ngày triển khai gói hỗ trợ 26.000 tỷ đồng, tính đến 24/7, nhóm chính sách hỗ trợ từ quỹ bảo hiểm tai nạn lao động, bảo hiểm bệnh nghề nghiệp đã hoàn thành rà soát, hỗ trợ cho 375.000 đơn vị sử dụng lao động với kinh phí 4.300 tỷ đồng. 11 triệu người lao động được thụ hưởng. Hiện chính sách thứ nhất này đã kết thúc"
-                    android:textColor="@color/black"
-                    android:textSize="18dp" />
+                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
 
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
-    </ScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
