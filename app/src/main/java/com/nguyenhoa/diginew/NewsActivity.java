@@ -21,7 +21,7 @@ import com.nguyenhoa.diginew.model.News;
 import java.util.ArrayList;
 
 public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
-    private TextView tvTitleNews, tvSource, tvTime, tvTopic, tvLikes, tvCmts;
+    private TextView tvTitleNews, tvSource, tvTime, tvTopic, tvLikes, tvCmts, tvContent;
     private ImageView ivAccount, ivShare, ivBack;
     private RecyclerView recyclerView;
     private NewsRCAdapter adapter;
@@ -41,8 +41,13 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         Intent intent = getIntent();
         News news = (News) intent.getSerializableExtra("News");
+//        tvTopic.setText(news.getTopic());
         tvTitleNews.setText(news.getTitle());
-
+        tvContent.setText(news.getContent());
+        tvSource.setText(news.getSource());
+        tvTime.setText(String.valueOf(news.getTimes()));
+        tvLikes.setText(String.valueOf(news.getLikes()));
+        tvCmts.setText(String.valueOf(news.getCmts()));
     }
 
     @Override
@@ -76,6 +81,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         tvTime = findViewById(R.id.tvNewsTime);
         tvCmts = findViewById(R.id.tvCmt);
         tvLikes = findViewById(R.id.tvLike);
+        tvContent = findViewById(R.id.tvContent);
 
         ivAccount = findViewById(R.id.ivAccount);
         ivShare = findViewById(R.id.ivShare);
@@ -94,10 +100,10 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
     private ArrayList<News> setList(){
         ArrayList<News> listNews = new ArrayList<>();
-        listNews.add(new News("text", "Vietnamnet", 6,
+        listNews.add(new News("Thoi su", "text", "Vietnamnet", 6,
                 "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                 R.drawable.img_clip, "abc"));
-        listNews.add(new News("text", "Vietnamnet", 6,
+        listNews.add(new News("Thoi su","text", "Vietnamnet", 6,
                 "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                 R.drawable.img_clip, "abc"));
         return listNews;
