@@ -2,6 +2,8 @@ package com.nguyenhoa.diginew.discover;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,7 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.nguyenhoa.diginew.R;
 
 public class DigiHealth extends AppCompatActivity {
-    private Toolbar toolbar;
+    private ImageView ivBack;
+    private Button btOpen;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -21,12 +24,13 @@ public class DigiHealth extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digi_health);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        getSupportActionBar().hide();
+        ivBack = findViewById(R.id.ivBack);
+        btOpen = findViewById(R.id.btOpen);
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });

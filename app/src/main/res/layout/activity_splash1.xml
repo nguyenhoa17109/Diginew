@@ -4,27 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7d99fd"
+    android:background="@color/blue_200"
+    android:padding="20dp"
     tools:context=".splash.Splash1">
+
     <com.smarteist.autoimageslider.SliderView
         android:id="@+id/slideSplash1"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        app:sliderAutoCycleEnabled="true"
-        app:sliderStartAutoCycle="true"
+        android:layout_width="381dp"
+        android:layout_height="567dp"
+        android:layout_marginBottom="50dp"
         app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderAutoCycleEnabled="true"
         app:sliderScrollTimeInSec="2"
-        />
+        app:sliderStartAutoCycle="true" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="Bắt đầu"
-        android:backgroundTint="@color/white"
-        android:textColor="#849fff"
-        android:textStyle="bold"
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btStart"
-        android:layout_below="@id/slideSplash1"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slideSplash1"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/background_corner"
+        android:text="Bắt đầu"
+        android:textColor="@color/blue"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 </RelativeLayout>

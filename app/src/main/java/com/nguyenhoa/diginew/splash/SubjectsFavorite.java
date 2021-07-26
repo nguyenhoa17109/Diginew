@@ -8,11 +8,14 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.MainActivity;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.MyList;
 import com.nguyenhoa.diginew.model.Subject;
+import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -20,33 +23,32 @@ public class SubjectsFavorite extends AppCompatActivity {
     Button btToHome;
     RecyclerView recyclerView;
     SubjectsAdapter adapter;
-    ArrayList<Subject> arrayList;
-
-    public SubjectsFavorite(){
-
-    }
+    ArrayList<Topic> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subjects_favorite);
 
+        getSupportActionBar().hide();
         btToHome = findViewById(R.id.btToHome);
         recyclerView = findViewById(R.id.rvSubjectsFV);
 
-        arrayList = new ArrayList<>();
-        arrayList.add(new Subject("Đời sống", R.drawable.sj_life));
-        arrayList.add(new Subject("Kinh tế", R.drawable.sj_business));
-        arrayList.add(new Subject("Sức khỏe", R.drawable.sj_health));
-        arrayList.add(new Subject("Xã hội", R.drawable.sj_all));
-        arrayList.add(new Subject("Khoa học", R.drawable.sj_science));
-        arrayList.add(new Subject("Giải trí", R.drawable.sj_entertainment));
-        arrayList.add(new Subject("Công nghệ", R.drawable.sj_technology));
-        arrayList.add(new Subject("Thể thao", R.drawable.sj_sport));
-        arrayList.add(new Subject("Tâm sự", R.drawable.sj_confidence));
+//        arrayList = MyList.list;
+        list = new ArrayList<>();
+        list.add(new Topic("Đời sống", R.drawable.sj_life));
+        list.add(new Topic("Kinh tế", R.drawable.sj_business));
+        list.add(new Topic("Sức khỏe", R.drawable.sj_health));
+        list.add(new Topic("Xã hội", R.drawable.sj_all));
+        list.add(new Topic("Khoa học", R.drawable.sj_science));
+        list.add(new Topic("Giải trí", R.drawable.sj_entertainment));
+        list.add(new Topic("Công nghệ", R.drawable.sj_technology));
+        list.add(new Topic("Thể thao", R.drawable.sj_sport));
+        list.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
-
-        adapter = new SubjectsAdapter(SubjectsFavorite.this, arrayList);
+        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        adapter = new SubjectsAdapter(SubjectsFavorite.this, list);
+        recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
 
 
