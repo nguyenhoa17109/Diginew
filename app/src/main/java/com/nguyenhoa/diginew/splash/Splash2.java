@@ -20,6 +20,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -95,6 +96,8 @@ public class Splash2 extends AppCompatActivity {
         callbackManager = CallbackManager.Factory.create();
 
         btLoginFb.setReadPermissions("email", "public_profile");
+        btLoginFb.setLoginBehavior(LoginBehavior.WEB_ONLY);
+
         btLoginFb.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
