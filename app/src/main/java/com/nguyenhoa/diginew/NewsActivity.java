@@ -37,17 +37,24 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         getSupportActionBar().setElevation(0);
         View view = getSupportActionBar().getCustomView();
 
-
+        init();
 
         Intent intent = getIntent();
         News news = (News) intent.getSerializableExtra("News");
-//        tvTopic.setText(news.getTopic());
-        tvTitleNews.setText(news.getTitle());
-        tvContent.setText(news.getContent());
-        tvSource.setText(news.getSource());
-        tvTime.setText(String.valueOf(news.getTimes()));
-        tvLikes.setText(String.valueOf(news.getLikes()));
-        tvCmts.setText(String.valueOf(news.getCmts()));
+        if(news != null){
+            tvTopic.setText(news.getTopic());
+            tvTitleNews.setText(news.getTitle());
+            tvContent.setText(news.getContent());
+            tvSource.setText(news.getSource());
+            tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+            tvLikes.setText(String.valueOf(news.getLikes()));
+            tvCmts.setText(String.valueOf(news.getCmts()));
+
+
+        }else{
+            Toast.makeText(this, "LOLO", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
@@ -96,6 +103,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         recyclerView.setLayoutManager(manager);
         adapter.setData(setList());
         adapter.setClickNewsListener(this::onItemClick);
+        recyclerView.setAdapter(adapter);
     }
 
     private ArrayList<News> setList(){

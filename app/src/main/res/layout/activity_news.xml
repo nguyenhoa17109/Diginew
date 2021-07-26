@@ -258,7 +258,7 @@ Báo cáo trước Quốc hội sáng 25/7, Bộ trưởng Lao động Thương 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Đề xuất cho bạn"
-                    android:textSize="30sp" />
+                    android:textSize="24sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcNews"
