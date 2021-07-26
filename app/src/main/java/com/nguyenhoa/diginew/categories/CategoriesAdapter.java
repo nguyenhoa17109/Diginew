@@ -45,12 +45,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             }
         });
         if(index == position){
-            holder.itemView.setBackgroundColor(Color.BLUE);
+            holder.textView.setBackgroundColor(Color.parseColor("#6E8DFB"));
             holder.textView.setTextColor(Color.WHITE);
         }
         else{
-            holder.itemView.setBackgroundColor(Color.WHITE);
-            holder.textView.setTextColor(Color.BLACK);
+            holder.textView.setBackgroundColor(Color.WHITE);
+            holder.textView.setTextColor(Color.parseColor("#AAA8A8"));
         }
     }
 

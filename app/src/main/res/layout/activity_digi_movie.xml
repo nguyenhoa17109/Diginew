@@ -1,37 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_200"
     tools:context=".discover.DigiMovie">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_marginTop="0dp"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="DigiMovie"
-        android:textSize="30sp"/>
-    <ImageView
-        android:id="@+id/ivDigiMovie"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="20dp"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/img_movie"/>
-    <TextView
-        android:id="@+id/tvDigiMovie"
-        android:layout_below="@id/ivDigiMovie"
-        android:textSize="20sp"
-        android:text="DUOng ngoc anh1435555"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/tvTopic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="DigiMovie"
+            android:textSize="24dp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
-    <Button
-        android:layout_marginTop="10dp"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvDigiMovie"
-        android:text="mở app"
-        android:layout_centerHorizontal="true"/>
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/background_corner_top"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/ivDigiMovie"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/toolbar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/img_movie" />
+
+        <TextView
+            android:id="@+id/tvDigiMovie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/content_digimovie"
+            android:textSize="18sp"
+            android:layout_margin="20dp"
+            android:textColor="@color/black"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btOpen"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="mở app"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:background="@drawable/background_button_topic"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</LinearLayout>

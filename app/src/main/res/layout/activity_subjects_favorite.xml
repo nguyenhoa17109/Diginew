@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".splash.SubjectsFavorite"
+    android:layout_margin="20dp"
     android:orientation="vertical">
+
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:src="@drawable/img_logo_color"/>
-    <TextView
+        android:id="@+id/ivDigi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@drawable/img_logo_color"/>
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivDigi"
         android:gravity="center"
-        android:text="Chọn chủ đề yêu thích"
-        android:textSize="20sp"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Vui lòng chọn\n chủ đề yêu thích của bạn"
+        android:textSize="30sp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSubjectsFV"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_marginTop="10dp"
-        app:spanCount="2"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem = "@layout/item_subjects"/>
-    <Button
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="10dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btToHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tiep tuc"
-        android:id="@+id/btToHome"
-        />
-</LinearLayout>
+        android:layout_alignBottom="@+id/rvSubjectsFV"
+        android:text="Tiếp tục"
+        android:textSize="18dp"
+        android:background="@drawable/background_button"
+        android:textColor="@color/white"
+        android:outlineAmbientShadowColor="@color/white"
+        android:shadowColor="@color/white"
+        android:outlineSpotShadowColor="@color/white"/>
+</RelativeLayout>

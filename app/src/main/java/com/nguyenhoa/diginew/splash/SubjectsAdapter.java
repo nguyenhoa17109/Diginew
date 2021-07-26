@@ -11,18 +11,20 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.Subject;
+import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
 public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList<Subject> data;
+    private ArrayList<Topic> data;
 
-    public SubjectsAdapter(Context context, ArrayList<Subject> data) {
+    public SubjectsAdapter(Context context, ArrayList<Topic> data) {
         this.context = context;
         this.data = data;
     }
@@ -38,17 +40,17 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Subject subject = data.get(position);
+        Topic subject = data.get(position);
 
         holder.tvSubject.setText(subject.getName());
-        holder.ivSubject.setImageResource(subject.getImg());
+        holder.tvSubject.setBackgroundResource(subject.getImg());
 
         if(subject.getSelected()){
-            holder.itemView.setBackgroundColor(Color.BLUE);
+            holder.cardView.setBackgroundColor(Color.parseColor("#6E8DFB"));
         }
-        else{
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-        }
+//        else{
+//            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
+//        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +74,12 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvSubject;
-        ImageView ivSubject;
+        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvSubject = itemView.findViewById(R.id.tvItemSubjects);
-            ivSubject = itemView.findViewById(R.id.ivItemSubjects);
+            cardView = itemView.findViewById(R.id.card);
         }
     }
 }

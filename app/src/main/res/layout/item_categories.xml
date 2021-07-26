@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="130dp"
-    android:layout_height="70dp"
-    android:layout_gravity="center"
-    android:background="@drawable/background_corner"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="10dp"
     android:id="@+id/cvCategoryFV">
 
     <TextView
         android:id="@+id/tvItemCategory"
         android:gravity="center"
         android:text="Category"
-        android:textColor="@color/black"
-        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:background="@color/blue_200"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

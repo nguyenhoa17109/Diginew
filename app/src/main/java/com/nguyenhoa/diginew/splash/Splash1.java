@@ -14,7 +14,14 @@ public class Splash1 extends AppCompatActivity {
     private Button btStart;
     SliderView sliderView;
     int[] images = {R.drawable.img_start, R.drawable.sj_all, R.drawable.sj_technology};
-    String[] names = {"slide show 1", "slide show 2", "slide show 3"};
+    String[] names = {"DigiNews la ung dung doc bao chinh thuc cua\n" +
+            "VNPT - trang tong hop tin tuc tu dong hang dau\n" +
+            "Viet Nam.\n" +
+            "\n" +
+            "Su dung cong nghe may tinh thong minh doc quyen\n" +
+            "cua DigiNews, ung dung cho phep ban doc nhanh\n" +
+            "cac tin tuc nong va moi nhat trong ngay duoc chon\n" +
+            "loc tu hon 150 bao dien tu tai Viet Nam.", "slide show 2", "slide show 3"};
 
 
     @Override
