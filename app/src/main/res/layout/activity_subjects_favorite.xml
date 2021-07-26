@@ -14,15 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Chon chu de yeu thich"
+        android:text="Chọn chủ đề yêu thích"
         android:textSize="20sp"/>
-    <GridView
-        android:id="@+id/gvSubjects"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSubjectsFV"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:numColumns="2"
-        android:padding="10dp"
-        tools:listitem="@layout/item_subjects"/>
+        android:layout_marginTop="10dp"
+        app:spanCount="2"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem = "@layout/item_subjects"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
