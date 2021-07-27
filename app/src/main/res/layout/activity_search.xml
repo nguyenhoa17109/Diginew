@@ -39,7 +39,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:padding="15dp"
@@ -54,11 +54,175 @@
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:text="Từ khóa HOT" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvSearch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Covid-19"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viet Nam covid"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Virut"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvSearch21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prime"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakdown"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anthony Fauci"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvSearch31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wisconsin"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Washington"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coronavirus"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/tvSearch41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nepal"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animal"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entertainment"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
         android:padding="15dp"
@@ -73,5 +237,169 @@
             android:textStyle="bold"
             android:textColor="@color/gray"
             android:text="Tìm kiếm gần đây" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvSearch111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Covid-19"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch112"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Viet Nam covid"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch113"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Virut"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvSearch121"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prime"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch122"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakdown"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch123"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anthony Fauci"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tvSearch131"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wisconsin"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch132"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Washington"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch133"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coronavirus"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/tvSearch141"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nepal"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch142"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animal"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+
+            <TextView
+                android:id="@+id/tvSearch143"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entertainment"
+                android:textSize="15sp"
+                android:background="@drawable/background_corner_search"
+                android:padding="7dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_margin="5dp"/>
+        </TableRow>
     </LinearLayout>
 </LinearLayout>

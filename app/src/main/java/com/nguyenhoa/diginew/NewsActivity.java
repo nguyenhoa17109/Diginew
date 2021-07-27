@@ -74,8 +74,15 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             tvContent.setTextSize(size);
 
         }else{
-            Toast.makeText(this, "LOLO", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "News is empty!!!", Toast.LENGTH_SHORT).show();
         }
+
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 
@@ -100,7 +107,6 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 changeSize();
                 break;
             }
-
         }
         return super.onOptionsItemSelected(item);
     }

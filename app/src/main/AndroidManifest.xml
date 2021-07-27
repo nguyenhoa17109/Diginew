@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diginew">
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".PlayVideoActivity"></activity>
+        <activity android:name=".NewsActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".splash.Splash">
             <intent-filter>
@@ -27,7 +28,7 @@
             android:name=".splash.Terms"
             android:parentActivityName=".splash.Splash2" />
         <activity android:name=".splash.SubjectsFavorite" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".discover.MyTv" />
         <activity android:name=".discover.DigiHealth" />
         <activity android:name=".discover.DigiMovie" />

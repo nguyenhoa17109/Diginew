@@ -16,7 +16,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     private Context context;
     private String[] names;
     private CategorClickInterface categorClickInterface;
-    private int index = -1;
+    private int index = 0;
     public CategoriesAdapter(Context context, String[] names, CategorClickInterface categorClickInterface) {
         this.context = context;
         this.names = names;

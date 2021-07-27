@@ -9,7 +9,6 @@
     android:background="@color/gray_200"
     tools:context=".home.HomeFragment">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,36 +47,14 @@
                 android:src="@drawable/ic_user" />
         </LinearLayout>
 
-
-        <androidx.cardview.widget.CardView
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/slideSplash1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="15dp">
-            <com.synnapps.carouselview.CarouselView
-                android:id="@+id/carouselView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:padding="10dp"
-                app:fillColor="#FFFFFFFF"
-                app:pageColor="#00000000"
-                app:radius="6dp"
-                app:slideInterval="3000"
-                app:strokeColor="#FF777777"
-                app:strokeWidth="1dp" />
-        </androidx.cardview.widget.CardView>
-
-
-        <TextView
-            android:id="@+id/tvCarousel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="30dp"
-            android:text="TextView"
-            android:textStyle="bold" />
+            android:layout_height="300dp"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderScrollTimeInSec="2"
+            app:sliderStartAutoCycle="true" />
 
     </LinearLayout>
     <ListView

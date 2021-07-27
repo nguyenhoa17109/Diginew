@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import com.nguyenhoa.diginew.R;
 import java.io.InputStream;
 
 public class Terms extends AppCompatActivity {
-    private Toolbar toolbar;
+    private Button btBack;
     private TextView tvTerm;
 
     @Override
@@ -27,17 +28,14 @@ public class Terms extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        getSupportActionBar().hide();
+        btBack = findViewById(R.id.btBack);
+        btBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });
-
         tvTerm = findViewById(R.id.tvTerms);
         tvTerm.setMovementMethod(new ScrollingMovementMethod());
 
