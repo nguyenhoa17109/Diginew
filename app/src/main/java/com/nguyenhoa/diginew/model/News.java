@@ -12,6 +12,10 @@ public class News implements Serializable {
     private String content;
     private String type;
     private String topic;
+    private String url;
+
+    public News() {
+    }
 
     public News(String topic, String type, String source, int times,
                 String title, int likes, int cmts, int imgs, String content) {
@@ -24,6 +28,20 @@ public class News implements Serializable {
         this.cmts = cmts;
         this.imgs = imgs;
         this.content = content;
+    }
+
+    public News(String source, int times, String title, int likes, int cmts, int imgs,
+                String content, String type, String topic, String url) {
+        this.source = source;
+        this.times = times;
+        this.title = title;
+        this.likes = likes;
+        this.cmts = cmts;
+        this.imgs = imgs;
+        this.content = content;
+        this.type = type;
+        this.topic = topic;
+        this.url = url;
     }
 
     public String getTopic() {
@@ -96,5 +114,13 @@ public class News implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

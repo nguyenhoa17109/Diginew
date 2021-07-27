@@ -20,6 +20,7 @@ import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.SearchActivity;
 import com.nguyenhoa.diginew.model.MyList;
 import com.nguyenhoa.diginew.model.News;
+import com.smarteist.autoimageslider.SliderView;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
  */
 public class HomeFragment extends Fragment {
     private ImageView ivSearch, ivUser;
-    private CarouselView carouselView;
+    private SliderView sliderView;
     private ListView listView;
     private int[] sample = {R.drawable.img_clip, R.drawable.img_health, R.drawable.img_movie};
 
@@ -83,20 +84,32 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-//        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        sliderView = v.findViewById(R.id.slideSplash1);
 
-
-        carouselView = v.findViewById(R.id.carouselView);
-        carouselView.setPageCount(sample.length);
-        carouselView.setImageListener(imageListener);
-//        carouselView.setIma
-        carouselView.setImageClickListener(new ImageClickListener() {
+        NewsSlideAdapter newsSlideAdapter = new NewsSlideAdapter(setData());
+        sliderView.setSliderAdapter(newsSlideAdapter);
+        sliderView.startAutoCycle();
+        newsSlideAdapter.setItemSlideNewsClick(new NewsSlideAdapter.ItemSlideNewsClick() {
             @Override
-            public void onClick(int position) {
-                Toast.makeText(getActivity(), "Clicked item: "+ position, Toast.LENGTH_SHORT).show();
+            public void OnItemClick(View view, int position) {
+                News news = newsSlideAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), NewsActivity.class);
+                intent.putExtra("News",  news);
+                startActivity(intent);
             }
         });
+//        sliderView.onPageScrolled();
+//        News news = newsSlideAdapter.getItem()
+//        carouselView = v.findViewById(R.id.carouselView);
+//        carouselView.setPageCount(sample.length);
+//        carouselView.setImageListener(imageListener);
+////        carouselView.setIma
+//        carouselView.setImageClickListener(new ImageClickListener() {
+//            @Override
+//            public void onClick(int position) {
+//                Toast.makeText(getActivity(), "Clicked item: "+ position, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         ivSearch = v.findViewById(R.id.ivSearch);
         ivUser = v.findViewById(R.id.ivUser);
@@ -145,10 +158,13 @@ public class HomeFragment extends Fragment {
         ArrayList<News> listNews = new ArrayList<>();
         listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
                 "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
+                R.drawable.sj_confidence, "abc"));
         listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
                 "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
+                R.drawable.sj_health, "abc"));
+        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
+                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
+                R.drawable.sj_business, "abc"));
         return listNews;
     }
 

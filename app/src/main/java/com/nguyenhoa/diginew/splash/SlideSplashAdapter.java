@@ -14,7 +14,6 @@ public class SlideSplashAdapter extends SliderViewAdapter<Holder> {
     int[] image;
     String[] names;
 
-
     public SlideSplashAdapter(int[] image, String[] names) {
         this.image = image;
         this.names = names;
