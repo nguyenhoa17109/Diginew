@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nguyenhoa.diginew.R;
-import com.nguyenhoa.diginew.model.MyList;
+import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
