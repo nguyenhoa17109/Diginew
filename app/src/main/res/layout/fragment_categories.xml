@@ -16,12 +16,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-    <ListView
-        android:id="@+id/rvNews"
-        android:layout_below="@id/rvCategories"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        tools:listitem="@layout/item_news"/>
+        android:layout_height="match_parent"
+        android:id="@+id/frChildCategory">
+    </FrameLayout>
+
 </LinearLayout>

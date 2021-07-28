@@ -11,4 +11,6 @@
     <color name="gray_200">#F1F3F4</color>
     <color name="blue">#5151FA</color>
     <color name="blue_200">#6E8DFB</color>
+    <color name="divider">#ECECEC</color>
+
 </resources>

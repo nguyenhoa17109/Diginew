@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvItemProvinces"
+        android:text="Ten thanh pho"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="20dp">
+    </TextView>
+    <ImageView
+        android:id="@+id/ivItemProvinces"
+        android:layout_marginLeft="70dp"
+        android:layout_gravity="center"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_check"/>
+</LinearLayout>
