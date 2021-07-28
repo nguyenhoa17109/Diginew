@@ -11,13 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.MyList;
+import com.nguyenhoa.diginew.model.Topic;
+
+import java.util.ArrayList;
 
 public class DiscoverFragment extends Fragment {
 
     private RecyclerView rvDiscover;
     private DiscoverAdapter discoverAdapter;
-    private String[] names = {"DigiMovie", "DigiClip", "DigiMusic", "DigiHealth", "MyTV"};
-    private int[] images = {R.drawable.img_movie, R.drawable.img_clip, R.drawable.img_music, R.drawable.img_health, R.drawable.img_mytv};
+    private ArrayList<Topic> list;
     public DiscoverFragment() {
     }
 
@@ -31,7 +34,8 @@ public class DiscoverFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_discover, container, false);
         rvDiscover = view.findViewById(R.id.rvListDiscover);
 
-        discoverAdapter = new DiscoverAdapter(getContext(), names, images);
+        list = MyList.list_dis;
+        discoverAdapter = new DiscoverAdapter(getContext(), list);
 
         rvDiscover.setLayoutManager(new LinearLayoutManager(getContext()));
         rvDiscover.setAdapter(discoverAdapter);
