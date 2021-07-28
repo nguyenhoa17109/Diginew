@@ -11,17 +11,15 @@
         android:id="@+id/ivItemSplash1"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/todo"
         android:src="@drawable/img_start" />
 
     <TextView
         android:id="@+id/tvItemSplash1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ivItemSplash1"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="slide show"
+        android:text="@string/digimovie"
         android:textColor="@color/white" />
 </LinearLayout>

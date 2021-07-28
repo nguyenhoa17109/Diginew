@@ -10,10 +10,10 @@
     <TextView
         android:id="@+id/tvItemCategory"
         android:gravity="center"
-        android:text="Category"
+        android:text="@string/eg_source"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:background="@color/blue_200"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -12,7 +12,8 @@
         android:id="@+id/ivDigi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/img_logo_color"/>
+        android:src="@drawable/img_logo_color"
+        android:contentDescription="@string/todo"/>
 
     <TextView
         android:id="@+id/tv"
@@ -22,7 +23,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:text="Vui lòng chọn\n chủ đề yêu thích của bạn"
+        android:text="@string/fav"
         android:textSize="30sp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -37,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/rvSubjectsFV"
-        android:text="Tiếp tục"
+        android:text="@string/continued"
         android:textSize="18dp"
         android:background="@drawable/background_button"
         android:textColor="@color/white"

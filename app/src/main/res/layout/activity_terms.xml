@@ -22,6 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/todo"
             app:srcCompat="@drawable/ic_back" />
 
         <TextView
@@ -30,8 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:padding="5dp"
-            android:text="DigiHealth"
-            android:textSize="24dp"
+            android:text="@string/digihealth"
+            android:textSize="24sp"
             android:textColor="@color/black"/>
     </LinearLayout>
     <TextView
@@ -39,6 +41,6 @@
         android:scrollbars = "vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Terms and conditions"
+        android:text=""
         android:textSize="20sp"/>
   </LinearLayout>

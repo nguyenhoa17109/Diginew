@@ -19,6 +19,7 @@
             android:layout_height="200dp"
             android:background="@drawable/sj_confidence"
             android:clickable="true"
+            android:focusable="true"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -27,7 +28,9 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:clickable="true"
-                android:src="@drawable/ic_play" />
+                android:focusable="true"
+                android:src="@drawable/ic_play"
+                android:contentDescription="@string/todo"/>
         </LinearLayout>
 
 
@@ -36,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Chinh phu họp bàn phương án cách ly xã hội sau 15/4"
-            android:textSize="15dp"
+            android:text="@string/eg_title"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@color/black"/>
 
@@ -51,21 +54,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Vnexpress" />
+                android:text="@string/eg_source" />
 
             <TextView
                 android:id="@+id/tvTimes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="20"
-                android:text="6 phut truoc" />
+                android:text="@string/eg_time" />
 
             <TextView
                 android:id="@+id/tvLikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100"
-                android:layout_marginRight="10dp"
+                android:text="@string/_200"
+                android:layout_marginEnd="10dp"
                 app:drawableEndCompat="@drawable/ic_like"
                 android:layout_weight="1"/>
 
@@ -74,12 +77,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableEnd="@drawable/ic_cmts"
-                android:text="200" />
-
+                android:text="@string/_200"
+                app:drawableEndCompat="@drawable/ic_cmts" />
 
         </TableRow>
     </LinearLayout>
-
-
 </androidx.cardview.widget.CardView>
