@@ -45,4 +45,5 @@
         android:textColor="@color/gray"
         android:textSize="25sp"
         android:text="@string/cancel" />
+
 </LinearLayout>
