@@ -14,7 +14,22 @@
     <string name="content_digimovie">Ban dang tim kiem va cho doi thuong thuc nhung bo phim, chuong trinh truyen hinh gay sot nhat tren the gioi?
         Tai ngay DigiMovie - ung dung xem phim moi me thoa gu cac fan cine trong he sinh thai DigiLife cua VNPT. DigiMovie la mot trong nhung ung dung thuoc He sinh thai DigiLife cua VNPT, nguoi dung He sinh thai se duoc trai nghiem tron ven cuocosong so voi muon van tien ich phong phu va cu\'c nhieu uu dai. Hon 1.200 phim dien anh, hon 4.000 tap phim bo, hon 3.700 noi dung thieu nhi va hang ngan noi dung khac lien tuc duoc CAP NHAT; Phim doc quyen, phim bom tan chieu rap va cac bo phim truyen hinh noi tieng trong nuoc, quoc te.</string>
     <string name="content_digiclip">DigiClip DigiClip la ung dung Mang xa hoi video-clip nam trong he sinh thai DigiLife cua VNPT. Ung dung giup nguoi dung xem, dang tai va chia se cac Video/Clip/Phim HD ngan. Voi vo van video-clip hap dan o moi the loai, DigiClip mang den cho ban nhung noi dung hot duoc ca nhan hoa theo so thich cung co hoi kiem tien tu cac doan video- clip mang phong cach rieng cua ban. Tai ngay DigiClip de trai nghiem cac tinh nang moi nhat: Mien phi Data truy cap ung dung; Kho clip khung voi nhieu chu de: du lich, giai tri, an uong, cong nghe, tin tuc, giao duc, phim truyen, nhac, MV, the thao, thoi trang, lam</string>
-    <string name="content_digihealth"><![CDATA[DigiHealth DigiHealth la ung dung cham soc va theo doi suc khoe danh cho moi nguoi nam trong he sinh thai DigiLife cua VNPT. Ung dung tich hop nhieu tinh nang y te huu ich va ket noi he thong thong tin, y bac si, danh ba tu hang tram benh vien hang dau Viet Nam. DigiHealth giup ban lang nghe co the, chu dong cham soc suc khoe. UU DIEM NOI BAT TOI UU THOI GIAN cham soc & theo doi suc khoe. TIET KIEM CHI PHI - Mien phi 100% Data 3G/4G cho thue bao VinaPhone. LUU TRU\' thong tin online, tien loi cho]]></string>
+    <string name="content_digihealth"><![CDATA[DigiHealth DigiHealth la ung dung cham soc va theo doi suc khoe danh cho moi nguoi nam trong he sinh thai DigiLife cua VNPT. Ung dung tich hop nhieu tinh nang y te huu ich va ket noi he thống thong tin, y bac si, danh ba tu hang tram benh vien hang dau Viet Nam. DigiHealth giup ban lang nghe co the, chu dong cham soc suc khoe. UU DIEM NOI BAT TOI UU THOI GIAN cham soc & theo doi suc khoe. TIET KIEM CHI PHI - Mien phi 100% Data 3G/4G cho thue bao VinaPhone. LUU TRU\' thong tin online, tien loi cho]]></string>
     <string name="content_digimusic">DigiMusic DigiMusic la ung dung nghe nhac chat luong cao nam trong he sinh thai DigiLife cua VNPT. Ung dung hoan toan mien phi danh cho cac tin do am nhac. Voi kho nhac do so, trinh nghe nhac da nang ho tro Lossless, ban se duoc thoa suc dam chim trong khong gian am nhac dang cap ngay tren chinh thiet bi di dong. DigiMusic mien phi hoan toan 3G/4G cho thue bao VinaPhone. DigiMusic so huu cac tinh nang noi bat: Kho nhac: Nghe nhac online chat luong cao (320kbps) Lien tuc cap nhat cac bai hat moi noi bat</string>
     <string name="content_mytv">MyTV MyTV la lua chon hang dau cho nguoi dung khi xem truyen hinh tren di dong duoc cung cap boi VNPT. MyTV la mot trong nhung ung dung thuoc He sinh thai DigiLife cua VNPT, nguoi dung He sinh thai se duoc trai nghiem tron ven cuocosong so voi muon van tien ich phong phu va cuc nhieu uu dai. Dac biet, tat ca thue bao VinaPhone deu se duoc MIEN PHI 3G/4G khi su dung chum dich vu thuoc He sinh thai DigiLife. Duoc phat trien tu dich vu truyen hinh Internet tien phong tai Viet Nam, MyTV so huu luong kenh da dang bac nhat cung nhieu tien ich toi uu trai nghiem: Tren 225 kenh truyen hinh voi 70 kenh chat luong HD, bao gom nhieu nhom kenh truyen</string>
+    <string name="term">Bằng việc Đăng nhập, bạn đồng ý với các <u>Điều khoản và chính sách</u> của DigiNews</string>
+    <string name="login_gmail">Đăng nhập với Gmail</string>
+    <string name="decline">Bỏ qua</string>
+    <string name="todo">TODO</string>
+    <string name="advance">Gói nâng cao</string>
+    <string name="vip">Gói Vip</string>
+    <string name="packet_advance">Gói nội dung cao cấp</string>
+    <string name="p1">2000 <br><small>vnđ/ngày</small></br></string>
+    <string name="p2">55.000 <br><small>vnđ/ngày</small></br></string>
+    <string name="p3">549.000 <br><small>vnđ/năm</small></br></string>
+    <string name="option">Gói tiện ích</string>
+    <string name="ott">OTT</string>
+    <string name="data">Data</string>
+    <string name="d2">10.000 <br><small>vnđ/1GB/ngày</small></br></string>
+    <string name="d1">7000 <br><small>vnđ/2GB/ngày</small></br></string>
 </resources>

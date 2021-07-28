@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         sliderView = v.findViewById(R.id.slideSplash1);
 
-        NewsSlideAdapter newsSlideAdapter = new NewsSlideAdapter(setData());
+        NewsSlideAdapter newsSlideAdapter = new NewsSlideAdapter(MyList.listNews);
         sliderView.setSliderAdapter(newsSlideAdapter);
         sliderView.startAutoCycle();
         newsSlideAdapter.setItemSlideNewsClick(new NewsSlideAdapter.ItemSlideNewsClick() {
@@ -98,18 +98,6 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-//        sliderView.onPageScrolled();
-//        News news = newsSlideAdapter.getItem()
-//        carouselView = v.findViewById(R.id.carouselView);
-//        carouselView.setPageCount(sample.length);
-//        carouselView.setImageListener(imageListener);
-////        carouselView.setIma
-//        carouselView.setImageClickListener(new ImageClickListener() {
-//            @Override
-//            public void onClick(int position) {
-//                Toast.makeText(getActivity(), "Clicked item: "+ position, Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         ivSearch = v.findViewById(R.id.ivSearch);
         ivUser = v.findViewById(R.id.ivUser);
@@ -128,7 +116,7 @@ public class HomeFragment extends Fragment {
         });
 
         listView = v.findViewById(R.id.lvNews);
-        NewsAdapter adapter = new NewsAdapter(getContext(), setData());
+        NewsAdapter adapter = new NewsAdapter(getContext(), MyList.listNews);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -153,19 +141,5 @@ public class HomeFragment extends Fragment {
             imageView.setLayoutParams(params);
         }
     };
-
-    private ArrayList<News> setData(){
-        ArrayList<News> listNews = new ArrayList<>();
-        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.sj_confidence, "abc"));
-        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.sj_health, "abc"));
-        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.sj_business, "abc"));
-        return listNews;
-    }
 
 }

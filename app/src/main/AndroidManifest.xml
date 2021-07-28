@@ -11,6 +11,7 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".model.MyList"
         android:theme="@style/Theme.Diginew">
         <activity android:name=".PlayVideoActivity"></activity>
         <activity android:name=".NewsActivity" />

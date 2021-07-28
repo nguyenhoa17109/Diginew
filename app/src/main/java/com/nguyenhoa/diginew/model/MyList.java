@@ -25,18 +25,30 @@ public class MyList extends Application {
         list.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
         listNews = new ArrayList<>();
-        listNews.add(new News("Sức khỏe", "text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
-        listNews.add(new News("Sức khỏe","text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
-        listNews.add(new News("Sức khỏe","text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
-        listNews.add(new News("Sức khỏe","text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_confidence,"abc", "text",  "Thể thao",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_science,"abc", "text",  "Kinh tế",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_confidence,"abc", "text",  "Kinh tế",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_science,"abc", "text",  "Đời sống",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Suc khoe cua chung ta", 200
+                , 100, R.drawable.sj_confidence,"abc", "text",  "Sức khỏe",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_science,"abc", "text",  "Công nghệ",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_confidence,"abc", "text",  "Giải trí",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+                , 100, R.drawable.sj_science,"abc", "text",  "Tâm sự",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
     }
 
 }
