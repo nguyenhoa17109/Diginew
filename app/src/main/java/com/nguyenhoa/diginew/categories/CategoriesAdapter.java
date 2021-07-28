@@ -2,22 +2,39 @@ package com.nguyenhoa.diginew.categories;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.discover.DiscoverAdapter;
+import com.nguyenhoa.diginew.model.Topic;
+
+import java.util.ArrayList;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MyViewHoler> {
     private Context context;
     private String[] names;
     private CategorClickInterface categorClickInterface;
-    private int index = 0;
-    public CategoriesAdapter(Context context, String[] names, CategorClickInterface categorClickInterface) {
+    private int index = 1;
+    CategoriesFragment categoriesFragment;
+    FragmentManager fragmentManager;
+
+    public CategoriesAdapter(FragmentManager fragmentManager, Context context, String[] names, CategorClickInterface categorClickInterface) {
+        this.fragmentManager = fragmentManager;
         this.context = context;
         this.names = names;
         this.categorClickInterface = categorClickInterface;
@@ -36,6 +53,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     public void onBindViewHolder(@NonNull MyViewHoler holder, int position) {
         holder.textView.setText(names[position]);
 
+        if(index == 1){
+            holder.textView.setTextColor(Color.WHITE);
+            holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_fill));
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,12 +66,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             }
         });
         if(index == position){
-            holder.textView.setBackgroundColor(Color.parseColor("#6E8DFB"));
             holder.textView.setTextColor(Color.WHITE);
+            holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_fill));
         }
         else{
-            holder.textView.setBackgroundColor(Color.WHITE);
-            holder.textView.setTextColor(Color.parseColor("#AAA8A8"));
+            holder.textView.setTextColor(Color.BLACK);
+            holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_outline));
         }
     }
 
@@ -65,10 +86,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
 
     public class MyViewHoler extends RecyclerView.ViewHolder {
         private TextView textView;
+        private CardView cardView;
 
         public MyViewHoler(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.tvItemCategory);
+            cardView = itemView.findViewById(R.id.cvCategoryFV);
         }
     }
 }
