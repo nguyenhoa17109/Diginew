@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.home.NewsAdapter;
+import com.nguyenhoa.diginew.model.MyList;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     @Override
     public void onCategoryClick(int position) {
-        String category = topics[position];
+        String category = MyList.list.get(position).getName();
 
         if(category.equals("Địa phương")){
             insertNestedFragment();

@@ -12,17 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.Topic;
+
+import java.util.ArrayList;
 
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyViewHolder> {
     Context context;
-    private String[] names;
-    private int[] images;
+    private ArrayList<Topic> list;
 
-    public DiscoverAdapter(Context context, String[] names, int[] images) {
+    public DiscoverAdapter(Context context, ArrayList<Topic> list) {
         this.context = context;
-        this.names = names;
-        this.images = images;
+        this.list = list;
     }
 
     @NonNull
@@ -36,8 +37,8 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textView.setText(names[position]);
-        holder.imageView.setImageResource(images[position]);
+        holder.textView.setText(list.get(position).getName());
+        holder.imageView.setImageResource(list.get(position).getImg());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             Intent intent;
@@ -67,7 +68,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return names.length;
+        return list.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

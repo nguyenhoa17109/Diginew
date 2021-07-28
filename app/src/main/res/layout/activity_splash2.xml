@@ -1,63 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7d99fd"
+    android:background="@color/blue_200"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".splash.Splash2">
+
     <ImageView
         android:layout_width="400dp"
         android:layout_height="200dp"
         android:id="@+id/ivSplash2"
         android:src="@drawable/img_logo_nocolor"
         android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true" />
-    <com.facebook.login.widget.LoginButton
-        xmlns:facebook="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
+        android:contentDescription="@string/todo" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btLoginFb"
-        facebook:com_facebook_login_text="Đăng nhập với Facebook"
-        android:layout_below="@id/ivSplash2"
-        android:backgroundTint="#849fff"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:layout_marginTop="100dp"
-        android:layout_centerHorizontal="true"/>
-    <Button
+        app:cardCornerRadius="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="@color/blue_100">
+
+        <com.facebook.login.widget.LoginButton
+            xmlns:facebook="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btLoginFb"
+            android:layout_margin="5dp"
+            facebook:com_facebook_login_text="Đăng nhập với Facebook"
+            android:backgroundTint="@color/blue_100"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
         android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btLoginGmai"
-        android:text="Đăng nhập với Gmail"
-        android:layout_below="@id/btLoginFb"
-        android:backgroundTint="#849fff"
+        android:text="@string/login_gmail"
+        android:textAllCaps="false"
+        android:background="@drawable/background_button_login"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:layout_centerHorizontal="true"/>
+        android:textSize="20sp"/>
+
     <TextView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
         android:id="@+id/tvTerms"
-        android:layout_below="@id/btLoginGmai"
-        android:textAlignment="center"
-        android:text="hihihihihhih"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginRight="35dp"
+        android:layout_marginLeft="35dp"
+        android:text="@string/term"
         android:textColorHighlight="@color/white"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textSize="15sp"
         android:textColor="@color/white"/>
     <TextView
+        android:id="@+id/tvSkipLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvSkipLogin"
-        android:layout_below="@id/tvTerms"
-        android:textAlignment="center"
-        android:text="Bo qua"
-        android:layout_centerHorizontal="true"
+        android:textColor="@color/gray_200"
+        android:text="@string/decline"
         android:layout_marginTop="50dp"
         android:textSize="15sp" />
-</RelativeLayout>
+</LinearLayout>

@@ -13,6 +13,7 @@ public class News implements Serializable {
     private String type;
     private String topic;
     private String url;
+    private String audio;
 
     public News() {
     }

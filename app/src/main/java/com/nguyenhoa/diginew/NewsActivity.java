@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
+import com.nguyenhoa.diginew.model.MyList;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -225,7 +226,6 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 dialog.dismiss();
             }
         });
-
     }
 
     public void init(){
@@ -249,20 +249,9 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        adapter.setData(setList());
+        adapter.setData(MyList.listNews);
         adapter.setClickNewsListener(this::onItemClick);
         recyclerView.setAdapter(adapter);
-    }
-
-    private ArrayList<News> setList(){
-        ArrayList<News> listNews = new ArrayList<>();
-        listNews.add(new News("Tin tuc", "text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
-        listNews.add(new News("Thoi su","text", "Vietnamnet", 6,
-                "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                R.drawable.img_clip, "abc"));
-        return listNews;
     }
 
     @Override
