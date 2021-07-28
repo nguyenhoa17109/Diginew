@@ -18,7 +18,8 @@
             android:id="@+id/ivNews"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:srcCompat="@drawable/sj_confidence" />
+            app:srcCompat="@drawable/sj_confidence"
+            android:contentDescription="@string/todo"/>
 
     </androidx.cardview.widget.CardView>
     <TextView
@@ -26,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="TextView"
-        android:textSize="18dp"
+        android:text="@string/eg_title"
+        android:textSize="18sp"
         android:textStyle="bold" />
 </LinearLayout>

@@ -6,59 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="@color/gray_200"
-    tools:context=".PlayVideoActivity">
-
-    <LinearLayout
-        android:id="@+id/row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:background="@color/white">
-
-        <TableRow
-
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp">
-
-            <ImageView
-                android:id="@+id/ivBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:clickable="true"
-                android:focusable="true"
-                android:contentDescription="@string/todo"
-                app:srcCompat="@drawable/ic_back" />
-
-            <TextView
-                android:id="@+id/tvTopic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:padding="5dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </TableRow>
-
-        <VideoView
-        android:id="@+id/video"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
-    </LinearLayout>
-
+    tools:context=".InfoNewsActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/row">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -66,50 +21,46 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/layoutTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/background_corner_bottom"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:contentDescription="@string/todo"
+                    app:srcCompat="@drawable/ic_back" />
 
                 <TextView
-                    android:id="@+id/tvVideoTiltle"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvTopic"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:text="@string/eg_title" />
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginBottom="20dp">
-
-                    <TextView
-                        android:id="@+id/tvSource"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/eg_source" />
-
-                    <TextView
-                        android:id="@+id/tvTimes"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="10"
-                        android:text="@string/eg_time" />
-
-                </TableRow>
+                    android:layout_weight="5"
+                    android:padding="5dp"
+                    android:text="@string/digiclip"
+                    android:textSize="24sp"
+                    android:textColor="@color/black"/>
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/tvNewsInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/sj_confidence"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="10dp"
                 android:background="@drawable/background_corner"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -121,10 +72,10 @@
                     android:id="@+id/rcNews"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="60dp"
                     android:background="@drawable/background_corner_top"
-                    android:padding="10dp">
+                    android:padding="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="60dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>

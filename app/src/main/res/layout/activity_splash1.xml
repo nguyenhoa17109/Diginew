@@ -25,8 +25,8 @@
         android:layout_below="@+id/slideSplash1"
         android:layout_marginTop="5dp"
         android:background="@drawable/background_corner"
-        android:text="Bắt đầu"
+        android:text="@string/start"
         android:textColor="@color/blue"
-        android:textSize="18dp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 </RelativeLayout>

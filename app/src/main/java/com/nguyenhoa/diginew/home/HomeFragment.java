@@ -5,28 +5,23 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
+import com.nguyenhoa.diginew.InfoNewsActivity;
 import com.nguyenhoa.diginew.NewsActivity;
+import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.SearchActivity;
-import com.nguyenhoa.diginew.model.MyList;
+import com.nguyenhoa.diginew.common.MyClass;
+import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
 import com.smarteist.autoimageslider.SliderView;
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageClickListener;
 import com.synnapps.carouselview.ImageListener;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -93,9 +88,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void OnItemClick(View view, int position) {
                 News news = newsSlideAdapter.getItem(position);
-                Intent intent = new Intent(getActivity(), NewsActivity.class);
-                intent.putExtra("News",  news);
-                startActivity(intent);
+                MyClass.setIntent(news, getActivity());
             }
         });
 
@@ -122,9 +115,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 News news = (News) adapterView.getItemAtPosition(i);
-                Intent intent = new Intent(getActivity(), NewsActivity.class);
-                intent.putExtra("News",  news);
-                startActivity(intent);
+                MyClass.setIntent(news, getActivity());
             }
         });
         return v;

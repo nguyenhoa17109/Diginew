@@ -1,8 +1,10 @@
-package com.nguyenhoa.diginew.model;
+package com.nguyenhoa.diginew.common;
 
 import android.app.Application;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -131,7 +133,7 @@ public class MyList extends Application {
 
     private ArrayList<ArrayList<News>> setDataAsTopic(ArrayList<Topic> list2, ArrayList<News> list1){
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
-        for(int i=0; i<9; i++){
+        for(int i=0; i<NUMBER_TOPIC; i++){
             ArrayList<News> list = new ArrayList<News>();
             list.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                     , 100, R.drawable.sj_confidence,"abc", "text",  list2.get(i).getName(),

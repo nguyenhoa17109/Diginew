@@ -11,7 +11,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,10 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
-import com.nguyenhoa.diginew.model.MyList;
+import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
-
-import java.util.ArrayList;
 
 import static com.nguyenhoa.diginew.R.drawable.background_button;
 import static com.nguyenhoa.diginew.R.drawable.background_disable_button;
@@ -58,7 +55,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         init();
 
         Intent intent = getIntent();
-        news = (News) intent.getSerializableExtra("News");
+        news = (News) intent.getSerializableExtra("text");
         if(news != null){
             tvTopic.setText(news.getTopic());
             tvTitleNews.setText(news.getTitle());
@@ -216,11 +213,9 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 }
 
                 tvContent.setTextSize(size);
-
 //                Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/lora.ttf");
                 Typeface typeface = ResourcesCompat.getFont(NewsActivity.this, R.font.lora);
                 tvContent.setTypeface(typeface);
-
                 updateText(size, R.font.roboto);
 
                 dialog.dismiss();

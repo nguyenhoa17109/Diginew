@@ -21,6 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/todo"
             app:srcCompat="@drawable/ic_back" />
 
         <TextView
@@ -29,9 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:padding="5dp"
-            android:text="Gói cước Standard"
+            android:text="@string/standard"
             android:textStyle="bold"
-            android:textSize="24dp"/>
+            android:textSize="24sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -47,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:text="Quyền lợi gói cước"
+            android:text="@string/benifit"
             android:textColor="@color/blue"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -65,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Data    "
+            android:text="@string/data"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -74,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="3GB/ngày"
+            android:text="@string/_3gb_ng_y"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -91,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Thoại nội mạng    "
+            android:text="@string/in"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -100,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="3GB/ngày"
+            android:text="@string/_3gb_ng_y"
             android:textSize="18sp"
             android:textStyle="bold" />
     </TableRow>
@@ -115,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Thoại ngoại mạng"
+            android:text="@string/out"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -124,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="3 phút"
+            android:text="@string/minute"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -141,7 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SMS    "
+            android:text="@string/sms"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -150,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="3 tin nhắn"
+            android:text="@string/eg_sms"
             android:textSize="18sp"
             android:textStyle="bold" />
     </TableRow>
@@ -166,7 +168,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="My TV    "
+            android:text="@string/my_tv"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -175,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="Chuẩn"
+            android:text="@string/chu_n"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -186,8 +188,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:text="Gói chuẩn\n(Không có vtvcab - cho phép tối đa 3 thiết
-bị di động và xem đồng thời trên 2 thiết bị di động)"
+        android:text="@string/eg"
         android:textSize="18sp"
         android:padding="10dp"/>
 
@@ -201,7 +202,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Clips"
+            android:text="@string/clips"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -210,7 +211,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Basic"
+            android:text="@string/basic"
             android:textSize="18sp"
             android:textStyle="bold" />
     </TableRow>
@@ -225,7 +226,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:text="Tin Hot      "
+            android:text="@string/tin_hot"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -234,7 +235,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="Basic"
+            android:text="@string/basic"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -250,7 +251,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nhạc "
+            android:text="@string/nh_c"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -259,7 +260,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Basic"
+            android:text="@string/basic"
             android:textSize="18sp"
             android:textStyle="bold" />
     </TableRow>
@@ -274,7 +275,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="Phim  "
+            android:text="@string/phim"
             android:textColor="@color/blue"
             android:textSize="18sp" />
 
@@ -283,7 +284,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:text="Basic"
+            android:text="@string/basic"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -294,7 +295,7 @@ bị di động và xem đồng thời trên 2 thiết bị di động)"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@drawable/background_button"
-        android:text="Đăng ký"
+        android:text="@string/register"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="25sp"

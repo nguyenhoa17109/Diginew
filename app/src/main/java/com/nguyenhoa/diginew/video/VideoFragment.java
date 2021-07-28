@@ -15,9 +15,8 @@ import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.TopicVideoAdapter;
 import com.nguyenhoa.diginew.adapter.VideoAdapter;
-import com.nguyenhoa.diginew.model.MyList;
+import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
-import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -81,7 +80,6 @@ public class VideoFragment extends Fragment {
         return v;
     }
     private void init(View v) {
-//        setData(MyList.list, MyList.listNews);
         arrayLists = MyList.listsText;
 
         rcTopic = v.findViewById(R.id.rvTopicVideo);
