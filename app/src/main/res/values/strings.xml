@@ -116,4 +116,6 @@
     <string name="g_i_l_i_ngay">GỬI LẠI NGAY</string>
     <string name="digi">Tải ứng dụng DIGILIFE<br> để trải nghiệm trọn vẹn </br><br>cuộc sống số</br></string>
     <string name="digi1">Tải ứng dụng DIGILIFE<br> để hưởng ưu đãi miễn phí data khi truy cập ứng dụng DIGI</br></string>
+    <string name="_200mb_1gb">200MB/1GB</string>
+    <string name="_200_1000_phut">200/1000 phut</string>
 </resources>
