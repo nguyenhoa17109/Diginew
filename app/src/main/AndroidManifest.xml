@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diginew">
-        <activity android:name=".InfoNewsActivity"></activity>
+        <activity android:name=".UserInfoActivity"></activity>
+        <activity android:name=".InfoNewsActivity" />
         <activity android:name=".PlayVideoActivity" />
         <activity android:name=".NewsActivity" />
         <activity android:name=".SearchActivity" />

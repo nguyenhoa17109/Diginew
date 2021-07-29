@@ -116,4 +116,20 @@
     <string name="g_i_l_i_ngay">GỬI LẠI NGAY</string>
     <string name="digi">Tải ứng dụng DIGILIFE<br> để trải nghiệm trọn vẹn </br><br>cuộc sống số</br></string>
     <string name="digi1">Tải ứng dụng DIGILIFE<br> để hưởng ưu đãi miễn phí data khi truy cập ứng dụng DIGI</br></string>
+    <string name="setting">Cài đặt</string>
+    <string name="user">Cá nhân</string>
+    <string name="editUser">Sửa</string>
+    <string name="user_name">Tên hiển thị</string>
+    <string name="user_address">Địa chỉ</string>
+    <string name="user_dob">Ngày sinh</string>
+    <string name="user_phoneNum">Số thuê bao</string>
+    <string name="user_app">Ứng dụng</string>
+    <string name="noti_register">Đăng ký nhận thông báo</string>
+    <string name="setting_appVersion">Phiên bản</string>
+    <string name="setting_news">Tin địa phương</string>
+    <string name="setting_changeSubject">Thay đổi chuyên mục của bạn</string>
+    <string name="setting_packCancellation">Hủy gói</string>
+    <string name="logout">Đăng xuất</string>
+
+
 </resources>
