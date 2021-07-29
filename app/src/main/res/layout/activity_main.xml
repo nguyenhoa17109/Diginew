@@ -21,9 +21,9 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:itemIconTint="@color/color_navigation"
-        app:itemTextAppearanceInactive="@style/TextAppearance.Compat.Notification.Title"
         app:itemTextColor="@color/color_navigation"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_navigation" />
+        app:menu="@menu/menu_navigation"
+        app:labelVisibilityMode="labeled"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,7 +39,9 @@
                     android:padding="5dp"
                     android:text="@string/g_i_c_c_digilife"
                     android:textStyle="bold"
-                    android:textSize="24sp"/>
+                    android:textSize="20sp"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
@@ -59,9 +61,11 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:text="@string/g_i_c_c"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:id="@+id/textView7"
@@ -69,7 +73,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/th_i_h_n"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"/>
                 </TableRow>
 
                 <TableRow
@@ -82,11 +88,13 @@
                         android:id="@+id/tv4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:text="@string/c_b_n"
                         android:textStyle="bold"
                         android:textColor="@color/blue"
-                        android:textSize="18sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
+                        android:layout_marginEnd="25dp"/>
 
                     <TextView
                         android:id="@+id/tvBasic"
@@ -94,14 +102,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/_20_12_2020"
-                        android:textSize="15sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto"/>
 
                 </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -110,13 +120,83 @@
                         android:text="@string/data"
                         android:textStyle="bold"
                         android:textColor="@color/blue"
-                        android:textSize="18sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto" />
 
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="?android:attr/progressBarStyleHorizontal"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_200mb_1gb"
+                            android:textSize="10sp"
+                            android:gravity="center"/>
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:secondaryProgress="20"
+                            android:secondaryProgressTint="@color/blue" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvOTT"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/_20_12_2020"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ott"
+                        android:textStyle="bold"
+                        android:textColor="@color/blue"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
+                        android:layout_marginEnd="5dp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:layout_marginEnd="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_200_1000_phut"
+                            android:textSize="10sp"
+                            android:gravity="center"/>
+
+                        <ProgressBar
+                            android:id="@+id/progressBar2"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:secondaryProgress="20"
+                            android:secondaryProgressTint="@color/blue" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvData"
@@ -124,8 +204,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/_20_12_2020"
-                        android:textSize="15sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto" />
                 </TableRow>
+
             </LinearLayout>
 
             <LinearLayout
@@ -142,7 +224,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/g_i_membership"
                     android:textColor="@color/blue"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:textStyle="bold"/>
 
                 <TableRow
@@ -185,7 +268,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/packet_advance"
                     android:textColor="@color/blue"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:textStyle="bold"/>
 
                 <TableRow
@@ -241,7 +325,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/option"
                     android:textColor="@color/blue"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -249,8 +334,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/ott"
-                    android:textColor="#EC0909"
-                    android:textSize="18sp"
+                    android:textColor="#ED0677"
+                    android:textSize="16sp"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"/>
 
@@ -297,8 +382,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/data"
-                    android:textColor="#EC0909"
-                    android:textSize="18sp"
+                    android:textColor="#ED0677"
+                    android:textSize="16sp"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"/>
 

@@ -2,15 +2,16 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="30dp"
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/img_decline"
         android:contentDescription="@string/todo"/>
 
@@ -21,18 +22,18 @@
         android:gravity="center_horizontal"
         android:text="@string/not_enough"
         android:textColor="@color/design_default_color_error"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btBack"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
         android:background="@drawable/background_button"
         android:text="@string/back"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="25sp"
-        android:layout_marginTop="30dp"/>
+        android:textSize="22sp"
+        android:layout_marginTop="24dp"/>
 </LinearLayout>

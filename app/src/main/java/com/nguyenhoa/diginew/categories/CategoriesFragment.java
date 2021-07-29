@@ -99,44 +99,44 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
             if(s.equals("Đời sống")){
                 newsArrayList.add(new News("Đời sống","text", "Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
                 newsArrayList.add(new News("Đời sống","text", "Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
             else if(s.equals("Kinh tế")){
                 newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6, "Kinh tế nè", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
                 newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6, "Kinh tế nè", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
             else if(s.equals("Sức khỏe")){
                 newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", 6, "Sức khỏe nè", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
                 newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", 6, "Sức khỏe nè", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
 
             else if(s.equals("Thành phố Hà Nội")){
                 newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương TP HN", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
                 newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương TP HN", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
             else if(s.equals("Tỉnh Hà Giang")){
                 newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương tỉnh Hà Giang", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
                 newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương tỉnh Hà Giang", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
             else if(s.equals("Tỉnh Cao Bằng")) {
                 newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương tỉnh Cao Bằng", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
                 newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương tỉnh Cao Bằng", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
             else{
                 newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Dữ liệu khác", 100, 200,
-                        R.drawable.img_clip, "abc"));
+                        R.drawable.ic_digiclips, "abc"));
             }
             newsAdapter.notifyDataSetChanged();
 

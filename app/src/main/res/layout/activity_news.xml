@@ -36,8 +36,9 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/eg_title"
                     android:textColor="@color/black"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto"/>
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -66,7 +67,8 @@
                     android:layout_marginBottom="10dp"
                     android:text="@string/eg_content"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto"/>
 
             </LinearLayout>
 
@@ -261,9 +263,8 @@
                     android:background="@drawable/background_corner_top"
                     android:padding="10dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="60dp">
-
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_marginBottom="60dp"
+                    tools:listitem="@layout/item_news"/>
             </LinearLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>

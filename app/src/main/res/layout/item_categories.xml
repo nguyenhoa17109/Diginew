@@ -13,7 +13,9 @@
         android:text="@string/eg_source"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/roboto"
         android:background="@color/blue_200"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

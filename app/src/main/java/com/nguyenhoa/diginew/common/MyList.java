@@ -30,10 +30,10 @@ public class MyList extends Application {
         list.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
         list_dis = new ArrayList<>();
-        list_dis.add(new Topic("DigiMovie", R.drawable.img_movie));
-        list_dis.add(new Topic("DigiClip", R.drawable.img_clip));
-        list_dis.add(new Topic("DigiMusic", R.drawable.img_music));
-        list_dis.add(new Topic("DigiHealth", R.drawable.img_health));
+        list_dis.add(new Topic("DigiMovie", R.drawable.ic_digimovie));
+        list_dis.add(new Topic("DigiClip", R.drawable.ic_digiclips));
+        list_dis.add(new Topic("DigiMusic", R.drawable.ic_digimusic));
+        list_dis.add(new Topic("DigiHealth", R.drawable.ic_digihealth));
         list_dis.add(new Topic("MyTV", R.drawable.img_mytv));
 
         listNews = new ArrayList<>();
