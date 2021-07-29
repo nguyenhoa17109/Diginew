@@ -39,7 +39,9 @@
                     android:padding="5dp"
                     android:text="@string/g_i_c_c_digilife"
                     android:textStyle="bold"
-                    android:textSize="24sp"/>
+                    android:textSize="20sp"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/black"/>
 
             </LinearLayout>
 
@@ -59,9 +61,11 @@
                         android:id="@+id/textView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:text="@string/g_i_c_c"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:id="@+id/textView7"
@@ -69,7 +73,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/th_i_h_n"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"/>
                 </TableRow>
 
                 <TableRow
@@ -86,7 +92,8 @@
                         android:text="@string/c_b_n"
                         android:textStyle="bold"
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:layout_marginEnd="25dp"/>
 
                     <TextView
@@ -95,7 +102,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/_20_12_2020"
-                        android:textSize="15sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto"/>
 
                 </TableRow>
 
@@ -112,7 +120,8 @@
                         android:text="@string/data"
                         android:textStyle="bold"
                         android:textColor="@color/blue"
-                        android:textSize="18sp" />
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -144,7 +153,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/_20_12_2020"
-                        android:textSize="15sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto" />
                 </TableRow>
 
                 <TableRow
@@ -160,7 +170,8 @@
                         android:text="@string/ott"
                         android:textStyle="bold"
                         android:textColor="@color/blue"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto"
                         android:layout_marginEnd="5dp"/>
 
                     <LinearLayout
@@ -193,7 +204,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/_20_12_2020"
-                        android:textSize="15sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto" />
                 </TableRow>
 
             </LinearLayout>
@@ -212,7 +224,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/g_i_membership"
                     android:textColor="@color/blue"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:textStyle="bold"/>
 
                 <TableRow
@@ -255,7 +268,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/packet_advance"
                     android:textColor="@color/blue"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:textStyle="bold"/>
 
                 <TableRow
@@ -311,7 +325,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/option"
                     android:textColor="@color/blue"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -319,8 +334,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/ott"
-                    android:textColor="#EC0909"
-                    android:textSize="18sp"
+                    android:textColor="#ED0677"
+                    android:textSize="16sp"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"/>
 
@@ -367,8 +382,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/data"
-                    android:textColor="#EC0909"
-                    android:textSize="18sp"
+                    android:textColor="#ED0677"
+                    android:textSize="16sp"
                     android:layout_marginTop="20dp"
                     android:textStyle="bold"/>
 

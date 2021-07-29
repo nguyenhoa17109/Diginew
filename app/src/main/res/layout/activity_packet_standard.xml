@@ -54,7 +54,8 @@
             android:text="@string/benifit"
             android:textColor="@color/blue"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto"/>
 
     </LinearLayout>
 
@@ -77,7 +78,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/data"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvData"
@@ -85,8 +87,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/_3gb_ng_y"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
         </TableRow>
 
@@ -113,7 +115,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/in"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvInNet"
@@ -121,8 +124,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/_3gb_ng_y"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
         </TableRow>
 
         <TextView
@@ -147,7 +150,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/out"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvOutNet"
@@ -155,8 +159,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/minute"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
         </TableRow>
 
@@ -183,7 +187,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sms"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvSMS"
@@ -191,8 +196,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/eg_sms"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
         </TableRow>
 
         <TextView
@@ -218,7 +223,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/my_tv"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvMyTV"
@@ -226,8 +232,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/chu_n"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
         </TableRow>
 
@@ -253,7 +259,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/clips"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvClips"
@@ -261,8 +268,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/basic"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
         </TableRow>
 
         <TextView
@@ -287,7 +294,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tin_hot"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvHotNews"
@@ -295,8 +303,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/basic"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"/>
 
         </TableRow>
 
@@ -322,7 +330,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/nh_c"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvMusic"
@@ -330,8 +339,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/basic"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
         </TableRow>
 
         <TextView
@@ -356,7 +365,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/phim"
                 android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto" />
 
             <TextView
                 android:id="@+id/tvMovie"
@@ -364,8 +374,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/basic"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"/>
 
         </TableRow>
 

@@ -22,7 +22,7 @@
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:background="@drawable/background_corner_top"/>
-
+        android:background="@drawable/background_corner_top"
+        tools:listitem="@layout/item_video"/>
 
 </LinearLayout>

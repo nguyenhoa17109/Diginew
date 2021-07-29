@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/background_corner_bottom"
-    android:layout_margin="10dp">
+    android:layout_margin="16dp">
 
 
     <androidx.cardview.widget.CardView
@@ -26,8 +26,13 @@
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginTop="20dp"
         android:text="@string/eg_title"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
 </LinearLayout>

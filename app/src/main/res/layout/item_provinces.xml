@@ -8,8 +8,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvItemProvinces"
         android:text="@string/name_city"
-        android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="22sp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
         android:padding="20dp">
     </TextView>
 

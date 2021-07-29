@@ -7,7 +7,7 @@
     tools:context=".splash.Splash"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/blue_200">
+    android:background="@drawable/background_splash">
 
     <ImageView
         android:layout_width="match_parent"

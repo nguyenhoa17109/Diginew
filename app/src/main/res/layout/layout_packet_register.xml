@@ -31,8 +31,9 @@
             android:layout_weight="5"
             android:padding="5dp"
             android:text="@string/ng_k_standard"
-            android:textStyle="bold"
-            android:textSize="24sp"/>
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
     <LinearLayout
@@ -67,7 +68,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_129_000_vn"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto"/>
             </TableRow>
 
             <TableRow
@@ -82,12 +86,15 @@
                     android:text="@string/_6_th_ng" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/tv6month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_645_000_vn"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto"/>
             </TableRow>
 
             <TableRow
@@ -102,37 +109,37 @@
                     android:text="@string/_1_n_m" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/tv1year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/_1_290_000_vn"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto"/>
             </TableRow>
         </RadioGroup>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:foregroundGravity="center"
-            app:contentPaddingBottom="20dp"
-            app:contentPaddingLeft="40dp"
-            app:contentPaddingRight="40dp"
             app:contentPaddingTop="20dp"
             app:cardCornerRadius="20dp"
-            android:backgroundTint="@color/gray_200"
+            android:backgroundTint="#ECEEF3"
             android:layout_marginBottom="100dp">
 
             <TextView
                 android:id="@+id/tvDescriptionPacket"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:text="@string/gi_p_d_ng_cho_th_nh_vi_n_basic_nb_n_c_truy_c_p_n_kho_phim_c_s_c"
-                android:textColor="@color/blue"
-                android:textSize="18sp" />
+                android:textColor="@color/blue_200"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto"/>
         </androidx.cardview.widget.CardView>
 
         <View
@@ -156,7 +163,7 @@
                 android:layout_weight="6"
                 android:text="@string/t_ng_c_ng"
                 android:textColor="@color/gray"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvData"
@@ -164,8 +171,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/_129_000_vn"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto"/>
 
         </TableRow>
 
@@ -177,7 +186,9 @@
             android:text="@string/confirm"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="25sp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto"
             android:layout_marginTop="10dp"/>
 
     </LinearLayout>

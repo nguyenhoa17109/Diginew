@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     private ImageView ivSearch, ivUser;
     private SliderView sliderView;
     private ListView listView;
-    private int[] sample = {R.drawable.img_clip, R.drawable.img_health, R.drawable.img_movie};
+    private int[] sample = {R.drawable.ic_digiclips, R.drawable.ic_digihealth, R.drawable.ic_digimovie};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
