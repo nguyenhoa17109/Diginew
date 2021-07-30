@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Diginews</string>
-    <string name="time">phút trước</string>
+    <string name="time"> phút trước</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="otp">Vui lòng nhập OTP xác nhận đăng kí gói cước Premium</string>
@@ -194,4 +194,10 @@
     <string name="digi1">Tải ngay ứng dụng DIGILIFE<br> để hưởng ưu đãi miễn phí data khi<br>truy</br>  cập ứng dụng DIGI</br></string>
     <string name="_200mb_1gb">200MB/1GB</string>
     <string name="_200_1000_phut">200/1000 phut</string>
+    <string name="cmts">Bình luận</string>
+    <string name="sent">Gửi</string>
+    <string name="name">Nguyen Van A</string>
+    <string name="answer">Trả lời</string>
+    <string name="send_cmt">Gửi bình luận</string>
+    <string name="enter_cmt">Nhập nội dung bình luận</string>
 </resources>

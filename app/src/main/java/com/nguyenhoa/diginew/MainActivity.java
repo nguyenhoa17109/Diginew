@@ -6,6 +6,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -13,14 +15,13 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;
     private ViewPager viewPager;
     private NavAdapter adapter;
- 
-  
-    //na hi
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
 
         navigation = findViewById(R.id.nav);
         viewPager = findViewById(R.id.viewpager);

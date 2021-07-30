@@ -1,13 +1,16 @@
 package com.nguyenhoa.diginew.common;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
 import com.nguyenhoa.diginew.InfoNewsActivity;
 import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -46,5 +49,23 @@ public class MyClass {
             }else
                 t.setVisibility(View.GONE);
         }
+    }
+
+    public static void setTVLike(TextView tvLikes, Context activity){
+        int i = Integer.parseInt(tvLikes.getText().toString());
+        if(tvLikes.getCurrentTextColor() == Color.parseColor("#0C8DFD") && i != 0){
+            tvLikes.setTextColor(Color.parseColor("#A2A6BB"));
+            tvLikes.setCompoundDrawablesWithIntrinsicBounds(null, null,
+                    activity.getResources().getDrawable(R.drawable.ic_like), null);
+
+            tvLikes.setText(String.valueOf(i-1));
+        }else {
+            tvLikes.setTextColor(Color.parseColor("#0C8DFD"));
+            tvLikes.setCompoundDrawablesWithIntrinsicBounds(null, null,
+                    activity.getResources().getDrawable(R.drawable.ic_liked), null);
+
+            tvLikes.setText(String.valueOf(i+1));
+        }
+
     }
 }

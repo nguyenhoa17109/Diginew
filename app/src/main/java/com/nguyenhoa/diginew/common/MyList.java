@@ -3,20 +3,27 @@ package com.nguyenhoa.diginew.common;
 import android.app.Application;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.Account;
+import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
+import com.nguyenhoa.diginew.model.User;
 
 import java.util.ArrayList;
 
 public class MyList extends Application {
+    public static Account account;
     public static ArrayList<Topic> list;
     public static ArrayList<News> listNews;
     public static ArrayList<Topic> list_dis;
+    public static ArrayList<Comment> list_Cmt;
     public static ArrayList<ArrayList<News>> listsText, lists_audio, lists_video, lists_info;
     private static int NUMBER_TOPIC = 9;
     @Override
     public void onCreate() {
         super.onCreate();
+
+        account = new Account("NguyenVan A", R.drawable.ic_digimusic);
 
         list = new ArrayList<>();
         list.add(new Topic("Đời sống", R.drawable.sj_life));
@@ -36,38 +43,45 @@ public class MyList extends Application {
         list_dis.add(new Topic("DigiHealth", R.drawable.ic_digihealth));
         list_dis.add(new Topic("MyTV", R.drawable.img_mytv));
 
+        list_Cmt = new ArrayList<>();
+        list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"), "abc", 9, false, 9, false));
+        list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"), "abc", 9, false, 9, true));
+
         listNews = new ArrayList<>();
+        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang",
+                200, 100, R.drawable.sj_confidence,"abc", "text",  "Thể thao",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", "info",  "Thể thao",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "info",  "Kinh tế",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", "text",  "Kinh tế",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "text",  "Đời sống",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Suc khoe cua chung ta", 200
-                , 100, R.drawable.sj_confidence,"abc", "audio",  "Sức khỏe", ""));
+                , 100, R.drawable.sj_confidence,"abc", "audio",  "Sức khỏe", "", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
-                , 100, R.drawable.sj_science,"abc", "audio",  "Công nghệ", ""));
+                , 100, R.drawable.sj_science,"abc", "audio",  "Công nghệ", "", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", "video",  "Giải trí",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "video",  "Tâm sự",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
 
         listsText = new ArrayList<>();
-        listsText = setDataText(list, listNews);
-        lists_audio = setDataAudio(list, listNews);
-        lists_info = setDataInfo(list, listNews);
-        lists_video = setDataVideo(list, listNews);
+        listsText = setDataText(listNews);
+        lists_audio = setDataAudio(listNews);
+        lists_info = setDataInfo(listNews);
+        lists_video = setDataVideo(listNews);
     }
 
-    private ArrayList<ArrayList<News>> setDataText(ArrayList<Topic> list2, ArrayList<News> list1){
+    private ArrayList<ArrayList<News>> setDataText( ArrayList<News> list1){
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
             lists.add(setList("video", i));
@@ -83,7 +97,7 @@ public class MyList extends Application {
         return lists;
     }
 
-    private ArrayList<ArrayList<News>> setDataVideo(ArrayList<Topic> list2, ArrayList<News> list1){
+    private ArrayList<ArrayList<News>> setDataVideo(ArrayList<News> list1){
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
             lists.add(setList("video", i));
@@ -99,7 +113,7 @@ public class MyList extends Application {
         return lists;
     }
 
-    private ArrayList<ArrayList<News>> setDataAudio(ArrayList<Topic> list2, ArrayList<News> list1){
+    private ArrayList<ArrayList<News>> setDataAudio(ArrayList<News> list1){
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
             lists.add(setList("audio", i));
@@ -115,7 +129,7 @@ public class MyList extends Application {
         return lists;
     }
 
-    private ArrayList<ArrayList<News>> setDataInfo(ArrayList<Topic> list2, ArrayList<News> list1){
+    private ArrayList<ArrayList<News>> setDataInfo(ArrayList<News> list1){
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
             lists.add(setList("info", i));

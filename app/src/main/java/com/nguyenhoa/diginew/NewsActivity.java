@@ -11,23 +11,32 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.User;
+
+import java.util.ArrayList;
 
 import static com.nguyenhoa.diginew.R.drawable.background_button;
 import static com.nguyenhoa.diginew.R.drawable.background_disable_button;
@@ -35,6 +44,7 @@ import static com.nguyenhoa.diginew.R.drawable.background_disable_button;
 public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
     private TextView tvTitleNews, tvSource, tvTime, tvTopic, tvLikes, tvCmts, tvContent;
     private ImageView ivAccount, ivShare, ivBack;
+    private EditText etCmt;
     private RecyclerView recyclerView;
     private NewsRCAdapter adapter;
     private News news;
@@ -82,6 +92,25 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             }
         });
 
+        tvCmts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setLayoutCmt(view);
+            }
+        });
+        etCmt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                setLayoutCmt(view);
+            }
+        });
+
+        tvLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyClass.setTVLike(tvLikes, getApplicationContext());
+            }
+        });
     }
 
     @Override
@@ -107,6 +136,56 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setLayoutCmt(View v){
+        View view1 = getLayoutInflater().inflate(R.layout.layout_cmt, null);
+
+        ArrayList<Comment> list = MyList.list_Cmt;
+        RecyclerView rv;
+        CmtAdapter adapter;
+        ImageView ivClose;
+        TextView tvSend;
+        EditText etCmt;
+
+        etCmt = view1.findViewById(R.id.etCmt);
+        tvSend = view1.findViewById(R.id.tvSend);
+        rv = view1.findViewById(R.id.rvCmt);
+        ivClose = view1.findViewById(R.id.ivClose);
+        adapter = new CmtAdapter(list, v.getContext());
+        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(),
+                RecyclerView.VERTICAL, false);
+        rv.setLayoutManager(manager);
+        rv.setAdapter(adapter);
+
+        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog.setContentView(view1);
+        dialog.setCancelable(true);
+        dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.show();
+
+        ivClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        etCmt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                adapter.sendNewCmt(v.getContext(), list.size(), false);
+            }
+        });
+        tvSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s = etCmt.getText().toString();
+                etCmt.setText("");
+                adapter.displayNewCmt(s, list.size(), false);
+            }
+        });
     }
 
     private void changeSize() {
@@ -232,6 +311,8 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         tvCmts = findViewById(R.id.tvCmt);
         tvLikes = findViewById(R.id.tvLike);
         tvContent = findViewById(R.id.tvContent);
+
+        etCmt = findViewById(R.id.etCmt);
 
         ivAccount = findViewById(R.id.ivAccount);
         ivShare = findViewById(R.id.ivShare);
