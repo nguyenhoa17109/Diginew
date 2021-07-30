@@ -1,6 +1,7 @@
 package com.nguyenhoa.diginew.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class News implements Serializable {
     private String source;
@@ -14,6 +15,7 @@ public class News implements Serializable {
     private String topic;
     private String url;
     private String audio;
+    private ArrayList<Comment> listComment;
 
     public News() {
     }
@@ -43,6 +45,23 @@ public class News implements Serializable {
         this.type = type;
         this.topic = topic;
         this.url = url;
+    }
+
+    public News(String source, int times, String title, int likes, int cmts,
+                int imgs, String content, String type, String topic, String url, String audio,
+                ArrayList<Comment> listComment) {
+        this.source = source;
+        this.times = times;
+        this.title = title;
+        this.likes = likes;
+        this.cmts = cmts;
+        this.imgs = imgs;
+        this.content = content;
+        this.type = type;
+        this.topic = topic;
+        this.url = url;
+        this.audio = audio;
+        this.listComment = listComment;
     }
 
     public String getTopic() {
@@ -123,5 +142,21 @@ public class News implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+        this.audio = audio;
+    }
+
+    public ArrayList<Comment> getListComment() {
+        return listComment;
+    }
+
+    public void setListComment(ArrayList<Comment> listComment) {
+        this.listComment = listComment;
     }
 }
