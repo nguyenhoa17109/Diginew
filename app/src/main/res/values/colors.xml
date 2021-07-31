@@ -13,4 +13,12 @@
     <color name="blue_200">#6E8DFB</color>
     <color name="blue_100">#849fff</color>
     <color name="divider">#ECECEC</color>
+    <color name="gray_300">#F6F7FE</color>
+    <color name="gray_400">#B1BAD0</color>
+    <color name="gray_500">#A2A6BB</color>
+    <color name="blue_300">#5379F5</color>
+    <color name="gray_600">#F6F5F9</color>
+    <color name="gray_700">#B1B1B1</color>
+
+
 </resources>

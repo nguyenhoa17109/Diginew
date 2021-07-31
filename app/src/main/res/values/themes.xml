@@ -30,5 +30,10 @@
         <item name="android:windowExitAnimation">@anim/dialog_hide</item>
     </style>
 
-
+    <style name="MySwitch" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:textColorPrimaryDisableOnly">#b71c1c</item>
+        <item name="android:colorControlActivated">#5379F5</item>
+        <item name="android:colorForeground">#A2A6BB</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
+    </style>
 </resources>

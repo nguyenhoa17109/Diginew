@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;
     private ViewPager viewPager;
     private NavAdapter adapter;
- 
-  
+
+
     //na hi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
