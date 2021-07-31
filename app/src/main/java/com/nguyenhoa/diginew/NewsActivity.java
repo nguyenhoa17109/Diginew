@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -75,7 +76,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             tvLikes.setText(String.valueOf(news.getLikes()));
             tvCmts.setText(String.valueOf(news.getCmts()));
 
-            int size = preferences.getInt("size", 18);
+            int size = setSize(preferences.getInt("size_level", 0));
             int id = preferences.getInt("font", R.font.roboto);
             Typeface typeface = ResourcesCompat.getFont(NewsActivity.this, id);
             tvContent.setTypeface(typeface);
@@ -85,6 +86,10 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             Toast.makeText(this, "News is empty!!!", Toast.LENGTH_SHORT).show();
         }
 
+        setClick();
+    }
+
+    private void setClick() {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,41 +194,22 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
     }
 
     private void changeSize() {
-        final int[] level = new int[1];
         View view = getLayoutInflater().inflate(R.layout.layout_changesize, null);
         SeekBar seekBar = view.findViewById(R.id.seekBar);
         Button bt1, bt2;
         bt1 = view.findViewById(R.id.bt1);
         bt2 = view.findViewById(R.id.bt2);
-        seekBar.setProgress(0);
 
-        Dialog dialog = new Dialog(this, R.style.MaterialDialogSheet);
-        dialog.setContentView(view);
-        dialog.setCancelable(true);
-        dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
-        dialog.show();
-
-        int size = preferences.getInt("size", 18);
+        final int[] level = {preferences.getInt("size_level", 0)};
         int id = preferences.getInt("font", R.font.lora);
-        switch (size){
-            case 18:
-                seekBar.setProgress(0);
-                break;
-            case 24:
-                seekBar.setProgress(1);
-                break;
-            case 30:
-                seekBar.setProgress(2);
-                break;
-        }
-        Log.d("LOO", R.font.lora+"//"+id);
-        if(id == R.font.lora) {
-            bt2.setBackgroundResource(background_button);
-            bt1.setBackgroundResource(background_disable_button);
-        }else{
+        seekBar.setProgress(level[0]);
+
+        if(id != R.font.lora) {
             bt1.setBackgroundResource(background_button);
             bt2.setBackgroundResource(background_disable_button);
+        }else{
+            bt2.setBackgroundResource(background_button);
+            bt1.setBackgroundResource(background_disable_button);
         }
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -243,31 +229,12 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             }
         });
 
-        bt2.setBackgroundResource(background_button);
+        Dialog dialog = new Dialog(this, R.style.MaterialDialogSheet);
+
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bt1.setBackgroundResource(background_button);
-                bt2.setBackgroundResource(background_disable_button);
-
-                int size = 18;
-                switch (level[0]){
-                    case 0:
-                        size = 18;
-                        break;
-                    case 1:
-                        size = 24;
-                        break;
-                    case 2:
-                        size = 30;
-                        break;
-                }
-                tvContent.setTextSize(size);
-//                Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
-                Typeface typeface = ResourcesCompat.getFont(NewsActivity.this, R.font.roboto);
-                tvContent.setTypeface(typeface);
-
-                updateText(size, R.font.roboto);
+                setDisplayButton(bt1, bt2, seekBar, R.font.roboto);
                 dialog.dismiss();
             }
         });
@@ -275,32 +242,44 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bt2.setBackgroundResource(background_button);
-                bt1.setBackgroundResource(background_disable_button);
-
-                int size = 18;
-                switch (level[0]){
-                    case 0:
-                        size = 18;
-                        break;
-                    case 1:
-                        size = 24;
-                        break;
-                    case 2:
-                        size = 30;
-                        break;
-                }
-
-                tvContent.setTextSize(size);
-//                Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/lora.ttf");
-                Typeface typeface = ResourcesCompat.getFont(NewsActivity.this, R.font.lora);
-                tvContent.setTypeface(typeface);
-                updateText(size, R.font.roboto);
-
+                setDisplayButton(bt2, bt1, seekBar, R.font.lora);
                 dialog.dismiss();
             }
         });
+        dialog.setContentView(view);
+        dialog.setCancelable(true);
+        dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.show();
     }
+
+    private void setDisplayButton(Button bt1, Button bt2, SeekBar seekBar, int font) {
+        bt1.setBackgroundResource(background_button);
+        bt2.setBackgroundResource(background_disable_button);
+        int size = setSize(seekBar.getProgress());
+
+        tvContent.setTextSize(size);
+        Typeface typeface;
+        if(font == R.font.roboto)
+            typeface = ResourcesCompat.getFont(NewsActivity.this, R.font.roboto);
+        else
+            typeface = ResourcesCompat.getFont(NewsActivity.this, R.font.lora);
+        tvContent.setTypeface(typeface);
+
+        updateText(seekBar.getProgress(), font);
+    }
+
+    private int setSize(int progress) {
+        switch (progress){
+            case 1:
+                return 24;
+            case 2:
+                return 30;
+            default:
+                return 18;
+        }
+    }
+
 
     public void init(){
         preferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -332,14 +311,15 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(this, NewsActivity.class);
-        intent.putExtra("News", adapter.getItem(position));
-        startActivity(intent);
+        MyClass.setIntent(adapter.getItem(position), (Activity) view.getContext());
+//        Intent intent = new Intent(this, NewsActivity.class);
+//        intent.putExtra("News", adapter.getItem(position));
+//        startActivity(intent);
     }
 
     private void updateText(int size, int id){
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("size", size);
+        editor.putInt("size_level", size);
         editor.putInt("font", id);
         editor.apply();
     }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class News implements Serializable {
     private String source;
-    private int times;
+    private String times;
     private String title;
     private int likes;
     private int cmts;
@@ -20,7 +20,7 @@ public class News implements Serializable {
     public News() {
     }
 
-    public News(String topic, String type, String source, int times,
+    public News(String topic, String type, String source, String times,
                 String title, int likes, int cmts, int imgs, String content) {
         this.topic = topic;
         this.type = type;
@@ -33,7 +33,7 @@ public class News implements Serializable {
         this.content = content;
     }
 
-    public News(String source, int times, String title, int likes, int cmts, int imgs,
+    public News(String source, String times, String title, int likes, int cmts, int imgs,
                 String content, String type, String topic, String url) {
         this.source = source;
         this.times = times;
@@ -47,7 +47,7 @@ public class News implements Serializable {
         this.url = url;
     }
 
-    public News(String source, int times, String title, int likes, int cmts,
+    public News(String source, String times, String title, int likes, int cmts,
                 int imgs, String content, String type, String topic, String url, String audio,
                 ArrayList<Comment> listComment) {
         this.source = source;
@@ -80,11 +80,11 @@ public class News implements Serializable {
         this.source = source;
     }
 
-    public int getTimes() {
+    public String getTimes() {
         return times;
     }
 
-    public void setTimes(int times) {
+    public void setTimes(String times) {
         this.times = times;
     }
 
@@ -158,5 +158,23 @@ public class News implements Serializable {
 
     public void setListComment(ArrayList<Comment> listComment) {
         this.listComment = listComment;
+    }
+
+    @Override
+    public String toString() {
+        return "News{" +
+                "source='" + source + '\'' +
+                ", times=" + times +
+                ", title='" + title + '\'' +
+                ", likes=" + likes +
+                ", cmts=" + cmts +
+                ", imgs=" + imgs +
+                ", content='" + content + '\'' +
+                ", type='" + type + '\'' +
+                ", topic='" + topic + '\'' +
+                ", url='" + url + '\'' +
+                ", audio='" + audio + '\'' +
+                ", listComment=" + listComment +
+                '}';
     }
 }

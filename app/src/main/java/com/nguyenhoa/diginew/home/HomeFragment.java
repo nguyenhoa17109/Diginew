@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.nguyenhoa.diginew.InfoNewsActivity;
@@ -32,7 +34,6 @@ public class HomeFragment extends Fragment {
     private ImageView ivSearch, ivUser;
     private SliderView sliderView;
     private ListView listView;
-    private int[] sample = {R.drawable.ic_digiclips, R.drawable.ic_digihealth, R.drawable.ic_digimovie};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,21 +80,17 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        sliderView = v.findViewById(R.id.slideSplash1);
 
-        NewsSlideAdapter newsSlideAdapter = new NewsSlideAdapter(MyList.listNews);
-        sliderView.setSliderAdapter(newsSlideAdapter);
-        sliderView.startAutoCycle();
-        newsSlideAdapter.setItemSlideNewsClick(new NewsSlideAdapter.ItemSlideNewsClick() {
-            @Override
-            public void OnItemClick(View view, int position) {
-                News news = newsSlideAdapter.getItem(position);
-                MyClass.setIntent(news, getActivity());
-            }
-        });
+        init(v);
+        setSlider();
+        setListView();
+        setClick();
 
-        ivSearch = v.findViewById(R.id.ivSearch);
-        ivUser = v.findViewById(R.id.ivUser);
+
+        return v;
+    }
+
+    private void setClick() {
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,8 +104,9 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
 
-        listView = v.findViewById(R.id.lvNews);
+    private void setListView() {
         NewsAdapter adapter = new NewsAdapter(getContext(), MyList.listNews);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,19 +116,26 @@ public class HomeFragment extends Fragment {
                 MyClass.setIntent(news, getActivity());
             }
         });
-        return v;
     }
 
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sample[position]);
+    private void setSlider() {
+        NewsSlideAdapter newsSlideAdapter = new NewsSlideAdapter(MyList.listNews);
+        sliderView.setSliderAdapter(newsSlideAdapter);
+        sliderView.startAutoCycle();
+        newsSlideAdapter.setItemSlideNewsClick(new NewsSlideAdapter.ItemSlideNewsClick() {
+            @Override
+            public void OnItemClick(View view, int position) {
+                News news = newsSlideAdapter.getItem(position);
+                MyClass.setIntent(news, getActivity());
+            }
+        });
+    }
 
-            ViewGroup.LayoutParams params = imageView.getLayoutParams();
-            params.width = 80;
-            params.height = 90;
-            imageView.setLayoutParams(params);
-        }
-    };
+    private void init(View v) {
+        sliderView = v.findViewById(R.id.slideSplash1);
+        ivSearch = v.findViewById(R.id.ivSearch);
+        ivUser = v.findViewById(R.id.ivUser);
+        listView = v.findViewById(R.id.lvNews);
+    }
 
 }
