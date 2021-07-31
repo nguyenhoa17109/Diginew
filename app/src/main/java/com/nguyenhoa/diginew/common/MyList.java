@@ -18,12 +18,13 @@ public class MyList extends Application {
     public static ArrayList<Topic> list_dis;
     public static ArrayList<Comment> list_Cmt;
     public static ArrayList<ArrayList<News>> listsText, lists_audio, lists_video, lists_info;
+    public static String[] spinnerTime = {"Năm nay", "2020", "2019", "2018", "2017"};
     private static int NUMBER_TOPIC = 9;
     @Override
     public void onCreate() {
         super.onCreate();
 
-        account = new Account("NguyenVan A", R.drawable.ic_digimusic);
+        account = new Account("Nguyen Van A", R.drawable.ic_digimusic);
 
         list = new ArrayList<>();
         list.add(new Topic("Đời sống", R.drawable.sj_life));
@@ -48,29 +49,29 @@ public class MyList extends Application {
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"), "abc", 9, false, 9, true));
 
         listNews = new ArrayList<>();
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang",
+        listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang",
                 200, 100, R.drawable.sj_confidence,"abc", "text",  "Thể thao",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", "info",  "Thể thao",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "info",  "Kinh tế",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", "text",  "Kinh tế",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "text",  "Đời sống",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Suc khoe cua chung ta", 200
+        listNews.add(new News("Vietnamnet", "6", "Suc khoe cua chung ta", 200
                 , 100, R.drawable.sj_confidence,"abc", "audio",  "Sức khỏe", "", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "audio",  "Công nghệ", "", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", "video",  "Giải trí",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
-        listNews.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_science,"abc", "video",  "Tâm sự",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
 
@@ -149,7 +150,7 @@ public class MyList extends Application {
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
             ArrayList<News> list = new ArrayList<News>();
-            list.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+            list.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                     , 100, R.drawable.sj_confidence,"abc", "text",  list2.get(i).getName(),
                     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
             lists.add(list);
@@ -192,7 +193,7 @@ public class MyList extends Application {
     //set list for each topic
     private ArrayList<News> setList(String type, int i){
         ArrayList<News> list1 = new ArrayList<News>();
-        list1.add(new News("Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
+        list1.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", type,  list.get(i).getName(),
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
         return list1;

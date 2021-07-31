@@ -47,7 +47,8 @@ public class NewsAdapter extends ArrayAdapter<News> {
         tvSource.setText(list.get(position).getSource());
         tvCmts.setText(String.valueOf(list.get(position).getCmts()));
         tvLikes.setText(String.valueOf(list.get(position).getLikes()));
-        tvTime.setText(list.get(position).getTimes()+" "+view.getResources().getString(R.string.time));
+//        tvTime.setText(list.get(position).getTimes()+" "+view.getResources().getString(R.string.time));
+        tvTime.setText(list.get(position).getTimes());
         ivNews.setImageResource(list.get(position).getImgs());
         tvTitle.setText(list.get(position).getTitle());
 
