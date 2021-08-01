@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvItemCategory"
+    android:padding="10dp"
+    android:gravity="center"
+    android:fontFamily="@font/roboto"
+    android:textStyle="bold"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
-    android:layout_margin="10dp"
-    android:id="@+id/cvCategoryFV">
-
-    <TextView
-        android:id="@+id/tvItemCategory"
-        android:gravity="center"
-        android:text="@string/eg_source"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/roboto"
-        android:background="@color/blue_200"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    android:layout_width="wrap_content"
+    android:textSize="20sp"
+    android:textColor="@color/small_color"/>
 
 
-</androidx.cardview.widget.CardView>
