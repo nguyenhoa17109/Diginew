@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
+import com.nguyenhoa.diginew.adapter.NewsAudioAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
@@ -31,12 +32,13 @@ import com.nguyenhoa.diginew.model.News;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AudioNews extends AppCompatActivity{
+public class AudioNews extends AppCompatActivity implements NewsAudioAdapter.ItemAudioClickListener{
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
     private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts, tvCurrentTime, tvTotalDuration;
     private RecyclerView recyclerView;
-    private NewsRCAdapter newsRCAdapter;
+    private ArrayList<News> list1;
+    private NewsAudioAdapter newsAudioAdapter;
     private String url;
 
     private MediaPlayer mediaPlayer;
@@ -55,7 +57,7 @@ public class AudioNews extends AppCompatActivity{
         Intent intent = getIntent();
         News news = (News) intent.getSerializableExtra("audio");
 
-        tvType.setText("Audio");
+        tvType.setText(news.getTopic());
         tvTitleNews.setText(news.getTitle());
         tvSource.setText(news.getSource());
         tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
@@ -228,18 +230,18 @@ public class AudioNews extends AppCompatActivity{
         recyclerView = findViewById(R.id.rcNews);
 
         ArrayList<News> list = MyList.listNews;
-        ArrayList<News> list1 = new ArrayList<>();
+
+        list1 = new ArrayList<>();
         for (int i=0; i<list.size(); i++){
             if(list.get(i).getType().equals("audio")){
                 list1.add(list.get(i));
             }
         }
-        newsRCAdapter = new NewsRCAdapter(this);
-        newsRCAdapter.setData(list1);
+        newsAudioAdapter = new NewsAudioAdapter(this, list1, this::onItemClick);
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(newsRCAdapter);
+        recyclerView.setAdapter(newsAudioAdapter);
     }
 
     private void setClick() {
@@ -314,4 +316,9 @@ public class AudioNews extends AppCompatActivity{
         });
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(getApplicationContext(), "just click", Toast.LENGTH_SHORT).show();
+
+    }
 }

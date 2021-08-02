@@ -65,10 +65,10 @@ public class MyList extends Application {
                 , 100, R.drawable.sj_science,"abc", "text",  "Đời sống",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", "6", "Suc khoe cua chung ta", 200
-                , 100, R.drawable.img_audio,"abc", "audio",  "Sức khỏe",
+                , 100, R.drawable.sj_science,"abc", "audio",  "Sức khỏe",
                 "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o tỉnh Cao Bằng", 200
-                , 100, R.drawable.img_audio,"abc", "audio",  "Công nghệ",
+                , 100, R.drawable.sj_science,"abc", "audio",  "Công nghệ",
                 "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội", 200
                 , 100, R.drawable.sj_confidence,"abc", "video",  "Giải trí",

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
@@ -41,6 +42,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         TextView tvTitle = view.findViewById(R.id.tvTitle);
         TextView tvLikes = view.findViewById(R.id.tvLikes);
         TextView tvCmts = view.findViewById(R.id.tvCmts);
+        ImageView ivHeadset = view.findViewById(R.id.ivHeadset);
 
         String type = list.get(position).getType();
 
@@ -51,6 +53,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
         tvTime.setText(list.get(position).getTimes());
         ivNews.setImageResource(list.get(position).getImgs());
         tvTitle.setText(list.get(position).getTitle());
+
+        if(list.get(position).getType().equals("audio")){
+            ivHeadset.setVisibility(View.VISIBLE);
+        }
+        else{
+            ivHeadset.setVisibility(View.GONE);
+        }
 
         return view;
 
