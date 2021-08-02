@@ -105,7 +105,7 @@ public class VideoFragment extends Fragment {
         });
         adapterVideo.setItemVideoRCClickListener(new VideoAdapter.ItemVideoRCClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
+            public void onItemClickVideo(View view, int position) {
                 Intent intent = new Intent(getActivity(), PlayVideoActivity.class);
                 intent.putExtra("video", adapterVideo.getItem(position));
                 startActivity(intent);

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -18,7 +19,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.nguyenhoa.diginew.AudioNews;
+import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.adapter.NewsInfoRCAdapter;
+import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
+import com.nguyenhoa.diginew.adapter.VideoAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.home.NewsAdapter;
@@ -30,7 +35,7 @@ import java.util.ArrayList;
 public class CategoriesFragment extends Fragment implements CategoriesAdapter.CategorClickInterface{
     private CategoriesAdapter categoriesAdapter;
     private RecyclerView categoryRV;
-    private String[] topics = {"Địa phương", "Đời sống", "Kinh tế", "Sức khỏe", "Xã hội", "Khoa hoc", "Giải trí", "Công nghệ", "Thể thao", "Tâm sự"};
+    private String[] topics = {"Địa phương", "Đời sống", "Kinh tế", "Sức khỏe", "Xã hội", "Khoa học", "Giải trí", "Công nghệ", "Thể thao", "Tâm sự"};
 
     public CategoriesFragment() {
         // Required empty public constructor
@@ -77,12 +82,14 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     }
 
-    public static class ChildFragment extends Fragment{
-        private NewsAdapter newsAdapter;
-        private ListView newsRV;
-        private ArrayList<News> newsArrayList;
+    public static class ChildFragment extends Fragment implements NewsRCAdapter.ItemNewsRCClickListener,
+            NewsInfoRCAdapter.ItemNewsInfoRCClickListener, VideoAdapter.ItemVideoRCClickListener{
+        private NewsRCAdapter newsRCAdapter;
+        private NewsInfoRCAdapter newsInfoRCAdapter;
+        private VideoAdapter videoAdapter;
+        private RecyclerView newsRV, newsVideoRV, newsInfoRV;
+        private ArrayList<News> newsArrayList, newsVideoList, newsInfoList;
         private String category, province;
-
 
         public static ChildFragment newInstance(String s1, String s2){
             ChildFragment childFragment = new ChildFragment();
@@ -107,9 +114,35 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             View view =  inflater.inflate(R.layout.fragment_child_category, container, false);
 
             newsRV = view.findViewById(R.id.rvNews);
+            newsInfoRV = view.findViewById(R.id.rvNewsInfo);
+            newsVideoRV = view.findViewById(R.id.rvNewsVideo);
+
             newsArrayList = new ArrayList<>();
-            newsAdapter = new NewsAdapter(getContext(), newsArrayList);
-            newsRV.setAdapter(newsAdapter);
+            newsVideoList = new ArrayList<>();
+            newsInfoList = new ArrayList<>();
+
+            LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
+            newsRV.setLayoutManager(linearLayoutManager1);
+            LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext());
+            newsInfoRV.setLayoutManager(linearLayoutManager2);
+            LinearLayoutManager linearLayoutManager3 = new LinearLayoutManager(getContext());
+            newsVideoRV.setLayoutManager(linearLayoutManager3);
+
+            newsRCAdapter = new NewsRCAdapter(getContext());
+            newsInfoRCAdapter = new NewsInfoRCAdapter(getContext());
+            videoAdapter = new VideoAdapter(getContext(), newsVideoList);
+
+            newsRCAdapter.setData(newsArrayList);
+            newsInfoRCAdapter.setData(newsInfoList);
+
+            newsRCAdapter.setClickNewsListener(this::onItemClick);
+            newsInfoRCAdapter.setClickNewsListener(this::onItemClickInfo);
+            videoAdapter.setItemVideoRCClickListener(this::onItemClickVideo);
+
+            newsRV.setAdapter(newsRCAdapter);
+            newsInfoRV.setAdapter(newsInfoRCAdapter);
+            newsVideoRV.setAdapter(videoAdapter);
+
 
             if (province == null){
                 receiveData(category);
@@ -117,15 +150,6 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             else{
                 searchProvince(province);
             }
-
-            newsRV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    News news = (News) parent.getItemAtPosition(position);
-                    MyClass.setIntent(news, getActivity());
-                }
-            });
-
             return view;
         }
 
@@ -137,10 +161,17 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             for(int i=0; i<list.size(); i++){
                 if(list.get(i).getTopic().equals(s)){
                     newsArrayList.add(list.get(i));
+                    if(list.get(i).getType().equals("video")){
+                        newsVideoList.add(list.get(i));
+                    }
+                    if(list.get(i).getType().equals("info")){
+                        newsInfoList.add(list.get(i));
+                    }
                 }
             }
-            newsAdapter.notifyDataSetChanged();
-
+            newsRCAdapter.notifyDataSetChanged();
+            videoAdapter.notifyDataSetChanged();
+            newsInfoRCAdapter.notifyDataSetChanged();
         }
 
         private void searchProvince(String s){
@@ -159,8 +190,25 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
                     newsArrayList.add(list.get(i));
                 }
             }
-            newsAdapter.notifyDataSetChanged();
+            newsRCAdapter.notifyDataSetChanged();
+        }
 
+        @Override
+        public void onItemClick(View view, int position) {
+            News news = (News) newsRCAdapter.getItem(position);
+            MyClass.setIntent(news, getActivity());
+        }
+
+        @Override
+        public void onItemClickInfo(View view, int position) {
+            News news = (News) newsInfoRCAdapter.getItem(position);
+            MyClass.setIntent(news, getActivity());
+        }
+
+        @Override
+        public void onItemClickVideo(View view, int position) {
+            News news = (News) videoAdapter.getItem(position);
+            MyClass.setIntent(news, getActivity());
         }
     }
 
