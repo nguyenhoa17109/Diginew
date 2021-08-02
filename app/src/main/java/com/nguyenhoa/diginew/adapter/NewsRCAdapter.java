@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
-import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -63,7 +62,7 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
         holder.tvTime.setText(list.get(position).getTimes());
         holder.ivNews.setImageResource(list.get(position).getImgs());
         holder.tvTitle.setText(list.get(position).getTitle());
-
+        holder.ivDelete.setVisibility(View.GONE);
         if(list.get(position).getType().equals("audio")){
             holder.ivHeadset.setVisibility(View.VISIBLE);
         }
@@ -79,8 +78,8 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        private TextView tvSource, tvTime, tvTitle, tvLikes, tvCmts;
-        private ImageView ivNews, ivHeadset;
+        public TextView tvSource, tvTime, tvTitle, tvLikes, tvCmts;
+        public ImageView ivNews, ivDelete, ivHeadset;
 
         public NewsViewHolder(@NonNull View view) {
             super(view);
@@ -90,6 +89,7 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
             tvTitle = view.findViewById(R.id.tvTitle);
             tvLikes = view.findViewById(R.id.tvLikes);
             tvCmts = view.findViewById(R.id.tvCmts);
+            ivDelete = view.findViewById(R.id.ivDelete);
             ivHeadset = view.findViewById(R.id.ivHeadset);
 
             view.setOnClickListener(this::onClick);
@@ -100,5 +100,9 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
             if(itemNewsRCClickListener != null)
                 itemNewsRCClickListener.onItemClick(view, getAdapterPosition());
         }
+    }
+    public void removeItem(int position){
+        list.remove(position);
+        notifyDataSetChanged();
     }
 }

@@ -1,9 +1,11 @@
 package com.nguyenhoa.diginew.home;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -19,6 +21,7 @@ import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.SearchActivity;
+import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
@@ -30,10 +33,11 @@ import com.synnapps.carouselview.ImageListener;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCClickListener{
     private ImageView ivSearch, ivUser;
     private SliderView sliderView;
-    private ListView listView;
+    private RecyclerView rvNews;
+    private NewsRCAdapter adapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,9 +87,8 @@ public class HomeFragment extends Fragment {
 
         init(v);
         setSlider();
-        setListView();
+        setRV();
         setClick();
-
 
         return v;
     }
@@ -106,16 +109,14 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private void setListView() {
-        NewsAdapter adapter = new NewsAdapter(getContext(), MyList.listNews);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                News news = (News) adapterView.getItemAtPosition(i);
-                MyClass.setIntent(news, getActivity());
-            }
-        });
+    private void setRV() {
+        adapter = new NewsRCAdapter(getContext());
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(),
+                RecyclerView.VERTICAL, false);
+        rvNews.setLayoutManager(manager);
+        adapter.setData(MyList.listNews);
+        adapter.setClickNewsListener(this::onItemClick);
+        rvNews.setAdapter(adapter);
     }
 
     private void setSlider() {
@@ -135,7 +136,11 @@ public class HomeFragment extends Fragment {
         sliderView = v.findViewById(R.id.slideSplash1);
         ivSearch = v.findViewById(R.id.ivSearch);
         ivUser = v.findViewById(R.id.ivUser);
-        listView = v.findViewById(R.id.lvNews);
+        rvNews = v.findViewById(R.id.rcNews);
     }
 
+    @Override
+    public void onItemClick(View view, int position) {
+        MyClass.setIntent(adapter.getItem(position), (Activity) view.getContext());
+    }
 }
