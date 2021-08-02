@@ -62,15 +62,15 @@
             app:sliderStartAutoCycle="true" />
 
     </LinearLayout>
-    <ListView
-        android:id="@+id/lvNews"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcNews"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_corner_top"
         android:padding="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="60dp"
-        tools:listitem="@layout/item_news">
-    </ListView>
+        tools:listitem="@layout/item_news"/>
+
 
 </LinearLayout>

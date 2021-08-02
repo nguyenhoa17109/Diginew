@@ -200,4 +200,7 @@
     <string name="answer">Trả lời</string>
     <string name="send_cmt">Gửi bình luận</string>
     <string name="enter_cmt">Nhập nội dung bình luận</string>
+    <string name="news_downloaded">Tin đã tải</string>
+    <string name="delete_all">Xóa toàn bộ</string>
+    <string name="today">Hôm nay</string>
 </resources>

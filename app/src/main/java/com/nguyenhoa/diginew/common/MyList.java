@@ -1,15 +1,22 @@
 package com.nguyenhoa.diginew.common;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.Account;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Operation;
 import com.nguyenhoa.diginew.model.Topic;
 import com.nguyenhoa.diginew.model.User;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Locale;
 
 public class MyList extends Application {
     public static Account account;
@@ -18,7 +25,10 @@ public class MyList extends Application {
     public static ArrayList<Topic> list_dis;
     public static ArrayList<Comment> list_Cmt;
     public static ArrayList<ArrayList<News>> listsText, lists_audio, lists_video, lists_info;
+    public static ArrayList<Operation> listOperation;
+    public static ArrayList<ArrayList<Operation>> lists_operation;
     public static String[] spinnerTime = {"Năm nay", "2020", "2019", "2018", "2017"};
+    public static String today = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     private static int NUMBER_TOPIC = 9;
     @Override
     public void onCreate() {
@@ -77,11 +87,38 @@ public class MyList extends Application {
                 , 100, R.drawable.sj_science,"abc", "video",  "Tâm sự",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
 
-        listsText = new ArrayList<>();
         listsText = setDataText(listNews);
         lists_audio = setDataAudio(listNews);
         lists_info = setDataInfo(listNews);
         lists_video = setDataVideo(listNews);
+
+        listOperation = new ArrayList<>();
+        listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true));
+        listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true));
+        listOperation.add(new Operation(listNews.get(0), "01/08/2021", false, true));
+
+        lists_operation = setListDownload(listOperation);
+
+
+//        Log.d("KK", lists_operation.size()+"");
+    }
+
+    public static ArrayList<ArrayList<Operation>> setListDownload(ArrayList<Operation> listOperation) {
+        ArrayList<ArrayList<Operation>> lists_operation = new ArrayList<>();
+        Collections.sort(listOperation, Collections.reverseOrder());
+        ArrayList<Operation> lst = new ArrayList<>();
+        lst.add(listOperation.get(0));
+        lists_operation.add(lst);
+        int k=0;
+        for(int i=1; i<listOperation.size(); i++){
+            if(!listOperation.get(i-1).getDate().equals(listOperation.get(i).getDate())){
+                k++;
+                lst = new ArrayList<>();
+                lists_operation.add(lst);
+            }
+            lists_operation.get(k).add(listOperation.get(i));
+        }
+        return lists_operation;
     }
 
     private ArrayList<ArrayList<News>> setDataText( ArrayList<News> list1){

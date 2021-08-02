@@ -35,6 +35,7 @@ import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Operation;
 import com.nguyenhoa.diginew.model.User;
 
 import java.util.ArrayList;
@@ -128,11 +129,17 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.aRestore:{
-                Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, ""+MyList.today, Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.aDownload:{
+                Operation operation = new Operation(news, MyList.today, false, true);
+
                 Toast.makeText(this, "Đã tải tin", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(NewsActivity.this, NewsDownloadedActivity.class);
+                intent.putExtra("download", operation);
+                startActivity(intent);
                 break;
             }
             case R.id.aFormatSize:{
