@@ -18,19 +18,19 @@ import java.util.ArrayList;
 public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.NewsViewHolder> {
     private Context context;
     private ArrayList<News> list;
-    private ItemNewsRCClickListener itemNewsRCClickListener;
+    private ItemNewsInfoRCClickListener itemNewsInfoRCClickListener;
 
 
     public NewsInfoRCAdapter(Context context) {
         this.context = context;
     }
 
-    public interface ItemNewsRCClickListener{
-        void onItemClick(View view, int position);
+    public interface ItemNewsInfoRCClickListener{
+        void onItemClickInfo(View view, int position);
     }
 
-    public void setClickNewsListener(ItemNewsRCClickListener itemNewsRCClickListener){
-        this.itemNewsRCClickListener = itemNewsRCClickListener;
+    public void setClickNewsListener(ItemNewsInfoRCClickListener itemNewsInfoRCClickListener){
+        this.itemNewsInfoRCClickListener = itemNewsInfoRCClickListener;
     }
 
     public void setData(ArrayList<News> list){
@@ -74,8 +74,8 @@ public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.Ne
 
         @Override
         public void onClick(View view) {
-            if(itemNewsRCClickListener != null)
-                itemNewsRCClickListener.onItemClick(view, getAdapterPosition());
+            if(itemNewsInfoRCClickListener != null)
+                itemNewsInfoRCClickListener.onItemClickInfo(view, getAdapterPosition());
         }
     }
 }

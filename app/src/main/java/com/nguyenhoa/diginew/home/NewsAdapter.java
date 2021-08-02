@@ -54,12 +54,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         ivNews.setImageResource(list.get(position).getImgs());
         tvTitle.setText(list.get(position).getTitle());
 
-        if(list.get(position).getType().equals("audio")){
-            ivHeadset.setVisibility(View.VISIBLE);
-        }
-        else{
-            ivHeadset.setVisibility(View.GONE);
-        }
 
         return view;
 
