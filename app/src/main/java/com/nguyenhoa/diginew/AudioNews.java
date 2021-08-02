@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.media.AudioAttributes;
@@ -32,13 +33,13 @@ import com.nguyenhoa.diginew.model.News;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AudioNews extends AppCompatActivity implements NewsAudioAdapter.ItemAudioClickListener{
+public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
     private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts, tvCurrentTime, tvTotalDuration;
     private RecyclerView recyclerView;
     private ArrayList<News> list1;
-    private NewsAudioAdapter newsAudioAdapter;
+    private NewsRCAdapter newsRCAdapter;
     private String url;
 
     private MediaPlayer mediaPlayer;
@@ -237,11 +238,14 @@ public class AudioNews extends AppCompatActivity implements NewsAudioAdapter.Ite
                 list1.add(list.get(i));
             }
         }
-        newsAudioAdapter = new NewsAudioAdapter(this, list1, this::onItemClick);
+        newsRCAdapter = new NewsRCAdapter(this);
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(newsAudioAdapter);
+        newsRCAdapter.setData(list1);
+        newsRCAdapter.setClickNewsListener(this::onItemClick);
+
+        recyclerView.setAdapter(newsRCAdapter);
     }
 
     private void setClick() {
@@ -318,7 +322,6 @@ public class AudioNews extends AppCompatActivity implements NewsAudioAdapter.Ite
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(getApplicationContext(), "just click", Toast.LENGTH_SHORT).show();
-
+        MyClass.setIntent(newsRCAdapter.getItem(position), (Activity) view.getContext());
     }
 }

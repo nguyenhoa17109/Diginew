@@ -36,7 +36,7 @@ public class NewsAudioAdapter extends RecyclerView.Adapter<NewsAudioAdapter.MyVi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news_audio,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news,
                 parent, false);
         return new MyViewHolder(view);
     }
