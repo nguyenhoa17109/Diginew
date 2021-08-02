@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 
+import com.nguyenhoa.diginew.AudioNews;
 import com.nguyenhoa.diginew.InfoNewsActivity;
 import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
@@ -25,7 +26,7 @@ public class MyClass {
                 intent = new Intent(activity, NewsActivity.class);
                 break;
             case "audio":
-                intent = new Intent(activity, NewsActivity.class);
+                intent = new Intent(activity, AudioNews.class);
                 break;
             case "info":
                 intent = new Intent(activity, InfoNewsActivity.class);

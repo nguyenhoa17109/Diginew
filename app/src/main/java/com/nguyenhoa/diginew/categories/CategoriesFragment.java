@@ -1,5 +1,7 @@
 package com.nguyenhoa.diginew.categories;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,11 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.nguyenhoa.diginew.AudioNews;
 import com.nguyenhoa.diginew.R;
-import com.nguyenhoa.diginew.home.NewsAdapter;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.home.NewsAdapter;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -56,7 +62,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     @Override
     public void onCategoryClick(int position) {
-        String category = MyList.list.get(position).getName();
+        String category = topics[position];
 
         if(category.equals("Địa phương")){
             insertNestedFragment();
@@ -75,6 +81,25 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
         private NewsAdapter newsAdapter;
         private ListView newsRV;
         private ArrayList<News> newsArrayList;
+        private String category, province;
+
+
+        public static ChildFragment newInstance(String s1, String s2){
+            ChildFragment childFragment = new ChildFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("category", s1);
+            bundle.putString("province", s2);
+            childFragment.setArguments(bundle);
+            return childFragment;
+        }
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            if (getArguments() != null){
+                category = getArguments().getString("category");
+                province = getArguments().getString("province");
+            }
+        }
 
         @Nullable
         @Override
@@ -86,10 +111,20 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             newsAdapter = new NewsAdapter(getContext(), newsArrayList);
             newsRV.setAdapter(newsAdapter);
 
-//            newsAdapter.notifyDataSetChanged();
+            if (province == null){
+                receiveData(category);
+            }
+            else{
+                searchProvince(province);
+            }
 
-            String topic = getArguments().getString("category");
-            receiveData(topic);
+            newsRV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    News news = (News) parent.getItemAtPosition(position);
+                    MyClass.setIntent(news, getActivity());
+                }
+            });
 
             return view;
         }
@@ -97,51 +132,36 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
         private void receiveData(String s) {
             newsArrayList.clear();
 
-            if(s.equals("Đời sống")){
-                newsArrayList.add(new News("Đời sống","text", "Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-                newsArrayList.add(new News("Đời sống","text", "Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-            }
-            else if(s.equals("Kinh tế")){
-                newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", "6", "Kinh tế nè", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-                newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", "6", "Kinh tế nè", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-            }
-            else if(s.equals("Sức khỏe")){
-                newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", "6", "Sức khỏe nè", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-                newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", "6", "Sức khỏe nè", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-            }
+            ArrayList<News> list = MyList.listNews;
 
-            else if(s.equals("Thành phố Hà Nội")){
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", "6", "Địa phương TP HN", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", "6", "Địa phương TP HN", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-            }
-            else if(s.equals("Tỉnh Hà Giang")){
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", "6", "Địa phương tỉnh Hà Giang", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", "6", "Địa phương tỉnh Hà Giang", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-            }
-            else if(s.equals("Tỉnh Cao Bằng")) {
-                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", "6", "Địa phương tỉnh Cao Bằng", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", "6", "Địa phương tỉnh Cao Bằng", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
-            }
-            else{
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", "6", "Dữ liệu khác", 100, 200,
-                        R.drawable.ic_digiclips, "abc"));
+            for(int i=0; i<list.size(); i++){
+                if(list.get(i).getTopic().equals(s)){
+                    newsArrayList.add(list.get(i));
+                }
             }
             newsAdapter.notifyDataSetChanged();
 
         }
 
+        private void searchProvince(String s){
+            newsArrayList.clear();
+
+            s = s.toLowerCase();
+            s = s.replace("thành phố", "");
+            s = s.replace("tỉnh", "");
+
+            ArrayList<News> list = MyList.listNews;
+            String s1, s2;
+            for (int i=0; i<list.size(); i++){
+                s1 = list.get(i).getTitle().toLowerCase();
+                s2 = list.get(i).getContent().toLowerCase();
+                if(s1.contains(s.toLowerCase()) || s2.contains(s.toLowerCase())){
+                    newsArrayList.add(list.get(i));
+                }
+            }
+            newsAdapter.notifyDataSetChanged();
+
+        }
     }
 
     private void insertNestedFragment(){

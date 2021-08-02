@@ -81,7 +81,7 @@ public class ProvincesFragment extends Fragment {
                         Toast.makeText(getContext(), province.getName(), Toast.LENGTH_SHORT).show();
 
                         Bundle bundle = new Bundle();
-                        bundle.putString("category", province.getName());
+                        bundle.putString("province", province.getName());
                         Fragment fragment = new CategoriesFragment.ChildFragment();
                         fragment.setArguments(bundle);
                         getFragmentManager().beginTransaction().replace(R.id.frChildCategory, fragment).commit();

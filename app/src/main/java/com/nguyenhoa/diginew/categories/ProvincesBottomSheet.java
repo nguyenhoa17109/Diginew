@@ -30,7 +30,9 @@ public class ProvincesBottomSheet extends BottomSheetDialogFragment implements P
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+//        BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) super.onCreateDialog(savedInstanceState);
+
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getContext(), R.style.MaterialDialogSheet);
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.bottom_sheet_provinces, null);
         bottomSheetDialog.setContentView(view);

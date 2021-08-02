@@ -70,7 +70,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_fill));
         }
         else{
-            holder.textView.setTextColor(Color.BLACK);
+            holder.textView.setTextColor(Color.parseColor("#B1BAD0"));
             holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_outline));
         }
     }
@@ -86,12 +86,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
 
     public class MyViewHoler extends RecyclerView.ViewHolder {
         private TextView textView;
-        private CardView cardView;
 
         public MyViewHoler(View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.tvItemCategory);
-            cardView = itemView.findViewById(R.id.cvCategoryFV);
         }
     }
 }
