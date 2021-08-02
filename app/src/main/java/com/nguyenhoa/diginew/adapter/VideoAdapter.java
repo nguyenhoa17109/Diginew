@@ -32,7 +32,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     }
 
     public interface ItemVideoRCClickListener{
-        void onItemClick(View view, int position);
+        void onItemClickVideo(View view, int position);
     }
 
     public void setItemVideoRCClickListener(ItemVideoRCClickListener itemVideoRCClickListener) {
@@ -88,7 +88,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         @Override
         public void onClick(View view) {
             if(itemVideoRCClickListener != null){
-                itemVideoRCClickListener.onItemClick(view, getAdapterPosition());
+                itemVideoRCClickListener.onItemClickVideo(view, getAdapterPosition());
             }
         }
     }

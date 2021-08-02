@@ -20,10 +20,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
-import com.nguyenhoa.diginew.adapter.NewsAudioAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
