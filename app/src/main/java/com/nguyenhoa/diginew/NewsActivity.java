@@ -58,6 +58,8 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        Intent intent = getIntent();
+        news = (News) intent.getSerializableExtra("text");
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.actionbar_news);
@@ -66,14 +68,13 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         init();
 
-        Intent intent = getIntent();
-        news = (News) intent.getSerializableExtra("text");
         if(news != null){
             tvTopic.setText(news.getTopic());
             tvTitleNews.setText(news.getTitle());
             tvContent.setText(news.getContent());
             tvSource.setText(news.getSource());
-            tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+//            tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+            tvTime.setText(news.getTimes());
             tvLikes.setText(String.valueOf(news.getLikes()));
             tvCmts.setText(String.valueOf(news.getCmts()));
 
@@ -122,6 +123,12 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_actionbar_news, menu);
+        String s = news.toString();
+        for(Operation operation:MyList.listOperation){
+            if(operation.getNews().toString().equals(s))
+                menu.findItem(R.id.aDownload).setIcon(R.drawable.ic_downloaded);
+        }
+
         return true;
     }
 
@@ -129,8 +136,8 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.aRestore:{
-//                Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, ""+MyList.today, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, ""+MyList.today, Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.aDownload:{
@@ -286,7 +293,6 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 return 18;
         }
     }
-
 
     public void init(){
         preferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);

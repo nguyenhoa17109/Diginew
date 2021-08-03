@@ -203,4 +203,9 @@
     <string name="news_downloaded">Tin đã tải</string>
     <string name="delete_all">Xóa toàn bộ</string>
     <string name="today">Hôm nay</string>
+    <string name="no_download">Bạn chưa tải bản tin nào</string>
+    <string name="category">Chuyên mục</string>
+    <string name="change">Thay đổi</string>
+    <string name="add">+ Thêm chuyên mục</string>
+    <string name="add_">+ Thêm</string>
 </resources>
