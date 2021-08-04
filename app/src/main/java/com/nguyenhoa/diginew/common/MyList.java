@@ -21,6 +21,7 @@ import java.util.Locale;
 public class MyList extends Application {
     public static Account account;
     public static ArrayList<Topic> list;
+    public static ArrayList<Topic> list_Fv, list_unFv;
     public static ArrayList<News> listNews;
     public static ArrayList<Topic> list_dis;
     public static ArrayList<Comment> list_Cmt;
@@ -47,6 +48,13 @@ public class MyList extends Application {
         list.add(new Topic("Thể thao", R.drawable.sj_sport));
         list.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
+        list_Fv = new ArrayList<>();
+        list_Fv.add(new Topic("Kinh tế", R.drawable.sj_business));
+        list_Fv.add(new Topic("Giải trí", R.drawable.sj_entertainment));
+        list_Fv.add(new Topic("Tâm sự", R.drawable.sj_confidence));
+
+        list_unFv = setListUnFavor(list);
+
         list_dis = new ArrayList<>();
         list_dis.add(new Topic("DigiMovie", R.drawable.ic_digimovie));
         list_dis.add(new Topic("DigiClip", R.drawable.ic_digiclips));
@@ -55,8 +63,10 @@ public class MyList extends Application {
         list_dis.add(new Topic("MyTV", R.drawable.img_mytv));
 
         list_Cmt = new ArrayList<>();
-        list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"), "abc", 9, false, 9, false));
-        list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"), "abc", 9, false, 9, true));
+        list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
+                "abc", 9, false, 9, false));
+        list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
+                "abc", 9, false, 9, true));
 
         listNews = new ArrayList<>();
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
@@ -101,6 +111,15 @@ public class MyList extends Application {
 
 
 //        Log.d("KK", lists_operation.size()+"");
+    }
+
+    private ArrayList<Topic> setListUnFavor(ArrayList<Topic> list) {
+        ArrayList<Topic> list_unFv = new ArrayList<>();
+        for(Topic topic:list){
+            if(!list_Fv.contains(topic))
+                list_unFv.add(topic);
+        }
+        return list_unFv;
     }
 
     public static ArrayList<ArrayList<Operation>> setListDownload(ArrayList<Operation> listOperation) {

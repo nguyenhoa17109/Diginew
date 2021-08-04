@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/gray_200">
+    android:background="@color/gray_200"
+    tools:context=".CategoryFvActivity">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll1"
@@ -75,8 +76,23 @@
                     android:layout_height="wrap_content"
                     tools:listitem="@layout/item_category"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
-            </LinearLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCategory1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/item_category"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btAdd"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add"
+                    android:textSize="14sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/background_button"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -91,14 +107,6 @@
         android:layout_alignBottom="@+id/scroll1">
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="@string/add"
-            android:textSize="14sp"
-            android:textAllCaps="false"
-            android:background="@drawable/background_button"
-            android:textColor="@color/white"/>
+
     </LinearLayout>
 </RelativeLayout>
