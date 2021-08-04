@@ -1,8 +1,13 @@
 package com.nguyenhoa.diginew.common;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.Account;
 import com.nguyenhoa.diginew.model.Comment;
@@ -49,9 +54,9 @@ public class MyList extends Application {
         list.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
         list_Fv = new ArrayList<>();
-        list_Fv.add(new Topic("Kinh tế", R.drawable.sj_business));
-        list_Fv.add(new Topic("Giải trí", R.drawable.sj_entertainment));
-        list_Fv.add(new Topic("Tâm sự", R.drawable.sj_confidence));
+//        list_Fv.add(new Topic("Kinh tế", R.drawable.sj_business));
+//        list_Fv.add(new Topic("Giải trí", R.drawable.sj_entertainment));
+//        list_Fv.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
         list_unFv = setListUnFavor(list);
 
@@ -111,6 +116,15 @@ public class MyList extends Application {
 
 
 //        Log.d("KK", lists_operation.size()+"");
+    }
+
+    public static ArrayList<Topic> setListChoseSubjectFV(Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((context));
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("listSubjectFV", "");
+        MyList.list_Fv = gson.fromJson(json, new TypeToken<ArrayList<Topic>>(){}.getType());
+
+        return MyList.list_Fv;
     }
 
     private ArrayList<Topic> setListUnFavor(ArrayList<Topic> list) {

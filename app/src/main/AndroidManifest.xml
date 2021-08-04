@@ -24,19 +24,23 @@
         <activity android:name=".NewsActivity" />
         <activity android:name=".AudioNews" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".splash.Splash" />
-        <activity android:name=".splash.Splash1" />
-        <activity android:name=".splash.Splash2" />
-        <activity
-            android:name=".splash.Terms"
-            android:parentActivityName=".splash.Splash2" />
-        <activity android:name=".splash.SubjectsFavorite" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".splash.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".splash.Splash1" />
+        <activity android:name=".splash.Splash2" />
+        <activity
+            android:name=".splash.Terms"
+            android:parentActivityName=".splash.Splash2" />
+        <activity android:name=".splash.SubjectsFavorite" >
+
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
         <activity android:name=".discover.MyTv" />
         <activity android:name=".discover.DigiHealth" />

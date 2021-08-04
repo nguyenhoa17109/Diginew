@@ -5,16 +5,27 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.login.widget.ToolTipPopup;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
 import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.model.Topic;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryFvActivity extends AppCompatActivity {
     private ImageView ivBack;
@@ -91,7 +102,8 @@ public class CategoryFvActivity extends AppCompatActivity {
         btAdd = findViewById(R.id.btAdd);
         rvCategory = findViewById(R.id.rvCategory);
         rvChange = findViewById(R.id.rvCategory1);
-        adapter = new CategoryFvAdapter(this, MyList.list_Fv);
-        adapter1 = new CategoryRvChangeAdapter(this, MyList.list_Fv);
+
+        adapter = new CategoryFvAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
+        adapter1 = new CategoryRvChangeAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
     }
 }

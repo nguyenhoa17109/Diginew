@@ -1,5 +1,6 @@
 package com.nguyenhoa.diginew.categories;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,10 +10,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsInfoRCAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
@@ -20,6 +24,7 @@ import com.nguyenhoa.diginew.adapter.VideoAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -27,10 +32,9 @@ import java.util.ArrayList;
 public class CategoriesFragment extends Fragment implements CategoriesAdapter.CategorClickInterface{
     private CategoriesAdapter categoriesAdapter;
     private RecyclerView categoryRV;
-    private String[] topics = {"Địa phương", "Đời sống", "Kinh tế", "Sức khỏe", "Xã hội", "Khoa học", "Giải trí", "Công nghệ", "Thể thao", "Tâm sự"};
+    private ArrayList<String> topics = new ArrayList<>();
 
     public CategoriesFragment() {
-        // Required empty public constructor
     }
 
 
@@ -42,6 +46,13 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
+
+        ArrayList<Topic> list = new ArrayList<>();
+        list = MyList.setListChoseSubjectFV(getContext());
+        topics.add("Địa phương");
+        for(int i=0; i< list.size(); i++){
+            topics.add(list.get(i).getName());
+        }
 
         categoryRV = view.findViewById(R.id.rvCategories);
         categoriesAdapter = new CategoriesAdapter(getFragmentManager(), getContext(), topics, this::onCategoryClick);
@@ -59,7 +70,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     @Override
     public void onCategoryClick(int position) {
-        String category = topics[position];
+        String category = topics.get(position);
 
         if(category.equals("Địa phương")){
             insertNestedFragment();

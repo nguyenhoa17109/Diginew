@@ -3,16 +3,21 @@ package com.nguyenhoa.diginew.common;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.AudioNews;
 import com.nguyenhoa.diginew.InfoNewsActivity;
 import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -67,6 +72,5 @@ public class MyClass {
 
             tvLikes.setText(String.valueOf(i+1));
         }
-
     }
 }

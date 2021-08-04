@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +16,8 @@ import com.nguyenhoa.diginew.R;
 import java.io.InputStream;
 
 public class Terms extends AppCompatActivity {
-    private Button btBack;
-    private TextView tvTerm;
+    private ImageView ivBack;
+    private TextView tvTerm, tvTopic;
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -29,16 +30,20 @@ public class Terms extends AppCompatActivity {
         setContentView(R.layout.activity_terms);
 
         getSupportActionBar().hide();
-        btBack = findViewById(R.id.btBack);
-        btBack.setOnClickListener(new View.OnClickListener() {
+
+        ivBack = findViewById(R.id.ivBack);
+        tvTerm = findViewById(R.id.tvTerms);
+        tvTopic = findViewById(R.id.tvTopic);
+
+        tvTopic.setText("Điều khoản");
+        ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        tvTerm = findViewById(R.id.tvTerms);
-        tvTerm.setMovementMethod(new ScrollingMovementMethod());
 
+        tvTerm.setMovementMethod(new ScrollingMovementMethod());
         try {
             Resources res = getResources();
             InputStream in_s = res.openRawResource(R.raw.term);

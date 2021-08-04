@@ -1,7 +1,9 @@
 package com.nguyenhoa.diginew.splash;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,6 +13,9 @@ import com.nguyenhoa.diginew.R;
 import com.smarteist.autoimageslider.SliderView;
 
 public class Splash1 extends AppCompatActivity {
+    SharedPreferences preferences;
+    boolean isFirst;
+    public static final String PREFER_NAME = "Splash1";
     private Button btStart;
     SliderView sliderView;
     int[] images = {R.drawable.img_start, R.drawable.sj_all, R.drawable.sj_technology};
@@ -29,31 +34,35 @@ public class Splash1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_splash1);
 
-        btStart = findViewById(R.id.btStart);
-        btStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Splash1.this, Splash2.class);
-                startActivity(intent);
-            }
-        });
+        preferences = getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
+        isFirst = preferences.getBoolean(PREFER_NAME, false);
 
-        sliderView = findViewById(R.id.slideSplash1);
-        SlideSplashAdapter slideSplashAdapter = new SlideSplashAdapter(images, names);
-        sliderView.setSliderAdapter(slideSplashAdapter);
-        sliderView.startAutoCycle();
+        if(isFirst){
+            startActivity(new Intent(Splash1.this, Splash2.class));
+            finish();
+        }
+        else{
+            setContentView(R.layout.activity_splash1);
 
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//        boolean isFirst = prefs.getBoolean("splash1", true);
-//        if(isFirst){
-//
-//        }
+            btStart = findViewById(R.id.btStart);
+            btStart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Splash1.this, Splash2.class));
+                }
+            });
 
-//        SharedPreferences.Editor editor = prefs.edit();
-//        editor.putBoolean("splash1", Boolean.FALSE);
-//        editor.commit();
+            sliderView = findViewById(R.id.slideSplash1);
+            SlideSplashAdapter slideSplashAdapter = new SlideSplashAdapter(images, names);
+            sliderView.setSliderAdapter(slideSplashAdapter);
+            sliderView.startAutoCycle();
+
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean(PREFER_NAME, true);
+            editor.commit();
+        }
+
 
     }
 
