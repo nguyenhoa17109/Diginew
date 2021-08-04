@@ -35,7 +35,6 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
     private ArrayList<String> topics = new ArrayList<>();
 
     public CategoriesFragment() {
-        // Required empty public constructor
     }
 
 
