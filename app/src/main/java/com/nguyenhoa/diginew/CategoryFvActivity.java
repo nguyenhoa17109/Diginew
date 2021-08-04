@@ -22,9 +22,7 @@ import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryFvActivity extends AppCompatActivity {
     private ImageView ivBack;
