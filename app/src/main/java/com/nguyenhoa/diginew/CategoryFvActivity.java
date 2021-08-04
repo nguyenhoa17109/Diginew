@@ -34,6 +34,7 @@ public class CategoryFvActivity extends AppCompatActivity {
     private RecyclerView rvCategory, rvChange;
     private CategoryFvAdapter adapter;
     private CategoryRvChangeAdapter adapter1;
+    private ArrayList<Topic> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class CategoryFvActivity extends AppCompatActivity {
         tvChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("OO", "OK");
+//                Log.d("OO", "OK");
                 String s = tvChange.getText().toString();
                 if(s.equals("Thay đổi")){
                     tvChange.setText(R.string.done);
@@ -103,7 +104,10 @@ public class CategoryFvActivity extends AppCompatActivity {
         rvCategory = findViewById(R.id.rvCategory);
         rvChange = findViewById(R.id.rvCategory1);
 
-        adapter = new CategoryFvAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
-        adapter1 = new CategoryRvChangeAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
+        list = MyList.setListChoseSubjectFV(getApplicationContext());
+        Intent intent = getIntent();
+
+        adapter = new CategoryFvAdapter(this, list);
+        adapter1 = new CategoryRvChangeAdapter(this, list);
     }
 }

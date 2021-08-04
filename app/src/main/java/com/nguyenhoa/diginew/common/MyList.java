@@ -58,7 +58,7 @@ public class MyList extends Application {
 //        list_Fv.add(new Topic("Giải trí", R.drawable.sj_entertainment));
 //        list_Fv.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
-        list_unFv = setListUnFavor(list);
+        list_unFv = new ArrayList<>();
 
         list_dis = new ArrayList<>();
         list_dis.add(new Topic("DigiMovie", R.drawable.ic_digimovie));
@@ -122,18 +122,26 @@ public class MyList extends Application {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((context));
         Gson gson = new Gson();
         String json = sharedPreferences.getString("listSubjectFV", "");
-        MyList.list_Fv = gson.fromJson(json, new TypeToken<ArrayList<Topic>>(){}.getType());
+        ArrayList<Topic> list_Fv = gson.fromJson(json, new TypeToken<ArrayList<Topic>>(){}.getType());
 
-        return MyList.list_Fv;
+        return list_Fv;
     }
 
-    private ArrayList<Topic> setListUnFavor(ArrayList<Topic> list) {
+    public static ArrayList<Topic> setListUnFavor(ArrayList<Topic> list_Fv) {
         ArrayList<Topic> list_unFv = new ArrayList<>();
+        Log.d("LL", list_Fv.get(0).getName()+"");
         for(Topic topic:list){
-            if(!list_Fv.contains(topic))
+            if(check(topic, list_Fv))
                 list_unFv.add(topic);
         }
         return list_unFv;
+    }
+    private static boolean check(Topic topic, ArrayList<Topic> list){
+        for(Topic topic1:list){
+            if(topic.getName().equals(topic1.getName()))
+                return false;
+        }
+        return true;
     }
 
     public static ArrayList<ArrayList<Operation>> setListDownload(ArrayList<Operation> listOperation) {
