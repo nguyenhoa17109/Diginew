@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.AddCategoryViewHolder> {
     private Context context;
     private ArrayList<Topic> list;
+    private OnClickItem item;
 
     public AddCategoryAdapter(Context context) {
         this.context = context;
@@ -26,6 +27,10 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
     public void setData(ArrayList<Topic> list){
         this.list = list;
         notifyDataSetChanged();
+    }
+
+    public interface OnClickItem{
+        void ClickItem(View v, int index);
     }
 
     @NonNull
@@ -46,6 +51,7 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
                 holder.btAdd.setBackgroundResource(R.drawable.background_button_add_disable);
                 holder.btAdd.setText(R.string.added);
                 list.get(position).setSelected(true);
+                removeItem(position);
             }
         });
     }
@@ -55,7 +61,7 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
         return list.size();
     }
 
-    public class AddCategoryViewHolder extends RecyclerView.ViewHolder {
+    public class AddCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView tvTopic;
         private Button btAdd;
 
@@ -64,6 +70,23 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
 
             tvTopic = itemView.findViewById(R.id.tvCategory);
             btAdd = itemView.findViewById(R.id.btAdd);
+            itemView.setOnClickListener(this::onClick);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if(item != null)
+                item.ClickItem(view, getAdapterPosition());
         }
     }
+
+    public void removeItem(int position){
+        list.remove(position);
+
+    }
+
+    public Topic getItem(int index){
+        return list.get(index);
+    }
+
 }

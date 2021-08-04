@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -16,12 +17,13 @@ import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
-public class AddCategoryFvActivity extends AppCompatActivity {
+public class AddCategoryFvActivity extends AppCompatActivity implements AddCategoryAdapter.OnClickItem {
     private ImageView ivBack;
     private SearchView searchView;
     private RecyclerView rvCategory;
     private AddCategoryAdapter adapter;
-    private ArrayList<Topic> list = MyList.list_unFv;
+    private ArrayList<Topic> list;
+    private ArrayList<Topic> listAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +68,18 @@ public class AddCategoryFvActivity extends AppCompatActivity {
         searchView = findViewById(R.id.etSearch);
         rvCategory = findViewById(R.id.rvAddCategory);
 
+        listAdd = new ArrayList<>();
         adapter = new AddCategoryAdapter(this);
+        list = MyList.setListUnFavor(MyList.setListChoseSubjectFV(getApplicationContext()));
         adapter.setData(list);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(),
                 RecyclerView.VERTICAL, false);
         rvCategory.setLayoutManager(manager);
         rvCategory.setAdapter(adapter);
+    }
+
+    @Override
+    public void ClickItem(View v, int index) {
+        listAdd.add(adapter.getItem(index));
     }
 }
