@@ -27,12 +27,12 @@ import java.util.ArrayList;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MyViewHoler> {
     private Context context;
-    private String[] names;
+    private ArrayList<String> names;
     private CategorClickInterface categorClickInterface;
     private int index = 1;
     FragmentManager fragmentManager;
 
-    public CategoriesAdapter(FragmentManager fragmentManager, Context context, String[] names, CategorClickInterface categorClickInterface) {
+    public CategoriesAdapter(FragmentManager fragmentManager, Context context, ArrayList<String> names, CategorClickInterface categorClickInterface) {
         this.fragmentManager = fragmentManager;
         this.context = context;
         this.names = names;
@@ -50,7 +50,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHoler holder, int position) {
-        holder.textView.setText(names[position]);
+        holder.textView.setText(names.get(position));
 
         if(index == 1){
             holder.textView.setTextColor(Color.WHITE);
@@ -80,7 +80,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
 
     @Override
     public int getItemCount() {
-        return names.length;
+        return names.size();
     }
 
     public class MyViewHoler extends RecyclerView.ViewHolder {
