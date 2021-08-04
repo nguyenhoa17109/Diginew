@@ -19,12 +19,17 @@ import java.util.ArrayList;
 public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyViewHolder> {
     private Context context;
     private ArrayList<Topic> data;
+    private SubjectFVClickInterfacec subjectFVClickInterfacec;
 
-    public SubjectsAdapter(Context context, ArrayList<Topic> data) {
+    public SubjectsAdapter(Context context, ArrayList<Topic> data, SubjectFVClickInterfacec subjectFVClickInterfacec) {
         this.context = context;
         this.data = data;
+        this.subjectFVClickInterfacec = subjectFVClickInterfacec;
     }
 
+    public interface SubjectFVClickInterfacec{
+        void onClickSubject(int position);
+    }
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,20 +49,18 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyView
         if(subject.getSelected()){
             holder.cardView.setBackgroundColor(Color.parseColor("#6E8DFB"));
         }
-//        else{
-//            holder.itemView.setBackgroundColor(Color.TRANSPARENT);
-//        }
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(subject.getSelected()){
                     holder.itemView.setBackgroundColor(Color.TRANSPARENT);
                     subject.setSelected(false);
+                    subjectFVClickInterfacec.onClickSubject(position);
                 }
                 else{
                     holder.itemView.setBackgroundColor(Color.BLUE);
                     subject.setSelected(true);
+                    subjectFVClickInterfacec.onClickSubject(position);
                 }
             }
         });

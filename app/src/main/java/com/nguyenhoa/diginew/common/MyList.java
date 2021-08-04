@@ -49,9 +49,9 @@ public class MyList extends Application {
         list.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
         list_Fv = new ArrayList<>();
-        list_Fv.add(new Topic("Kinh tế", R.drawable.sj_business));
-        list_Fv.add(new Topic("Giải trí", R.drawable.sj_entertainment));
-        list_Fv.add(new Topic("Tâm sự", R.drawable.sj_confidence));
+//        list_Fv.add(new Topic("Kinh tế", R.drawable.sj_business));
+//        list_Fv.add(new Topic("Giải trí", R.drawable.sj_entertainment));
+//        list_Fv.add(new Topic("Tâm sự", R.drawable.sj_confidence));
 
         list_unFv = setListUnFavor(list);
 

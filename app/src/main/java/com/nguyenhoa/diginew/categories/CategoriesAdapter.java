@@ -30,7 +30,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     private String[] names;
     private CategorClickInterface categorClickInterface;
     private int index = 1;
-    CategoriesFragment categoriesFragment;
     FragmentManager fragmentManager;
 
     public CategoriesAdapter(FragmentManager fragmentManager, Context context, String[] names, CategorClickInterface categorClickInterface) {
@@ -71,7 +70,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         }
         else{
             holder.textView.setTextColor(Color.parseColor("#B1BAD0"));
-            holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_outline));
+            holder.textView.setBackground(null);
         }
     }
 
