@@ -45,7 +45,7 @@
         android:visibility="gone"
         tools:listitem="@layout/item_news_download_child"/>
 
-<LinearLayout
+    <LinearLayout
     android:id="@+id/layoutDownload"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -68,6 +68,5 @@
         android:textColor="#E0E3EB"
         android:fontFamily="@font/roboto"/>
 </LinearLayout>
-
 
 </LinearLayout>

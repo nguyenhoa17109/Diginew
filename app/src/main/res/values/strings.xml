@@ -208,4 +208,6 @@
     <string name="change">Thay đổi</string>
     <string name="add">+ Thêm chuyên mục</string>
     <string name="add_">+ Thêm</string>
+    <string name="done">Xong</string>
+    <string name="added">Đã thêm</string>
 </resources>

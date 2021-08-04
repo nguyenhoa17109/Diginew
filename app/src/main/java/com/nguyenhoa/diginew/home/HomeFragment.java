@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.nguyenhoa.diginew.CategoryFvActivity;
 import com.nguyenhoa.diginew.InfoNewsActivity;
 import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
@@ -104,7 +105,8 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
         ivUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), CategoryFvActivity.class);
+                startActivity(intent);
             }
         });
     }
