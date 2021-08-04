@@ -1,8 +1,12 @@
 package com.nguyenhoa.diginew.common;
 
 import android.app.Application;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.Account;
 import com.nguyenhoa.diginew.model.Comment;
@@ -112,6 +116,7 @@ public class MyList extends Application {
 
 //        Log.d("KK", lists_operation.size()+"");
     }
+
 
     private ArrayList<Topic> setListUnFavor(ArrayList<Topic> list) {
         ArrayList<Topic> list_unFv = new ArrayList<>();

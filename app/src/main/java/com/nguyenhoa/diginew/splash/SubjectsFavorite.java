@@ -28,6 +28,7 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
     RecyclerView recyclerView;
     SubjectsAdapter adapter;
     ArrayList<Topic> list;
+    ArrayList<Topic> listChose = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
                     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     Gson gson = new Gson();
-                    String json = gson.toJson(MyList.list_Fv);
+                    String json = gson.toJson(listChose);
                     editor.putString("listSubjectFV", json);
                     editor.commit();
 
@@ -81,10 +82,10 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
         Topic topic = list.get(position);
         String subject = topic.getName();
         if(topic.getSelected()){
-            MyList.list_Fv.add(topic);
+            listChose.add(topic);
         }
         else{
-            MyList.list_Fv.remove(topic);
+            listChose.remove(topic);
         }
     }
 }
