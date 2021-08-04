@@ -33,7 +33,6 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
     private CategoriesAdapter categoriesAdapter;
     private RecyclerView categoryRV;
     private ArrayList<String> topics = new ArrayList<>();
-//    private String[] topics = {"Địa phương", "Đời sống", "Kinh tế", "Sức khỏe", "Xã hội", "Khoa học", "Giải trí", "Công nghệ", "Thể thao", "Tâm sự"};
 
     public CategoriesFragment() {
         // Required empty public constructor
@@ -49,14 +48,11 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("listSubjectFV", "");
-        MyList.list_Fv = gson.fromJson(json, new TypeToken<ArrayList<Topic>>(){}.getType());
-
+        ArrayList<Topic> list = new ArrayList<>();
+        list = MyList.setListChoseSubjectFV(getContext());
         topics.add("Địa phương");
-        for(int i=0; i< MyList.list_Fv.size(); i++){
-            topics.add(MyList.list_Fv.get(i).getName());
+        for(int i=0; i< list.size(); i++){
+            topics.add(list.get(i).getName());
         }
 
         categoryRV = view.findViewById(R.id.rvCategories);

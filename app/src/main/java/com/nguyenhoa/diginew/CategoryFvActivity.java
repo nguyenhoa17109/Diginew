@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
 import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
@@ -102,12 +103,7 @@ public class CategoryFvActivity extends AppCompatActivity {
         rvCategory = findViewById(R.id.rvCategory);
         rvChange = findViewById(R.id.rvCategory1);
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("listSubjectFV", "");
-        MyList.list_Fv = gson.fromJson(json, new TypeToken<ArrayList<Topic>>(){}.getType());
-
-        adapter = new CategoryFvAdapter(this, MyList.list_Fv);
-        adapter1 = new CategoryRvChangeAdapter(this, MyList.list_Fv);
+        adapter = new CategoryFvAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
+        adapter1 = new CategoryRvChangeAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
     }
 }

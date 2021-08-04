@@ -1,6 +1,7 @@
 package com.nguyenhoa.diginew.common;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -117,6 +118,14 @@ public class MyList extends Application {
 //        Log.d("KK", lists_operation.size()+"");
     }
 
+    public static ArrayList<Topic> setListChoseSubjectFV(Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((context));
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("listSubjectFV", "");
+        MyList.list_Fv = gson.fromJson(json, new TypeToken<ArrayList<Topic>>(){}.getType());
+
+        return MyList.list_Fv;
+    }
 
     private ArrayList<Topic> setListUnFavor(ArrayList<Topic> list) {
         ArrayList<Topic> list_unFv = new ArrayList<>();
