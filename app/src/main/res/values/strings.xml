@@ -30,8 +30,8 @@
     <string name="option">Gói tiện ích</string>
     <string name="ott">OTT</string>
     <string name="data">Data</string>
-    <string name="d2">10.000 <br><small>vnđ/1GB/ngày</small></br></string>
-    <string name="d1">7000 <br><small>vnđ/2GB/ngày</small></br></string>
+    <string name="d2">10.000 <br><small>vnđ/2GB/ngày</small></br></string>
+    <string name="d1">7000 <br><small>vnđ/1GB/ngày</small></br></string>
     <string name="digiclip">DigiClip</string>
     <string name="open_app">mở app</string>
     <string name="digihealth">DigiHealth</string>
@@ -82,11 +82,12 @@
     <string name="in">Thoại nội mạng</string>
     <string name="out">Thoại ngoại mạng</string>
     <string name="minute">3 phút</string>
+    <string name="minute2">\??? phút</string>
     <string name="sms">SMS</string>
-    <string name="eg_sms">3 tin nhắn</string>
+    <string name="eg_sms">30 tin nhắn</string>
     <string name="my_tv">My TV</string>
     <string name="chu_n">Chuẩn</string>
-    <string name="eg">Gói chuẩn<br>(Không có vtvcab - cho phép tối đa 3 thiết bị di động và xem đồng thời trên 2 thiết bị di động)</br></string>
+    <string name="eg">Gói chuẩn<br>( Không có vtvcab - cho phép tối đa 3 thiết bị di động và xem đồng thời trên 2 thiết bị di động )</br></string>
     <string name="clips">Clips</string>
     <string name="basic">Basic</string>
     <string name="tin_hot">Tin Hot</string>
@@ -135,5 +136,23 @@
     <string name="see_detail"><u><b>Xem chi tiết</b></u></string>
     <string name="tip">Gợi ý cho bạn</string>
     <string name="see_more"><u>Xem thêm</u></string>
+    <string name="data_remaining">Lưu trữ còn lại</string>
+    <string name="uu_dai">Ưu đãi nâng cấp</string>
+    <string name="nang_cao">Nâng cao</string>
+    <string name="vip_2">Vip</string>
+    <string name="recent_news">XEM GẦN ĐÂY</string>
+    <string name="downloaded_news">TIN ĐÃ TẢI</string>
+    <string name="saved_news">TIN ĐÃ LƯU</string>
+    <string name="liked_news">TIN ĐÃ THÍCH</string>
+    <string name="see_less"><u><b>Thu gọn</b></u></string>
+    <string name="advancePack">Gói cước Nâng cao</string>
+    <string name="free">FREE</string>
+    <string name="data_progress">200MB/1GB</string>
+    <string name="ott_progress">200/1000 phút</string>
+    <string name="packRegister_text1">Giá áp dụng cho thành viên Basic</string>
+    <string name="packRegister_text2">Bạn được truy cập</string>
+    <string name="packRegister_text3">Kho phim đặc sắc</string>
+    <string name="packRegister_text4">Bạn chưa đủ điều kiện</string>
+    <string name="packRegister_text5">đăng kí gói</string>
 
 </resources>

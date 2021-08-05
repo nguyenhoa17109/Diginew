@@ -75,7 +75,7 @@ public class Splash2 extends AppCompatActivity {
                 ds.setUnderlineText(true);
             }
         };
-        ss.setSpan(clickableSpan, 40,64, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        ss.setSpan(clickableSpan, 40, 64, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 
         tvTerms.setText(ss);
         tvTerms.setMovementMethod(LinkMovementMethod.getInstance());
@@ -122,14 +122,13 @@ public class Splash2 extends AppCompatActivity {
         firebaseAuth.signInWithCredential(authCredential).addOnCompleteListener(Splash2.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     sendUserData(user);
                     Toast.makeText(getApplicationContext(), "Login success", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Splash2.this, SubjectsFavorite.class));
                     finish();
-                }
-                else{
+                } else {
                     Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -166,7 +165,7 @@ public class Splash2 extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         //check result come from GOOGLE
-        if(requestCode == GOOGLE_SIGN_IN_REQUEST){
+        if (requestCode == GOOGLE_SIGN_IN_REQUEST) {
             Task<GoogleSignInAccount> accountTask = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = accountTask.getResult(ApiException.class);
@@ -174,8 +173,7 @@ public class Splash2 extends AppCompatActivity {
             } catch (ApiException e) {
                 e.printStackTrace();
             }
-        }
-        else{
+        } else {
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
@@ -198,7 +196,7 @@ public class Splash2 extends AppCompatActivity {
     }
 
     private void sendUserData(FirebaseUser user) {
-        Toast.makeText(getApplicationContext(), "User: " + user.getDisplayName() + "\n"+ user.getEmail(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "User: " + user.getDisplayName() + "\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -206,9 +204,9 @@ public class Splash2 extends AppCompatActivity {
         super.onStart();
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null){
+        if (user != null) {
             startActivity(new Intent(Splash2.this, SubjectsFavorite.class));
-            Toast.makeText(getApplicationContext(), "User: " + user.getDisplayName() + "\n"+ user.getEmail(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "User: " + user.getDisplayName() + "\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
         }
     }
 }

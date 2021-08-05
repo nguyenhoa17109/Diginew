@@ -53,7 +53,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     public void onBindViewHolder(@NonNull MyViewHoler holder, int position) {
         holder.textView.setText(names[position]);
 
-        if(index == 1){
+        if (index == 1) {
             holder.textView.setTextColor(Color.WHITE);
             holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_fill));
         }
@@ -65,17 +65,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 categorClickInterface.onCategoryClick(position);
             }
         });
-        if(index == position){
+        if (index == position) {
             holder.textView.setTextColor(Color.WHITE);
             holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_fill));
-        }
-        else{
+        } else {
             holder.textView.setTextColor(Color.BLACK);
             holder.textView.setBackground(ContextCompat.getDrawable(context, R.drawable.rectangle_outline));
         }
     }
 
-    public interface CategorClickInterface{
+    public interface CategorClickInterface {
         void onCategoryClick(int position);
     }
 

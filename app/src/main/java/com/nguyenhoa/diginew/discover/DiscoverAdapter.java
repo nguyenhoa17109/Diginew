@@ -42,9 +42,10 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             Intent intent;
+
             @Override
             public void onClick(View v) {
-                switch (position){
+                switch (position) {
                     case 0:
                         intent = new Intent(context, DigiMovie.class);
                         break;

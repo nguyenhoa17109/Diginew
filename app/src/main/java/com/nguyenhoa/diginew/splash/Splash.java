@@ -19,12 +19,12 @@ public class Splash extends AppCompatActivity {
         getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent splash = new Intent(Splash.this,Splash1.class);
-                    startActivity(splash);
-                    finish();
-                }
-            },2000);
-        }
+            @Override
+            public void run() {
+                Intent splash = new Intent(Splash.this, Splash1.class);
+                startActivity(splash);
+                finish();
+            }
+        }, 2000);
+    }
 }

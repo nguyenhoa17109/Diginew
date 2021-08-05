@@ -19,7 +19,7 @@
             android:layout_height="100dp"
             android:background="@drawable/background_corner"
             android:src="@drawable/ic_launcher_background"
-            android:contentDescription="@string/todo"/>
+            android:contentDescription="@string/todo" />
     </androidx.cardview.widget.CardView>
 
 

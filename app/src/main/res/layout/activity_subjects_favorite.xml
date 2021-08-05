@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/img_logo_color"
-        android:contentDescription="@string/todo"/>
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/tv"
@@ -44,5 +44,5 @@
         android:textColor="@color/white"
         android:outlineAmbientShadowColor="@color/white"
         android:shadowColor="@color/white"
-        android:outlineSpotShadowColor="@color/white"/>
+        android:outlineSpotShadowColor="@color/white" />
 </RelativeLayout>

@@ -1,308 +1,320 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
     android:background="@color/gray_300"
     android:fontFamily="@font/roboto"
+    android:orientation="vertical"
     tools:context=".UserSettingActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivBack"
-            android:layout_width="14dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:contentDescription="@string/todo"
-            android:focusable="true"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            android:id="@+id/tvSetting"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:padding="5dp"
-            android:text="@string/setting"
-            android:textSize="24sp"
-            android:textColor="@color/black"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/tvUser"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/user"
-            android:textSize="18sp"
-            android:layout_marginStart="16dp"/>
-
-        <TextView
-            android:id="@+id/tvEditUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:text="@string/editUser"
-            android:textColor="@color/blue_300"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/background_corner"
-        android:padding="10dp"
-        >
-
-        <TextView
-            android:id="@+id/tvUser_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_name"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-        <EditText
-            android:id="@+id/etUser_name"
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="14dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:focusable="true"
+                android:src="@drawable/ic_back" />
+
+            <TextView
+                android:id="@+id/tvSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:padding="5dp"
+                android:text="@string/setting"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Nguyen Van A"
-            android:textColor="@color/blue_300"
-            android:textStyle="bold"
-            android:editable="false"
-            android:background="@null"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"
-            />
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-        <TextView
-            android:id="@+id/tvUser_address"
+            <TextView
+                android:id="@+id/tvUser"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="@string/user"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvEditUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/editUser"
+                android:textColor="@color/blue_300" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/user_address"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/etUser_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Ha Noi"
-            android:textColor="@color/blue_300"
-            android:textStyle="bold"
-            android:editable="false"
-            android:background="@null"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/tvUser_dob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_dob"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/et_User_dob"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            android:text="26/05/1995"
-            android:textColor="@color/blue_300"
-            android:textStyle="bold"
-            android:editable="false"
-            android:background="@null"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
-
-        <TextView
-            android:id="@+id/tvUser_phoneNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_phoneNum"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/etUser_phoneNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="phone"
-            android:text="090xxx"
-            android:textColor="@color/blue_300"
-            android:textStyle="bold"
-            android:editable="false"
-            android:background="@null"
-            android:layout_marginStart="16dp"
-            android:textSize="14sp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/tvUser_app"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/user_app"
-            android:textSize="18sp"
-            android:layout_marginStart="16dp"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/background_corner"
-        android:padding="10dp"
-       >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/noti_register"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"/>
-        <TextView
-            android:id="@+id/tvNotiRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đã đăng ký"
-            android:textColor="@color/blue_300"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp"/>
-
-        <Switch
-            android:id="@+id/notiSwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:theme="@style/MySwitch"
-            tools:ignore="UseSwitchCompatOrMaterialXml" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_appVersion"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="8dp"/>
-        <TextView
-            android:id="@+id/tvSetting_appVersion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="abc"
-            android:textColor="@color/blue_300"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/background_corner"
-        android:padding="10dp"
-        android:layout_marginTop="8dp">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/setting_news"
-            android:layout_marginStart="16dp"
-           />
-
-        <TextView
-            android:id="@+id/tvLocalNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hà Nội"
-            android:textColor="@color/blue_300"
-            android:clickable="true"
-            android:focusable="true"
-            />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/background_corner"
-        android:padding="10dp"
-        android:layout_marginTop="8dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_changeSubject"
-            android:layout_marginStart="16dp"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/background_corner"
-        android:padding="10dp"
-        android:layout_marginTop="8dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/setting_packCancellation"
-            android:layout_marginStart="16dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
-
-        <Button
-            android:id="@+id/btLogout"
-            android:layout_width="328dp"
-            android:layout_height="36dp"
             android:background="@drawable/background_corner"
-            android:text="@string/logout"
-            android:textColor="@color/gray_400"
-            android:textStyle="bold"
-            />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:padding="10dp">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvUser_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/user_name"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etUser_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:text="Nguyen Van A"
+                android:textColor="@color/blue_300"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUser_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/user_address"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etUser_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:text="Ha Noi"
+                android:textColor="@color/blue_300"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUser_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/user_dob"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/et_User_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="date"
+                android:text="26/05/1995"
+                android:textColor="@color/blue_300"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvUser_phoneNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/user_phoneNum"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/etUser_phoneNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@null"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="phone"
+                android:text="090xxx"
+                android:textColor="@color/blue_300"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tvUser_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/user_app"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_corner"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/noti_register" />
+
+            <TextView
+                android:id="@+id/tvNotiRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Đã đăng ký"
+                android:textColor="@color/blue_300"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/notiSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:theme="@style/MySwitch"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/setting_appVersion" />
+
+            <TextView
+                android:id="@+id/tvSetting_appVersion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="abc"
+                android:textColor="@color/blue_300"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutLocalNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_corner"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="@string/setting_news" />
+
+            <TextView
+                android:id="@+id/tvLocalNews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Hà Nội"
+                android:textColor="@color/blue_300" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_corner"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/setting_changeSubject" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_corner"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/setting_packCancellation" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btLogout"
+                android:layout_width="328dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_corner"
+                android:text="@string/logout"
+                android:textColor="@color/gray_400"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

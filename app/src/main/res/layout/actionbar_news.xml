@@ -16,7 +16,7 @@
         android:clickable="true"
         android:focusable="true"
         app:srcCompat="@drawable/ic_back"
-        android:contentDescription="@string/todo"/>
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/tvNewsTopic"
@@ -27,6 +27,6 @@
         android:text=""
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
 </LinearLayout>

@@ -14,7 +14,8 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:contentDescription="@string/todo"
-        android:src="@drawable/img_news"/>
+        android:src="@drawable/img_news" />
+
     <TextView
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"

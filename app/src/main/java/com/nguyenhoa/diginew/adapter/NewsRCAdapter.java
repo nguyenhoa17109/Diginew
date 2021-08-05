@@ -27,19 +27,20 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
         this.context = context;
     }
 
-    public interface ItemNewsRCClickListener{
+    public interface ItemNewsRCClickListener {
         void onItemClick(View view, int position);
     }
 
-    public void setClickNewsListener(ItemNewsRCClickListener itemNewsRCClickListener){
+    public void setClickNewsListener(ItemNewsRCClickListener itemNewsRCClickListener) {
         this.itemNewsRCClickListener = itemNewsRCClickListener;
     }
 
-    public void setData(ArrayList<News> list){
+    public void setData(ArrayList<News> list) {
         this.list = list;
         notifyDataSetChanged();
     }
-    public News getItem(int position){
+
+    public News getItem(int position) {
         return list.get(position);
     }
 
@@ -52,13 +53,13 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  NewsRCAdapter.NewsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewsRCAdapter.NewsViewHolder holder, int position) {
         News news = list.get(position);
-        if(news == null)    return;
+        if (news == null) return;
         holder.tvSource.setText(list.get(position).getSource());
         holder.tvCmts.setText(String.valueOf(list.get(position).getCmts()));
         holder.tvLikes.setText(String.valueOf(list.get(position).getLikes()));
-        holder.tvTime.setText(list.get(position).getTimes()+" "+context.getResources().getString(R.string.time));
+        holder.tvTime.setText(list.get(position).getTimes() + " " + context.getResources().getString(R.string.time));
         holder.ivNews.setImageResource(list.get(position).getImgs());
         holder.tvTitle.setText(list.get(position).getTitle());
     }
@@ -68,7 +69,7 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
         return list.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvSource, tvTime, tvTitle, tvLikes, tvCmts;
         private ImageView ivNews;
 
@@ -86,7 +87,7 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
 
         @Override
         public void onClick(View view) {
-            if(itemNewsRCClickListener != null)
+            if (itemNewsRCClickListener != null)
                 itemNewsRCClickListener.onItemClick(view, getAdapterPosition());
         }
     }

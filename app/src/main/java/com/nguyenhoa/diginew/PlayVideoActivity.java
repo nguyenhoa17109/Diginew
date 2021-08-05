@@ -43,7 +43,7 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         tvTitleNews.setText(news.getTitle());
 //        tvContent.setText(news.getContent());
         tvSource.setText(news.getSource());
-        tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+        tvTime.setText(news.getTimes() + " " + getResources().getString(R.string.time));
         tvLikes.setText(String.valueOf(news.getLikes()));
         tvCmts.setText(String.valueOf(news.getCmts()));
 

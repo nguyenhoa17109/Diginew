@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:padding="20dp"/>
+        android:padding="20dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvVideo"
@@ -22,7 +22,7 @@
         android:orientation="vertical"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:background="@drawable/background_corner_top"/>
+        android:background="@drawable/background_corner_top" />
 
 
 </LinearLayout>

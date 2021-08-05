@@ -32,7 +32,7 @@ import com.nguyenhoa.diginew.model.News;
 import static com.nguyenhoa.diginew.R.drawable.background_button;
 import static com.nguyenhoa.diginew.R.drawable.background_disable_button;
 
-public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
+public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private TextView tvTitleNews, tvSource, tvTime, tvTopic, tvLikes, tvCmts, tvContent;
     private ImageView ivAccount, ivShare, ivBack;
     private RecyclerView recyclerView;
@@ -56,12 +56,12 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         Intent intent = getIntent();
         news = (News) intent.getSerializableExtra("text");
-        if(news != null){
+        if (news != null) {
             tvTopic.setText(news.getTopic());
             tvTitleNews.setText(news.getTitle());
             tvContent.setText(news.getContent());
             tvSource.setText(news.getSource());
-            tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+            tvTime.setText(news.getTimes() + " " + getResources().getString(R.string.time));
             tvLikes.setText(String.valueOf(news.getLikes()));
             tvCmts.setText(String.valueOf(news.getCmts()));
 
@@ -71,7 +71,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             tvContent.setTypeface(typeface);
             tvContent.setTextSize(size);
 
-        }else{
+        } else {
             Toast.makeText(this, "News is empty!!!", Toast.LENGTH_SHORT).show();
         }
 
@@ -92,16 +92,16 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.aRestore:{
+        switch (item.getItemId()) {
+            case R.id.aRestore: {
                 Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.aDownload:{
+            case R.id.aDownload: {
                 Toast.makeText(this, "Đã tải tin", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.aFormatSize:{
+            case R.id.aFormatSize: {
                 changeSize();
                 break;
             }
@@ -127,7 +127,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         int size = preferences.getInt("size", 18);
         int id = preferences.getInt("font", R.font.lora);
-        switch (size){
+        switch (size) {
             case 18:
                 seekBar.setProgress(0);
                 break;
@@ -138,11 +138,11 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 seekBar.setProgress(2);
                 break;
         }
-        Log.d("LOO", R.font.lora+"//"+id);
-        if(id == R.font.lora) {
+        Log.d("LOO", R.font.lora + "//" + id);
+        if (id == R.font.lora) {
             bt2.setBackgroundResource(background_button);
             bt1.setBackgroundResource(background_disable_button);
-        }else{
+        } else {
             bt1.setBackgroundResource(background_button);
             bt2.setBackgroundResource(background_disable_button);
         }
@@ -172,7 +172,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 bt2.setBackgroundResource(background_disable_button);
 
                 int size = 18;
-                switch (level[0]){
+                switch (level[0]) {
                     case 0:
                         size = 18;
                         break;
@@ -200,7 +200,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 bt1.setBackgroundResource(background_disable_button);
 
                 int size = 18;
-                switch (level[0]){
+                switch (level[0]) {
                     case 0:
                         size = 18;
                         break;
@@ -223,7 +223,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         });
     }
 
-    public void init(){
+    public void init() {
         preferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         tvTitleNews = findViewById(R.id.tvTitleNews);
@@ -256,7 +256,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         startActivity(intent);
     }
 
-    private void updateText(int size, int id){
+    private void updateText(int size, int id) {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("size", size);
         editor.putInt("font", id);

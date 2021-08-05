@@ -13,13 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Diginew">
-        <activity android:name=".UserActivity"></activity>
+        <activity android:name=".User_Free_Activity" />
+        <!--         <activity android:name=".UserActivity" />-->
         <activity android:name=".UserSettingActivity" />
         <activity android:name=".InfoNewsActivity" />
         <activity android:name=".PlayVideoActivity" />
         <activity android:name=".NewsActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".splash.Splash">
+        <activity android:name=".splash.Splash" />
+        <activity android:name=".UserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,6 +40,10 @@
         <activity android:name=".discover.DigiMovie" />
         <activity android:name=".discover.DigiClip" />
         <activity android:name=".discover.DigiMusic" />
+        <activity android:name=".digiPack.DigiAdvance" />
+        <activity android:name=".digiPack.DigiLife" />
+        <activity android:name=".digiPack.DigiStandard" />
+        <activity android:name=".digiPack.DigiRegister" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

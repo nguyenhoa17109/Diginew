@@ -36,7 +36,7 @@ public class TopicVideoAdapter extends RecyclerView.Adapter<TopicVideoAdapter.My
         this.list = list;
     }
 
-    public interface ItemTopicVideoRCClickListener{
+    public interface ItemTopicVideoRCClickListener {
         void onItemClick(View view, int position);
     }
 
@@ -44,7 +44,7 @@ public class TopicVideoAdapter extends RecyclerView.Adapter<TopicVideoAdapter.My
         this.itemTopicVideoRCClickListener = itemTopicVideoRCClickListener;
     }
 
-    public Topic getItem(int position){
+    public Topic getItem(int position) {
         return list.get(position);
     }
 
@@ -70,9 +70,9 @@ public class TopicVideoAdapter extends RecyclerView.Adapter<TopicVideoAdapter.My
             }
         });
 
-        if(index == position){
+        if (index == position) {
             holder.textView.setTextColor(Color.parseColor("#5151FA"));
-        }else
+        } else
             holder.textView.setTextColor(Color.WHITE);
     }
 
@@ -81,7 +81,7 @@ public class TopicVideoAdapter extends RecyclerView.Adapter<TopicVideoAdapter.My
         return list.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout layout;
         private TextView textView;
 

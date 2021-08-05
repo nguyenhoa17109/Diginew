@@ -30,7 +30,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/ic_play"
-                android:contentDescription="@string/todo"/>
+                android:contentDescription="@string/todo" />
         </LinearLayout>
 
 
@@ -42,7 +42,7 @@
             android:text="@string/eg_title"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
 
         <TableRow
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 android:text="@string/_200"
                 android:layout_marginEnd="10dp"
                 app:drawableEndCompat="@drawable/ic_like"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tvCmt"

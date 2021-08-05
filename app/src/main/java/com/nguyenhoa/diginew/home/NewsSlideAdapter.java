@@ -20,11 +20,11 @@ public class NewsSlideAdapter extends SliderViewAdapter<NewsSlideAdapter.SlideHo
         this.list = list;
     }
 
-    public News getItem(int position){
+    public News getItem(int position) {
         return list.get(position);
     }
 
-    public interface ItemSlideNewsClick{
+    public interface ItemSlideNewsClick {
         void OnItemClick(View view, int position);
     }
 

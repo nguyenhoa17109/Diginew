@@ -21,6 +21,7 @@ public class DiscoverFragment extends Fragment {
     private RecyclerView rvDiscover;
     private DiscoverAdapter discoverAdapter;
     private ArrayList<Topic> list;
+
     public DiscoverFragment() {
     }
 

@@ -21,7 +21,7 @@ import com.nguyenhoa.diginew.model.News;
 import java.util.ArrayList;
 
 
-public class CategoriesFragment extends Fragment implements CategoriesAdapter.CategorClickInterface{
+public class CategoriesFragment extends Fragment implements CategoriesAdapter.CategorClickInterface {
     private CategoriesAdapter categoriesAdapter;
     private RecyclerView categoryRV;
     private String[] topics = {"Địa phương", "Đời sống", "Kinh tế", "Sức khỏe", "Xã hội", "Khoa hoc", "Giải trí", "Công nghệ", "Thể thao", "Tâm sự"};
@@ -58,10 +58,9 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
     public void onCategoryClick(int position) {
         String category = MyList.list.get(position).getName();
 
-        if(category.equals("Địa phương")){
+        if (category.equals("Địa phương")) {
             insertNestedFragment();
-        }
-        else {
+        } else {
             Bundle bundle = new Bundle();
             bundle.putString("category", category);
             Fragment childFragment = new ChildFragment();
@@ -71,7 +70,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     }
 
-    public static class ChildFragment extends Fragment{
+    public static class ChildFragment extends Fragment {
         private NewsAdapter newsAdapter;
         private ListView newsRV;
         private ArrayList<News> newsArrayList;
@@ -79,7 +78,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
         @Nullable
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view =  inflater.inflate(R.layout.fragment_child_category, container, false);
+            View view = inflater.inflate(R.layout.fragment_child_category, container, false);
 
             newsRV = view.findViewById(R.id.rvNews);
             newsArrayList = new ArrayList<>();
@@ -97,45 +96,38 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
         private void receiveData(String s) {
             newsArrayList.clear();
 
-            if(s.equals("Đời sống")){
-                newsArrayList.add(new News("Đời sống","text", "Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
+            if (s.equals("Đời sống")) {
+                newsArrayList.add(new News("Đời sống", "text", "Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                         R.drawable.img_clip, "abc"));
-                newsArrayList.add(new News("Đời sống","text", "Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
+                newsArrayList.add(new News("Đời sống", "text", "Vietnamnet", 6, "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 100, 200,
                         R.drawable.img_clip, "abc"));
-            }
-            else if(s.equals("Kinh tế")){
-                newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6, "Kinh tế nè", 100, 200,
+            } else if (s.equals("Kinh tế")) {
+                newsArrayList.add(new News("Kinh tế", "text", "Vietnamnet", 6, "Kinh tế nè", 100, 200,
                         R.drawable.img_clip, "abc"));
-                newsArrayList.add(new News("Kinh tế","text", "Vietnamnet", 6, "Kinh tế nè", 100, 200,
+                newsArrayList.add(new News("Kinh tế", "text", "Vietnamnet", 6, "Kinh tế nè", 100, 200,
                         R.drawable.img_clip, "abc"));
-            }
-            else if(s.equals("Sức khỏe")){
-                newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", 6, "Sức khỏe nè", 100, 200,
+            } else if (s.equals("Sức khỏe")) {
+                newsArrayList.add(new News("Sức khỏe", "text", "Vietnamnet", 6, "Sức khỏe nè", 100, 200,
                         R.drawable.img_clip, "abc"));
-                newsArrayList.add(new News("Sức khỏe","text", "Vietnamnet", 6, "Sức khỏe nè", 100, 200,
+                newsArrayList.add(new News("Sức khỏe", "text", "Vietnamnet", 6, "Sức khỏe nè", 100, 200,
                         R.drawable.img_clip, "abc"));
-            }
-
-            else if(s.equals("Thành phố Hà Nội")){
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương TP HN", 100, 200,
+            } else if (s.equals("Thành phố Hà Nội")) {
+                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương TP HN", 100, 200,
                         R.drawable.img_clip, "abc"));
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương TP HN", 100, 200,
+                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương TP HN", 100, 200,
                         R.drawable.img_clip, "abc"));
-            }
-            else if(s.equals("Tỉnh Hà Giang")){
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương tỉnh Hà Giang", 100, 200,
+            } else if (s.equals("Tỉnh Hà Giang")) {
+                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương tỉnh Hà Giang", 100, 200,
                         R.drawable.img_clip, "abc"));
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Địa phương tỉnh Hà Giang", 100, 200,
+                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương tỉnh Hà Giang", 100, 200,
                         R.drawable.img_clip, "abc"));
-            }
-            else if(s.equals("Tỉnh Cao Bằng")) {
+            } else if (s.equals("Tỉnh Cao Bằng")) {
                 newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương tỉnh Cao Bằng", 100, 200,
                         R.drawable.img_clip, "abc"));
                 newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Địa phương tỉnh Cao Bằng", 100, 200,
                         R.drawable.img_clip, "abc"));
-            }
-            else{
-                newsArrayList.add(new News("Địa phương","text", "Vietnamnet", 6, "Dữ liệu khác", 100, 200,
+            } else {
+                newsArrayList.add(new News("Địa phương", "text", "Vietnamnet", 6, "Dữ liệu khác", 100, 200,
                         R.drawable.img_clip, "abc"));
             }
             newsAdapter.notifyDataSetChanged();
@@ -144,7 +136,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     }
 
-    private void insertNestedFragment(){
+    private void insertNestedFragment() {
         Fragment provincesFragment = new ProvincesFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.frChildCategory, provincesFragment).commit();

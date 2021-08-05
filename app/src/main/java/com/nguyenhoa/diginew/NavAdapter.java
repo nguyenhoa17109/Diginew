@@ -12,6 +12,7 @@ import com.nguyenhoa.diginew.video.VideoFragment;
 
 public class NavAdapter extends FragmentStatePagerAdapter {
     private int numPage = 4;
+
     public NavAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
@@ -19,12 +20,17 @@ public class NavAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0: return new HomeFragment();
-            case 1: return new VideoFragment();
-            case 2: return new DiscoverFragment();
-            case 3: return new CategoriesFragment();
-            default: return new HomeFragment();
+        switch (position) {
+            case 0:
+                return new HomeFragment();
+            case 1:
+                return new VideoFragment();
+            case 2:
+                return new DiscoverFragment();
+            case 3:
+                return new CategoriesFragment();
+            default:
+                return new HomeFragment();
         }
     }
 

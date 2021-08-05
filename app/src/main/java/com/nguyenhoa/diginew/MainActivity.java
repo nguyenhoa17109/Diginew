@@ -31,14 +31,18 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.mHome: viewPager.setCurrentItem(0);
+                switch (item.getItemId()) {
+                    case R.id.mHome:
+                        viewPager.setCurrentItem(0);
                         break;
-                    case R.id.mVideo: viewPager.setCurrentItem(1);
+                    case R.id.mVideo:
+                        viewPager.setCurrentItem(1);
                         break;
-                    case R.id.mDiscover: viewPager.setCurrentItem(2);
+                    case R.id.mDiscover:
+                        viewPager.setCurrentItem(2);
                         break;
-                    case R.id.mCategories: viewPager.setCurrentItem(3);
+                    case R.id.mCategories:
+                        viewPager.setCurrentItem(3);
                 }
                 return true;
             }

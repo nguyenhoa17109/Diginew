@@ -9,11 +9,11 @@ import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.model.News;
 
 public class MyClass {
-    public static void setIntent(News news, Activity activity){
+    public static void setIntent(News news, Activity activity) {
         String type = news.getType();
         Intent intent = null;
 
-        switch (type){
+        switch (type) {
             case "text":
                 intent = new Intent(activity, NewsActivity.class);
                 break;

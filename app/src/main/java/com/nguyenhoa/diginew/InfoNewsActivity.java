@@ -40,7 +40,7 @@ public class InfoNewsActivity extends AppCompatActivity {
         tvTopic.setText(news.getTopic());
     }
 
-    private void init(){
+    private void init() {
         ivBack = findViewById(R.id.ivBack);
         ivInfo = findViewById(R.id.tvNewsInfo);
         tvTopic = findViewById(R.id.tvTopic);

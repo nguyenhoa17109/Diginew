@@ -45,7 +45,7 @@ public class ProvincesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_provinces, container, false);
+        View view = inflater.inflate(R.layout.fragment_provinces, container, false);
 
 
         btChooseProvince = view.findViewById(R.id.btChooseProvince);
@@ -60,7 +60,7 @@ public class ProvincesFragment extends Fragment {
     }
 
 
-    private void getDataProvinces(){
+    private void getDataProvinces() {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, linkProvinces, null, new Response.Listener<JSONArray>() {
             @Override
@@ -91,7 +91,7 @@ public class ProvincesFragment extends Fragment {
                             public void run() {
                                 provincesBottomSheet.dismiss();
                             }
-                        },1500);
+                        }, 1500);
                     }
                 });
                 provincesBottomSheet.show(getFragmentManager(), provincesBottomSheet.getTag());

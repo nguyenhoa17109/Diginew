@@ -25,19 +25,20 @@ public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.Ne
         this.context = context;
     }
 
-    public interface ItemNewsRCClickListener{
+    public interface ItemNewsRCClickListener {
         void onItemClick(View view, int position);
     }
 
-    public void setClickNewsListener(ItemNewsRCClickListener itemNewsRCClickListener){
+    public void setClickNewsListener(ItemNewsRCClickListener itemNewsRCClickListener) {
         this.itemNewsRCClickListener = itemNewsRCClickListener;
     }
 
-    public void setData(ArrayList<News> list){
+    public void setData(ArrayList<News> list) {
         this.list = list;
         notifyDataSetChanged();
     }
-    public News getItem(int position){
+
+    public News getItem(int position) {
         return list.get(position);
     }
 
@@ -50,9 +51,9 @@ public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.Ne
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  NewsInfoRCAdapter.NewsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewsInfoRCAdapter.NewsViewHolder holder, int position) {
         News news = list.get(position);
-        if(news == null)    return;
+        if (news == null) return;
 
         holder.ivNews.setImageResource(list.get(position).getImgs());
     }
@@ -62,7 +63,7 @@ public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.Ne
         return list.size();
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class NewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView ivNews;
 
         public NewsViewHolder(@NonNull View view) {
@@ -74,7 +75,7 @@ public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.Ne
 
         @Override
         public void onClick(View view) {
-            if(itemNewsRCClickListener != null)
+            if (itemNewsRCClickListener != null)
                 itemNewsRCClickListener.onItemClick(view, getAdapterPosition());
         }
     }

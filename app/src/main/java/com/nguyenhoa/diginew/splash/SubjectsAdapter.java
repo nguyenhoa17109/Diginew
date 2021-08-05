@@ -45,7 +45,7 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyView
         holder.tvSubject.setText(subject.getName());
         holder.tvSubject.setBackgroundResource(subject.getImg());
 
-        if(subject.getSelected()){
+        if (subject.getSelected()) {
             holder.cardView.setBackgroundColor(Color.parseColor("#6E8DFB"));
         }
 //        else{
@@ -55,11 +55,10 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(subject.getSelected()){
+                if (subject.getSelected()) {
                     holder.itemView.setBackgroundColor(Color.TRANSPARENT);
                     subject.setSelected(false);
-                }
-                else{
+                } else {
                     holder.itemView.setBackgroundColor(Color.BLUE);
                     subject.setSelected(true);
                 }

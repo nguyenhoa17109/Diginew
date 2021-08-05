@@ -62,6 +62,7 @@
             app:sliderStartAutoCycle="true" />
 
     </LinearLayout>
+
     <ListView
         android:id="@+id/lvNews"
         android:layout_width="match_parent"
@@ -69,7 +70,6 @@
         android:background="@drawable/background_corner_top"
         android:padding="10dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp">
-    </ListView>
+        android:layout_marginBottom="60dp"></ListView>
 
 </LinearLayout>

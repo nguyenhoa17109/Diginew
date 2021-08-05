@@ -17,6 +17,7 @@ import com.nguyenhoa.diginew.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.SearchActivity;
+import com.nguyenhoa.diginew.UserActivity;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
@@ -104,7 +105,8 @@ public class HomeFragment extends Fragment {
         ivUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent in = new Intent(getActivity(), UserActivity.class);
+                startActivity(in);
             }
         });
 

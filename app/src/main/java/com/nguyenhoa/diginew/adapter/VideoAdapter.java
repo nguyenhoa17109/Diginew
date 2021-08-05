@@ -31,7 +31,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         notifyDataSetChanged();
     }
 
-    public interface ItemVideoRCClickListener{
+    public interface ItemVideoRCClickListener {
         void onItemClick(View view, int position);
     }
 
@@ -39,7 +39,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         this.itemVideoRCClickListener = itemVideoRCClickListener;
     }
 
-    public News getItem(int position){
+    public News getItem(int position) {
         return list.get(position);
     }
 
@@ -52,13 +52,13 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull  VideoAdapter.VideoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VideoAdapter.VideoViewHolder holder, int position) {
         News news = list.get(position);
-        if(news == null)    return;
+        if (news == null) return;
         holder.tvSource.setText(list.get(position).getSource());
         holder.tvCmts.setText(String.valueOf(list.get(position).getCmts()));
         holder.tvLikes.setText(String.valueOf(list.get(position).getLikes()));
-        holder.tvTime.setText(list.get(position).getTimes()+" "+context.getResources().getString(R.string.time));
+        holder.tvTime.setText(list.get(position).getTimes() + " " + context.getResources().getString(R.string.time));
         holder.layout.setBackgroundResource(list.get(position).getImgs());
         holder.tvTitle.setText(list.get(position).getTitle());
 
@@ -69,7 +69,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         return list.size();
     }
 
-    public class VideoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class VideoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvSource, tvTime, tvTitle, tvLikes, tvCmts;
         private LinearLayout layout;
 
@@ -87,7 +87,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
         @Override
         public void onClick(View view) {
-            if(itemVideoRCClickListener != null){
+            if (itemVideoRCClickListener != null) {
                 itemVideoRCClickListener.onItemClick(view, getAdapterPosition());
             }
         }
