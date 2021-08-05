@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.nguyenhoa.diginew.adapter.NewsDownloadedAdapter;
 import com.nguyenhoa.diginew.common.MyList;
@@ -31,7 +32,8 @@ public class NewsDownloadedActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Operation operation = (Operation) intent.getSerializableExtra("download");
         ArrayList<Operation> lst = MyList.listOperation;
-        lst.add(operation);
+        if(operation != null)
+            lst.add(operation);
 
         ivBack = findViewById(R.id.ivBack);
         rvDownload = findViewById(R.id.rvNewsDownload);

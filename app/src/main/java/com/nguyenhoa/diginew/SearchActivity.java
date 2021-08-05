@@ -64,6 +64,23 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
             @Override
             public boolean onQueryTextSubmit(String s) {
                 setSearch(s);
+                spYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        try{
+                            String s1 = spYear.getSelectedItem().toString();
+                            if(s1.equals("Năm nay"))    s1 = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+                            setListNews(s, s1);
+                        } catch (Exception e) {
+                            System.out.println(e);
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+
+                    }
+                });
                 return false;
             }
 
@@ -73,24 +90,8 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
             }
         });
 
-        String s = etSearch.getQuery().toString();
-        spYear.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                try{
-                    String s1 = spYear.getSelectedItem().toString();
-                    if(s1.equals("Năm nay"))    s1 = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-                    setListNews(s, s1);
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
+//        String s = etSearch.getQuery().toString();
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         setClickTV(tvSearch1);
         setClickTV(tvSearch2);
@@ -124,8 +125,8 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
             @Override
             public void onClick(View view) {
                 String s = tvSearch1.getText().toString();
-                etSearch.setQuery(s, false);
-                setSearch(s);
+                etSearch.setQuery(s, true);
+//                setSearch(s);
             }
         });
 
@@ -203,7 +204,7 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
                 list.add(news);
             }
         }
-        Log.d("PPP", list.size()+"");
+        Log.d("PPP", s+"  "+s2);
         return list;
     }
 
