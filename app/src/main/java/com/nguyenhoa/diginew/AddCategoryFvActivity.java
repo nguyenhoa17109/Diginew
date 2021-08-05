@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nguyenhoa.diginew.adapter.AddCategoryAdapter;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
@@ -68,8 +71,9 @@ public class AddCategoryFvActivity extends AppCompatActivity implements AddCateg
         searchView = findViewById(R.id.etSearch);
         rvCategory = findViewById(R.id.rvAddCategory);
 
-        listAdd = new ArrayList<>();
-        adapter = new AddCategoryAdapter(this);
+        adapter = new AddCategoryAdapter(getApplicationContext(), this::ClickItem);
+        listAdd = MyList.setListChoseSubjectFV(getApplicationContext());
+
         list = MyList.setListUnFavor(MyList.setListChoseSubjectFV(getApplicationContext()));
         adapter.setData(list);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(),
@@ -78,8 +82,16 @@ public class AddCategoryFvActivity extends AppCompatActivity implements AddCateg
         rvCategory.setAdapter(adapter);
     }
 
+
     @Override
-    public void ClickItem(View v, int index) {
-        listAdd.add(adapter.getItem(index));
+    public void ClickItem(int index) {
+        listAdd.add(list.get(index));
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(listAdd);
+        editor.putString("listSubjectFV", json);
+        editor.commit();
     }
 }

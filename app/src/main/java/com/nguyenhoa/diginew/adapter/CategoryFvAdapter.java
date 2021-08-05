@@ -1,6 +1,8 @@
 package com.nguyenhoa.diginew.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
@@ -22,6 +26,11 @@ public class CategoryFvAdapter extends RecyclerView.Adapter<CategoryFvAdapter.Ca
 
     public CategoryFvAdapter(Context context, ArrayList<Topic> list) {
         this.context = context;
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
+    public void setData(ArrayList<Topic> list){
         this.list = list;
         notifyDataSetChanged();
     }
@@ -73,6 +82,7 @@ public class CategoryFvAdapter extends RecyclerView.Adapter<CategoryFvAdapter.Ca
         list.remove(position);
         notifyDataSetChanged();
     }
+
     public void addItem(Topic topic){
         list.add(topic);
         notifyDataSetChanged();
