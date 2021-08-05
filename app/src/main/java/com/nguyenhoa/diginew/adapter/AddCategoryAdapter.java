@@ -18,14 +18,20 @@ import java.util.ArrayList;
 public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.AddCategoryViewHolder> {
     private Context context;
     private ArrayList<Topic> list;
+    private OnClickItem onClickItem;
 
-    public AddCategoryAdapter(Context context) {
+    public AddCategoryAdapter(Context context, OnClickItem onClickItem) {
         this.context = context;
+        this.onClickItem = onClickItem;
     }
 
     public void setData(ArrayList<Topic> list){
         this.list = list;
         notifyDataSetChanged();
+    }
+
+    public interface OnClickItem{
+        void ClickItem(int index);
     }
 
     @NonNull
@@ -46,6 +52,10 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
                 holder.btAdd.setBackgroundResource(R.drawable.background_button_add_disable);
                 holder.btAdd.setText(R.string.added);
                 list.get(position).setSelected(true);
+
+                onClickItem.ClickItem(position);
+
+//                removeItem(position);
             }
         });
     }
@@ -55,7 +65,7 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
         return list.size();
     }
 
-    public class AddCategoryViewHolder extends RecyclerView.ViewHolder {
+    public class AddCategoryViewHolder extends RecyclerView.ViewHolder{
         private TextView tvTopic;
         private Button btAdd;
 
@@ -66,4 +76,14 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
             btAdd = itemView.findViewById(R.id.btAdd);
         }
     }
+
+//    public void removeItem(int position){
+//        list.remove(position);
+//
+//    }
+//
+//    public Topic getItem(int index){
+//        return list.get(index);
+//    }
+
 }

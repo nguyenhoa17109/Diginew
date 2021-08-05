@@ -14,24 +14,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.login.widget.ToolTipPopup;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
 import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
-import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
-public class CategoryFvActivity extends AppCompatActivity {
+public class CategoryFvActivity extends AppCompatActivity implements CategoryRvChangeAdapter.CategoryChangeListener {
     private ImageView ivBack;
     private TextView tvChange;
     private Button btAdd;
     private RecyclerView rvCategory, rvChange;
     private CategoryFvAdapter adapter;
     private CategoryRvChangeAdapter adapter1;
+    private ArrayList<Topic> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,6 @@ public class CategoryFvActivity extends AppCompatActivity {
         tvChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("OO", "OK");
                 String s = tvChange.getText().toString();
                 if(s.equals("Thay đổi")){
                     tvChange.setText(R.string.done);
@@ -78,7 +75,6 @@ public class CategoryFvActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void setRV2() {
@@ -101,7 +97,31 @@ public class CategoryFvActivity extends AppCompatActivity {
         rvCategory = findViewById(R.id.rvCategory);
         rvChange = findViewById(R.id.rvCategory1);
 
-        adapter = new CategoryFvAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
-        adapter1 = new CategoryRvChangeAdapter(this, MyList.setListChoseSubjectFV(getApplicationContext()));
+        list = MyList.setListChoseSubjectFV(getApplicationContext());
+
+        adapter = new CategoryFvAdapter(this, list);
+        adapter1 = new CategoryRvChangeAdapter(this, list, this::onCategoryChangeItem);
+    }
+
+    @Override
+    public void onCategoryChangeItem(int position) {
+        adapter1.setData(list);
+        adapter.setData(list);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString("listSubjectFV", json);
+        editor.commit();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        list = MyList.setListChoseSubjectFV(getApplicationContext());
+        adapter1.setData(list);
+        adapter.setData(list);
     }
 }
