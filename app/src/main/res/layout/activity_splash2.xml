@@ -10,11 +10,11 @@
     tools:context=".splash.Splash2">
 
     <ImageView
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/ivSplash2"
         android:src="@drawable/img_logo_nocolor"
-        android:layout_marginTop="100dp"
+        android:layout_margin="20dp"
         android:contentDescription="@string/todo" />
 
     <androidx.cardview.widget.CardView

@@ -55,7 +55,7 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = getIntent();
+//                Intent intent = getIntent();
                 finish();
             }
         });
