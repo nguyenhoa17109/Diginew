@@ -1,5 +1,6 @@
 package com.nguyenhoa.diginew;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.login.widget.ToolTipPopup;
 import com.google.gson.Gson;
@@ -27,7 +29,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryFvActivity extends AppCompatActivity {
+public class CategoryFvActivity extends AppCompatActivity implements CategoryRvChangeAdapter.CategoryChangeListener {
     private ImageView ivBack;
     private TextView tvChange;
     private Button btAdd;
@@ -105,9 +107,31 @@ public class CategoryFvActivity extends AppCompatActivity {
         rvChange = findViewById(R.id.rvCategory1);
 
         list = MyList.setListChoseSubjectFV(getApplicationContext());
-        Intent intent = getIntent();
 
         adapter = new CategoryFvAdapter(this, list);
-        adapter1 = new CategoryRvChangeAdapter(this, list);
+        adapter1 = new CategoryRvChangeAdapter(this, list, this::onCategoryChangeItem);
+    }
+
+    @Override
+    public void onCategoryChangeItem(int position) {
+        adapter1.setData(list);
+        adapter.setData(list);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        editor.putString("listSubjectFV", json);
+        editor.commit();
+    }
+
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        list = MyList.setListChoseSubjectFV(getApplicationContext());
+        adapter1.setData(list);
+        adapter.setData(list);
     }
 }

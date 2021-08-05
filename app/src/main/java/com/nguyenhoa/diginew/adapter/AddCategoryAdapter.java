@@ -18,10 +18,11 @@ import java.util.ArrayList;
 public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.AddCategoryViewHolder> {
     private Context context;
     private ArrayList<Topic> list;
-    private OnClickItem item;
+    private OnClickItem onClickItem;
 
-    public AddCategoryAdapter(Context context) {
+    public AddCategoryAdapter(Context context, OnClickItem onClickItem) {
         this.context = context;
+        this.onClickItem = onClickItem;
     }
 
     public void setData(ArrayList<Topic> list){
@@ -30,7 +31,7 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
     }
 
     public interface OnClickItem{
-        void ClickItem(View v, int index);
+        void ClickItem(int index);
     }
 
     @NonNull
@@ -51,7 +52,10 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
                 holder.btAdd.setBackgroundResource(R.drawable.background_button_add_disable);
                 holder.btAdd.setText(R.string.added);
                 list.get(position).setSelected(true);
-                removeItem(position);
+
+                onClickItem.ClickItem(position);
+
+//                removeItem(position);
             }
         });
     }
@@ -61,7 +65,7 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
         return list.size();
     }
 
-    public class AddCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class AddCategoryViewHolder extends RecyclerView.ViewHolder{
         private TextView tvTopic;
         private Button btAdd;
 
@@ -70,23 +74,16 @@ public class AddCategoryAdapter extends RecyclerView.Adapter<AddCategoryAdapter.
 
             tvTopic = itemView.findViewById(R.id.tvCategory);
             btAdd = itemView.findViewById(R.id.btAdd);
-            itemView.setOnClickListener(this::onClick);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if(item != null)
-                item.ClickItem(view, getAdapterPosition());
         }
     }
 
-    public void removeItem(int position){
-        list.remove(position);
-
-    }
-
-    public Topic getItem(int index){
-        return list.get(index);
-    }
+//    public void removeItem(int position){
+//        list.remove(position);
+//
+//    }
+//
+//    public Topic getItem(int index){
+//        return list.get(index);
+//    }
 
 }
