@@ -1,6 +1,5 @@
 package com.nguyenhoa.diginew;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.login.widget.ToolTipPopup;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
 import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
-import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
@@ -124,7 +120,6 @@ public class CategoryFvActivity extends AppCompatActivity implements CategoryRvC
         editor.putString("listSubjectFV", json);
         editor.commit();
     }
-
 
     @Override
     protected void onRestart() {
