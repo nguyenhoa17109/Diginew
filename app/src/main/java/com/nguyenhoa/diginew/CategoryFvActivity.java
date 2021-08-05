@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
@@ -21,9 +20,7 @@ import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CategoryFvActivity extends AppCompatActivity implements CategoryRvChangeAdapter.CategoryChangeListener {
     private ImageView ivBack;
@@ -66,7 +63,6 @@ public class CategoryFvActivity extends AppCompatActivity implements CategoryRvC
         tvChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Log.d("OO", "OK");
                 String s = tvChange.getText().toString();
                 if(s.equals("Thay đổi")){
                     tvChange.setText(R.string.done);
@@ -79,7 +75,6 @@ public class CategoryFvActivity extends AppCompatActivity implements CategoryRvC
                 }
             }
         });
-
     }
 
     private void setRV2() {
