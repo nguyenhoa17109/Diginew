@@ -143,9 +143,13 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             case R.id.aDownload:{
                 Operation operation = new Operation(news, MyList.today, false, true);
 
-                Toast.makeText(this, "Đã tải tin", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(NewsActivity.this, NewsDownloadedActivity.class);
-                intent.putExtra("download", operation);
+                if(check(operation)){
+                    intent.putExtra("download", operation);
+                    Toast.makeText(this, "Đã tải tin", Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(this, "Tin đã tồn tại", Toast.LENGTH_SHORT).show();
+
                 startActivity(intent);
                 break;
             }
@@ -155,6 +159,14 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean check(Operation operation) {
+        for(Operation operation1:MyList.listOperation){
+            if(operation.getNews() == operation1.getNews())
+                return false;
+        }
+        return true;
     }
 
     private void setLayoutCmt(View v){
