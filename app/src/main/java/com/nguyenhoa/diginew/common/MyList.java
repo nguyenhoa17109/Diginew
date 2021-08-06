@@ -69,9 +69,9 @@ public class MyList extends Application {
 
         list_Cmt = new ArrayList<>();
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
-                "abc", 9, false, 9, false));
+                "abc", 9, false, "9", false));
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
-                "abc", 9, false, 9, true));
+                "abc", 9, false, "9", true));
 
         listNews = new ArrayList<>();
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
