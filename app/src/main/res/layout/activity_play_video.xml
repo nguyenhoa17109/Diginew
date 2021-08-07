@@ -52,7 +52,6 @@
         android:layout_height="200dp" />
     </LinearLayout>
 
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll1"
         android:layout_width="match_parent"
