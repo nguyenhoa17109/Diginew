@@ -7,14 +7,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextPaint;
+import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsSeekBar;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,14 +44,15 @@ import com.nguyenhoa.diginew.model.News;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
+public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
-    private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts, tvCurrentTime, tvTotalDuration;
+    private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts;
     private RecyclerView recyclerView;
     private ArrayList<News> list1;
     private NewsRCAdapter newsRCAdapter;
     private String url;
+    private View thumbView;
 
     private MediaPlayer mediaPlayer;
     private SeekBar seekBar;
@@ -99,7 +113,9 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
                 SeekBar seekBar = (SeekBar) v;
                 int playPostion = (mediaPlayer.getDuration() / 100) * seekBar.getProgress();
                 mediaPlayer.seekTo(playPostion);
-                tvCurrentTime.setText(milliSecondsToTimer(mediaPlayer.getCurrentPosition()));
+
+                seekBar.setThumb(getThumb(milliSecondsToTimer(mediaPlayer.getCurrentPosition()), milliSecondsToTimer(mediaPlayer.getDuration())));
+
                 return false;
             }
         });
@@ -116,8 +132,6 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
             public void onCompletion(MediaPlayer mp) {
                 seekBar.setProgress(0);
                 ivPlayPause.setImageResource(R.drawable.ic_play_circle);
-                tvCurrentTime.setText("0:00");
-                tvTotalDuration.setText("0:00");
                 mediaPlayer.reset();
                 prepareMediaPlayer();
             }
@@ -136,27 +150,11 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         setClick();
     }
 
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        try {
-//            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-//                mediaPlayer.stop();
-//                mediaPlayer.release();
-//                mediaPlayer = null;
-//            }
-//        } catch (IllegalStateException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-
-
     private void prepareMediaPlayer(){
         try {
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
-            tvTotalDuration.setText(milliSecondsToTimer(mediaPlayer.getDuration()));
+            seekBar.setThumb(getThumb("0:00", milliSecondsToTimer(mediaPlayer.getDuration())));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -168,7 +166,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
                 if(mediaPlayer.isLooping() || mediaPlayer.isPlaying()){
                     updateSeekBar();
                     long currentDuration = mediaPlayer.getCurrentPosition();
-                    tvCurrentTime.setText(milliSecondsToTimer(currentDuration));
+                    seekBar.setThumb(getThumb(milliSecondsToTimer(currentDuration), milliSecondsToTimer(mediaPlayer.getDuration())));
                 }
                 else{
                     mediaPlayer.stop();
@@ -210,6 +208,8 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
 
 
     private void init(){
+        thumbView = LayoutInflater.from(AudioNews.this).inflate(R.layout.seekbar_thumb, null, false);
+
         ivBack = findViewById(R.id.ivBack);
         ivAccount = findViewById(R.id.ivAccount);
         ivShare = findViewById(R.id.ivShare);
@@ -222,8 +222,6 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         etCmt = findViewById(R.id.etCmt);
 
         ivPlayPause = findViewById(R.id.ivPlayPause);
-        tvCurrentTime = findViewById(R.id.tvCurrentTimeAudio);
-        tvTotalDuration = findViewById(R.id.tvTotalDurationAudio);
         seekBar = findViewById(R.id.seekBar);
 
         recyclerView = findViewById(R.id.rcNews);
@@ -244,6 +242,18 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         newsRCAdapter.setClickNewsListener(this::onItemClick);
 
         recyclerView.setAdapter(newsRCAdapter);
+    }
+
+    public Drawable getThumb(String t1, String t2) {
+        ((TextView) thumbView.findViewById(R.id.tvProgress)).setText(t1 + "/"+ t2);
+
+        thumbView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        Bitmap bitmap = Bitmap.createBitmap(thumbView.getMeasuredWidth(), thumbView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        thumbView.layout(0, 0, thumbView.getMeasuredWidth(), thumbView.getMeasuredHeight());
+        thumbView.draw(canvas);
+
+        return new BitmapDrawable(getResources(), bitmap);
     }
 
     private void setClick() {
