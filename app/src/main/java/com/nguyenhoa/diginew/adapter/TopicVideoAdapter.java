@@ -1,12 +1,10 @@
 package com.nguyenhoa.diginew.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,12 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
-import com.nguyenhoa.diginew.discover.DigiClip;
-import com.nguyenhoa.diginew.discover.DigiHealth;
-import com.nguyenhoa.diginew.discover.DigiMovie;
-import com.nguyenhoa.diginew.discover.DigiMusic;
-import com.nguyenhoa.diginew.discover.MyTv;
-import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;

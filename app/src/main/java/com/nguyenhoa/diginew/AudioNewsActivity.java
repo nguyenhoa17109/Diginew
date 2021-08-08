@@ -44,7 +44,7 @@ import com.nguyenhoa.diginew.model.News;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
+public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
     private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts;
@@ -209,7 +209,7 @@ public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNe
 
 
     private void init(){
-        thumbView = LayoutInflater.from(AudioNews.this).inflate(R.layout.seekbar_thumb, null, false);
+        thumbView = LayoutInflater.from(AudioNewsActivity.this).inflate(R.layout.seekbar_thumb, null, false);
 
         ivBack = findViewById(R.id.ivBack);
         ivAccount = findViewById(R.id.ivAccount);
