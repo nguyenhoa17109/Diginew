@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:layout_margin="5dp"
     android:background="@color/gray_200"
-    tools:context=".discover.DiscoverFragment">
+    tools:context=".discover.DiscoverFragment"
+    android:id="@+id/fvDiscover">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
