@@ -25,6 +25,7 @@ import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.news.NewsActivity;
 
 import java.util.ArrayList;
 

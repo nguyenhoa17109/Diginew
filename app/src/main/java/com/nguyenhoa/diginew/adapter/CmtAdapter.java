@@ -99,7 +99,7 @@ public class CmtAdapter extends RecyclerView.Adapter<CmtAdapter.CmtViewHolder> {
         comment1.setAnswer(isAnswer);
         comment1.setContentCmt(s);
         comment1.setLike(0);
-        comment1.setTime(1);
+        comment1.setTime("1");
         comment1.setLikeCmt(false);
         list.add(position, comment1);
         notifyDataSetChanged();

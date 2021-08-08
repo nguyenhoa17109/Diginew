@@ -13,6 +13,7 @@ import com.nguyenhoa.diginew.model.Account;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Operation;
+import com.nguyenhoa.diginew.model.OtherApp;
 import com.nguyenhoa.diginew.model.Topic;
 import com.nguyenhoa.diginew.model.User;
 
@@ -28,7 +29,7 @@ public class MyList extends Application {
     public static ArrayList<Topic> list;
     public static ArrayList<Topic> list_Fv, list_unFv;
     public static ArrayList<News> listNews;
-    public static ArrayList<Topic> list_dis;
+    public static ArrayList<OtherApp> list_dis;
     public static ArrayList<Comment> list_Cmt;
     public static ArrayList<ArrayList<News>> listsText, lists_audio, lists_video, lists_info;
     public static ArrayList<Operation> listOperation;
@@ -61,24 +62,24 @@ public class MyList extends Application {
         list_unFv = new ArrayList<>();
 
         list_dis = new ArrayList<>();
-        list_dis.add(new Topic("DigiMovie", R.drawable.ic_digimovie));
-        list_dis.add(new Topic("DigiClip", R.drawable.ic_digiclips));
-        list_dis.add(new Topic("DigiMusic", R.drawable.ic_digimusic));
-        list_dis.add(new Topic("DigiHealth", R.drawable.ic_digihealth));
-        list_dis.add(new Topic("MyTV", R.drawable.img_mytv));
+        list_dis.add(new OtherApp("DigiMovie", R.drawable.ic_digimovie, R.raw.digimovie, ""));
+        list_dis.add(new OtherApp("DigiClip", R.drawable.ic_digiclips, R.raw.digiclip, ""));
+        list_dis.add(new OtherApp("DigiMusic", R.drawable.ic_digimusic, R.raw.digimusic, ""));
+        list_dis.add(new OtherApp("DigiHealth", R.drawable.ic_digihealth, R.raw.digihealth, ""));
+        list_dis.add(new OtherApp("MyTV", R.drawable.img_mytv, R.raw.mytv, ""));
 
         list_Cmt = new ArrayList<>();
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
-                "abc", 9, false, 9, false));
+                "abc", 9, false, "9", false));
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
-                "abc", 9, false, 9, true));
+                "abc", 9, false, "9", true));
 
         listNews = new ArrayList<>();
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
-                200, 100, R.drawable.sj_confidence,"abc", "text",  "Thể thao",
+                200, 100, R.drawable.sj_health,"Covid-19", "text",  "Thể thao",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Thành phố Hà Nội", 200
-                , 100, R.drawable.sj_confidence,"abc", "info",  "Thể thao",
+                , 100, R.drawable.sj_life,"abc", "info",  "Thể thao",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Giang", 200
                 , 100, R.drawable.sj_science,"abc", "info",  "Kinh tế",
@@ -109,8 +110,8 @@ public class MyList extends Application {
 
         listOperation = new ArrayList<>();
         listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true));
-        listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true));
-        listOperation.add(new Operation(listNews.get(0), "01/08/2021", false, true));
+        listOperation.add(new Operation(listNews.get(1), "02/08/2021", false, true));
+        listOperation.add(new Operation(listNews.get(3), "01/08/2021", false, true));
 
         lists_operation = setListDownload(listOperation);
 
