@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.news;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,33 +7,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextPaint;
-import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AbsSeekBar;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
@@ -44,7 +37,7 @@ import com.nguyenhoa.diginew.model.News;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
+public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
     private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts;
@@ -208,7 +201,7 @@ public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNe
 
 
     private void init(){
-        thumbView = LayoutInflater.from(AudioNews.this).inflate(R.layout.seekbar_thumb, null, false);
+        thumbView = LayoutInflater.from(AudioNewsActivity.this).inflate(R.layout.seekbar_thumb, null, false);
 
         ivBack = findViewById(R.id.ivBack);
         ivAccount = findViewById(R.id.ivAccount);
