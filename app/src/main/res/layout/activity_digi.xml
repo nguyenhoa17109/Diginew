@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:background="@color/gray_200"
-    tools:context=".discover.MyTv">
+    tools:context=".discover.DigiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:padding="5dp"
-            android:text="@string/mytv"
+            android:text="@string/digiclip"
             android:textSize="20sp"
             android:textColor="@color/black"
             android:fontFamily="@font/roboto"/>
@@ -56,18 +57,17 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
                 android:contentDescription="@string/todo"
-                android:src="@drawable/img_mytv" />
+                android:src="@drawable/ic_digiclips" />
 
             <TextView
                 android:id="@+id/tvDigiMovie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/content_mytv"
+                android:text="@string/content_digiclip"
                 android:textSize="18sp"
-                android:fontFamily="@font/roboto"
                 android:layout_margin="20dp"
                 android:textColor="@color/black"
-                />
+                android:fontFamily="@font/roboto"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btOpen"
@@ -83,6 +83,5 @@
                 android:fontFamily="@font/roboto"/>
         </LinearLayout>
     </ScrollView>
-
 
 </LinearLayout>

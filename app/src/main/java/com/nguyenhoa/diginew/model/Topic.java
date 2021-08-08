@@ -1,6 +1,8 @@
 package com.nguyenhoa.diginew.model;
 
-public class Topic {
+import java.io.Serializable;
+
+public class Topic implements Serializable {
     private String name;
     private int img;
     Boolean isSelected = false;

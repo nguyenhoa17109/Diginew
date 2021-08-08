@@ -7,13 +7,13 @@ public class Comment implements Serializable {
     private String contentCmt;
     private int like;
     private boolean answer;
-    private int time;
+    private String time;
     private boolean likeCmt;
 
     public Comment() {
     }
 
-    public Comment(User user, String contentCmt, int like, boolean answer, int time, boolean likeCmt) {
+    public Comment(User user, String contentCmt, int like, boolean answer, String time, boolean likeCmt) {
         this.user = user;
         this.contentCmt = contentCmt;
         this.like = like;
@@ -54,11 +54,11 @@ public class Comment implements Serializable {
         this.answer = answer;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

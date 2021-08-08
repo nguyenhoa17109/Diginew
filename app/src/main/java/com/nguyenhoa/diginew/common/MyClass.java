@@ -3,21 +3,20 @@ package com.nguyenhoa.diginew.common;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.nguyenhoa.diginew.AudioNews;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.nguyenhoa.diginew.AudioNewsActivity;
 import com.nguyenhoa.diginew.InfoNewsActivity;
-import com.nguyenhoa.diginew.NewsActivity;
+import com.nguyenhoa.diginew.news.NewsActivity;
 import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
-import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class MyClass {
                 intent = new Intent(activity, NewsActivity.class);
                 break;
             case "audio":
-                intent = new Intent(activity, AudioNews.class);
+                intent = new Intent(activity, AudioNewsActivity.class);
                 break;
             case "info":
                 intent = new Intent(activity, InfoNewsActivity.class);
@@ -72,5 +71,13 @@ public class MyClass {
 
             tvLikes.setText(String.valueOf(i+1));
         }
+    }
+
+    public void addFragment(Fragment fragment, FragmentManager manager, int layout) {
+        FragmentManager fmgr = manager;
+        FragmentTransaction ft = fmgr.beginTransaction();
+        ft.add(layout, fragment);
+        ft.addToBackStack(fragment.getClass().getSimpleName());
+        ft.commit();
     }
 }
