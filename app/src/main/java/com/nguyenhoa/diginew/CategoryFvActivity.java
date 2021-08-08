@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
@@ -121,7 +122,8 @@ public class CategoryFvActivity extends AppCompatActivity implements CategoryRvC
         super.onRestart();
 
         list = MyList.setListChoseSubjectFV(getApplicationContext());
-        adapter1.setData(list);
         adapter.setData(list);
+        adapter1.setData(list);
+
     }
 }
