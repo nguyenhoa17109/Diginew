@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.news;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,11 +12,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +26,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nguyenhoa.diginew.NewsDownloadedActivity;
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
@@ -36,7 +35,6 @@ import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Operation;
-import com.nguyenhoa.diginew.model.User;
 
 import java.util.ArrayList;
 
@@ -60,35 +58,44 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         Intent intent = getIntent();
         news = (News) intent.getSerializableExtra("text");
-        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.actionbar_news);
-        getSupportActionBar().setElevation(0);
-        View view = getSupportActionBar().getCustomView();
+
 
         init();
 
         if(news != null){
-            tvTopic.setText(news.getTopic());
-            tvTitleNews.setText(news.getTitle());
-            tvContent.setText(news.getContent());
-            tvSource.setText(news.getSource());
-//            tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
-            tvTime.setText(news.getTimes());
-            tvLikes.setText(String.valueOf(news.getLikes()));
-            tvCmts.setText(String.valueOf(news.getCmts()));
-
-            int size = setSize(preferences.getInt("size_level", 0));
-            int id = preferences.getInt("font", R.font.roboto);
-            Typeface typeface = ResourcesCompat.getFont(NewsActivity.this, id);
-            tvContent.setTypeface(typeface);
-            tvContent.setTextSize(size);
-
+            setNews(news);
         }else{
             Toast.makeText(this, "News is empty!!!", Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private void setNews(News news) {
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.actionbar_news);
+        getSupportActionBar().setElevation(0);
+//        View view = getSupportActionBar().getCustomView();
+
+//        getSupportActionBar().getDisplayOptions().
+        tvTopic = getSupportActionBar().getCustomView().findViewById(R.id.tvNewsTopic);
+        ivBack = getSupportActionBar().getCustomView().findViewById(R.id.ivBack);
+
+        tvTopic.setText(news.getTopic());
+        tvTitleNews.setText(news.getTitle());
+        tvContent.setText(news.getContent());
+        tvSource.setText(news.getSource());
+//            tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+        tvTime.setText(news.getTimes());
+        tvLikes.setText(String.valueOf(news.getLikes()));
+        tvCmts.setText(String.valueOf(news.getCmts()));
+
+        int size = setSize(preferences.getInt("size_level", 0));
+        int id = preferences.getInt("font", R.font.roboto);
+        Typeface typeface = ResourcesCompat.getFont(NewsActivity.this, id);
+        tvContent.setTypeface(typeface);
+        tvContent.setTextSize(size);
         setClick();
+        setListRelevance(news);
     }
 
     private void setClick() {
@@ -123,6 +130,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_actionbar_news, menu);
+
         String s = news.toString();
         for(Operation operation:MyList.listOperation){
             if(operation.getNews().toString().equals(s))
@@ -321,25 +329,35 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         ivAccount = findViewById(R.id.ivAccount);
         ivShare = findViewById(R.id.ivShare);
 
-        tvTopic = getSupportActionBar().getCustomView().findViewById(R.id.tvNewsTopic);
-        ivBack = getSupportActionBar().getCustomView().findViewById(R.id.ivBack);
-
         recyclerView = findViewById(R.id.rcNews);
         adapter = new NewsRCAdapter(this);
+
+
+
+    }
+
+    private void setListRelevance(News news) {
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        adapter.setData(MyList.listNews);
+
+        ArrayList<News> list = new ArrayList<>();
+        for(int i=0; i<MyList.listsText.size(); i++){
+            for(int j = 0; j< MyList.listsText.get(i).size(); j++)
+                list.add(MyList.listsText.get(i).get(j));
+        }
+
+        adapter.setData(list);
         adapter.setClickNewsListener(this::onItemClick);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        MyClass.setIntent(adapter.getItem(position), (Activity) view.getContext());
-//        Intent intent = new Intent(this, NewsActivity.class);
-//        intent.putExtra("News", adapter.getItem(position));
-//        startActivity(intent);
+        news = adapter.getItem(position);
+        setNews(news);
+//        MyClass.setIntent(adapter.getItem(position), (Activity) view.getContext());
+
     }
 
     private void updateText(int size, int id){

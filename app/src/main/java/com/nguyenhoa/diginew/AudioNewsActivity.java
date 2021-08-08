@@ -31,7 +31,7 @@ import com.nguyenhoa.diginew.model.News;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AudioNews extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
+public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
     private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts, tvCurrentTime, tvTotalDuration;

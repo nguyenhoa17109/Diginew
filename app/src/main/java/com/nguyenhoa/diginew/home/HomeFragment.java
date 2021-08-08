@@ -2,8 +2,10 @@ package com.nguyenhoa.diginew.home;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,23 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.nguyenhoa.diginew.CategoryFvActivity;
-import com.nguyenhoa.diginew.InfoNewsActivity;
-import com.nguyenhoa.diginew.NewsActivity;
-import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
-import com.nguyenhoa.diginew.SearchActivity;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
 import com.smarteist.autoimageslider.SliderView;
-import com.synnapps.carouselview.ImageListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,7 +34,9 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     private SliderView sliderView;
     private RecyclerView rvNews;
     private NewsRCAdapter adapter;
+    private LinearLayout layout, layout1;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -95,11 +92,29 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     }
 
     private void setClick() {
+
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent);
+//                Log.d("LLL", "ooo");
+//                layout.setVisibility(View.GONE);
+//
+//                FragmentManager manager = getActivity().getSupportFragmentManager();
+//                FragmentTransaction transaction = manager.beginTransaction();
+//                transaction.replace(R.id.layoutFragment, fragment);
+//                transaction.commit();
+//                layout.setVisibility(View.VISIBLE);
+//                layout1.setVisibility(View.GONE);
+//                fragment.ivBack = fragment.getView().findViewById(R.id.ivBack);
+//                fragment.ivBack.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        layout.setVisibility(View.VISIBLE);
+//                        layout1.setVisibility(View.GONE);
+//                    }
+//                });
             }
         });
         ivUser.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +154,9 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
         ivSearch = v.findViewById(R.id.ivSearch);
         ivUser = v.findViewById(R.id.ivUser);
         rvNews = v.findViewById(R.id.rcNews);
+
+        layout = v.findViewById(R.id.layout);
+        layout1 = v.findViewById(R.id.layoutFragment);
     }
 
     @Override

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.model.OtherApp;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
@@ -19,9 +20,18 @@ import java.util.ArrayList;
 
 public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyViewHolder> {
     Context context;
-    private ArrayList<Topic> list;
+    private ArrayList<OtherApp> list;
+    public OnItemClick onItemClick;
 
-    public DiscoverAdapter(Context context, ArrayList<Topic> list) {
+    public interface OnItemClick{
+        void ItemClick(int index);
+    }
+
+    public void setOnItemClick(OnItemClick onItemClick) {
+        this.onItemClick = onItemClick;
+    }
+
+    public DiscoverAdapter(Context context, ArrayList<OtherApp> list) {
         this.context = context;
         this.list = list;
     }
@@ -40,30 +50,31 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
         holder.textView.setText(list.get(position).getName());
         holder.imageView.setImageResource(list.get(position).getImg());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            Intent intent;
-            @Override
-            public void onClick(View v) {
-                switch (position){
-                    case 0:
-                        intent = new Intent(context, DigiMovie.class);
-                        break;
-                    case 1:
-                        intent = new Intent(context, DigiClip.class);
-                        break;
-                    case 2:
-                        intent = new Intent(context, DigiMusic.class);
-                        break;
-                    case 3:
-                        intent = new Intent(context, DigiHealth.class);
-                        break;
-                    case 4:
-                        intent = new Intent(context, MyTv.class);
-                        break;
-                }
-                context.startActivity(intent);
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            Intent intent;
+//            @Override
+//            public void onClick(View v) {
+//                switch (position){
+//                    case 0:
+////                        intent = new Intent(context, DigiMovie.class);
+//
+//                        break;
+//                    case 1:
+//                        intent = new Intent(context, DigiClip.class);
+//                        break;
+//                    case 2:
+//                        intent = new Intent(context, DigiMusic.class);
+//                        break;
+//                    case 3:
+//                        intent = new Intent(context, DigiHealth.class);
+//                        break;
+//                    case 4:
+//                        intent = new Intent(context, MyTv.class);
+//                        break;
+//                }
+//                context.startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -71,7 +82,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
         return list.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ImageView imageView;
         private TextView textView;
 
@@ -81,7 +92,17 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
             imageView = itemView.findViewById(R.id.ivItemDiscover);
             textView = itemView.findViewById(R.id.tvItemDiscover);
 
+            itemView.setOnClickListener(this::onClick);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if(onItemClick != null)
+                onItemClick.ItemClick(getAdapterPosition());
         }
     }
 
+    public OtherApp getItem(int index){
+        return list.get(index);
+    }
 }

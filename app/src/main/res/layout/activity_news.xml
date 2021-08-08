@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,332 +7,339 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="@color/gray_200"
-    tools:context=".NewsActivity">
+    tools:context=".news.NewsActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll1"
+    <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/gray_200">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical"
-                android:padding="20dp"
-                android:background="@drawable/background_corner">
+                android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/tvTitleNews"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/eg_title"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/roboto"/>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp">
-
-                    <TextView
-                        android:id="@+id/tvNewsSource"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/eg_source" />
-
-                    <TextView
-                        android:id="@+id/tvNewsTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/eg_time" />
-                </TableRow>
-
-                <TextView
-                    android:id="@+id/tvContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/roboto"
-                    android:text="@string/eg_content"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="10dp">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-
-                    <TextView
-                        android:id="@+id/tvSearch1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/covid_19"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/viet_nam_covid"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/virut"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-
-                    <TextView
-                        android:id="@+id/tvSearch21"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/prime"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/breakdown"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch23"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/anthony_fauci"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-
-                    <TextView
-                        android:id="@+id/tvSearch31"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/wisconsin"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch32"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/washington"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/coronavirus"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
-
-                    <TextView
-                        android:id="@+id/tvSearch41"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/nepal"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch42"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/animal"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-
-                    <TextView
-                        android:id="@+id/tvSearch43"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/entertainment"
-                        android:textSize="18sp"
-                        android:background="@drawable/background_corner"
-                        android:padding="7dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:layout_margin="5dp"/>
-                </TableRow>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:background="@drawable/background_corner"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/xu_t_cho_b_n"
-                    android:textSize="24sp"
-                    android:padding="10dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcNews"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/background_corner_top"
-                    android:padding="5dp"
-                    android:layout_marginBottom="60dp"
-                    tools:listitem="@layout/item_news"/>
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:background="@drawable/background_corner">
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tvTitleNews"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/eg_title"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/roboto"/>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
 
-    </androidx.core.widget.NestedScrollView>
+                        <TextView
+                            android:id="@+id/tvNewsSource"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/eg_source" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/scroll1"
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:padding="10dp"
-        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tvNewsTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/eg_time" />
+                    </TableRow>
 
-        <ImageView
-            android:id="@+id/ivAccount"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@drawable/ic_account" />
+                    <TextView
+                        android:id="@+id/tvContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/eg_content"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/etCmt"
-            android:layout_width="wrap_content"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="10dp">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tvSearch1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/covid_19"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/viet_nam_covid"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/virut"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tvSearch21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/prime"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch22"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/breakdown"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/anthony_fauci"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tvSearch31"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/wisconsin"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/washington"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch33"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/coronavirus"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tvSearch41"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nepal"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch42"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/animal"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+
+                        <TextView
+                            android:id="@+id/tvSearch43"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/entertainment"
+                            android:textSize="18sp"
+                            android:background="@drawable/background_corner"
+                            android:padding="7dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="5dp"/>
+                    </TableRow>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:background="@drawable/background_corner"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/xu_t_cho_b_n"
+                        android:textSize="24sp"
+                        android:padding="10dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcNews"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_corner_top"
+                        android:padding="5dp"
+                        android:layout_marginBottom="60dp"
+                        tools:listitem="@layout/item_news"/>
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/cmt"
-            android:inputType="text"
-            android:background="@null"
-            android:importantForAutofill="no" />
+            android:layout_alignBottom="@+id/scroll1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvLike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/_200"
-            app:drawableEndCompat="@drawable/ic_like" />
+            <ImageView
+                android:id="@+id/ivAccount"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/ic_account" />
 
-        <TextView
-            android:id="@+id/tvCmt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:text="@string/_200"
-            app:drawableEndCompat="@drawable/ic_cmts" />
+            <EditText
+                android:id="@+id/etCmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="@string/cmt"
+                android:inputType="text"
+                android:background="@null"
+                android:importantForAutofill="no" />
 
-        <ImageView
-            android:id="@+id/ivShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:contentDescription="@string/todo"
-            app:srcCompat="@drawable/ic_share" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvLike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/_200"
+                app:drawableEndCompat="@drawable/ic_like" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/tvCmt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="@string/_200"
+                app:drawableEndCompat="@drawable/ic_cmts" />
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="@string/todo"
+                app:srcCompat="@drawable/ic_share" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

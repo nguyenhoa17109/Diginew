@@ -14,17 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Diginew"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddCategoryFvActivity"></activity>
+        <activity android:name=".discover.DigiActivity"></activity>
+        <activity android:name=".AddCategoryFvActivity" />
         <activity android:name=".CategoryFvActivity" />
         <activity android:name=".NewsDownloadedActivity" />
         <activity android:name=".PacketAdvanceActivity" />
         <activity android:name=".PacketStandardActivity" />
         <activity android:name=".InfoNewsActivity" />
         <activity android:name=".PlayVideoActivity" />
-        <activity android:name=".NewsActivity" />
-        <activity android:name=".AudioNews" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".splash.Splash" >
+        <activity android:name=".news.NewsActivity" />
+        <activity android:name=".AudioNewsActivity" />
+        <activity android:name=".home.SearchActivity" />
+        <activity android:name=".splash.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,17 +37,8 @@
         <activity
             android:name=".splash.Terms"
             android:parentActivityName=".splash.Splash2" />
-        <activity android:name=".splash.SubjectsFavorite" >
-
-        </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".discover.MyTv" />
-        <activity android:name=".discover.DigiHealth" />
-        <activity android:name=".discover.DigiMovie" />
-        <activity android:name=".discover.DigiClip" />
-        <activity android:name=".discover.DigiMusic" />
+        <activity android:name=".splash.SubjectsFavorite"></activity>
+        <activity android:name=".MainActivity"></activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

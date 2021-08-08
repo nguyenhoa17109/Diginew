@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +18,7 @@ import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
