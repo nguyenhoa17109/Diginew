@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.video;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,15 +19,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
-import com.nguyenhoa.diginew.news.NewsActivity;
 
 import java.util.ArrayList;
+
+import static com.nguyenhoa.diginew.R.string.text_error_video;
+import static com.nguyenhoa.diginew.R.string.text_video_completion;
 
 public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private VideoView videoView;
@@ -46,21 +49,27 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         getSupportActionBar().hide();
         Intent intent = getIntent();
         News news = (News) intent.getSerializableExtra("video");
-        begin();
-
-
+        init();
         setVideo(news);
-        tvTopic.setText(news.getTopic());
-        tvTitleNews.setText(news.getTitle());
-//        tvContent.setText(news.getContent());
-        tvSource.setText(news.getSource());
-        tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
-        tvLikes.setText(String.valueOf(news.getLikes()));
-        tvCmts.setText(String.valueOf(news.getCmts()));
-        setClick();
     }
 
-    private void begin() {
+    private void setListRecentVideo(News news) {
+        ArrayList<News> list = new ArrayList<>();
+        for(int i=0; i<MyList.lists_video.size(); i++){
+            for(int j = 0; j< MyList.lists_video.get(i).size(); j++)
+                list.add(MyList.lists_video.get(i).get(j));
+        }
+
+        adapter = new NewsRCAdapter(this);
+        LinearLayoutManager manager = new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(manager);
+        adapter.setData(list);
+        adapter.setClickNewsListener(this::onItemClick);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void init() {
         etCmt = findViewById(R.id.etCmt);
         videoView = findViewById(R.id.video);
         tvTopic = findViewById(R.id.tvTopic);
@@ -76,13 +85,6 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
 
         ivBack = findViewById(R.id.ivBack);
         recyclerView = findViewById(R.id.rcNews);
-        adapter = new NewsRCAdapter(this);
-        LinearLayoutManager manager = new LinearLayoutManager(this,
-                RecyclerView.VERTICAL, false);
-        recyclerView.setLayoutManager(manager);
-        adapter.setData(MyList.listNews);
-        adapter.setClickNewsListener(this::onItemClick);
-        recyclerView.setAdapter(adapter);
     }
 
     private void setClick() {
@@ -124,24 +126,38 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Toast.makeText(getApplicationContext(), "Thank You...!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), text_video_completion
+                        , Toast.LENGTH_LONG).show();
             }
         });
         videoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
                 Toast.makeText(getApplicationContext(),
-                        "Oops An Error Occur While Playing Video...!!!", Toast.LENGTH_LONG).show();
+                        text_error_video, Toast.LENGTH_LONG).show();
                 return false;
             }
         });
+
+        tvTopic.setText(news.getTopic());
+        tvTitleNews.setText(news.getTitle());
+//        tvContent.setText(news.getContent());
+        tvSource.setText(news.getSource());
+//        tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+        tvTime.setText(news.getTimes());
+        tvLikes.setText(String.valueOf(news.getLikes()));
+        tvCmts.setText(String.valueOf(news.getCmts()));
+        setClick();
+        setListRecentVideo(news);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Intent intent = new Intent(this, NewsActivity.class);
-        intent.putExtra("News", adapter.getItem(position));
-        startActivity(intent);
+        News news = adapter.getItem(position);
+        setVideo(news);
+//        Intent intent = new Intent(this, NewsActivity.class);
+//        intent.putExtra("News", adapter.getItem(position));
+//        startActivity(intent);
     }
 
     private void setLayoutCmt(View v){

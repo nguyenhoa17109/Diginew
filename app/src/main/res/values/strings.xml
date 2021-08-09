@@ -210,4 +210,6 @@
     <string name="add_">+ Thêm</string>
     <string name="done">Xong</string>
     <string name="added">Đã thêm</string>
+    <string name="text_error_video">Oops An Error Occur While Playing Video!!!</string>
+    <string name="text_video_completion">Thank You!!!</string>
 </resources>

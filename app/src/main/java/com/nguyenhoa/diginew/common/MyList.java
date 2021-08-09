@@ -29,6 +29,7 @@ public class MyList extends Application {
     public static ArrayList<Topic> list;
     public static ArrayList<Topic> list_Fv, list_unFv;
     public static ArrayList<News> listNews;
+    public static ArrayList<String> listTag;
     public static ArrayList<OtherApp> list_dis;
     public static ArrayList<Comment> list_Cmt;
     public static ArrayList<ArrayList<News>> listsText, lists_audio, lists_video, lists_info;
@@ -74,10 +75,13 @@ public class MyList extends Application {
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
                 "abc", 9, false, "9", true));
 
+        listTag = new ArrayList<>();
+        listTag.add("Covid-19");
+
         listNews = new ArrayList<>();
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
                 200, 100, R.drawable.sj_health,"Covid-19", "text",  "Thể thao",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Thành phố Hà Nội", 200
                 , 100, R.drawable.sj_life,"abc", "info",  "Thể thao",
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
@@ -86,10 +90,10 @@ public class MyList extends Application {
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Tỉnh Hà Giang", 200
                 , 100, R.drawable.sj_confidence,"abc", "text",  "Kinh tế",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Cao Bằng", 200
                 , 100, R.drawable.sj_science,"abc", "text",  "Đời sống",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Suc khoe cua chung ta", 200
                 , 100, R.drawable.sj_science,"abc", "audio",  "Sức khỏe",
                 "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z", list_Cmt));
@@ -233,7 +237,7 @@ public class MyList extends Application {
             ArrayList<News> list = new ArrayList<News>();
             list.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                     , 100, R.drawable.sj_confidence,"abc", "text",  list2.get(i).getName(),
-                    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", listTag));
             lists.add(list);
         }
         for(int i=0; i<list1.size(); i++){
@@ -276,7 +280,7 @@ public class MyList extends Application {
         ArrayList<News> list1 = new ArrayList<News>();
         list1.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
                 , 100, R.drawable.sj_confidence,"abc", type,  list.get(i).getName(),
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", listTag));
         return list1;
     }
 

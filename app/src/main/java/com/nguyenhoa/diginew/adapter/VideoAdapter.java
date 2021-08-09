@@ -58,7 +58,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         holder.tvSource.setText(list.get(position).getSource());
         holder.tvCmts.setText(String.valueOf(list.get(position).getCmts()));
         holder.tvLikes.setText(String.valueOf(list.get(position).getLikes()));
-        holder.tvTime.setText(list.get(position).getTimes()+" "+context.getResources().getString(R.string.time));
+//        holder.tvTime.setText(list.get(position).getTimes()+" "+context.getResources().getString(R.string.time));
+        holder.tvTime.setText(list.get(position).getTimes());
         holder.layout.setBackgroundResource(list.get(position).getImgs());
         holder.tvTitle.setText(list.get(position).getTitle());
 

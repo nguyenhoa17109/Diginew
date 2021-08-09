@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/gray_200"
-    tools:context=".PlayVideoActivity">
+    tools:context=".video.PlayVideoActivity">
 
     <LinearLayout
         android:id="@+id/row"
