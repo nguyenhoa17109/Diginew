@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.nguyenhoa.diginew.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.TopicVideoAdapter;
 import com.nguyenhoa.diginew.adapter.VideoAdapter;

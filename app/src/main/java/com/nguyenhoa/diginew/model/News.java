@@ -16,6 +16,7 @@ public class News implements Serializable {
     private String url;
     private String audio;
     private ArrayList<Comment> listComment;
+    private ArrayList<String> listTag;
 
     public News() {
     }
@@ -34,7 +35,7 @@ public class News implements Serializable {
     }
 
     public News(String source, String times, String title, int likes, int cmts, int imgs,
-                String content, String type, String topic, String url) {
+                String content, String type, String topic, String url, ArrayList<String> listTag) {
         this.source = source;
         this.times = times;
         this.title = title;
@@ -45,6 +46,7 @@ public class News implements Serializable {
         this.type = type;
         this.topic = topic;
         this.url = url;
+        this.listTag = listTag;
     }
 
     public News(String source, String times, String title, int likes, int cmts,
@@ -62,6 +64,24 @@ public class News implements Serializable {
         this.url = url;
         this.audio = audio;
         this.listComment = listComment;
+    }
+
+    public News(String source, String times, String title, int likes, int cmts, int imgs,
+                String content, String type, String topic, String url, String audio,
+                ArrayList<Comment> listComment, ArrayList<String> listTag) {
+        this.source = source;
+        this.times = times;
+        this.title = title;
+        this.likes = likes;
+        this.cmts = cmts;
+        this.imgs = imgs;
+        this.content = content;
+        this.type = type;
+        this.topic = topic;
+        this.url = url;
+        this.audio = audio;
+        this.listComment = listComment;
+        this.listTag = listTag;
     }
 
     public String getTopic() {
@@ -158,6 +178,14 @@ public class News implements Serializable {
 
     public void setListComment(ArrayList<Comment> listComment) {
         this.listComment = listComment;
+    }
+
+    public ArrayList<String> getListTag() {
+        return listTag;
+    }
+
+    public void setListTag(ArrayList<String> listTag) {
+        this.listTag = listTag;
     }
 
     @Override

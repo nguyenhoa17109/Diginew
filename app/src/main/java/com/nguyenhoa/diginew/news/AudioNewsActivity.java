@@ -113,12 +113,12 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
             }
         });
 
-        mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
-            @Override
-            public void onBufferingUpdate(MediaPlayer mp, int percent) {
-                seekBar.setSecondaryProgress(percent);
-            }
-        });
+//        mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+//            @Override
+//            public void onBufferingUpdate(MediaPlayer mp, int percent) {
+//                seekBar.setSecondaryProgress(percent);
+//            }
+//        });
 
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -148,6 +148,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
             mediaPlayer.setDataSource(url);
             mediaPlayer.prepare();
             seekBar.setThumb(getThumb("0:00", milliSecondsToTimer(mediaPlayer.getDuration())));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
