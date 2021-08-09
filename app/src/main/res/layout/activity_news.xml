@@ -97,7 +97,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch2"
@@ -109,7 +111,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch3"
@@ -121,7 +125,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
                     </TableRow>
 
                     <TableRow
@@ -138,7 +144,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch22"
@@ -150,7 +158,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch23"
@@ -162,7 +172,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
                     </TableRow>
 
                     <TableRow
@@ -179,7 +191,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch32"
@@ -191,7 +205,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch33"
@@ -203,7 +219,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
                     </TableRow>
 
                     <TableRow
@@ -220,7 +238,9 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch42"
@@ -232,19 +252,23 @@
                             android:padding="7dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:layout_margin="5dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                         <TextView
                             android:id="@+id/tvSearch43"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/entertainment"
-                            android:textSize="18sp"
-                            android:background="@drawable/background_corner"
-                            android:padding="7dp"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
+                            android:background="@drawable/background_corner"
+                            android:clickable="true"
+                            android:focusable="true"
                             android:gravity="center"
-                            android:layout_margin="5dp"/>
+                            android:padding="7dp"
+                            android:text="@string/entertainment"
+                            android:textSize="18sp" />
                     </TableRow>
                 </LinearLayout>
 
@@ -340,6 +364,22 @@
                 app:srcCompat="@drawable/ic_share" />
         </LinearLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_200">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_corner_top"
+            android:layout_marginTop="20sp"
+            android:padding="5dp"/>
+    </LinearLayout>
 
 
 </LinearLayout>

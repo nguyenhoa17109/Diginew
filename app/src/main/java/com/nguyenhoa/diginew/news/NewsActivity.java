@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,14 +43,19 @@ import static com.nguyenhoa.diginew.R.drawable.background_button;
 import static com.nguyenhoa.diginew.R.drawable.background_disable_button;
 
 public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
+    private TextView tvSearch1, tvSearch2, tvSearch3, tvSearch21, tvSearch22, tvSearch23,
+            tvSearch31, tvSearch32, tvSearch33, tvSearch41, tvSearch42, tvSearch43;
     private TextView tvTitleNews, tvSource, tvTime, tvTopic, tvLikes, tvCmts, tvContent;
     private ImageView ivAccount, ivShare, ivBack;
     private EditText etCmt;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView, rvTag;
     private NewsRCAdapter adapter;
     private News news;
     private SharedPreferences preferences;
     public static final String MyPREFERENCES = "CONTENT";
+    private RelativeLayout layout;
+    private LinearLayout layoutTag;
+    private boolean isNews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +64,10 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         Intent intent = getIntent();
         news = (News) intent.getSerializableExtra("text");
-
-
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setCustomView(R.layout.actionbar_news);
+        getSupportActionBar().setElevation(0);
         init();
 
         if(news != null){
@@ -70,13 +78,12 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
     }
 
     private void setNews(News news) {
-        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.actionbar_news);
-        getSupportActionBar().setElevation(0);
+        isNews = true;
+        invalidateOptionsMenu();
+        layoutTag.setVisibility(View.GONE);
+        layout.setVisibility(View.VISIBLE);
 //        View view = getSupportActionBar().getCustomView();
 
-//        getSupportActionBar().getDisplayOptions().
         tvTopic = getSupportActionBar().getCustomView().findViewById(R.id.tvNewsTopic);
         ivBack = getSupportActionBar().getCustomView().findViewById(R.id.ivBack);
 
@@ -95,7 +102,110 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         tvContent.setTypeface(typeface);
         tvContent.setTextSize(size);
         setClick();
+        setTag(news);
         setListRelevance(news);
+    }
+
+    private void setTag(News news) {
+        ArrayList<String> list = news.getListTag();
+        int k = list.size();
+        for(int i=0; i<12; i++){
+            switch (i){
+                case 0:
+                    if(i < k){
+                        tvSearch1.setVisibility(View.VISIBLE);
+                        tvSearch1.setText(list.get(i));
+                    }else
+                        tvSearch1.setVisibility(View.GONE);
+                    break;
+                case 1:
+                    if(i < k){
+                        tvSearch2.setVisibility(View.VISIBLE);
+                        tvSearch2.setText(list.get(i));
+                    }else
+                        tvSearch2.setVisibility(View.GONE);
+                    break;
+                case 2:
+                    if(i < k){
+                        tvSearch3.setVisibility(View.VISIBLE);
+                        tvSearch3.setText(list.get(i));
+                    }else
+                        tvSearch3.setVisibility(View.GONE);
+                    break;
+                case 3:
+                    if(i < k){
+                        tvSearch21.setVisibility(View.VISIBLE);
+                        tvSearch21.setText(list.get(i));
+                    }else
+                        tvSearch21.setVisibility(View.GONE);
+                    break;
+                case 4:
+                    if(i < k){
+                        tvSearch22.setVisibility(View.VISIBLE);
+                        tvSearch22.setText(list.get(i));
+                    }else
+                        tvSearch22.setVisibility(View.GONE);
+                    break;
+                case 5:
+                    if(i < k){
+                        tvSearch23.setVisibility(View.VISIBLE);
+                        tvSearch23.setText(list.get(i));
+                    }else
+                        tvSearch23.setVisibility(View.GONE);
+                    break;
+                case 6:
+                    if(i < k){
+                        tvSearch31.setVisibility(View.VISIBLE);
+                        tvSearch31.setText(list.get(i));
+                    }else
+                        tvSearch31.setVisibility(View.GONE);
+                    break;
+                case 7:
+                    if(i < k){
+                        tvSearch32.setVisibility(View.VISIBLE);
+                        tvSearch32.setText(list.get(i));
+                    }else
+                        tvSearch32.setVisibility(View.GONE);
+                    break;
+                case 8:
+                    if(i < k){
+                        tvSearch33.setVisibility(View.VISIBLE);
+                        tvSearch33.setText(list.get(i));
+                    }else
+                        tvSearch33.setVisibility(View.GONE);
+                    break;
+                case 9:
+                    if(i < k){
+                        tvSearch41.setVisibility(View.VISIBLE);
+                        tvSearch41.setText(list.get(i));
+                    }else
+                        tvSearch41.setVisibility(View.GONE);
+                    break;
+                case 10:
+                    if(i < k){
+                        tvSearch42.setVisibility(View.VISIBLE);
+                        tvSearch42.setText(list.get(i));
+                    }else
+                        tvSearch42.setVisibility(View.GONE);
+                    break;
+                case 11:
+                    if(i < k){
+                        tvSearch43.setVisibility(View.VISIBLE);
+                        tvSearch43.setText(list.get(i));
+                    }else
+                        tvSearch43.setVisibility(View.GONE);
+                    break;
+            }
+        }
+
+    }
+
+    private void setEach(String s, TextView tvSearch1) {
+        if(s != null){
+            tvSearch1.setVisibility(View.VISIBLE);
+            tvSearch1.setText(s);
+        }else
+            tvSearch1.setVisibility(View.GONE);
     }
 
     private void setClick() {
@@ -125,6 +235,37 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 MyClass.setTVLike(tvLikes, getApplicationContext());
             }
         });
+
+        setClickTV(tvSearch1);
+        setClickTV(tvSearch2);
+        setClickTV(tvSearch3);
+        setClickTV(tvSearch21);
+        setClickTV(tvSearch22);
+        setClickTV(tvSearch23);
+        setClickTV(tvSearch31);
+        setClickTV(tvSearch32);
+        setClickTV(tvSearch33);
+        setClickTV(tvSearch41);
+        setClickTV(tvSearch42);
+        setClickTV(tvSearch43);
+
+    }
+
+    private void setClickTV(TextView tvSearch1) {
+        tvSearch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String s = tvSearch1.getText().toString();
+                tvTopic.setText("#"+s);
+                layout.setVisibility(View.GONE);
+                layoutTag.setVisibility(View.VISIBLE);
+                setListTag(s);
+                isNews = false;
+                invalidateOptionsMenu();
+//                setSearch(s);
+            }
+        });
+
     }
 
     @Override
@@ -135,6 +276,12 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         for(Operation operation:MyList.listOperation){
             if(operation.getNews().toString().equals(s))
                 menu.findItem(R.id.aDownload).setIcon(R.drawable.ic_downloaded);
+        }
+
+        if(!isNews){
+            menu.findItem(R.id.aDownload).setVisible(false);
+            menu.findItem(R.id.aFormatSize).setVisible(false);
+            menu.findItem(R.id.aRestore).setVisible(false);
         }
 
         return true;
@@ -149,6 +296,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
                 break;
             }
             case R.id.aDownload:{
+                item.setIcon(R.drawable.ic_downloaded);
                 Operation operation = new Operation(news, MyList.today, false, true);
 
                 Intent intent = new Intent(NewsActivity.this, NewsDownloadedActivity.class);
@@ -168,6 +316,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     private boolean check(Operation operation) {
         for(Operation operation1:MyList.listOperation){
@@ -331,9 +480,55 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
 
         recyclerView = findViewById(R.id.rcNews);
         adapter = new NewsRCAdapter(this);
+        rvTag = findViewById(R.id.rvTag);
+        layout = findViewById(R.id.layout);
+        layoutTag = findViewById(R.id.layoutTag);
 
+        tvSearch1 = findViewById(R.id.tvSearch1);
+        tvSearch2 = findViewById(R.id.tvSearch2);
+        tvSearch3 = findViewById(R.id.tvSearch3);
+        tvSearch21 = findViewById(R.id.tvSearch21);
+        tvSearch22 = findViewById(R.id.tvSearch22);
+        tvSearch23 = findViewById(R.id.tvSearch23);
+        tvSearch31 = findViewById(R.id.tvSearch31);
+        tvSearch32 = findViewById(R.id.tvSearch32);
+        tvSearch33 = findViewById(R.id.tvSearch33);
+        tvSearch41 = findViewById(R.id.tvSearch41);
+        tvSearch42 = findViewById(R.id.tvSearch42);
+        tvSearch43 = findViewById(R.id.tvSearch43);
 
+    }
 
+    private void setListTag(String tag) {
+        LinearLayoutManager manager = new LinearLayoutManager(this,
+                RecyclerView.VERTICAL, false);
+        rvTag.setLayoutManager(manager);
+
+        ArrayList<News> list = new ArrayList<>();
+        list.add(MyList.listsText.get(0).get(0));
+        for(int i=0; i<MyList.listsText.size(); i++){
+            for(int j = 0; j< MyList.listsText.get(i).size(); j++){
+                News news = MyList.listsText.get(i).get(j);
+                if(checkTag(news, tag) && news != null){
+                    list.add(news);
+                }
+            }
+        }
+
+        adapter.setData(list);
+        adapter.setClickNewsListener(this::onItemClick);
+        rvTag.setAdapter(adapter);
+    }
+
+    private boolean checkTag(News news, String tag) {
+        int k = 0;
+        if(news.getListTag() != null) k = news.getListTag().size();
+        for(int i=0; i<k; i++){
+            String s = news.getListTag().get(i);
+            if(s.equals(tag))
+                return true;
+        }
+        return false;
     }
 
     private void setListRelevance(News news) {
