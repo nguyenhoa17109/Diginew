@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.nguyenhoa.diginew.AudioNewsActivity;
 import com.nguyenhoa.diginew.InfoNewsActivity;
 import com.nguyenhoa.diginew.news.NewsActivity;
-import com.nguyenhoa.diginew.PlayVideoActivity;
+import com.nguyenhoa.diginew.video.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
 

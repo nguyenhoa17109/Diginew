@@ -63,9 +63,16 @@ public class TopicVideoAdapter extends RecyclerView.Adapter<TopicVideoAdapter.My
         });
 
         if(index == position){
-            holder.textView.setTextColor(Color.parseColor("#5151FA"));
-        }else
+            holder.textView.setTextColor(Color.BLACK);
+            holder.textView.setBackground(null);
+            holder.textView.setAlpha(1);
+        }else{
             holder.textView.setTextColor(Color.WHITE);
+            holder.textView.setBackgroundColor(Color.BLACK);
+            holder.textView.setAlpha((float) 0.5);
+        }
+
+//            holder.textView.setTextColor(Color.WHITE);
     }
 
     @Override

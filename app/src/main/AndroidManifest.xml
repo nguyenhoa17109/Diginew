@@ -21,7 +21,7 @@
         <activity android:name=".PacketAdvanceActivity" />
         <activity android:name=".PacketStandardActivity" />
         <activity android:name=".InfoNewsActivity" />
-        <activity android:name=".PlayVideoActivity" />
+        <activity android:name=".video.PlayVideoActivity" />
         <activity android:name=".news.NewsActivity" />
         <activity android:name=".AudioNewsActivity" />
         <activity android:name=".home.SearchActivity" />
