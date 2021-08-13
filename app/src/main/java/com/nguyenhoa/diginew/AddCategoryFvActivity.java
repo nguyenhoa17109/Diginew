@@ -50,7 +50,9 @@ public class AddCategoryFvActivity extends AppCompatActivity implements AddCateg
             public boolean onQueryTextSubmit(String s) {
                 ArrayList<Topic> list1 = new ArrayList<>();
                 for(Topic topic:list){
-                    if(topic.getName().contains(s)){
+                    String s1 = topic.getName().toLowerCase();
+                    String s2 = topic.getName().toUpperCase();
+                    if(s1.contains(s) || s2.contains(s)){
                         list1.add(topic);
                     }
                 }
@@ -92,6 +94,6 @@ public class AddCategoryFvActivity extends AppCompatActivity implements AddCateg
         Gson gson = new Gson();
         String json = gson.toJson(listAdd);
         editor.putString("listSubjectFV", json);
-        editor.commit();
+        editor.apply();
     }
 }

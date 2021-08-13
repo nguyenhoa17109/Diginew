@@ -14,16 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Diginew"
         android:usesCleartextTraffic="true">
-        <activity android:name=".discover.DigiActivity"></activity>
+        <activity android:name=".news.InforNewsActivity"></activity>
+        <activity android:name=".news.News1Activity" />
+        <activity android:name=".discover.DigiActivity" />
         <activity android:name=".AddCategoryFvActivity" />
         <activity android:name=".CategoryFvActivity" />
-        <activity android:name=".NewsDownloadedActivity" />
+        <activity android:name=".old.NewsDownloadedActivity" />
         <activity android:name=".PacketAdvanceActivity" />
         <activity android:name=".PacketStandardActivity" />
-        <activity android:name=".InfoNewsActivity" />
         <activity android:name=".video.PlayVideoActivity" />
-        <activity android:name=".news.NewsActivity" />
-        <activity android:name=".AudioNewsActivity" />
+        <activity android:name=".old.NewsActivity" />
+        <activity android:name=".news.AudioNewsActivity" />
         <activity android:name=".home.SearchActivity" />
         <activity android:name=".splash.Splash">
             <intent-filter>
@@ -37,8 +38,8 @@
         <activity
             android:name=".splash.Terms"
             android:parentActivityName=".splash.Splash2" />
-        <activity android:name=".splash.SubjectsFavorite"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".splash.SubjectsFavorite" />
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

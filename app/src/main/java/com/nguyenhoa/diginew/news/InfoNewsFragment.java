@@ -1,21 +1,23 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.news;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.Dialog;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
-import com.nguyenhoa.diginew.adapter.NewsInfoRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
@@ -23,37 +25,71 @@ import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
 
-public class InfoNewsActivity extends AppCompatActivity {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link InfoNewsFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class InfoNewsFragment extends Fragment {
+    private News news;
     private TextView tvTime, tvTopic, tvLikes, tvCmts;
     private ImageView ivAccount, ivShare, ivBack, ivInfo;
     private EditText etCmt;
-    private RecyclerView rv;
-    private NewsInfoRCAdapter adapter;
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public InfoNewsFragment() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment InfoNewsFragment.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static InfoNewsFragment newInstance(String param1, String param2) {
+        InfoNewsFragment fragment = new InfoNewsFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_news);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
 
-        getSupportActionBar().hide();
-        init();
-
-        Intent intent = getIntent();
-        News news = (News) intent.getSerializableExtra("info");
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_info_news, container, false);
+        init(v);
+        Bundle bundle = getArguments();
+        news = (News) bundle.getSerializable("info");
         ivInfo.setImageResource(news.getImgs());
-        tvTopic.setText(news.getTopic());
-
         setClick();
+        return v;
     }
 
     private void setClick() {
-        ivBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
         tvCmts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,32 +105,9 @@ public class InfoNewsActivity extends AppCompatActivity {
         tvLikes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MyClass.setTVLike(tvLikes, getApplicationContext());
+                MyClass.setTVLike(tvLikes, getContext());
             }
         });
-    }
-
-    private void init(){
-        tvTime = findViewById(R.id.tvNewsTime);
-        tvCmts = findViewById(R.id.tvCmt);
-        tvLikes = findViewById(R.id.tvLike);
-
-        etCmt = findViewById(R.id.etCmt);
-
-        ivAccount = findViewById(R.id.ivAccount);
-        ivShare = findViewById(R.id.ivShare);
-
-        ivBack = findViewById(R.id.ivBack);
-        ivInfo = findViewById(R.id.tvNewsInfo);
-        tvTopic = findViewById(R.id.tvTopic);
-        rv = findViewById(R.id.rcNews);
-
-        adapter = new NewsInfoRCAdapter(this);
-        LinearLayoutManager manager = new LinearLayoutManager(this,
-                RecyclerView.VERTICAL, false);
-        rv.setLayoutManager(manager);
-        adapter.setData(MyList.listNews);
-        rv.setAdapter(adapter);
     }
 
     private void setLayoutCmt(View v){
@@ -111,8 +124,17 @@ public class InfoNewsActivity extends AppCompatActivity {
         tvSend = view1.findViewById(R.id.tvSend);
         rv = view1.findViewById(R.id.rvCmt);
         ivClose = view1.findViewById(R.id.ivClose);
+        tvLike = view1.findViewById(R.id.tvLike);
+
+        tvLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MyClass.setTVLike(tvLike, getActivity());
+            }
+        });
+
         adapter = new CmtAdapter(list, v.getContext());
-        LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(),
+        LinearLayoutManager manager = new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL, false);
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
@@ -145,5 +167,17 @@ public class InfoNewsActivity extends AppCompatActivity {
                 adapter.displayNewCmt(s, list.size(), false);
             }
         });
+    }
+
+    private void init(View v) {
+        tvTime = v.findViewById(R.id.tvNewsTime);
+        tvCmts = v.findViewById(R.id.tvCmt);
+        tvLikes = v.findViewById(R.id.tvLike);
+
+        etCmt = v.findViewById(R.id.etCmt);
+
+        ivAccount = v.findViewById(R.id.ivAccount);
+        ivShare = v.findViewById(R.id.ivShare);
+        ivInfo = v.findViewById(R.id.tvNewsInfo);
     }
 }

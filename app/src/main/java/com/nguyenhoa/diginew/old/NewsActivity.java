@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew.news;
+package com.nguyenhoa.diginew.old;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -7,12 +7,12 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -27,7 +27,6 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nguyenhoa.diginew.NewsDownloadedActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
@@ -212,6 +211,7 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //check like and restore to db
                 finish();
             }
         });
@@ -297,8 +297,9 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
             }
             case R.id.aDownload:{
                 item.setIcon(R.drawable.ic_downloaded);
-                Operation operation = new Operation(news, MyList.today, false, true);
+                boolean isLike = isLiked(tvLikes);
 
+                Operation operation = new Operation(news, MyList.today, false, true, isLike);
                 Intent intent = new Intent(NewsActivity.this, NewsDownloadedActivity.class);
                 if(check(operation)){
                     intent.putExtra("download", operation);
@@ -317,6 +318,28 @@ public class NewsActivity extends AppCompatActivity implements NewsRCAdapter.Ite
         return super.onOptionsItemSelected(item);
     }
 
+    private boolean isLiked(TextView tvLikes) {
+        Drawable[] lst = tvLikes.getCompoundDrawables();
+        for(int i=0; i<lst.length; i++){
+            if(lst[i] == getDrawable(R.drawable.ic_liked))
+                return true;
+        }
+        return false;
+    }
+
+//    public void addFragment(Fragment fragment) {
+//        int size = 30;
+//        String s = "ABC";
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("size", size);
+//        bundle.putString("text", s);
+//        fragment.setArguments(bundle);
+//        FragmentManager fmgr = getSupportFragmentManager();
+//        FragmentTransaction ft = fmgr.beginTransaction();
+//        ft.add(R.id.fragment, fragment);
+//        ft.addToBackStack(fragment.getClass().getSimpleName());
+//        ft.commit();
+//    }
 
     private boolean check(Operation operation) {
         for(Operation operation1:MyList.listOperation){

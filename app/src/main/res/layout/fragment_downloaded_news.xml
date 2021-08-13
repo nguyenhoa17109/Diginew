@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray_200"
+    android:orientation="vertical"
+    tools:context=".news.DownloadedNewsFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNewsDownload"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        tools:listitem="@layout/item_news_download_child"/>
+
+    <LinearLayout
+        android:id="@+id/layoutDownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_empty"
+            android:layout_marginTop="32dp"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="@string/no_download"
+            android:textColor="#E0E3EB"
+            android:fontFamily="@font/roboto"/>
+    </LinearLayout>
+
+</LinearLayout>

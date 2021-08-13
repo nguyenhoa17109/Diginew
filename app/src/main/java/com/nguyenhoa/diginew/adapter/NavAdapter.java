@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

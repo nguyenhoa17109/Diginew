@@ -22,6 +22,7 @@ import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.news.News1Activity;
 import com.smarteist.autoimageslider.SliderView;
 
 /**
@@ -162,5 +163,9 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     @Override
     public void onItemClick(View view, int position) {
         MyClass.setIntent(adapter.getItem(position), (Activity) view.getContext());
+//        if(adapter.getItem(position).getType().equals("text")){
+//            Intent intent = new Intent(getActivity(), News1Activity.class);
+//            intent.putExtra("text", adapter.getItem(position));
+//        }
     }
 }
