@@ -6,10 +6,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.nguyenhoa.diginew.adapter.NavAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigation;

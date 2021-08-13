@@ -1,6 +1,8 @@
 package com.nguyenhoa.diginew.model;
 
-public class Province {
+import java.io.Serializable;
+
+public class Province implements Serializable {
     String name;
 
     public Province(String name) {

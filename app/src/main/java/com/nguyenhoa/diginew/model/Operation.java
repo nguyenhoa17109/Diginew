@@ -7,15 +7,17 @@ public class Operation implements Serializable, Comparable<Operation> {
     private String date;
     private boolean save;
     private boolean download;
+    private boolean like;
 
     public Operation() {
     }
 
-    public Operation(News news, String date, boolean save, boolean download) {
+    public Operation(News news, String date, boolean save, boolean download, boolean like) {
         this.news = news;
         this.date = date;
         this.save = save;
         this.download = download;
+        this.like = like;
     }
 
     public News getNews() {
@@ -48,6 +50,14 @@ public class Operation implements Serializable, Comparable<Operation> {
 
     public void setDownload(boolean download) {
         this.download = download;
+    }
+
+    public boolean isLike() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
     }
 
     @Override

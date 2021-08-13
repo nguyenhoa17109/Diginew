@@ -11,9 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.nguyenhoa.diginew.AudioNewsActivity;
-import com.nguyenhoa.diginew.InfoNewsActivity;
-import com.nguyenhoa.diginew.news.NewsActivity;
+//import com.nguyenhoa.diginew.old.InfoNewsActivity;
+import com.nguyenhoa.diginew.news.AudioNewsActivity;
+import com.nguyenhoa.diginew.news.InforNewsActivity;
+import com.nguyenhoa.diginew.news.News1Activity;
 import com.nguyenhoa.diginew.video.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
@@ -27,13 +28,13 @@ public class MyClass {
 
         switch (type){
             case "text":
-                intent = new Intent(activity, NewsActivity.class);
+                intent = new Intent(activity, News1Activity.class);
                 break;
             case "audio":
                 intent = new Intent(activity, AudioNewsActivity.class);
                 break;
             case "info":
-                intent = new Intent(activity, InfoNewsActivity.class);
+                intent = new Intent(activity, InforNewsActivity.class);
                 break;
             case "video":
                 intent = new Intent(activity, PlayVideoActivity.class);

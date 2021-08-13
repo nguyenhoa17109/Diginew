@@ -15,6 +15,7 @@ public class News implements Serializable {
     private String topic;
     private String url;
     private String audio;
+    private Province province;
     private ArrayList<Comment> listComment;
     private ArrayList<String> listTag;
 
@@ -67,7 +68,7 @@ public class News implements Serializable {
     }
 
     public News(String source, String times, String title, int likes, int cmts, int imgs,
-                String content, String type, String topic, String url, String audio,
+                String content, String type, String topic, String url, String audio, Province province,
                 ArrayList<Comment> listComment, ArrayList<String> listTag) {
         this.source = source;
         this.times = times;
@@ -82,6 +83,15 @@ public class News implements Serializable {
         this.audio = audio;
         this.listComment = listComment;
         this.listTag = listTag;
+        this.province = province;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
     }
 
     public String getTopic() {

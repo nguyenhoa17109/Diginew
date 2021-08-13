@@ -14,6 +14,7 @@ import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Operation;
 import com.nguyenhoa.diginew.model.OtherApp;
+import com.nguyenhoa.diginew.model.Province;
 import com.nguyenhoa.diginew.model.Topic;
 import com.nguyenhoa.diginew.model.User;
 
@@ -33,11 +34,12 @@ public class MyList extends Application {
     public static ArrayList<OtherApp> list_dis;
     public static ArrayList<Comment> list_Cmt;
     public static ArrayList<ArrayList<News>> listsText, lists_audio, lists_video, lists_info;
-    public static ArrayList<Operation> listOperation;
+    public static ArrayList<Operation> listOperation, listDownload, listSave, listLike;
     public static ArrayList<ArrayList<Operation>> lists_operation;
     public static String[] spinnerTime = {"Năm nay", "2020", "2019", "2018", "2017"};
     public static String today = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     private static int NUMBER_TOPIC = 9;
+    private static Province province;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -63,11 +65,16 @@ public class MyList extends Application {
         list_unFv = new ArrayList<>();
 
         list_dis = new ArrayList<>();
-        list_dis.add(new OtherApp("DigiMovie", R.drawable.ic_digimovie, R.raw.digimovie, ""));
-        list_dis.add(new OtherApp("DigiClip", R.drawable.ic_digiclips, R.raw.digiclip, ""));
-        list_dis.add(new OtherApp("DigiMusic", R.drawable.ic_digimusic, R.raw.digimusic, ""));
-        list_dis.add(new OtherApp("DigiHealth", R.drawable.ic_digihealth, R.raw.digihealth, ""));
-        list_dis.add(new OtherApp("MyTV", R.drawable.img_mytv, R.raw.mytv, ""));
+        list_dis.add(new OtherApp("DigiMovie", R.drawable.ic_digimovie, R.raw.digimovie
+                , "https://play.google.com/store/apps/details?id=com.vnpt.media.digimovie&hl=en&gl=US"));
+        list_dis.add(new OtherApp("DigiClip", R.drawable.ic_digiclips, R.raw.digiclip
+                , "https://play.google.com/store/apps/details?id=com.vnpt.media.digiclip&hl=en&gl=US"));
+        list_dis.add(new OtherApp("DigiMusic", R.drawable.ic_digimusic, R.raw.digimusic
+                , "https://play.google.com/store/apps/details?id=com.vnpt.media&hl=en&gl=US"));
+        list_dis.add(new OtherApp("DigiHealth", R.drawable.ic_digihealth, R.raw.digihealth
+                , "https://play.google.com/store/apps/details?id=com.vnpt.media.digihealth&hl=en&gl=US"));
+        list_dis.add(new OtherApp("MyTV", R.drawable.img_mytv, R.raw.mytv
+                , "https://play.google.com/store/apps/details?id=vn.vnpt.media.mytvgame&hl=en&gl=US"));
 
         list_Cmt = new ArrayList<>();
         list_Cmt.add(new Comment(new User(R.drawable.ic_account,"Nguyen Van A"),
@@ -78,34 +85,37 @@ public class MyList extends Application {
         listTag = new ArrayList<>();
         listTag.add("Covid-19");
 
+        province = new Province("Ha Noi");
         listNews = new ArrayList<>();
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
-                200, 100, R.drawable.sj_health,"Covid-19", "text",  "Thể thao",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt, listTag));
-        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Thành phố Hà Nội", 200
+                200, 100, R.drawable.sj_health,"Covid-19", "text",  "Kinh tế",
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
+        listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Thành phố Hai Duong", 200
                 , 100, R.drawable.sj_life,"abc", "info",  "Thể thao",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Giang", 200
                 , 100, R.drawable.sj_science,"abc", "info",  "Kinh tế",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Tỉnh Hà Giang", 200
                 , 100, R.drawable.sj_confidence,"abc", "text",  "Kinh tế",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt, listTag));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Cao Bằng", 200
                 , 100, R.drawable.sj_science,"abc", "text",  "Đời sống",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt, listTag));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Suc khoe cua chung ta", 200
                 , 100, R.drawable.sj_science,"abc", "audio",  "Sức khỏe",
-                "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z", list_Cmt));
+                "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z"
+                , province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o tỉnh Cao Bằng", 200
                 , 100, R.drawable.sj_science,"abc", "audio",  "Công nghệ",
-                "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z", list_Cmt));
+                "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z"
+                , province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội", 200
                 , 100, R.drawable.sj_confidence,"abc", "video",  "Giải trí",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
         listNews.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội", 200
                 , 100, R.drawable.sj_science,"abc", "video",  "Tâm sự",
-                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", list_Cmt));
+                "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", "z", province, list_Cmt, listTag));
 
         listsText = setDataText(listNews);
         lists_audio = setDataAudio(listNews);
@@ -113,13 +123,21 @@ public class MyList extends Application {
         lists_video = setDataVideo(listNews);
 
         listOperation = new ArrayList<>();
-        listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true));
-        listOperation.add(new Operation(listNews.get(1), "02/08/2021", false, true));
-        listOperation.add(new Operation(listNews.get(3), "01/08/2021", false, true));
+        listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true, false));
+        listOperation.add(new Operation(listNews.get(1), "02/08/2021", false, true, true));
+        listOperation.add(new Operation(listNews.get(3), "01/08/2021", false, true, false));
 
-        lists_operation = setListDownload(listOperation);
-
-
+        listDownload = new ArrayList<>();
+        listSave = new ArrayList<>();
+        listLike = new ArrayList<>();
+        for(Operation operation:listOperation){
+            if(operation.isDownload())
+                listDownload.add(operation);
+            else if(operation.isSave())
+                listSave.add(operation);
+            else
+                listLike.add(operation);
+        }
 //        Log.d("KK", lists_operation.size()+"");
     }
 
@@ -149,7 +167,7 @@ public class MyList extends Application {
         return true;
     }
 
-    public static ArrayList<ArrayList<Operation>> setListDownload(ArrayList<Operation> listOperation) {
+    public static ArrayList<ArrayList<Operation>> setListOp(ArrayList<Operation> listOperation) {
         ArrayList<ArrayList<Operation>> lists_operation = new ArrayList<>();
         Collections.sort(listOperation, Collections.reverseOrder());
         ArrayList<Operation> lst = new ArrayList<>();
@@ -170,10 +188,10 @@ public class MyList extends Application {
     private ArrayList<ArrayList<News>> setDataText( ArrayList<News> list1){
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
-            lists.add(setList("video", i));
+            lists.add(setList("text", i));
         }
         for(int i=0; i<list1.size(); i++){
-            if(list1.get(i).getType().equals("video")){
+            if(list1.get(i).getType().equals("text")){
                 //id topic
                 int k = setTopic(list1.get(i));
                 //set News to topic k
@@ -235,9 +253,10 @@ public class MyList extends Application {
         ArrayList<ArrayList<News>> lists = new ArrayList<>();
         for(int i=0; i<NUMBER_TOPIC; i++){
             ArrayList<News> list = new ArrayList<News>();
-            list.add(new News("Vietnamnet", "6", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Da Nang", 200
-                    , 100, R.drawable.sj_confidence,"abc", "text",  list2.get(i).getName(),
-                    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4", listTag));
+            list.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
+                    200, 100, R.drawable.sj_health,"Covid-19", "text",  "Kinh tế",
+                    "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+                    "z", province, list_Cmt, listTag));
             lists.add(list);
         }
         for(int i=0; i<list1.size(); i++){

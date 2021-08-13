@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".news.TagFragment">
+
+    <LinearLayout
+        android:id="@+id/layoutTag"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_200">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_corner_top"
+            android:layout_marginTop="20sp"
+            android:padding="5dp"/>
+    </LinearLayout>
+
+</FrameLayout>

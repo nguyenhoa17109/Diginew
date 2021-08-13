@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.old;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsDownloadedAdapter;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Operation;
@@ -46,7 +47,7 @@ public class NewsDownloadedActivity extends AppCompatActivity {
             rvDownload.setVisibility(View.VISIBLE);
         }
 
-        ArrayList<ArrayList<Operation>> lists = MyList.setListDownload(lst);
+        ArrayList<ArrayList<Operation>> lists = MyList.setListOp(lst);
 
         adapter = new NewsDownloadedAdapter(lists, this);
         LinearLayoutManager manager = new LinearLayoutManager(getApplicationContext(),

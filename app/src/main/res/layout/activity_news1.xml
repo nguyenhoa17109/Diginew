@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/gray_200"
+    tools:context=".old.NewsActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_corner_top"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcNews"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_corner_top"
+                android:padding="5dp"
+                android:layout_marginBottom="60dp"
+                tools:listitem="@layout/item_news"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:background="@color/gray_200"
-    tools:context=".InfoNewsActivity">
+    tools:context=".news.InfoNewsFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll1"
@@ -19,35 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="10dp"
-                android:orientation="horizontal"
-                android:background="@color/white">
-
-                <ImageView
-                    android:id="@+id/ivBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:contentDescription="@string/todo"
-                    app:srcCompat="@drawable/ic_back" />
-
-                <TextView
-                    android:id="@+id/tvTopic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:padding="5dp"
-                    android:text="@string/digiclip"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
 
             <ImageView
                 android:id="@+id/tvNewsInfo"
@@ -68,16 +39,6 @@
                     android:text="@string/xu_t_cho_b_n"
                     android:textSize="18sp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcNews"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/background_corner_top"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="60dp"
-                    tools:listitem="@layout/item_news_info">
-
-                </androidx.recyclerview.widget.RecyclerView>
             </LinearLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
