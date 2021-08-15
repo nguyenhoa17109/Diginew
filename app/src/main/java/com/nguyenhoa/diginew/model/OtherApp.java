@@ -1,5 +1,7 @@
 package com.nguyenhoa.diginew.model;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 public class OtherApp implements Serializable {
@@ -7,9 +9,6 @@ public class OtherApp implements Serializable {
     private int img;
     private int content;
     private String link;
-
-    public OtherApp() {
-    }
 
     public OtherApp(String name, int img, int content, String link) {
         this.name = name;

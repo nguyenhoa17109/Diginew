@@ -1,6 +1,9 @@
 package com.nguyenhoa.diginew.news;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,18 +43,13 @@ import java.util.ArrayList;
 public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
-    private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts;
+    private TextView tvType, tvLikes, tvCmts;
     private RecyclerView recyclerView;
     private ArrayList<News> list1;
+    private News news;
     private NewsRCAdapter newsRCAdapter;
-    private String url;
-    private View thumbView;
 
-    private MediaPlayer mediaPlayer;
-    private SeekBar seekBar;
-    private Handler handler = new Handler();
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,162 +59,37 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         init();
 
         Intent intent = getIntent();
-        News news = (News) intent.getSerializableExtra("audio");
+        news = (News) intent.getSerializableExtra("audio");
+
+        addFragment(new AudioNewsFragment());
 
         tvType.setText(news.getTopic());
-        tvTitleNews.setText(news.getTitle());
-        tvSource.setText(news.getSource());
-        tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
+
         tvLikes.setText(String.valueOf(news.getLikes()));
         tvCmts.setText(String.valueOf(news.getCmts()));
-        url = news.getUrl(); // your URL here
 
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setAudioAttributes(
-                new AudioAttributes.Builder()
-                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                        .setUsage(AudioAttributes.USAGE_MEDIA)
-                        .build()
-        );
-        mediaPlayer.setLooping(true);
-
-        prepareMediaPlayer();
-
-        ivPlayPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mediaPlayer.isPlaying()){
-                    handler.removeCallbacks(updater);
-                    mediaPlayer.pause();
-                    ivPlayPause.setImageResource(R.drawable.ic_play_circle);
-                }
-                else{
-                    mediaPlayer.start();
-                    ivPlayPause.setImageResource(R.drawable.ic_pause_circle);
-                    updateSeekBar();
-                }
-            }
-        });
-
-
-        seekBar.setOnTouchListener(new View.OnTouchListener() {
-            @SuppressLint("ClickableViewAccessibility")
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                SeekBar seekBar = (SeekBar) v;
-                int playPostion = (mediaPlayer.getDuration() / 100) * seekBar.getProgress();
-                mediaPlayer.seekTo(playPostion);
-
-                seekBar.setThumb(getThumb(milliSecondsToTimer(mediaPlayer.getCurrentPosition()), milliSecondsToTimer(mediaPlayer.getDuration())));
-
-                return false;
-            }
-        });
-
-//        mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
-//            @Override
-//            public void onBufferingUpdate(MediaPlayer mp, int percent) {
-//                seekBar.setSecondaryProgress(percent);
-//            }
-//        });
-
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                seekBar.setProgress(0);
-                ivPlayPause.setImageResource(R.drawable.ic_play_circle);
-                mediaPlayer.reset();
-                prepareMediaPlayer();
-            }
-        });
-
-        ivBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mediaPlayer.stop();
-                mediaPlayer.release();
-                finish();
-
-            }
-        });
 
         setClick();
     }
 
-    private void prepareMediaPlayer(){
-        try {
-            mediaPlayer.setDataSource(url);
-            mediaPlayer.prepare();
-            seekBar.setThumb(getThumb("0:00", milliSecondsToTimer(mediaPlayer.getDuration())));
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void addFragment(Fragment fragment) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("audio", news);
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frAudioNews, fragment).commit();
     }
-    private Runnable updater = new Runnable() {
-        @Override
-        public void run() {
-            try {
-                if(mediaPlayer.isLooping() || mediaPlayer.isPlaying()){
-                    updateSeekBar();
-                    long currentDuration = mediaPlayer.getCurrentPosition();
-                    seekBar.setThumb(getThumb(milliSecondsToTimer(currentDuration), milliSecondsToTimer(mediaPlayer.getDuration())));
-                }
-                else{
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                }
-
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-            }
-
-        }
-    };
-
-    private void updateSeekBar(){
-        if(mediaPlayer.isPlaying()){
-            seekBar.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration()) *100));
-            handler.postDelayed(updater, 500);
-        }
-    }
-
-    public String milliSecondsToTimer(long milliseconds){
-        String finalTimerString = "";
-        String secondsString = "";
-
-        int hours = (int)( milliseconds / (1000*60*60));
-        int minutes = (int)(milliseconds % (1000*60*60)) / (1000*60);
-        int seconds = (int) ((milliseconds % (1000*60*60)) % (1000*60) / 1000);
-        if(hours > 0){
-            finalTimerString = hours + ":";
-        }
-        if(seconds < 10){
-            secondsString = "0" + seconds;
-        }else{
-            secondsString = "" + seconds;}
-        finalTimerString = finalTimerString + minutes + ":" + secondsString;
-
-        return finalTimerString;
-    }
-
 
     private void init(){
-        thumbView = LayoutInflater.from(AudioNewsActivity.this).inflate(R.layout.seekbar_thumb, null, false);
 
         ivBack = findViewById(R.id.ivBack);
         ivAccount = findViewById(R.id.ivAccount);
         ivShare = findViewById(R.id.ivShare);
         tvType = findViewById(R.id.tvType);
-        tvTitleNews = findViewById(R.id.tvAudioTiltle);
-        tvSource = findViewById(R.id.tvSource);
-        tvTime = findViewById(R.id.tvTimes);
+
         tvCmts = findViewById(R.id.tvCmt);
         tvLikes = findViewById(R.id.tvLike);
         etCmt = findViewById(R.id.etCmt);
-
-        ivPlayPause = findViewById(R.id.ivPlayPause);
-        seekBar = findViewById(R.id.seekBar);
 
         recyclerView = findViewById(R.id.rcNews);
 
@@ -238,19 +111,18 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         recyclerView.setAdapter(newsRCAdapter);
     }
 
-    public Drawable getThumb(String t1, String t2) {
-        ((TextView) thumbView.findViewById(R.id.tvProgress)).setText(t1 + "/"+ t2);
 
-        thumbView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        Bitmap bitmap = Bitmap.createBitmap(thumbView.getMeasuredWidth(), thumbView.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        thumbView.layout(0, 0, thumbView.getMeasuredWidth(), thumbView.getMeasuredHeight());
-        thumbView.draw(canvas);
-
-        return new BitmapDrawable(getResources(), bitmap);
-    }
 
     private void setClick() {
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                mediaPlayer.stop();
+//                mediaPlayer.release();
+                finish();
+
+            }
+        });
 
         tvCmts.setOnClickListener(new View.OnClickListener() {
             @Override

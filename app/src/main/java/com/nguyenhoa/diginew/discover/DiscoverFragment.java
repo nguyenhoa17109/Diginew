@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,7 +16,6 @@ import android.widget.Toast;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.OtherApp;
-import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
 
@@ -27,11 +24,13 @@ public class DiscoverFragment extends Fragment implements DiscoverAdapter.OnItem
     private RecyclerView rvDiscover;
     private DiscoverAdapter discoverAdapter;
     private ArrayList<OtherApp> list;
+
     public DiscoverFragment() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -41,6 +40,7 @@ public class DiscoverFragment extends Fragment implements DiscoverAdapter.OnItem
         rvDiscover = view.findViewById(R.id.rvListDiscover);
 
         list = MyList.list_dis;
+
         discoverAdapter = new DiscoverAdapter(getContext(), list);
         discoverAdapter.setOnItemClick(this::ItemClick);
         rvDiscover.setLayoutManager(new LinearLayoutManager(getContext()));
