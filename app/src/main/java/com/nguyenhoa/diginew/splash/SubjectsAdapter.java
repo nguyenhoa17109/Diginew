@@ -2,6 +2,7 @@ package com.nguyenhoa.diginew.splash;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
@@ -44,7 +47,7 @@ public class SubjectsAdapter extends RecyclerView.Adapter<SubjectsAdapter.MyView
         Topic subject = data.get(position);
 
         holder.tvSubject.setText(subject.getName());
-        holder.tvSubject.setBackgroundResource(subject.getImg());
+        new DownloadImageTask(holder.tvSubject).execute(subject.getImg());
 
         if(subject.getSelected()){
             holder.cardView.setBackgroundColor(Color.parseColor("#6E8DFB"));

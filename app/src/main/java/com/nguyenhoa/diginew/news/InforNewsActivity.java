@@ -41,7 +41,7 @@ public class InforNewsActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         news = (News) intent.getSerializableExtra("info");
-        tvTopic.setText(news.getTopic());
+        tvTopic.setText(news.getTopic().getName());
         setClick();
         addFragment(new InfoNewsFragment());
         setListRelevance(news);
@@ -81,17 +81,17 @@ public class InforNewsActivity extends AppCompatActivity
                 RecyclerView.VERTICAL, false);
         rv.setLayoutManager(manager);
 
-        ArrayList<News> list = new ArrayList<>();
-        for(int i=0; i<MyList.lists_info.size(); i++){
-            for(int j = 0; j< MyList.lists_info.get(i).size(); j++){
-                News n = MyList.lists_info.get(i).get(j);
-                if(news.getProvince() != null && n.getProvince() != null)
-                    if(news.getTopic().equals(n.getTopic())
-                            || news.getProvince().equals(n.getProvince()))
-                        list.add(n);
-            }
-
-        }
+        ArrayList<News> list = MyList.sqLite.getAllNewsRelevant(news);
+//        for(int i=0; i<MyList.lists_info.size(); i++){
+//            for(int j = 0; j< MyList.lists_info.get(i).size(); j++){
+//                News n = MyList.lists_info.get(i).get(j);
+//                if(news.getProvince() != null && n.getProvince() != null)
+//                    if(news.getTopic().equals(n.getTopic())
+//                            || news.getProvince().equals(n.getProvince()))
+//                        list.add(n);
+//            }
+//
+//        }
 
         adapter.setData(list);
         adapter.setClickNewsListener(this::onItemClickInfo);
@@ -103,7 +103,7 @@ public class InforNewsActivity extends AppCompatActivity
         news = adapter.getItem(position);
         getSupportFragmentManager().popBackStack();
         addFragment(new InfoNewsFragment());
-        tvTopic.setText(news.getTopic());
+        tvTopic.setText(news.getTopic().getName());
         setListRelevance(news);
     }
 }

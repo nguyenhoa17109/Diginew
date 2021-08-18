@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsDownloadedAdapter;
 import com.nguyenhoa.diginew.common.MyList;
-import com.nguyenhoa.diginew.model.Operation;
+import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
 
@@ -29,6 +29,8 @@ public class DownloadedNewsFragment extends Fragment {
     private RecyclerView rvDownload;
     private LinearLayout layout;
     private NewsDownloadedAdapter adapter;
+    private ArrayList<ArrayList<News>> lists;
+    private int x;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,23 +80,38 @@ public class DownloadedNewsFragment extends Fragment {
         rvDownload = v.findViewById(R.id.rvNewsDownload);
         layout = v.findViewById(R.id.layoutDownload);
 
-        ArrayList<Operation> lst ;
+        lists = new ArrayList<>();
+        ArrayList<News> lst ;
         Bundle bundle = getArguments();
 
-        Operation operation = (Operation) bundle.getSerializable("download");
+        News operation = (News) bundle.getSerializable("download");
         if(operation == null) {
-            operation = (Operation) bundle.getSerializable("saved");
+            operation = (News) bundle.getSerializable("saved");
             lst = MyList.listSave;
-        } else
+            lists = MyList.setListSave(lst);
+            x = 1;
+        } else{
             lst = MyList.listDownload;
+            lists = MyList.setListDown(lst);
+            x = 2;
+        }
 
-        setListDownload(operation, lst);
+        setListDownload(operation, lst, x);
 
         return v;
     }
-    private void setListDownload(Operation operation, ArrayList<Operation> lst){
 
-        if(operation != null)
+    private boolean check(News operation) {
+        for(News operation1: MyList.listDownload){
+            if(operation.equals(operation1))
+                return false;
+        }
+        return true;
+    }
+
+    private void setListDownload(News operation, ArrayList<News> lst, int x){
+
+        if(operation != null && check(operation))
             lst.add(operation);
         if(lst.isEmpty()){
             layout.setVisibility(View.VISIBLE);
@@ -104,8 +121,7 @@ public class DownloadedNewsFragment extends Fragment {
             rvDownload.setVisibility(View.VISIBLE);
         }
 
-        ArrayList<ArrayList<Operation>> lists = MyList.setListOp(lst);
-        adapter = new NewsDownloadedAdapter(lists, getContext());
+        adapter = new NewsDownloadedAdapter(lists, getContext(), x);
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL, false);
         rvDownload.setLayoutManager(manager);

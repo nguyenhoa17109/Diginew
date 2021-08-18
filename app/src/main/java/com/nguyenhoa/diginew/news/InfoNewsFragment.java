@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
@@ -35,6 +36,7 @@ public class InfoNewsFragment extends Fragment {
     private TextView tvTime, tvTopic, tvLikes, tvCmts;
     private ImageView ivAccount, ivShare, ivBack, ivInfo;
     private EditText etCmt;
+    private Dialog dialog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -84,7 +86,7 @@ public class InfoNewsFragment extends Fragment {
         init(v);
         Bundle bundle = getArguments();
         news = (News) bundle.getSerializable("info");
-        ivInfo.setImageResource(news.getImgs());
+        new DownloadImageTask(ivInfo).execute(news.getImgs());
         setClick();
         return v;
     }
@@ -108,6 +110,14 @@ public class InfoNewsFragment extends Fragment {
                 MyClass.setTVLike(tvLikes, getContext());
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if ( dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
     }
 
     private void setLayoutCmt(View v){
@@ -139,7 +149,7 @@ public class InfoNewsFragment extends Fragment {
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

@@ -36,6 +36,7 @@ import com.nguyenhoa.diginew.model.News;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
@@ -46,6 +47,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
     private NewsRCAdapter newsRCAdapter;
     private String url;
     private View thumbView;
+    private Dialog dialog;
 
     private MediaPlayer mediaPlayer;
     private SeekBar seekBar;
@@ -63,7 +65,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         Intent intent = getIntent();
         News news = (News) intent.getSerializableExtra("audio");
 
-        tvType.setText(news.getTopic());
+        tvType.setText(news.getTopic().getName());
         tvTitleNews.setText(news.getTitle());
         tvSource.setText(news.getSource());
         tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
@@ -292,7 +294,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -323,7 +325,16 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if ( dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
+    }
+
+    @Override
     public void onItemClick(View view, int position) {
-        MyClass.setIntent(newsRCAdapter.getItem(position), (Activity) view.getContext());
+        News news = newsRCAdapter.getItem(position);
+        MyClass.setIntent(news, (Activity) view.getContext());
     }
 }

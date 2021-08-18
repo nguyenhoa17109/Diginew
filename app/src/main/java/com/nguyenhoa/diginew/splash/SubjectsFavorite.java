@@ -48,7 +48,7 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
             btToHome = findViewById(R.id.btToHome);
             recyclerView = findViewById(R.id.rvSubjectsFV);
 
-            list = MyList.list;
+            list = MyList.listTopic;
 
             GridLayoutManager manager = new GridLayoutManager(this, 2);
             adapter = new SubjectsAdapter(SubjectsFavorite.this, list, this::onClickSubject);
@@ -58,7 +58,8 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
             btToHome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                    SharedPreferences sharedPreferences =
+                            PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     Gson gson = new Gson();
                     String json = gson.toJson(listChose);
@@ -87,5 +88,6 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
         else{
             listChose.remove(topic);
         }
+        MyList.sqLite.updateTopic(topic);
     }
 }

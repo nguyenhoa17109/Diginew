@@ -2,6 +2,7 @@ package com.nguyenhoa.diginew.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
@@ -51,8 +54,7 @@ public class TopicVideoAdapter extends RecyclerView.Adapter<TopicVideoAdapter.My
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(list.get(position).getName());
-        holder.layout.setBackgroundResource(list.get(position).getImg());
-
+        new DownloadImageTask(holder.layout).execute(list.get(position).getImg());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

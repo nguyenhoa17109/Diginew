@@ -14,6 +14,7 @@ import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Tag;
 
 import java.util.ArrayList;
 
@@ -83,23 +84,23 @@ public class TagFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCli
 //        });
 
         Bundle bundle = getArguments();
-        String tag = bundle.getString("tag");
+        Tag tag = (Tag) bundle.getSerializable("tag");
         rvTag = v.findViewById(R.id.rvTag);
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity(),
                 RecyclerView.VERTICAL, false);
         rvTag.setLayoutManager(manager);
 
-        ArrayList<News> list = new ArrayList<>();
-        list.add(MyList.listsText.get(0).get(0));
-        for(int i=0; i<MyList.listsText.size(); i++){
-            for(int j = 0; j< MyList.listsText.get(i).size(); j++){
-                News news = MyList.listsText.get(i).get(j);
-                if(checkTag(news, tag) && news != null){
-                    list.add(news);
-                }
-            }
-        }
+        ArrayList<News> list = MyList.sqLite.getAllNewsByTag(tag.getId());
+//        list.add(MyList.listsText.get(0).get(0));
+//        for(int i=0; i<MyList.listsText.size(); i++){
+//            for(int j = 0; j< MyList.listsText.get(i).size(); j++){
+//                News news = MyList.listsText.get(i).get(j);
+//                if(checkTag(news, new Tag(tag)) && news != null){
+//                    list.add(news);
+//                }
+//            }
+//        }
 
         adapter.setData(list);
         adapter.setClickNewsListener(this::onItemClick);
@@ -108,12 +109,12 @@ public class TagFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCli
         return v;
     }
 
-    private boolean checkTag(News news, String tag) {
+    private boolean checkTag(News news, Tag tag) {
         int k = 0;
         if(news.getListTag() != null) k = news.getListTag().size();
         for(int i=0; i<k; i++){
-            String s = news.getListTag().get(i);
-            if(s.equals(tag))
+            String s = news.getListTag().get(i).getTag();
+            if(s.equals(tag.getTag()))
                 return true;
         }
         return false;
