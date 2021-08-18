@@ -53,6 +53,7 @@ public class NewsFragment extends Fragment {
     private SharedPreferences preferences;
     public static final String MyPREFERENCES = "CONTENT";
     private RelativeLayout layout;
+    private Dialog dialog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -242,17 +243,6 @@ public class NewsFragment extends Fragment {
 
     }
 
-//    private void setClickTV(TextView tvSearch1, int i) {
-//        tvSearch1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String s = tvSearch1.getText().toString();
-//                setListTag(s, i);
-//            }
-//        });
-//
-//    }
-
     private void setLayoutCmt(View v){
         View view1 = getLayoutInflater().inflate(R.layout.layout_cmt, null);
 
@@ -282,7 +272,7 @@ public class NewsFragment extends Fragment {
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -316,6 +306,14 @@ public class NewsFragment extends Fragment {
                 MyClass.updateListCmt(list);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
     }
 
     private int setSize(int progress) {

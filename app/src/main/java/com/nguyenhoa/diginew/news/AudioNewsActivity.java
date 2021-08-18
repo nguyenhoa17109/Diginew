@@ -47,6 +47,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
     private NewsRCAdapter newsRCAdapter;
     private String url;
     private View thumbView;
+    private Dialog dialog;
 
     private MediaPlayer mediaPlayer;
     private SeekBar seekBar;
@@ -293,7 +294,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -321,6 +322,14 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
                 adapter.displayNewCmt(s, list.size(), false);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if ( dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
     }
 
     @Override

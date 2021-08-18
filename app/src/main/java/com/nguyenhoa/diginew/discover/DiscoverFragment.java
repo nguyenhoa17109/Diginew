@@ -53,7 +53,7 @@ public class DiscoverFragment extends Fragment implements DiscoverAdapter.OnItem
     @Override
     public void ItemClick(int index) {
 //        Topic topic = discoverAdapter.getItem(index);
-        Log.d("LLL", "OK");
+//        Log.d("LLL", "OK");
         Intent intent = new Intent(getActivity(), DigiActivity.class);
         intent.putExtra("index", index);
         startActivity(intent);

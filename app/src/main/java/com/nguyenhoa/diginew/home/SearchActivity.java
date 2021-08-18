@@ -98,32 +98,6 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
 
 //        String s = etSearch.getQuery().toString();
         setSearchKey();
-
-//        setClickTV(tvSearch1);
-//        setClickTV(tvSearch2);
-//        setClickTV(tvSearch3);
-//        setClickTV(tvSearch21);
-//        setClickTV(tvSearch22);
-//        setClickTV(tvSearch23);
-//        setClickTV(tvSearch31);
-//        setClickTV(tvSearch32);
-//        setClickTV(tvSearch33);
-//        setClickTV(tvSearch41);
-//        setClickTV(tvSearch42);
-//        setClickTV(tvSearch43);
-//
-//        setClickTV(tvSearch111);
-//        setClickTV(tvSearch112);
-//        setClickTV(tvSearch113);
-//        setClickTV(tvSearch121);
-//        setClickTV(tvSearch122);
-//        setClickTV(tvSearch123);
-//        setClickTV(tvSearch131);
-//        setClickTV(tvSearch132);
-//        setClickTV(tvSearch133);
-//        setClickTV(tvSearch141);
-//        setClickTV(tvSearch142);
-//        setClickTV(tvSearch143);
     }
 
     private void setSearchKey(){

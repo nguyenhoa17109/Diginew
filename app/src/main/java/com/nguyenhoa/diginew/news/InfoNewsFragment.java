@@ -36,6 +36,7 @@ public class InfoNewsFragment extends Fragment {
     private TextView tvTime, tvTopic, tvLikes, tvCmts;
     private ImageView ivAccount, ivShare, ivBack, ivInfo;
     private EditText etCmt;
+    private Dialog dialog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -111,6 +112,14 @@ public class InfoNewsFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if ( dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
+    }
+
     private void setLayoutCmt(View v){
         View view1 = getLayoutInflater().inflate(R.layout.layout_cmt, null);
 
@@ -140,7 +149,7 @@ public class InfoNewsFragment extends Fragment {
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);

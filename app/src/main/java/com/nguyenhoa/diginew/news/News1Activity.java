@@ -48,6 +48,7 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
     private SharedPreferences preferences;
     public static final String MyPREFERENCES = "CONTENT";
     private SQLiteDigi sqLiteDigi;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +128,13 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
         return true;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
+    }
 
     private boolean isLiked(TextView tvLikes) {
         Drawable[] lst = tvLikes.getCompoundDrawables();
@@ -223,7 +231,7 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
             }
         });
 
-        Dialog dialog = new Dialog(this, R.style.MaterialDialogSheet);
+        dialog = new Dialog(this, R.style.MaterialDialogSheet);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override

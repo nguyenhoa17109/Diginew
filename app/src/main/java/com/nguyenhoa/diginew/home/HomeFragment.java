@@ -38,9 +38,8 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     private SliderView sliderView;
     private RecyclerView rvNews;
     private NewsRCAdapter adapter;
-    private LinearLayout layout, layout1;
 
-//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -101,23 +100,6 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
                 startActivity(intent);
-//                Log.d("LLL", "ooo");
-//                layout.setVisibility(View.GONE);
-//
-//                FragmentManager manager = getActivity().getSupportFragmentManager();
-//                FragmentTransaction transaction = manager.beginTransaction();
-//                transaction.replace(R.id.layoutFragment, fragment);
-//                transaction.commit();
-//                layout.setVisibility(View.VISIBLE);
-//                layout1.setVisibility(View.GONE);
-//                fragment.ivBack = fragment.getView().findViewById(R.id.ivBack);
-//                fragment.ivBack.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        layout.setVisibility(View.VISIBLE);
-//                        layout1.setVisibility(View.GONE);
-//                    }
-//                });
             }
         });
         ivUser.setOnClickListener(new View.OnClickListener() {
@@ -157,14 +139,23 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
         ivSearch = v.findViewById(R.id.ivSearch);
         ivUser = v.findViewById(R.id.ivUser);
         rvNews = v.findViewById(R.id.rcNews);
-
-        layout = v.findViewById(R.id.layout);
-        layout1 = v.findViewById(R.id.layoutFragment);
     }
 
     @Override
     public void onItemClick(View view, int position) {
         News news = adapter.getItem(position);
         MyClass.setIntent(news, (Activity) view.getContext());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        sliderView.stopAutoCycle();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+//        sliderView.
     }
 }

@@ -46,7 +46,7 @@ public class MyList extends Application {
     public static ArrayList<ArrayList<News>> lists_audio, lists_video_as_topic, lists_info;
     public static String[] spinnerTime = {"Năm nay", "2020", "2019", "2018", "2017"};
     public static String today = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-    private static int NUMBER_TOPIC = 9;
+    private static final int NUMBER_TOPIC = 9;
     public static SQLiteDigi sqLite;
 
     @Override

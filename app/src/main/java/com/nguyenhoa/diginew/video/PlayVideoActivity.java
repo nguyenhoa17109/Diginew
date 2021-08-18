@@ -40,6 +40,7 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
     private ImageView ivAccount, ivShare, ivBack;
     private RecyclerView recyclerView;
     private NewsRCAdapter adapter;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,9 +118,8 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (getApplicationContext() != null) {
-            finish();
-//            dialog = null;
+        if ( dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
         }
     }
 
@@ -189,7 +189,7 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
