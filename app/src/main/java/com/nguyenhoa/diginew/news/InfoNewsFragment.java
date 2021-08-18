@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.CmtAdapter;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
@@ -84,7 +85,7 @@ public class InfoNewsFragment extends Fragment {
         init(v);
         Bundle bundle = getArguments();
         news = (News) bundle.getSerializable("info");
-        ivInfo.setImageResource(news.getImgs());
+        new DownloadImageTask(ivInfo).execute(news.getImgs());
         setClick();
         return v;
     }

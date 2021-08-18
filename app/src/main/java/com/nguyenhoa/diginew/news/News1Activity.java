@@ -13,6 +13,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -27,9 +28,10 @@ import android.widget.Toast;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.SQLiteDigi;
 import com.nguyenhoa.diginew.model.News;
-import com.nguyenhoa.diginew.model.Operation;
 
 import java.util.ArrayList;
 
@@ -45,14 +47,17 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
     public boolean isNews;
     private SharedPreferences preferences;
     public static final String MyPREFERENCES = "CONTENT";
+    private SQLiteDigi sqLiteDigi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news1);
 
+        sqLiteDigi = new SQLiteDigi(this);
         Intent intent = getIntent();
-        news = (News) intent.getSerializableExtra("text");
+        news = new News();
+        news = (News) intent.getSerializableExtra("textnews");
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setCustomView(R.layout.actionbar_news);
@@ -64,11 +69,12 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
         recyclerView = findViewById(R.id.rcNews);
         adapter = new NewsRCAdapter(this);
 
-        tvTopic.setText(news.getTopic());
+        tvTopic.setText(news.getTopic().getName());
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //check like and restore to db
+                //update DB
                 finish();
 //                getSupportFragmentManager().popBackStack();
             }
@@ -82,7 +88,7 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
         isNews = b;
         invalidateOptionsMenu();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("text", news);
+        bundle.putSerializable("textnews", news);
         fragment.setArguments(bundle);
         FragmentManager fmgr = getSupportFragmentManager();
         FragmentTransaction ft = fmgr.beginTransaction();
@@ -106,21 +112,36 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_actionbar_news, menu);
-
-        String s = news.toString();
-        for(Operation operation: MyList.listOperation){
-            if(operation.getNews().toString().equals(s))
-                menu.findItem(R.id.aDownload).setIcon(R.drawable.ic_downloaded);
-        }
-
+//        ArrayList<News> listDownload = sqLiteDigi.getAllNewsByType("text");
+        if(check(news, MyList.listDownload))
+            menu.findItem(R.id.aDownload).setIcon(R.drawable.ic_downloaded);
+        if(check(news, MyList.listSave))
+            menu.findItem(R.id.aRestore).setIcon(R.drawable.ic_saved);
         if(!isNews){
             menu.findItem(R.id.aDownload).setVisible(false);
             menu.findItem(R.id.aFormatSize).setVisible(false);
             menu.findItem(R.id.aRestore).setVisible(false);
         }
-
         setListRelevance(news);
 
+        return true;
+    }
+
+
+    private boolean isLiked(TextView tvLikes) {
+        Drawable[] lst = tvLikes.getCompoundDrawables();
+        for(int i=0; i<lst.length; i++){
+            if(lst[i] == getDrawable(R.drawable.ic_liked))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean check(News operation, ArrayList<News> list) {
+        for(News operation1: list){
+            if(operation.equals(operation1))
+                return false;
+        }
         return true;
     }
 
@@ -128,41 +149,27 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.aRestore:{
-//                Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
                 item.setIcon(R.drawable.ic_saved);
 //                boolean isLike = isLiked(tvLikes);
+                //update to DB
+                News news1 = news;
+                news1.setDateSave(MyList.today);
+                sqLiteDigi.updateNews(news1);
+                news.setDateSave(MyList.today);
                 tvTopic.setText("Tin đã lưu");
-                recyclerView.setVisibility(View.GONE);
-                Operation operation = new Operation(news, MyList.today, false, true, false);
-//                Intent intent = new Intent(News1Activity.this, NewsDownloadedActivity.class);
-
-                Bundle bundle = new Bundle();
-                if(check(operation)){
-                    bundle.putSerializable("saved", operation);
-                    Toast.makeText(this, "Đã lưu tin", Toast.LENGTH_SHORT).show();
-                }else
-                    Toast.makeText(this, "Tin đã tồn tại", Toast.LENGTH_SHORT).show();
-
-                setOperationFrag(bundle);
+                sendData("saved");
                 break;
             }
             case R.id.aDownload:{
                 item.setIcon(R.drawable.ic_downloaded);
-//                boolean isLike = isLiked(tvLikes);
+//                boolean isLike = isLiked(tvLike);
+                //update to DB
+                News news1 = news;
+                news1.setDateDown(MyList.today);
+                sqLiteDigi.updateNews(news1);
                 tvTopic.setText(getResources().getString(R.string.news_downloaded));
-                recyclerView.setVisibility(View.GONE);
-                Operation operation = new Operation(news, MyList.today, false, true, false);
-//                Intent intent = new Intent(News1Activity.this, NewsDownloadedActivity.class);
-
-                Bundle bundle = new Bundle();
-                if(check(operation)){
-                    bundle.putSerializable("download", operation);
-                    Toast.makeText(this, "Đã tải tin", Toast.LENGTH_SHORT).show();
-                }else
-                    Toast.makeText(this, "Tin đã tồn tại", Toast.LENGTH_SHORT).show();
-
-                setOperationFrag(bundle);
-//                startActivity(intent);
+                news.setDateDown(MyList.today);
+                sendData("download");
                 break;
             }
             case R.id.aFormatSize:{
@@ -173,12 +180,11 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean check(Operation operation) {
-        for(Operation operation1: MyList.listOperation){
-            if(operation.getNews() == operation1.getNews())
-                return false;
-        }
-        return true;
+    private void sendData(String s) {
+        recyclerView.setVisibility(View.GONE);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(s, news);
+        setOperationFrag(bundle);
     }
 
     private void changeSize() {
@@ -261,17 +267,17 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
-        ArrayList<News> list = new ArrayList<>();
-        for(int i=0; i<MyList.listsText.size(); i++){
-            for(int j = 0; j< MyList.listsText.get(i).size(); j++){
-                News n = MyList.listsText.get(i).get(j);
-                if(news.getProvince() != null && n.getProvince() != null)
-                    if(news.getTopic().equals(n.getTopic())
-                            || news.getProvince().equals(n.getProvince()))
-                        list.add(n);
-            }
-
-        }
+        ArrayList<News> list = MyList.sqLite.getAllNewsRelevant(news);
+//        for(int i=0; i<MyList.listsText.size(); i++){
+//            for(int j = 0; j< MyList.listsText.get(i).size(); j++){
+//                News n = MyList.listsText.get(i).get(j);
+//                if(news.getProvince() != null && n.getProvince() != null)
+//                    if(news.getTopic().equals(n.getTopic())
+//                            || news.getProvince().equals(n.getProvince()))
+//                        list.add(n);
+//            }
+//
+//        }
 
         adapter.setData(list);
         adapter.setClickNewsListener(this::onItemClick);
@@ -283,6 +289,6 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
         news = adapter.getItem(position);
         getSupportFragmentManager().popBackStack();
         addFragment(new NewsFragment(), true);
-        tvTopic.setText(news.getTopic());
+        tvTopic.setText(news.getTopic().getName());
     }
 }

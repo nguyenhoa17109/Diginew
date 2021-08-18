@@ -79,11 +79,11 @@ public class VideoFragment extends Fragment {
         return v;
     }
     private void init(View v) {
-        arrayLists = MyList.listsText;
+        arrayLists = MyList.lists_video_as_topic;
 
         rcTopic = v.findViewById(R.id.rvTopicVideo);
         rcVideo = v.findViewById(R.id.rvVideo);
-        adapterTopic = new TopicVideoAdapter(v.getContext(), MyList.list);
+        adapterTopic = new TopicVideoAdapter(v.getContext(), MyList.listTopic);
         LinearLayoutManager manager = new LinearLayoutManager(v.getContext(),
                 RecyclerView.HORIZONTAL, false);
         rcTopic.setLayoutManager(manager);

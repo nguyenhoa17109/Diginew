@@ -2,6 +2,7 @@ package com.nguyenhoa.diginew.home;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -25,6 +26,8 @@ import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.news.News1Activity;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.util.Arrays;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
@@ -37,7 +40,7 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     private NewsRCAdapter adapter;
     private LinearLayout layout, layout1;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -93,7 +96,6 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     }
 
     private void setClick() {
-
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,10 +164,7 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
 
     @Override
     public void onItemClick(View view, int position) {
-        MyClass.setIntent(adapter.getItem(position), (Activity) view.getContext());
-//        if(adapter.getItem(position).getType().equals("text")){
-//            Intent intent = new Intent(getActivity(), News1Activity.class);
-//            intent.putExtra("text", adapter.getItem(position));
-//        }
+        News news = adapter.getItem(position);
+        MyClass.setIntent(news, (Activity) view.getContext());
     }
 }

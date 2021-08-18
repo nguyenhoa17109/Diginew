@@ -1,6 +1,7 @@
 package com.nguyenhoa.diginew.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -60,7 +63,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         holder.tvLikes.setText(String.valueOf(list.get(position).getLikes()));
 //        holder.tvTime.setText(list.get(position).getTimes()+" "+context.getResources().getString(R.string.time));
         holder.tvTime.setText(list.get(position).getTimes());
-        holder.layout.setBackgroundResource(list.get(position).getImgs());
+        new DownloadImageTask(holder.layout).execute(list.get(position).getImgs());
         holder.tvTitle.setText(list.get(position).getTitle());
 
     }

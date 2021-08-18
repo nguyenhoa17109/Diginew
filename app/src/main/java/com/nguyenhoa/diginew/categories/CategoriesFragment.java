@@ -1,6 +1,7 @@
 package com.nguyenhoa.diginew.categories;
 
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class CategoriesFragment extends Fragment implements CategoriesAdapter.CategorClickInterface{
@@ -120,9 +122,9 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             newsInfoRV = view.findViewById(R.id.rvNewsInfo);
             newsVideoRV = view.findViewById(R.id.rvNewsVideo);
 
-            newsArrayList = new ArrayList<>();
-            newsVideoList = new ArrayList<>();
-            newsInfoList = new ArrayList<>();
+            newsArrayList = MyList.listNews;
+            newsVideoList = MyList.sqLite.getAllNewsByType("video");
+            newsInfoList = MyList.sqLite.getAllNewsByType("info");
 
             LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
             newsRV.setLayoutManager(linearLayoutManager1);
@@ -160,18 +162,20 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             newsArrayList.clear();
 
             ArrayList<News> list = MyList.listNews;
+            newsVideoList = MyList.sqLite.getAllNewsByTypeAsTopic(s, "video");
+            newsInfoList = MyList.sqLite.getAllNewsByTypeAsTopic(s, "info");
 
-            for(int i=0; i<list.size(); i++){
-                if(list.get(i).getTopic().equals(s)){
-                    newsArrayList.add(list.get(i));
-                    if(list.get(i).getType().equals("video")){
-                        newsVideoList.add(list.get(i));
-                    }
-                    if(list.get(i).getType().equals("info")){
-                        newsInfoList.add(list.get(i));
-                    }
-                }
-            }
+//            for(int i=0; i<list.size(); i++){
+//                if(list.get(i).getTopic().equals(s)){
+//                    newsArrayList.add(list.get(i));
+//                    if(list.get(i).getType().equals("video")){
+//                        newsVideoList.add(list.get(i));
+//                    }
+//                    if(list.get(i).getType().equals("info")){
+//                        newsInfoList.add(list.get(i));
+//                    }
+//                }
+//            }
             newsRCAdapter.notifyDataSetChanged();
             videoAdapter.notifyDataSetChanged();
             newsInfoRCAdapter.notifyDataSetChanged();
@@ -198,19 +202,19 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
         @Override
         public void onItemClick(View view, int position) {
-            News news = (News) newsRCAdapter.getItem(position);
+            News news = newsRCAdapter.getItem(position);
             MyClass.setIntent(news, getActivity());
         }
 
         @Override
         public void onItemClickInfo(View view, int position) {
-            News news = (News) newsInfoRCAdapter.getItem(position);
+            News news = newsInfoRCAdapter.getItem(position);
             MyClass.setIntent(news, getActivity());
         }
 
         @Override
         public void onItemClickVideo(View view, int position) {
-            News news = (News) videoAdapter.getItem(position);
+            News news = videoAdapter.getItem(position);
             MyClass.setIntent(news, getActivity());
         }
     }

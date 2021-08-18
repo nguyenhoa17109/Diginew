@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -53,8 +55,7 @@ public class NewsInfoRCAdapter extends RecyclerView.Adapter<NewsInfoRCAdapter.Ne
     public void onBindViewHolder(@NonNull  NewsInfoRCAdapter.NewsViewHolder holder, int position) {
         News news = list.get(position);
         if(news == null)    return;
-
-        holder.ivNews.setImageResource(list.get(position).getImgs());
+        new DownloadImageTask(holder.ivNews).execute(list.get(position).getImgs());
     }
 
     @Override

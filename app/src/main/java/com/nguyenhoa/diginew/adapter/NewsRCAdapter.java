@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -60,7 +62,7 @@ public class NewsRCAdapter extends RecyclerView.Adapter<NewsRCAdapter.NewsViewHo
         holder.tvLikes.setText(String.valueOf(list.get(position).getLikes()));
 //        holder.tvTime.setText(list.get(position).getTimes()+" "+context.getResources().getString(R.string.time));
         holder.tvTime.setText(list.get(position).getTimes());
-        holder.ivNews.setImageResource(list.get(position).getImgs());
+        new DownloadImageTask(holder.ivNews).execute(list.get(position).getImgs());
         holder.tvTitle.setText(list.get(position).getTitle());
         holder.ivDelete.setVisibility(View.GONE);
         if(list.get(position).getType().equals("audio")){

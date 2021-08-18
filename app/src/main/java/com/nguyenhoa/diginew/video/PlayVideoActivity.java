@@ -53,12 +53,12 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         setVideo(news);
     }
 
-    private void setListRecentVideo(News news) {
-        ArrayList<News> list = new ArrayList<>();
-        for(int i=0; i<MyList.lists_video.size(); i++){
-            for(int j = 0; j< MyList.lists_video.get(i).size(); j++)
-                list.add(MyList.lists_video.get(i).get(j));
-        }
+    private void setListRelevantVideo(News news) {
+        ArrayList<News> list = MyList.sqLite.getAllNewsRelevant(news);
+//        for(int i=0; i<MyList.lists_video.size(); i++){
+//            for(int j = 0; j< MyList.lists_video.get(i).size(); j++)
+//                list.add(MyList.lists_video.get(i).get(j));
+//        }
 
         adapter = new NewsRCAdapter(this);
         LinearLayoutManager manager = new LinearLayoutManager(this,
@@ -114,6 +114,15 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         });
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (getApplicationContext() != null) {
+            finish();
+//            dialog = null;
+        }
+    }
+
     private void setVideo(News news) {
         if (controller == null) {
             controller = new MediaController(PlayVideoActivity.this);
@@ -139,7 +148,7 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
             }
         });
 
-        tvTopic.setText(news.getTopic());
+        tvTopic.setText(news.getTopic().getName());
         tvTitleNews.setText(news.getTitle());
 //        tvContent.setText(news.getContent());
         tvSource.setText(news.getSource());
@@ -148,7 +157,7 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         tvLikes.setText(String.valueOf(news.getLikes()));
         tvCmts.setText(String.valueOf(news.getCmts()));
         setClick();
-        setListRecentVideo(news);
+        setListRelevantVideo(news);
     }
 
     @Override

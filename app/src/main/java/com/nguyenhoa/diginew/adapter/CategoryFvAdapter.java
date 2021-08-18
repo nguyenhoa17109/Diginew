@@ -2,6 +2,10 @@ package com.nguyenhoa.diginew.adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
 
@@ -48,7 +54,7 @@ public class CategoryFvAdapter extends RecyclerView.Adapter<CategoryFvAdapter.Ca
         Topic topic = list.get(position);
         holder.tvTopic.setText(topic.getName());
         holder.ivDelete.setVisibility(View.GONE);
-        holder.layout.setBackgroundResource(topic.getImg());
+        new DownloadImageTask(holder.layout).execute(topic.getImg());
     }
 
     @Override

@@ -36,6 +36,7 @@ import com.nguyenhoa.diginew.model.News;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
@@ -63,7 +64,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         Intent intent = getIntent();
         News news = (News) intent.getSerializableExtra("audio");
 
-        tvType.setText(news.getTopic());
+        tvType.setText(news.getTopic().getName());
         tvTitleNews.setText(news.getTitle());
         tvSource.setText(news.getSource());
         tvTime.setText(news.getTimes()+" "+getResources().getString(R.string.time));
@@ -324,6 +325,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
 
     @Override
     public void onItemClick(View view, int position) {
-        MyClass.setIntent(newsRCAdapter.getItem(position), (Activity) view.getContext());
+        News news = newsRCAdapter.getItem(position);
+        MyClass.setIntent(news, (Activity) view.getContext());
     }
 }
