@@ -20,12 +20,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
+import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CmtAdapter extends RecyclerView.Adapter<CmtAdapter.CmtViewHolder> {
     private ArrayList<Comment> list;
@@ -55,19 +58,24 @@ public class CmtAdapter extends RecyclerView.Adapter<CmtAdapter.CmtViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CmtAdapter.CmtViewHolder holder, int position) {
         Comment comment = list.get(position);
-        holder.imgAccount.setImageResource(comment.getUser().getImgAccount());
+//        holder.imgAccount.setImageBitmap(MyList.getBitmapFromMemoryCache());
+        new DownloadImageTask(holder.imgAccount).execute(comment.getUser().getImgAccount());
         holder.tvNameUser.setText(comment.getUser().getNameUser());
         holder.tvContentCmt.setText(comment.getContentCmt());
         holder.tvTimeCmt.setText(String.valueOf(comment.getLike()+" "
                 +context.getResources().getString(R.string.time)));
         holder.tvLike.setText(String.valueOf(comment.getLike()));
 
-
-
         holder.tvLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MyClass.setTVLike(holder.tvLike, holder.itemView.getContext());
+                boolean isLike = MyClass.isLiked(holder.tvLike, holder.itemView.getContext());
+                //update to DB
+                Comment comment1 = comment;
+                comment1.setLikeCmt(isLike);
+                comment1.setLike(Integer.parseInt(holder.tvLike.getText().toString()));
+                MyList.sqLite.updateComment(comment1);
             }
         });
 
@@ -95,12 +103,15 @@ public class CmtAdapter extends RecyclerView.Adapter<CmtAdapter.CmtViewHolder> {
     public void displayNewCmt(String s, int position, boolean isAnswer) {
         Log.d("LO", s);
         Comment comment1 = new Comment();
-        comment1.setUser(new User( MyList.account.getImg(), MyList.account.getName()));
+        comment1.setUser(new User(MyList.account.getImg(), MyList.account.getName()));
         comment1.setAnswer(isAnswer);
         comment1.setContentCmt(s);
         comment1.setLike(0);
-        comment1.setTime("1");
+        comment1.setTime(MyList.today);
         comment1.setLikeCmt(false);
+        comment1.setPosition(position);
+
+        MyList.sqLite.addComment(comment1);
         list.add(position, comment1);
         notifyDataSetChanged();
     }

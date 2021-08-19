@@ -2,6 +2,7 @@ package com.nguyenhoa.diginew.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +17,20 @@ import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.News;
-import com.nguyenhoa.diginew.model.Operation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAdapter.NewsDownloadViewHolder> {
-    private ArrayList<ArrayList<Operation>> list;
+    private ArrayList<ArrayList<News>> list;
     private ArrayList<News> listNews;
     private Context context;
+    private int x;
 
-    public NewsDownloadedAdapter(ArrayList<ArrayList<Operation>> list, Context context) {
+    public NewsDownloadedAdapter(ArrayList<ArrayList<News>> list, Context context, int x) {
         this.list = list;
         this.context = context;
+        this.x = x;
         notifyDataSetChanged();
     }
 
@@ -41,12 +44,15 @@ public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAd
 
     @Override
     public void onBindViewHolder(@NonNull NewsDownloadedAdapter.NewsDownloadViewHolder holder, int position) {
-        String date = list.get(position).get(0).getDate();
+        String date = "";
+        if(x == 0){
+            date = list.get(position).get(0).getDateLike();
+        }else if(x == 1)
+            date = list.get(position).get(0).getDateSave();
+        else
+            date = list.get(position).get(0).getDateDown();
 
-        listNews = new ArrayList<>();
-        for(Operation operation: list.get(position)){
-            listNews.add(operation.getNews());
-        }
+        listNews = list.get(position);
 
         if(listNews != null){
             holder.setRV(listNews);
@@ -63,11 +69,7 @@ public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAd
             public void onClick(View view) {
                 Log.d("KKO", "ok");
                 listNews = new ArrayList<>();
-                for(Operation operation: MyList.listOperation){
-                    if(operation.getDate().equals(finalDate)){
-                        operation.setDownload(false);
-                    }
-                }
+                //update DB
                 list.remove(position);
                 notifyDataSetChanged();
             }
@@ -103,7 +105,8 @@ public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAd
 
         @Override
         public void onItemClick(View view, int position) {
-            MyClass.setIntent(adapter.getItem(getAdapterPosition()), (Activity) itemView.getContext());
+            News news = adapter.getItem(getAdapterPosition());
+            MyClass.setIntent(news, (Activity) itemView.getContext());
         }
     }
 }

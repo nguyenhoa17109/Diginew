@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.OtherApp;
 import com.nguyenhoa.diginew.model.Topic;
 

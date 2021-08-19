@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.OtherApp;
 import com.nguyenhoa.diginew.model.Topic;
@@ -62,5 +63,11 @@ public class DigiActivity extends AppCompatActivity {
         OtherApp app = MyList.list_dis.get(i);
 
         tvTopic.setText(app.getName());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
     }
 }

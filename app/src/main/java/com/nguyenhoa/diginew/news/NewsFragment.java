@@ -31,6 +31,7 @@ import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
+import com.nguyenhoa.diginew.model.Tag;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class NewsFragment extends Fragment {
     private SharedPreferences preferences;
     public static final String MyPREFERENCES = "CONTENT";
     private RelativeLayout layout;
+    private Dialog dialog;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,7 +104,7 @@ public class NewsFragment extends Fragment {
         activity = (News1Activity) getActivity();
 
         Bundle bundle = getArguments();
-        news = (News) bundle.getSerializable("text");
+        news = (News) bundle.getSerializable("textnews");
 
         if(news != null){
             setNews(news);
@@ -138,7 +140,7 @@ public class NewsFragment extends Fragment {
     }
 
     private void setTag(News news) {
-        ArrayList<String> list = news.getListTag();
+        ArrayList<Tag> list = news.getListTag();
 
         int k = list.size();
         for (int i = 0; i < 12; i++) {
@@ -184,10 +186,17 @@ public class NewsFragment extends Fragment {
         }
     }
 
-    private void setEach(ArrayList<String> list, TextView tvSearch1, int i) {
+    private void setEach(ArrayList<Tag> list, TextView tvSearch1, int i) {
         if(i < list.size()){
+            Tag tag = list.get(i);
             tvSearch1.setVisibility(View.VISIBLE);
-            tvSearch1.setText(list.get(i));
+            tvSearch1.setText(tag.getTag());
+            tvSearch1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setListTag(tag);
+                }
+            });
         }else
             tvSearch1.setVisibility(View.GONE);
     }
@@ -210,44 +219,29 @@ public class NewsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 MyClass.setTVLike(tvLikes, getActivity());
+                boolean isLike = MyClass.isLiked(tvLikes, getContext());
+                //update to DB
+                News news1 = news;
+                news1.setLike(isLike);
+                news1.setLikes(Integer.parseInt(tvLikes.getText().toString()));
+                MyList.sqLite.updateNews(news1);
             }
         });
 
-        setClickTV(tvSearch1);
-        setClickTV(tvSearch2);
-        setClickTV(tvSearch3);
-        setClickTV(tvSearch21);
-        setClickTV(tvSearch22);
-        setClickTV(tvSearch23);
-        setClickTV(tvSearch31);
-        setClickTV(tvSearch32);
-        setClickTV(tvSearch33);
-        setClickTV(tvSearch41);
-        setClickTV(tvSearch42);
-        setClickTV(tvSearch43);
+//        setClickTV(tvSearch1, 0);
+//        setClickTV(tvSearch2, 1);
+//        setClickTV(tvSearch3, 2);
+//        setClickTV(tvSearch21, 3);
+//        setClickTV(tvSearch22, 4);
+//        setClickTV(tvSearch23, 5);
+//        setClickTV(tvSearch31, 6);
+//        setClickTV(tvSearch32, 7);
+//        setClickTV(tvSearch33, 8);
+//        setClickTV(tvSearch41, 9);
+//        setClickTV(tvSearch42, 10);
+//        setClickTV(tvSearch43, 11);
 
     }
-
-    private void setClickTV(TextView tvSearch1) {
-        tvSearch1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String s = tvSearch1.getText().toString();
-                setListTag(s);
-            }
-        });
-
-    }
-
-    private boolean isLiked(TextView tvLikes) {
-        Drawable[] lst = tvLikes.getCompoundDrawables();
-        for(int i=0; i<lst.length; i++){
-            if(lst[i] == getActivity().getDrawable(R.drawable.ic_liked))
-                return true;
-        }
-        return false;
-    }
-
 
     private void setLayoutCmt(View v){
         View view1 = getLayoutInflater().inflate(R.layout.layout_cmt, null);
@@ -278,7 +272,7 @@ public class NewsFragment extends Fragment {
         rv.setLayoutManager(manager);
         rv.setAdapter(adapter);
 
-        Dialog dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
+        dialog = new Dialog(v.getContext(), R.style.MaterialDialogSheet);
         dialog.setContentView(view1);
         dialog.setCancelable(true);
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -288,6 +282,10 @@ public class NewsFragment extends Fragment {
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i=0; i<list.size(); i++){
+                    list.get(i).setPosition(i);
+                    MyList.sqLite.updateComment(list.get(i));
+                }
                 dialog.dismiss();
             }
         });
@@ -304,8 +302,18 @@ public class NewsFragment extends Fragment {
                 String s = etCmt.getText().toString();
                 etCmt.setText("");
                 adapter.displayNewCmt(s, list.size(), false);
+                //update position Cmt in list
+                MyClass.updateListCmt(list);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (dialog!=null && dialog.isShowing() ){
+            dialog.cancel();
+        }
     }
 
     private int setSize(int progress) {
@@ -350,16 +358,16 @@ public class NewsFragment extends Fragment {
         tvSearch43 = v.findViewById(R.id.tvSearch43);
     }
 
-    private void setListTag(String tag) {
+    private void setListTag(Tag tag) {
         activity = (News1Activity) getActivity();
         if(activity != null) {
-            activity.tvTopic.setText(MessageFormat.format("#{0}", tag));
+            activity.tvTopic.setText(MessageFormat.format("#{0}", tag.getTag()));
             activity.isNews = false;
             activity.invalidateOptionsMenu();
         }
         TagFragment fragment = new TagFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("tag", tag);
+        bundle.putSerializable("tag", tag);
         fragment.setArguments(bundle);
 
         getParentFragmentManager().popBackStack();

@@ -3,13 +3,30 @@ package com.nguyenhoa.diginew.model;
 import java.io.Serializable;
 
 public class Topic implements Serializable {
+    private int id;
     private String name;
-    private int img;
+    private String img;
     Boolean isSelected = false;
 
-    public Topic(String name, int img) {
+    public Topic() {
+    }
+
+    public Topic(String name, String img) {
         this.name = name;
         this.img = img;
+    }
+
+    public Topic(int id, String name, String img, Boolean isSelected) {
+        this.id = id;
+        this.name = name;
+        this.img = img;
+        this.isSelected = isSelected;
+    }
+
+    public Topic(String name, String img, Boolean isSelected) {
+        this.name = name;
+        this.img = img;
+        this.isSelected = isSelected;
     }
 
     public String getName() {
@@ -20,11 +37,11 @@ public class Topic implements Serializable {
         this.name = name;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
@@ -34,5 +51,13 @@ public class Topic implements Serializable {
 
     public void setSelected(Boolean selected) {
         isSelected = selected;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -65,6 +65,14 @@ public class ProvincesFragment extends Fragment {
     }
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if ( provincesBottomSheet!=null && provincesBottomSheet.isVisible() ){
+            provincesBottomSheet.onDestroy();
+        }
+    }
+
     private void getDataProvinces(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://provinces.open-api.vn/")

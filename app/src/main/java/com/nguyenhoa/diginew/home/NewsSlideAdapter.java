@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.DownloadImageTask;
+import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.model.News;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -41,7 +43,7 @@ public class NewsSlideAdapter extends SliderViewAdapter<NewsSlideAdapter.SlideHo
 
     @Override
     public void onBindViewHolder(SlideHolder viewHolder, int position) {
-        viewHolder.imageView.setImageResource(list.get(position).getImgs());
+        new DownloadImageTask(viewHolder.imageView).execute(list.get(position).getImgs());
         viewHolder.tv.setText(list.get(position).getTitle());
         viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
