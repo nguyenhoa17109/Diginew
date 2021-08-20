@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new NavAdapter(getSupportFragmentManager(),
                 NavAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(adapter);
+
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -48,5 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(3);
     }
 }

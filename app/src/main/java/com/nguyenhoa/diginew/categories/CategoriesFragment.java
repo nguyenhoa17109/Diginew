@@ -60,11 +60,11 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
         categoriesAdapter = new CategoriesAdapter(getFragmentManager(), getContext(), topics, this::onCategoryClick);
         categoryRV.setAdapter(categoriesAdapter);
 
-        Bundle bundle = new Bundle();
+        /*Bundle bundle = new Bundle();
         bundle.putString("category", "Đời sống");
         Fragment childFragment = new ChildFragment();
         childFragment.setArguments(bundle);
-        getChildFragmentManager().beginTransaction().replace(R.id.frChildCategory, childFragment).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.frChildCategory, childFragment).commit();*/
 
         return view;
     }
