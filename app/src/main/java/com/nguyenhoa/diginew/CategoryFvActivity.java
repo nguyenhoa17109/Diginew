@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.nguyenhoa.diginew.adapter.CategoryFvAdapter;
 import com.nguyenhoa.diginew.adapter.CategoryRvChangeAdapter;
+import com.nguyenhoa.diginew.common.CustomItemAnimator;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Topic;
 
@@ -82,12 +83,14 @@ public class CategoryFvActivity extends AppCompatActivity implements CategoryRvC
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         rvChange.setLayoutManager(manager);
         rvChange.setAdapter(adapter1);
+        rvChange.setItemAnimator(new CustomItemAnimator());
     }
 
     private void setRV1() {
         GridLayoutManager manager = new GridLayoutManager(this, 2);
         rvCategory.setLayoutManager(manager);
         rvCategory.setAdapter(adapter);
+        rvCategory.setItemAnimator(new CustomItemAnimator());
     }
 
     private void init(){

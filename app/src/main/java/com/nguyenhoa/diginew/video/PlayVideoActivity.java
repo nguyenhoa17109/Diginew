@@ -24,6 +24,7 @@ import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
 
@@ -32,7 +33,7 @@ import java.util.ArrayList;
 import static com.nguyenhoa.diginew.R.string.text_error_video;
 import static com.nguyenhoa.diginew.R.string.text_video_completion;
 
-public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
+public class PlayVideoActivity extends AppCompatActivity implements NewsCallBack {
     private VideoView videoView;
     private MediaController controller;
     private TextView tvTitleNews, tvSource, tvTime, tvTopic, tvLikes, tvCmts, tvContent;
@@ -65,8 +66,8 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        adapter.setData(list);
-        adapter.setClickNewsListener(this::onItemClick);
+        adapter.setData(list, this::onNewsItemClick);
+//        adapter.setClickNewsListener(this::onItemClick);
         recyclerView.setAdapter(adapter);
     }
 
@@ -160,14 +161,14 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
         setListRelevantVideo(news);
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        News news = adapter.getItem(position);
-        setVideo(news);
-//        Intent intent = new Intent(this, NewsActivity.class);
-//        intent.putExtra("News", adapter.getItem(position));
-//        startActivity(intent);
-    }
+//    @Override
+//    public void onItemClick(View view, int position, TextView tv) {
+//        News news = adapter.getItem(position);
+//        setVideo(news);
+////        Intent intent = new Intent(this, NewsActivity.class);
+////        intent.putExtra("News", adapter.getItem(position));
+////        startActivity(intent);
+//    }
 
     private void setLayoutCmt(View v){
         View view1 = getLayoutInflater().inflate(R.layout.layout_cmt, null);
@@ -217,5 +218,11 @@ public class PlayVideoActivity extends AppCompatActivity implements NewsRCAdapte
                 adapter.displayNewCmt(s, list.size(), false);
             }
         });
+    }
+
+    @Override
+    public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
+        News news = adapter.getItem(pos);
+        setVideo(news);
     }
 }

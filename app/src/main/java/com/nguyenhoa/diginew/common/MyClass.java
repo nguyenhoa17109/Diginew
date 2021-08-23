@@ -3,14 +3,13 @@ package com.nguyenhoa.diginew.common;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -24,17 +23,14 @@ import com.nguyenhoa.diginew.video.PlayVideoActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.model.News;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
 public class MyClass {
-    public static void setIntent(News news, Activity activity){
+    public static void setIntent(News news, Activity activity, TextView tv
+    , TextView tvSource, TextView tvTime){
         String type = news.getType();
         Intent intent = null;
 
@@ -55,7 +51,17 @@ public class MyClass {
 
         assert intent != null;
         intent.putExtra(type,news);
-        activity.startActivity(intent);
+
+        if(tv != null && tvSource != null && tvTime != null) {
+            Pair<View, String> p1 = Pair.create((View)tv, "TPcontainer");
+            Pair<View, String> p2 = Pair.create((View)tvSource, "Sourcecontainer");
+            Pair<View, String> p3 = Pair.create((View)tvTime, "Timecontainer");
+            ActivityOptionsCompat optionsCompat =
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(activity,p1, p2, p3);
+
+        activity.startActivity(intent,optionsCompat.toBundle());
+        }else
+            activity.startActivity(intent);
     }
 
     public static void setRowClick(TextView tv, ArrayList<TextView> list){
