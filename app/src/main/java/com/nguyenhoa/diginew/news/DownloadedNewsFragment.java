@@ -87,11 +87,11 @@ public class DownloadedNewsFragment extends Fragment {
         News operation = (News) bundle.getSerializable("download");
         if(operation == null) {
             operation = (News) bundle.getSerializable("saved");
-            lst = MyList.listSave;
+            lst = MyList.sqLite.getAllNewsDownloaded();
             lists = MyList.setListSave(lst);
             x = 1;
         } else{
-            lst = MyList.listDownload;
+            lst = MyList.sqLite.getAllNewsSaved();
             lists = MyList.setListDown(lst);
             x = 2;
         }

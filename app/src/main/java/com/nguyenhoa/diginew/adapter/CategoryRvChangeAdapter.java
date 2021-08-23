@@ -32,6 +32,7 @@ public class CategoryRvChangeAdapter extends CategoryFvAdapter{
             @Override
             public void onClick(View view) {
                 removeItem(position);
+                notifyItemRemoved(position);
                 categoryChangeListener.onCategoryChangeItem(position);
             }
         });

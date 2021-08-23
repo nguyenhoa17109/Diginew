@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.CustomItemAnimator;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.News;
 
 import java.util.ArrayList;
@@ -63,17 +66,33 @@ public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAd
             date = context.getResources().getString(R.string.today);
         holder.tvDate.setText(date);
 
-        String finalDate = date;
         holder.tvDeleteAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("KKO", "ok");
-                listNews = new ArrayList<>();
+//                listNews = new ArrayList<>();
                 //update DB
+                for(News news:list.get(position)) {
+                    if (x == 0)
+                        news.setDateDown("");
+                    else if (x == 1)
+                        news.setDateSave("");
+                    else
+                        news.setDateLike("");
+                    MyList.sqLite.updateNews(news);
+                }
                 list.remove(position);
+                if(list.isEmpty()){
+                    holder.tvDate.setVisibility(View.GONE);
+                    holder.tvDeleteAll.setVisibility(View.GONE);
+                }
+
                 notifyDataSetChanged();
             }
         });
+
+        holder.tvDate.setAnimation(AnimationUtils.loadAnimation(context
+                , R.anim.fade_transition_animation));
     }
 
     @Override
@@ -81,7 +100,7 @@ public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAd
         return list.size();
     }
 
-    public class NewsDownloadViewHolder extends RecyclerView.ViewHolder implements NewsRCAdapter.ItemNewsRCClickListener{
+    public class NewsDownloadViewHolder extends RecyclerView.ViewHolder implements NewsCallBack {
         private TextView tvDate, tvDeleteAll;
         private RecyclerView rvDownloadNews;
         private DownloadChildAdapter adapter;
@@ -95,18 +114,25 @@ public class NewsDownloadedAdapter extends RecyclerView.Adapter<NewsDownloadedAd
 
         public void setRV(ArrayList<News> list){
             adapter = new DownloadChildAdapter(context.getApplicationContext());
-            adapter.setData(list);
+            adapter.setData(list, this::onNewsItemClick);
             LinearLayoutManager manager = new LinearLayoutManager(context.getApplicationContext(),
                     RecyclerView.VERTICAL, false);
             rvDownloadNews.setLayoutManager(manager);
-            adapter.setClickNewsListener(this::onItemClick);
+//            adapter.setClickNewsListener(this::onItemClick);
             rvDownloadNews.setAdapter(adapter);
+            rvDownloadNews.setItemAnimator(new CustomItemAnimator());
         }
 
+//        @Override
+//        public void onItemClick(View view, int position, TextView tv) {
+//            News news = adapter.getItem(getAdapterPosition());
+//            MyClass.setIntent(news, (Activity) itemView.getContext(), tv);
+//        }
+
         @Override
-        public void onItemClick(View view, int position) {
+        public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
             News news = adapter.getItem(getAdapterPosition());
-            MyClass.setIntent(news, (Activity) itemView.getContext());
+            MyClass.setIntent(news, (Activity) itemView.getContext(), ivTopic, ivSource, tvTime);
         }
     }
 }

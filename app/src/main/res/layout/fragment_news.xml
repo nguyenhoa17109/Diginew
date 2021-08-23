@@ -32,6 +32,7 @@
                     android:background="@drawable/background_corner">
 
                     <TextView
+                        android:transitionName="TPcontainer"
                         android:id="@+id/tvTitleNews"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -47,12 +48,14 @@
                         android:layout_marginTop="20dp">
 
                         <TextView
+                            android:transitionName="Sourcecontainer"
                             android:id="@+id/tvNewsSource"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/eg_source" />
 
                         <TextView
+                            android:transitionName="Timecontainer"
                             android:id="@+id/tvNewsTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -271,7 +274,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-
                     android:background="@drawable/background_corner"
                     android:orientation="vertical">
 

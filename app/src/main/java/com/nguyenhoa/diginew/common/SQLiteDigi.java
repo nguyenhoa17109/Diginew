@@ -578,6 +578,42 @@ public class SQLiteDigi extends SQLiteOpenHelper {
         return  list;
     }
 
+    public ArrayList<News> getAllNewsDownloaded(){
+        ArrayList<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM "+Base.NewsTable.TABLE_NAME+" WHERE "+
+                Base.NewsTable.COLUMN_DATE_DOWNLOAD+" != ''";
+        SQLiteDatabase r = getReadableDatabase();
+        Cursor cursor = r.rawQuery(sql, null);
+        while (cursor.moveToNext()){
+            list.add(CNews(cursor));
+        }
+        return  list;
+    }
+
+    public ArrayList<News> getAllNewsSaved(){
+        ArrayList<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM "+Base.NewsTable.TABLE_NAME+" WHERE "+
+                Base.NewsTable.COLUMN_DATE_SAVE+" != ''";
+        SQLiteDatabase r = getReadableDatabase();
+        Cursor cursor = r.rawQuery(sql, null);
+        while (cursor.moveToNext()){
+            list.add(CNews(cursor));
+        }
+        return  list;
+    }
+
+    public ArrayList<News> getAllNewsLiked(){
+        ArrayList<News> list = new ArrayList<>();
+        String sql = "SELECT * FROM "+Base.NewsTable.TABLE_NAME+" WHERE "+
+                Base.NewsTable.COLUMN_DATE_LIKE+" != ''";
+        SQLiteDatabase r = getReadableDatabase();
+        Cursor cursor = r.rawQuery(sql, null);
+        while (cursor.moveToNext()){
+            list.add(CNews(cursor));
+        }
+        return  list;
+    }
+
 
     public long addTag(Tag tag){
         SQLiteDatabase r = getWritableDatabase();

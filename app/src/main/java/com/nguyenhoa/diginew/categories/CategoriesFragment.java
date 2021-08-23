@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -24,6 +25,7 @@ import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.adapter.VideoAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
 
@@ -87,7 +89,7 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
 
     }
 
-    public static class ChildFragment extends Fragment implements NewsRCAdapter.ItemNewsRCClickListener,
+    public static class ChildFragment extends Fragment implements NewsCallBack,
             NewsInfoRCAdapter.ItemNewsInfoRCClickListener, VideoAdapter.ItemVideoRCClickListener{
         private NewsRCAdapter newsRCAdapter;
         private NewsInfoRCAdapter newsInfoRCAdapter;
@@ -137,10 +139,10 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             newsInfoRCAdapter = new NewsInfoRCAdapter(getContext());
             videoAdapter = new VideoAdapter(getContext(), newsVideoList);
 
-            newsRCAdapter.setData(newsArrayList);
+            newsRCAdapter.setData(newsArrayList, this);
             newsInfoRCAdapter.setData(newsInfoList);
 
-            newsRCAdapter.setClickNewsListener(this::onItemClick);
+//            newsRCAdapter.setClickNewsListener(this::onItemClick);
             newsInfoRCAdapter.setClickNewsListener(this::onItemClickInfo);
             videoAdapter.setItemVideoRCClickListener(this::onItemClickVideo);
 
@@ -200,22 +202,28 @@ public class CategoriesFragment extends Fragment implements CategoriesAdapter.Ca
             newsRCAdapter.notifyDataSetChanged();
         }
 
-        @Override
-        public void onItemClick(View view, int position) {
-            News news = newsRCAdapter.getItem(position);
-            MyClass.setIntent(news, getActivity());
-        }
+//        @Override
+//        public void onItemClick(View view, int position, TextView tv) {
+//            News news = newsRCAdapter.getItem(position);
+//            MyClass.setIntent(news, getActivity(), tv);
+//        }
 
         @Override
         public void onItemClickInfo(View view, int position) {
             News news = newsInfoRCAdapter.getItem(position);
-            MyClass.setIntent(news, getActivity());
+            MyClass.setIntent(news, getActivity(), null, null, null);
         }
 
         @Override
         public void onItemClickVideo(View view, int position) {
             News news = videoAdapter.getItem(position);
-            MyClass.setIntent(news, getActivity());
+            MyClass.setIntent(news, getActivity(), null, null, null);
+        }
+
+        @Override
+        public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
+            News news = newsRCAdapter.getItem(pos);
+            MyClass.setIntent(news, getActivity(), ivTopic, ivSource, tvTime);
         }
     }
 
