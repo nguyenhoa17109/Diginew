@@ -23,6 +23,7 @@ import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.Keyword;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Tag;
@@ -33,7 +34,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
+public class SearchActivity extends AppCompatActivity implements NewsCallBack {
     private TextView tvSearch1, tvSearch2, tvSearch3, tvSearch21, tvSearch22, tvSearch23,
             tvSearch31, tvSearch32, tvSearch33, tvSearch41, tvSearch42, tvSearch43, tvSearch111
             , tvSearch112, tvSearch113, tvSearch121, tvSearch122, tvSearch123,
@@ -279,8 +280,8 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        adapter.setData(setList(s, s1));
-        adapter.setClickNewsListener(this::onItemClick);
+        adapter.setData(setList(s, s1), this::onNewsItemClick);
+//        adapter.setClickNewsListener(this::onItemClick);
         recyclerView.setAdapter(adapter);
     }
 
@@ -296,12 +297,18 @@ public class SearchActivity extends AppCompatActivity implements NewsRCAdapter.I
         return list;
     }
 
+//    @Override
+//    public void onItemClick(View view, int position, TextView tv) {
+//        News news = adapter.getItem(position);
+//        MyClass.setIntent(news, (Activity) view.getContext(), tv);
+////        Intent intent = new Intent(this, NewsActivity.class);
+////        intent.putExtra("News", adapter.getItem(position));
+////        startActivity(intent);
+//    }
+
     @Override
-    public void onItemClick(View view, int position) {
-        News news = adapter.getItem(position);
-        MyClass.setIntent(news, (Activity) view.getContext());
-//        Intent intent = new Intent(this, NewsActivity.class);
-//        intent.putExtra("News", adapter.getItem(position));
-//        startActivity(intent);
+    public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
+        News news = adapter.getItem(pos);
+        MyClass.setIntent(news, getParent(), ivTopic, ivSource, tvTime);
     }
 }

@@ -31,6 +31,7 @@ import com.nguyenhoa.diginew.adapter.CmtAdapter;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.News;
 
@@ -38,7 +39,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener {
+public class AudioNewsActivity extends AppCompatActivity implements NewsCallBack {
     private ImageView ivBack, ivPlayPause, ivAccount, ivShare;
     private EditText etCmt;
     private TextView tvTitleNews, tvSource, tvTime, tvType, tvLikes, tvCmts;
@@ -234,8 +235,8 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         LinearLayoutManager manager = new LinearLayoutManager(this,
                 RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-        newsRCAdapter.setData(list1);
-        newsRCAdapter.setClickNewsListener(this::onItemClick);
+        newsRCAdapter.setData(list1, this::onNewsItemClick);
+//        newsRCAdapter.setClickNewsListener(this::onItemClick);
 
         recyclerView.setAdapter(newsRCAdapter);
     }
@@ -332,9 +333,15 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsRCAdapte
         }
     }
 
+//    @Override
+//    public void onItemClick(View view, int position, TextView tv) {
+//        News news = newsRCAdapter.getItem(position);
+//        MyClass.setIntent(news, (Activity) view.getContext(), tv);
+//    }
+
     @Override
-    public void onItemClick(View view, int position) {
-        News news = newsRCAdapter.getItem(position);
-        MyClass.setIntent(news, (Activity) view.getContext());
+    public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
+        News news = newsRCAdapter.getItem(pos);
+        MyClass.setIntent(news, this, ivTopic, ivSource, tvTime);
     }
 }

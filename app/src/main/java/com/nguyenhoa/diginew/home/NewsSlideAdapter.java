@@ -6,9 +6,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.common.DownloadImageTask;
 import com.nguyenhoa.diginew.common.MyClass;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.News;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
@@ -27,7 +31,7 @@ public class NewsSlideAdapter extends SliderViewAdapter<NewsSlideAdapter.SlideHo
     }
 
     public interface ItemSlideNewsClick{
-        void OnItemClick(View view, int position);
+        void OnItemClick(View view, int position, TextView tv);
     }
 
     public void setItemSlideNewsClick(ItemSlideNewsClick itemSlideNewsClick) {
@@ -43,12 +47,17 @@ public class NewsSlideAdapter extends SliderViewAdapter<NewsSlideAdapter.SlideHo
 
     @Override
     public void onBindViewHolder(SlideHolder viewHolder, int position) {
-        new DownloadImageTask(viewHolder.imageView).execute(list.get(position).getImgs());
+//        new DownloadImageTask(viewHolder.imageView).execute(list.get(position).getImgs());
         viewHolder.tv.setText(list.get(position).getTitle());
+        Glide.with(viewHolder.itemView.getContext())
+                .load(list.get(position).getImgs())
+                .transform(new CenterCrop())
+                .into(viewHolder.imageView);
         viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                itemSlideNewsClick.OnItemClick(view, position);
+//                callBack.onNewsItemClick(position, viewHolder.tv, new TextView(null), new TextView(null));
+                itemSlideNewsClick.OnItemClick(view, position, viewHolder.tv);
             }
         });
     }
@@ -69,6 +78,10 @@ public class NewsSlideAdapter extends SliderViewAdapter<NewsSlideAdapter.SlideHo
             tv = itemView.findViewById(R.id.tv);
 //            itemView.setOnClickListener(this::onClick);
         }
+
+//        private void onClick(View view) {
+//            callBack.onNewsItemClick(ge);
+//        }
 
     }
 }

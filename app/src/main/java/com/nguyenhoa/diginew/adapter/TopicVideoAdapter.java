@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.common.DownloadImageTask;
 import com.nguyenhoa.diginew.common.MyClass;

@@ -30,6 +30,7 @@ import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.common.SQLiteDigi;
 import com.nguyenhoa.diginew.model.News;
 
@@ -38,7 +39,7 @@ import java.util.ArrayList;
 import static com.nguyenhoa.diginew.R.drawable.background_button;
 import static com.nguyenhoa.diginew.R.drawable.background_disable_button;
 
-public class News1Activity extends AppCompatActivity implements NewsRCAdapter.ItemNewsRCClickListener{
+public class News1Activity extends AppCompatActivity implements NewsCallBack {
     private News news;
     public TextView tvTopic;
     public ImageView ivBack;
@@ -163,7 +164,7 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
                 News news1 = news;
                 news1.setDateSave(MyList.today);
                 sqLiteDigi.updateNews(news1);
-                news.setDateSave(MyList.today);
+//                news.setDateSave(MyList.today);
                 tvTopic.setText("Tin đã lưu");
                 sendData("saved");
                 break;
@@ -176,7 +177,7 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
                 news1.setDateDown(MyList.today);
                 sqLiteDigi.updateNews(news1);
                 tvTopic.setText(getResources().getString(R.string.news_downloaded));
-                news.setDateDown(MyList.today);
+//                news.setDateDown(MyList.today);
                 sendData("download");
                 break;
             }
@@ -287,14 +288,22 @@ public class News1Activity extends AppCompatActivity implements NewsRCAdapter.It
 //
 //        }
 
-        adapter.setData(list);
-        adapter.setClickNewsListener(this::onItemClick);
+        adapter.setData(list, this::onNewsItemClick);
+//        adapter.setClickNewsListener(this::onItemClick);
         recyclerView.setAdapter(adapter);
     }
 
+//    @Override
+//    public void onItemClick(View view, int position, TextView tv) {
+//        news = adapter.getItem(position);
+//        getSupportFragmentManager().popBackStack();
+//        addFragment(new NewsFragment(), true);
+//        tvTopic.setText(news.getTopic().getName());
+//    }
+
     @Override
-    public void onItemClick(View view, int position) {
-        news = adapter.getItem(position);
+    public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
+        news = adapter.getItem(pos);
         getSupportFragmentManager().popBackStack();
         addFragment(new NewsFragment(), true);
         tvTopic.setText(news.getTopic().getName());

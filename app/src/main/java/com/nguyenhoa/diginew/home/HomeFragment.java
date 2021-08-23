@@ -16,12 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nguyenhoa.diginew.CategoryFvActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
+import com.nguyenhoa.diginew.common.CustomItemAnimator;
 import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.news.News1Activity;
 import com.smarteist.autoimageslider.SliderView;
@@ -33,7 +36,7 @@ import java.util.Arrays;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCClickListener{
+public class HomeFragment extends Fragment implements  NewsCallBack {
     private ImageView ivSearch, ivUser;
     private SliderView sliderView;
     private RecyclerView rvNews;
@@ -116,20 +119,22 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
         LinearLayoutManager manager = new LinearLayoutManager(getContext(),
                 RecyclerView.VERTICAL, false);
         rvNews.setLayoutManager(manager);
-        adapter.setData(MyList.listNews);
-        adapter.setClickNewsListener(this::onItemClick);
+        adapter.setData(MyList.listNews, this::onNewsItemClick);
+//        adapter.setClickNewsListener(this::onItemClick);
         rvNews.setAdapter(adapter);
+        rvNews.setItemAnimator(new CustomItemAnimator());
     }
 
     private void setSlider() {
         NewsSlideAdapter newsSlideAdapter = new NewsSlideAdapter(MyList.listNews);
         sliderView.setSliderAdapter(newsSlideAdapter);
         sliderView.startAutoCycle();
+        sliderView.setSliderAnimationDuration(500);
         newsSlideAdapter.setItemSlideNewsClick(new NewsSlideAdapter.ItemSlideNewsClick() {
             @Override
-            public void OnItemClick(View view, int position) {
+            public void OnItemClick(View view, int position, TextView tv) {
                 News news = newsSlideAdapter.getItem(position);
-                MyClass.setIntent(news, getActivity());
+                MyClass.setIntent(news, getActivity(), tv, null, null);
             }
         });
     }
@@ -141,11 +146,11 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
         rvNews = v.findViewById(R.id.rcNews);
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        News news = adapter.getItem(position);
-        MyClass.setIntent(news, (Activity) view.getContext());
-    }
+//    @Override
+//    public void onItemClick(View view, int position, TextView tv) {
+////        News news = adapter.getItem(position);
+////        MyClass.setIntent(news, (Activity) view.getContext(), tv);
+//    }
 
     @Override
     public void onDestroy() {
@@ -157,5 +162,11 @@ public class HomeFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCl
     public void onPause() {
         super.onPause();
 //        sliderView.
+    }
+
+    @Override
+    public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
+        News news = adapter.getItem(pos);
+        MyClass.setIntent(news, getActivity(), ivTopic, ivSource, tvTime);
     }
 }

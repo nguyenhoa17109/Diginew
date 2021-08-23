@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.adapter.NewsRCAdapter;
 import com.nguyenhoa.diginew.common.MyList;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Tag;
 
@@ -23,7 +25,7 @@ import java.util.ArrayList;
  * Use the {@link TagFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TagFragment extends Fragment implements NewsRCAdapter.ItemNewsRCClickListener{
+public class TagFragment extends Fragment implements NewsCallBack {
     private RecyclerView rvTag;
     private NewsRCAdapter adapter;
     private News1Activity activity;
@@ -102,8 +104,8 @@ public class TagFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCli
 //            }
 //        }
 
-        adapter.setData(list);
-        adapter.setClickNewsListener(this::onItemClick);
+        adapter.setData(list, this::onNewsItemClick);
+//        adapter.setClickNewsListener(this::onItemClick);
         rvTag.setAdapter(adapter);
 
         return v;
@@ -121,7 +123,7 @@ public class TagFragment extends Fragment implements NewsRCAdapter.ItemNewsRCCli
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onNewsItemClick(int pos, TextView ivTopic, TextView ivSource, TextView tvTime) {
 
     }
 }
