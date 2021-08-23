@@ -56,7 +56,8 @@ public class DigiActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putInt("digi", index);
         fragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.frDigi, fragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.frDigi, fragment)
+                .addToBackStack(fragment.getClass().getSimpleName()).commit();
     }
 
     private void setTopic(int i) {

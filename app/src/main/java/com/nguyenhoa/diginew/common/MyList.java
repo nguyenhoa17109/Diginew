@@ -2,16 +2,26 @@ package com.nguyenhoa.diginew.common;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.LruCache;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.categories.ApiService;
+import com.nguyenhoa.diginew.categories.CategoriesFragment;
+import com.nguyenhoa.diginew.categories.ProvincesAdapter;
+import com.nguyenhoa.diginew.categories.ProvincesBottomSheet;
 import com.nguyenhoa.diginew.model.Account;
 import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.Keyword;
@@ -24,6 +34,8 @@ import com.nguyenhoa.diginew.model.Tag;
 import com.nguyenhoa.diginew.model.TagNews;
 import com.nguyenhoa.diginew.model.Topic;
 import com.nguyenhoa.diginew.model.User;
+import com.nguyenhoa.diginew.splash.Splash;
+import com.nguyenhoa.diginew.splash.Splash1;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +43,14 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MyList extends Application {
     public static Account account;
@@ -48,6 +67,9 @@ public class MyList extends Application {
     public static String today = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
     private static final int NUMBER_TOPIC = 9;
     public static SQLiteDigi sqLite;
+    public static final String PREFER_NAME = "sqlOnce";
+    SharedPreferences preferences;
+    boolean isFirst;
 
     @Override
     public void onCreate() {
@@ -73,19 +95,28 @@ public class MyList extends Application {
         list_unFv = new ArrayList<>();
         list_Cmt = new ArrayList<>();
 
-//        runOnce();
+        preferences = getSharedPreferences(PREFER_NAME, MODE_PRIVATE);
+        isFirst = preferences.getBoolean(PREFER_NAME, true);
 
-        listNews = setListNews();
+        if(isFirst) {
+            runOnce();
 
-        listRecentKey = sqLite.getRecentKey();
-        listHotKey = sqLite.getHotKey();
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean(PREFER_NAME, false);
+            editor.commit();
+        }
+        else {
+            listNews = setListNews();
 
-        listTag = sqLite.getAllTag();
-        listProvince = sqLite.getAllProvince();
-        listTopic = sqLite.getAllTopic();
-        list_dis = sqLite.getAllOtherApp();
+            listRecentKey = sqLite.getRecentKey();
+            listHotKey = sqLite.getHotKey();
 
-        lists_video_as_topic = setDataVideo(listNews);
+            listTag = sqLite.getAllTag();
+            listProvince = sqLite.getAllProvince();
+            listTopic = sqLite.getAllTopic();
+            list_dis = sqLite.getAllOtherApp();
+
+            lists_video_as_topic = setDataVideo(listNews);
 //        listRelevant = sqLite.getAllNewsRelevant()
 
 //        listsText = setDataText(sqLite.getAllNewsByType("text"));
@@ -98,17 +129,18 @@ public class MyList extends Application {
 //        listOperation.add(new Operation(listNews.get(1), "02/08/2021", false, true, true));
 //        listOperation.add(new Operation(listNews.get(3), "01/08/2021", false, true, false));
 
-        listText = sqLite.getAllNewsByType("textnews");
-        listDownload = new ArrayList<>();
-        listSave = new ArrayList<>();
-        listLike = new ArrayList<>();
-        for(News operation:listText){
-            if(!operation.getDateDown().equals(""))
-                listDownload.add(operation);
-            if(!operation.getDateSave().equals(""))
-                listSave.add(operation);
-            if(!operation.getDateLike().equals(""))
-                listLike.add(operation);
+            listText = sqLite.getAllNewsByType("textnews");
+            listDownload = new ArrayList<>();
+            listSave = new ArrayList<>();
+            listLike = new ArrayList<>();
+            for(News operation:listText){
+                if(!operation.getDateDown().equals(""))
+                    listDownload.add(operation);
+                if(!operation.getDateSave().equals(""))
+                    listSave.add(operation);
+                if(!operation.getDateLike().equals(""))
+                    listLike.add(operation);
+            }
         }
     }
 
@@ -175,12 +207,15 @@ public class MyList extends Application {
         sqLite.addTag(new Tag("Animal"));
         listTag = sqLite.getAllTag();
 
-//        sqLite.addProvince(new Province( "Ha Noi"));
+
+        sqLite.addProvince(new Province( "Ha Noi"));
         sqLite.addProvince(new Province( "Ha Noi"));
         sqLite.addProvince(new Province( "Hai Phong"));
         sqLite.addProvince(new Province( "Ha Giang"));
         sqLite.addProvince(new Province( "Hai Duong"));
         listProvince = sqLite.getAllProvince();
+        Log.d("ALO", listProvince.size()+"");
+
 
         addNewsInDB(new News("Vietnamnet", "18/08/2021", "3 kịch bản cho năm học mới tại TP HCM",
                 200, 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANrKQ1.img?h=818&w=1248&m=6&q=60&o=f&l=f",
@@ -196,7 +231,7 @@ public class MyList extends Application {
                         "\n" +
                         "Hết khoảng thời gian trên, Sở Giáo dục và Đào tạo tiếp tục đưa ra 3 phương án tổ chức dạy học năm học mới.", "textnews",
                 listTopic.get(4), "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-                "z", listProvince.get(0), list_Cmt, listTag, "12/08/2021", "10/08/2021", "", false));
+                "z", listProvince.get(1), list_Cmt, listTag, "12/08/2021", "10/08/2021", "", false));
         addNewsInDB(new News("Vietnamnet", "17/08/2021", "Biến thể Delta phủ bóng chuỗi cung ứng toàn cầu", 200
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANqppQ.img?h=828&w=1248&m=6&q=60&o=f&l=f","abc", "info",
                 listTopic.get(6), "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
@@ -204,7 +239,7 @@ public class MyList extends Application {
         addNewsInDB(new News("Vietnamnet", "31/07/2021", "Vì sao các ca F0 cộng đồng tăng trở lại từ ngày 15-8?", 200
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANrIB3.img?h=778&w=1172&m=6&q=60&o=f&l=f&x=453&y=205","abc", "info",
                 listTopic.get(3), "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-                "z", listProvince.get(0), list_Cmt, listTag, "", "", "", false));
+                "z", listProvince.get(1), list_Cmt, listTag, "", "", "", false));
         addNewsInDB(new News("Vietnamnet", "6", "Bắt tạm giam kẻ vượt chốt kiểm soát dịch, tấn công công an", 200
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANrUzh.img?h=808&w=1248&m=6&q=60&o=f&l=f&x=550&y=421","Ngày 18.8, Cơ quan CSĐT Công an TP.Phan Thiết (Bình Thuận) đã khởi tố vụ án, khởi tố bị can và thi hành lệnh bắt tạm giam đối với Lê Kim Luân (sinh năm 1994, ngụ huyện Hàm Thuận Bắc, Bình Thuận) về tội “Chống người thi hành công vụ”.\n" +
                 "\n" +
@@ -213,7 +248,7 @@ public class MyList extends Application {
                 "Cụ thể, vào trưa 16.8, Luân điều khiển xe máy 86K1-4427 lưu thông đến chốt kiểm soát dịch trên địa bàn phường Xuân An, TP.Phan Thiết thì lực lượng chức năng tại chốt ra hiệu lệnh dừng xe, kiểm tra giấy tờ lưu thông.", "textnews",
                 listTopic.get(8), "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
                 "z", listProvince.get(1), list_Cmt, listTag, "", "", "", false));
-        addNewsInDB(new News("Vietnamnet", "17/08/2021", "Taliban 2.0 và những giấc mơ bị vỡ vụn của phụ nữ Afghanistan", 200
+        addNewsInDB(new News("Vietnamnet", "17/08/2021", "Hà Nội Taliban 2.0 và những giấc mơ bị vỡ vụn của phụ nữ Afghanistan", 200
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANrHX6.img?h=808&w=1248&m=6&q=60&o=f&l=f&x=1650&y=1139","Taliban đã cam kết sẽ xây dựng một chính phủ cởi mở và bao trùm sau khi kiểm soát được Kabul nhưng hầu hết các nhà quan sát lo ngại rằng hầu như có rất ít sự thay đổi ở lực lượng này trong 20 năm qua và dự đoán các quy định hà khắc sẽ nhanh chóng quay lại Afghanistan.\n" +
                 "Taliban 2.0: Những lời hứa có trở thành sự thật?\n" +
                 "\n" +
@@ -228,11 +263,11 @@ public class MyList extends Application {
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANs9I1.img?h=750&w=1248&m=6&q=60&o=f&l=f&x=401&y=256","abc", "audio",
                 listTopic.get(1), "https://sampleswap.org/samples-ghost/PUBLIC%20DOMAIN%20MUSIC/2096[kb]Around-the-World-on-the-Phonograph-Thomas-Edison.mp3.mp3", "z"
                 , listProvince.get(0), list_Cmt, listTag, "", "", "", false));
-        addNewsInDB(new News("Vietnamnet", "16/08/2021", "Bỏ tiền túi trồng vườn rau sạch tặng dân vùng dịch", 200
+        addNewsInDB(new News("Vietnamnet", "16/08/2021", "Bỏ tiền túi trồng vườn rau sạch tặng dân vùng dịch Hà Nội", 200
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANrR1F.img?h=936&w=1248&m=6&q=60&o=f&l=f&x=500&y=231","abc", "video",
                 listTopic.get(2), "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
                 "z", listProvince.get(1), list_Cmt, listTag, "", "", "", false));
-        addNewsInDB(new News("Vietnamnet", "16/08/2021", "Hàng loạt người dùng Facebook tại Việt Nam bị khóa tài khoản không rõ lý do", 200
+        addNewsInDB(new News("Vietnamnet", "16/08/2021", "Hàng loạt người dùng Facebook tại Việt Nam bị khóa tài khoản", 200
                 , 100, "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AANrrOq.img?h=834&w=1152&m=6&q=60&o=f&l=f","abc", "video",
                 listTopic.get(5), "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
                 "z", listProvince.get(0), list_Cmt, listTag, "", "", "", false));
@@ -478,7 +513,7 @@ public class MyList extends Application {
         list1.add(new News("Vietnamnet", "31/07/2021", "Hon 80 tan gao ung ho cho 2 'ATM gao' o Hà Nội",
                 200, 100, "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg","Covid-19", type,  listTopic.get(i),
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-                "z", listProvince.get(0), list_Cmt, listTag, "", "", "", false));
+                "z", listProvince.get(1), list_Cmt, listTag, "", "", "", false));
         return list1;
     }
 
