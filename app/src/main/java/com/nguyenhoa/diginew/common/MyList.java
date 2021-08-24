@@ -129,18 +129,30 @@ public class MyList extends Application {
 //        listOperation.add(new Operation(listNews.get(1), "02/08/2021", false, true, true));
 //        listOperation.add(new Operation(listNews.get(3), "01/08/2021", false, true, false));
 
-            listText = sqLite.getAllNewsByType("textnews");
-            listDownload = new ArrayList<>();
-            listSave = new ArrayList<>();
-            listLike = new ArrayList<>();
-            for(News operation:listText){
-                if(!operation.getDateDown().equals(""))
-                    listDownload.add(operation);
-                if(!operation.getDateSave().equals(""))
-                    listSave.add(operation);
-                if(!operation.getDateLike().equals(""))
-                    listLike.add(operation);
-            }
+//            listText = sqLite.getAllNewsByType("textnews");
+//            listDownload = new ArrayList<>();
+//            listSave = new ArrayList<>();
+//            listLike = new ArrayList<>();
+//            for(News operation:listText){
+//                if(!operation.getDateDown().equals(""))
+//                    listDownload.add(operation);
+//                if(!operation.getDateSave().equals(""))
+//                    listSave.add(operation);
+//                if(!operation.getDateLike().equals(""))
+//                    listLike.add(operation);
+//            }
+        }
+        listText = sqLite.getAllNewsByType("textnews");
+        listDownload = new ArrayList<>();
+        listSave = new ArrayList<>();
+        listLike = new ArrayList<>();
+        for(News operation:listText){
+            if(!operation.getDateDown().equals(""))
+                listDownload.add(operation);
+            if(!operation.getDateSave().equals(""))
+                listSave.add(operation);
+            if(!operation.getDateLike().equals(""))
+                listLike.add(operation);
         }
     }
 

@@ -162,7 +162,7 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
                 }
             }
         }
-        categoriesAdapter.setData(topics);
+//        categoriesAdapter.setData(topics);
         setDataAdapter();
     }
 
@@ -176,6 +176,7 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
             newsRV.setVisibility(View.GONE);
             newsVideoRV.setVisibility(View.GONE);
             newsInfoRV.setVisibility(View.GONE);
+
         }
         else {
             hideFragment();
@@ -259,6 +260,9 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
     public void onStart() {
         super.onStart();
 
+        if(p!=null){
+
+        }
         hideFragment();
         setVisi();
         topics.clear();
