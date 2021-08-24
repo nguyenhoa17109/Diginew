@@ -318,7 +318,7 @@ public class MyList extends Application {
 
     public static ArrayList<Topic> setListUnFavor(ArrayList<Topic> list_Fv) {
         ArrayList<Topic> list_unFv = new ArrayList<>();
-        Log.d("LL", list_Fv.get(0).getName()+"");
+//        Log.d("LL", list_Fv.get(0).getName()+"");
         for(Topic topic:listTopic){
             if(check(topic, list_Fv))
                 list_unFv.add(topic);
