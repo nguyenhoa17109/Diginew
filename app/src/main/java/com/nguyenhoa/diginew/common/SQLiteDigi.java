@@ -136,7 +136,138 @@ public class SQLiteDigi extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Base.ProvinceTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + Base.KeywordTable.TABLE_NAME);
     }
+    public boolean CheckIsDataAlreadyInDBorNot(String TableName,
+                                                      String dbfield, String fieldValue) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+        String Query = "Select * from " + TableName + " where " + dbfield + " = '" + fieldValue +"'";
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        sqldb.close();
+        return true;
+    }
 
+    public boolean CheckDataNewsExist(News news) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+
+        String Query = "Select * from " + Base.NewsTable.TABLE_NAME + " where " +
+                Base.NewsTable.COLUMN_SOURCE + " = '" + news.getSource() +"'" + " AND " +
+                Base.NewsTable.COLUMN_TIME + " = '" + news.getTimes() +"'" + " AND " +
+                Base.NewsTable.COLUMN_TITLE + " = '" + news.getTitle() +"'" + " AND " +
+                Base.NewsTable.COLUMN_IMG + " = '" + news.getImgs() +"'" + " AND " +
+                Base.NewsTable.COLUMN_CONTENT + " = '" + news.getContent() +"'" + " AND " +
+                Base.NewsTable.COLUMN_URL + " = '" + news.getUrl() +"'" + " AND " +
+                Base.NewsTable.COLUMN_AUDIO + " = '" + news.getAudio() +"'";
+
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        sqldb.close();
+        return true;
+    }
+
+    public boolean CheckDataAccountExist(Account account) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+
+        String Query = "Select * from " + Base.AccountTable.TABLE_NAME + " where " +
+                        Base.AccountTable.COLUMN_NAME + " = '" + account.getName() +"'" + " AND " +
+                Base.AccountTable.COLUMN_IMG + " = '" + account.getImg() +"'" + " AND " +
+                Base.AccountTable.COLUMN_ADDRESS + " = '" + account.getAddress() +"'" + " AND " +
+                Base.AccountTable.COLUMN_BIRTH + " = '" + account.getBirth() +"'" + " AND " +
+                Base.AccountTable.COLUMN_PHONE + " = '" + account.getPhone() +"'";
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        sqldb.close();
+        return true;
+    }
+
+    public boolean CheckDataUserExist(User user) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+
+        String Query = "Select * from " + Base.UserTable.TABLE_NAME + " where " +
+                Base.UserTable.COLUMN_IMG + " = '" + user.getImgAccount() +"'" + " AND " +
+                Base.UserTable.COLUMN_NAME + " = '" + user.getNameUser() +"'";
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        sqldb.close();
+        return true;
+    }
+
+    public boolean CheckDataTagNewsExist(TagNews tagNews) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+        String Query = "Select * from " + Base.TagNewsTable.TABLE_NAME + " where " +
+                Base.TagNewsTable.COLUMN_ID_NEWS + " = '" + tagNews.getIdNews() +"'" + " AND " +
+                Base.TagNewsTable.COLUMN_ID_TAG + " = '" + tagNews.getIdTag() +"'" ;
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+    public boolean CheckDataCommentExist(Comment comment) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+        String Query = "Select * from " + Base.CommentTable.TABLE_NAME + " where " +
+                Base.CommentTable.COLUMN_ID_NEWS + " = '" + comment.getIdNews() +"'" + " AND " +
+                Base.CommentTable.COLUMN_ID_USER + " = '" + comment.getUser() +"'" + " AND " +
+                Base.CommentTable.COLUMN_CONTENT + " = '" + comment.getContentCmt() +"'" + " AND " +
+                Base.CommentTable.COLUMN_LIKE + " = '" + comment.getLike() +"'" + " AND " +
+                Base.CommentTable.COLUMN_TIME + " = '" + comment.getTime() +"'" + " AND " +
+                Base.CommentTable.COLUMN_POSITION + " = '" + comment.getPosition() +"'";
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;
+    }
+
+    public boolean CheckDataKeywordExist(Keyword keyword) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+
+        String Query = "Select * from " + Base.KeywordTable.TABLE_NAME + " where " +
+                Base.KeywordTable.COLUMN_KEY + " = '" + keyword.getKey() +"'" + " AND " +
+                Base.KeywordTable.COLUMN_DATE_ACCESS + " = '" + keyword.getDateSearchNear() +"'" + " AND " +
+                Base.KeywordTable.COLUMN_NUM_ACCESS + " = " + keyword.getNumAccess();
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        sqldb.close();
+        return true;
+    }
+
+    public boolean CheckDataTagExist(Tag tag) {
+        SQLiteDatabase sqldb = getReadableDatabase();
+        String Query = "Select * from " + Base.TagTable.TABLE_NAME + " where " + Base.TagTable.COLUMN_NAME + " = '" + tag.getTag() +"'";
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        sqldb.close();
+        return true;
+    }
 
     public long addAccount(Account account){
         SQLiteDatabase r = getWritableDatabase();
@@ -799,26 +930,34 @@ public class SQLiteDigi extends SQLiteOpenHelper {
     }
 
 
+//    public long addComment(Comment comment){
+//        SQLiteDatabase r = getWritableDatabase();
+//        if(!isUserExist(comment.getUser()))
+//            addUser(comment.getUser());
+//        int k = getIDUser(comment.getUser());
+//        comment.getUser().setId(k);
+//        return r.insert(Base.CommentTable.TABLE_NAME, null, putCmt(comment));
+//    }
     public long addComment(Comment comment){
         SQLiteDatabase r = getWritableDatabase();
-        if(!isUserExist(comment.getUser()))
-            addUser(comment.getUser());
+//        if(!CheckDataUserExist(comment.getUser()))
+//            addUser(comment.getUser());
         int k = getIDUser(comment.getUser());
         comment.getUser().setId(k);
         return r.insert(Base.CommentTable.TABLE_NAME, null, putCmt(comment));
     }
 
-    private boolean isUserExist(User user){
-        ArrayList<User> list = getAllUser();
-        for(User user1:list){
-            if(user1.getImgAccount() == user.getImgAccount()
-                    && user1.getNameUser().equals(user.getNameUser())){
-                return true;
-            }
-
-        }
-        return false;
-    }
+//    private boolean isUserExist(User user){
+//        ArrayList<User> list = getAllUser();
+//        for(User user1:list){
+//            if(user1.getImgAccount() == user.getImgAccount()
+//                    && user1.getNameUser().equals(user.getNameUser())){
+//                return true;
+//            }
+//
+//        }
+//        return false;
+//    }
 
     public long updateComment(Comment comment){
         SQLiteDatabase r = getWritableDatabase();
