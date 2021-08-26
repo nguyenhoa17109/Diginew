@@ -54,18 +54,6 @@ public class MyList extends Application {
         super.onCreate();
         account = new Account("Nguyen Van A", "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg", "Ha Noi"
                 , "13/02/1989", "01294582");
-//        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
-//        // Use 1/8th of the available memory for this memory cache.
-//        final int cacheSize = maxMemory / 3;
-//
-//        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
-//            @Override
-//            protected int sizeOf(String key, Bitmap bitmap) {
-//                // The cache size will be measured in kilobytes rather than
-//                // number of items.
-//                return bitmap.getByteCount() / 1024;
-//            }
-//        };
 
         sqLite = new SQLiteDigi(getApplicationContext());
 
@@ -86,18 +74,6 @@ public class MyList extends Application {
         list_dis = sqLite.getAllOtherApp();
 
         lists_video_as_topic = setDataVideo(listNews);
-//        listRelevant = sqLite.getAllNewsRelevant()
-
-//        listsText = setDataText(sqLite.getAllNewsByType("text"));
-//        lists_audio = setDataAudio(listNews);
-//        lists_info = setDataInfo(listNews);
-//        lists_video = setDataVideo(listNews);
-
-//        listOperation = new ArrayList<>();
-//        listOperation.add(new Operation(listNews.get(0), "02/08/2021", false, true, false));
-//        listOperation.add(new Operation(listNews.get(1), "02/08/2021", false, true, true));
-//        listOperation.add(new Operation(listNews.get(3), "01/08/2021", false, true, false));
-
         listText = sqLite.getAllNewsByType("textnews");
         listDownload = new ArrayList<>();
         listSave = new ArrayList<>();
@@ -120,15 +96,6 @@ public class MyList extends Application {
         }
         return list;
     }
-
-//    public static Bitmap getBitmapFromMemoryCache(String key){
-//        return mMemoryCache.get(key);
-//    }
-//    public static void setBitmapFromMemoryCache(String key, Bitmap bitmap){
-//        if(getBitmapFromMemoryCache(key) == null){
-//            mMemoryCache.put(key, bitmap);
-//        }
-//    }
 
     private void runOnce() {
 
@@ -258,7 +225,7 @@ public class MyList extends Application {
         }
         User user = new User("https://cdn.pixabay.com/photo/2018/01/25/14/12/nature-3106213_1280.jpg","Nguyen B");
         User user1 = new User("https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_1280.jpg","Tran B");
-        sqLite.addComment(new Comment(user, "abc", 9, false, "18/07/2021",
+        sqLite.addComment(new Comment(user, "Hay!", 9, false, "18/07/2021",
                 false, x, 0));
         sqLite.addComment(new Comment(user1, "abc", 9, true, "18/07/2021",
                 false, x, 1));
