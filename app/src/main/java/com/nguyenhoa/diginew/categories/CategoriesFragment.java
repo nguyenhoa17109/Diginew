@@ -120,11 +120,6 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
 
         hideFragment();
 
-//        if(p!=null){
-//            hideFragment();
-//            searchProvince(p);
-//        }
-
         return view;
     }
 
@@ -260,9 +255,6 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
     public void onStart() {
         super.onStart();
 
-        if(p!=null){
-
-        }
         hideFragment();
         setVisi();
         topics.clear();
