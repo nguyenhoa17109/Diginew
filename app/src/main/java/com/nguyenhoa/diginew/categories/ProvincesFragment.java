@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.Province;
 
 import org.json.JSONArray;
@@ -54,6 +55,11 @@ public class ProvincesFragment extends Fragment {
 
 
         btChooseProvince = view.findViewById(R.id.btChooseProvince);
+
+//        provinceList = MyList.listProvince;
+
+        provinceList = new ArrayList<>();
+
         btChooseProvince.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,11 +99,9 @@ public class ProvincesFragment extends Fragment {
                     provincesBottomSheet = new ProvincesBottomSheet(provinceList, new ProvincesAdapter.IClickListener() {
                         @Override
                         public void clickItem(Province province) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("province", province.getName());
-                            Fragment fragment = new CategoriesFragment.ChildFragment();
-                            fragment.setArguments(bundle);
-                            getFragmentManager().beginTransaction().replace(R.id.frChildCategory, fragment).commit();
+                            Bundle result = new Bundle();
+                            result.putString("bundleKey", province.getName());
+                            getParentFragmentManager().setFragmentResult("requestKey", result);
 
                             new Handler().postDelayed(new Runnable() {
                                 @Override

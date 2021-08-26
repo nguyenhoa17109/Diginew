@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/gray_200"
+    tools:context=".discover.DigiFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/background_corner_top"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/ivDigiMovie"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_digiclips" />
+
+            <TextView
+                android:id="@+id/tvDigiMovie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/content_digiclip"
+                android:textSize="18sp"
+                android:layout_margin="20dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btOpen"
+                android:layout_width="190dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="50dp"
+                android:text="@string/open_app"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/background_button_topic"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

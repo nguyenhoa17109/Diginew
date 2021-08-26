@@ -20,7 +20,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.discover.DiscoverAdapter;
+import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.Topic;
 
 import java.util.ArrayList;
@@ -32,11 +34,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     private int index = 1;
     FragmentManager fragmentManager;
 
-    public CategoriesAdapter(FragmentManager fragmentManager, Context context, ArrayList<String> names, CategorClickInterface categorClickInterface) {
+    public CategoriesAdapter(FragmentManager fragmentManager, Context context, CategorClickInterface categorClickInterface) {
         this.fragmentManager = fragmentManager;
         this.context = context;
-        this.names = names;
         this.categorClickInterface = categorClickInterface;
+    }
+
+    public void setData(ArrayList<String> names){
+        index=1;
+        this.names = names;
+        notifyDataSetChanged();
     }
 
     @NonNull

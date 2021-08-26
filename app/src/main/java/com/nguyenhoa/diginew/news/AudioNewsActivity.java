@@ -211,7 +211,7 @@ public class AudioNewsActivity extends AppCompatActivity implements NewsCallBack
         ivAccount = findViewById(R.id.ivAccount);
         ivShare = findViewById(R.id.ivShare);
         tvType = findViewById(R.id.tvType);
-        tvTitleNews = findViewById(R.id.tvAudioTiltle);
+        tvTitleNews = findViewById(R.id.tvAudioTitle);
         tvSource = findViewById(R.id.tvSource);
         tvTime = findViewById(R.id.tvTimes);
         tvCmts = findViewById(R.id.tvCmt);

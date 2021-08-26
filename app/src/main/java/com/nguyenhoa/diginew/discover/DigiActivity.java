@@ -1,6 +1,9 @@
 package com.nguyenhoa.diginew.discover;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,13 +20,14 @@ import com.nguyenhoa.diginew.common.MyClass;
 import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.model.OtherApp;
 import com.nguyenhoa.diginew.model.Topic;
+import com.nguyenhoa.diginew.news.InfoNewsFragment;
 
 import java.io.InputStream;
 
 public class DigiActivity extends AppCompatActivity {
-    private ImageView ivBack, iv;
-    private Button btOpen;
-    private TextView tv, tvTopic;
+    private ImageView ivBack;
+    private TextView tvTopic;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +36,13 @@ public class DigiActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
         Intent intent = getIntent();
-        int index = intent.getIntExtra("index", 0);
+        index = intent.getIntExtra("index", 0);
 
         ivBack = findViewById(R.id.ivBack);
-        iv = findViewById(R.id.ivDigiMovie);
-        btOpen = findViewById(R.id.btOpen);
-        tv = findViewById(R.id.tvDigiMovie);
         tvTopic = findViewById(R.id.tvTopic);
 
+        addFragment(new DigiFragment());
+        setTopic(index);
 
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,34 +50,20 @@ public class DigiActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        setTopic(index);
-
     }
 
-    private void setTopic(int index) {
-        OtherApp app = MyList.list_dis.get(index);
+    public void addFragment(Fragment fragment) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("digi", index);
+        fragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().add(R.id.frDigi, fragment)
+                .addToBackStack(fragment.getClass().getSimpleName()).commit();
+    }
+
+    private void setTopic(int i) {
+        OtherApp app = MyList.list_dis.get(i);
 
         tvTopic.setText(app.getName());
-        iv.setImageResource(app.getImg());
-        tv.setMovementMethod(new ScrollingMovementMethod());
-        try {
-            Resources res = getResources();
-            InputStream in_s = res.openRawResource(app.getContent());
-            byte[] b = new byte[in_s.available()];
-            in_s.read(b);
-            tv.setText(new String(b));
-        } catch (Exception e) {
-            tv.setText("Error: can't show content.");
-        }
-
-        btOpen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(app.getLink()));
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

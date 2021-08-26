@@ -67,6 +67,7 @@ public class SubjectsFavorite extends AppCompatActivity implements SubjectsAdapt
                     editor.commit();
 
                     startActivity(new Intent(SubjectsFavorite.this, MainActivity.class));
+                    finish();
                 }
             });
 

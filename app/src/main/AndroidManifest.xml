@@ -19,27 +19,29 @@
         <activity android:name=".discover.DigiActivity" />
         <activity android:name=".AddCategoryFvActivity" />
         <activity android:name=".CategoryFvActivity" />
-        <activity android:name=".old.NewsDownloadedActivity" />
         <activity android:name=".PacketAdvanceActivity" />
         <activity android:name=".PacketStandardActivity" />
         <activity android:name=".video.PlayVideoActivity" />
-        <activity android:name=".old.NewsActivity" />
         <activity android:name=".news.AudioNewsActivity" />
         <activity android:name=".home.SearchActivity" />
         <activity android:name=".splash.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".splash.Splash1" />
         <activity android:name=".splash.Splash2" />
         <activity
             android:name=".splash.Terms"
             android:parentActivityName=".splash.Splash2" />
-        <activity android:name=".splash.SubjectsFavorite" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".splash.SubjectsFavorite" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" >
+
+        </activity>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

@@ -2,6 +2,8 @@ package com.nguyenhoa.diginew.discover;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +51,7 @@ public class DiscoverAdapter extends RecyclerView.Adapter<DiscoverAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(list.get(position).getName());
+
         holder.imageView.setImageResource(list.get(position).getImg());
 
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
