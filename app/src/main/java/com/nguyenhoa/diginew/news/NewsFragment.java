@@ -228,25 +228,12 @@ public class NewsFragment extends Fragment {
             }
         });
 
-//        setClickTV(tvSearch1, 0);
-//        setClickTV(tvSearch2, 1);
-//        setClickTV(tvSearch3, 2);
-//        setClickTV(tvSearch21, 3);
-//        setClickTV(tvSearch22, 4);
-//        setClickTV(tvSearch23, 5);
-//        setClickTV(tvSearch31, 6);
-//        setClickTV(tvSearch32, 7);
-//        setClickTV(tvSearch33, 8);
-//        setClickTV(tvSearch41, 9);
-//        setClickTV(tvSearch42, 10);
-//        setClickTV(tvSearch43, 11);
-
     }
 
     private void setLayoutCmt(View v){
         View view1 = getLayoutInflater().inflate(R.layout.layout_cmt, null);
 
-        ArrayList<Comment> list = MyList.list_Cmt;
+        ArrayList<Comment> list = MyList.sqLite.getAllCmtByNews(news.getId());
         RecyclerView rv;
         CmtAdapter adapter;
         ImageView ivClose;
