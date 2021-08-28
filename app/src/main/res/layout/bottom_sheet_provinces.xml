@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background_corner_top"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:id="@+id/bottom_sheet_provinces">
 
     <TextView
         android:text="@string/local"
@@ -15,18 +16,18 @@
         android:fontFamily="@font/roboto"
         android:textColor="@color/black"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@color/divider"/>
+        android:background="@color/divider" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="0dp"
         android:id="@+id/rvProvinces"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_provinces"/>
+        tools:listitem="@layout/item_provinces" />
 </LinearLayout>

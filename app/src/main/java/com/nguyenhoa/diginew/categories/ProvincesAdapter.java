@@ -14,7 +14,7 @@ import com.nguyenhoa.diginew.model.Province;
 
 import java.util.List;
 
-public class ProvincesAdapter extends RecyclerView.Adapter<ProvincesAdapter.MyViewHolder>{
+public class ProvincesAdapter extends RecyclerView.Adapter<ProvincesAdapter.MyViewHolder> {
     private List<Province> provinceList;
     private int index = -1;
     IClickListener iClickListener;
@@ -33,7 +33,7 @@ public class ProvincesAdapter extends RecyclerView.Adapter<ProvincesAdapter.MyVi
         return viewHolder;
     }
 
-    public interface IClickListener{
+    public interface IClickListener {
         public void clickItem(Province province);
     }
 
@@ -51,10 +51,9 @@ public class ProvincesAdapter extends RecyclerView.Adapter<ProvincesAdapter.MyVi
                 iClickListener.clickItem(province);
             }
         });
-        if(index == position){
+        if (index == position) {
             holder.imageView.setVisibility(View.VISIBLE);
-        }
-        else{
+        } else {
             holder.imageView.setVisibility(View.GONE);
         }
     }

@@ -13,6 +13,16 @@
     <color name="blue_200">#5379F5</color>
     <color name="blue_100">#849FFF</color>
     <color name="divider">#ECECEC</color>
+    <color name="gray_300">#F6F7FE</color>
+    <color name="gray_4000">#B1BAD0</color>
+    <color name="gray_500">#A2A6BB</color>
+    <color name="blue_300">#5379F5</color>
+    <color name="gray_600">#F6F5F9</color>
+    <color name="gray_700">#B1B1B1</color>
+    <color name="pink">#ED0677</color>
+    <color name="gray_800">#ECEEF3</color>
+    <color name="blue_400">#2438F1</color>
+
     <color name="small_color">#B1BAD0</color>
     <color name="button_open_app">#301D9E</color>
 </resources>

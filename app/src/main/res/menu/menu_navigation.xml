@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/mHome"
+    <item
+        android:id="@+id/mHome"
         android:title="Trang chủ"
-        android:icon="@drawable/ic_home"/>
-    <item android:id="@+id/mVideo"
+        android:icon="@drawable/ic_home" />
+    <item
+        android:id="@+id/mVideo"
         android:title="Video"
-        android:icon="@drawable/ic_video"/>
-    <item android:id="@+id/mDiscover"
+        android:icon="@drawable/ic_video" />
+    <item
+        android:id="@+id/mDiscover"
         android:title="Khám phá"
-        android:icon="@drawable/ic_discover"/>
-    <item android:id="@+id/mCategories"
+        android:icon="@drawable/ic_discover" />
+    <item
+        android:id="@+id/mCategories"
         android:title="Chuyên mục"
-        android:icon="@drawable/ic_categories"/>
+        android:icon="@drawable/ic_categories" />
 </menu>
