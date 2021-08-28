@@ -46,6 +46,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         notifyDataSetChanged();
     }
 
+    public void setCate(int i, ArrayList<String> names){
+        index = i;
+        this.names = names;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public MyViewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -79,6 +85,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             holder.textView.setTextColor(Color.parseColor("#B1BAD0"));
             holder.textView.setBackground(null);
         }
+
     }
 
     public interface CategorClickInterface{
