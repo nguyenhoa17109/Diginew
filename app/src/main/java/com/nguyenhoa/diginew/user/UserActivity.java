@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.digiPack.DigiAdvance;
 import com.nguyenhoa.diginew.digiPack.DigiLife;
 

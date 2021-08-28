@@ -1,4 +1,4 @@
-package com.nguyenhoa.diginew;
+package com.nguyenhoa.diginew.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.categories.ProvincesBottomSheet;
 import com.nguyenhoa.diginew.model.User;
 
@@ -74,10 +75,9 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
             tvEditUser.setText("Sửa");
             EditUserStatus = 0;
         }
-        User user = new User(username, etUser_name.toString(), etUser_address.toString()
-                , et_User_dob.toString(), etUser_phoneNum.toString(), servicePack);
+
         // luu vao csdl ...
-        addToDatabase(user);
+
     }
 
     public void addToDatabase(User user) {

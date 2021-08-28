@@ -62,7 +62,7 @@ public class MyList extends Application {
         list_unFv = new ArrayList<>();
         list_Cmt = new ArrayList<>();
 
-        runOnce();
+//        runOnce();
 
         listNews = setListNews();
 

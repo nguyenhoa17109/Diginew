@@ -2,7 +2,6 @@ package com.nguyenhoa.diginew.digiPack;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.nguyenhoa.diginew.R;
-import com.nguyenhoa.diginew.UserActivity;
+import com.nguyenhoa.diginew.user.UserActivity;
 
 public class DigiRegister extends AppCompatActivity implements View.OnClickListener {
     private ImageView ivBack;
