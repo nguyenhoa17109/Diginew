@@ -50,6 +50,7 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
     Fragment provincesFragment;
     FragmentManager manager;
     private String p, cate;
+    private int posi=-1;
 
     public CategoriesFragment() {
     }
@@ -83,7 +84,6 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
         newsInfoRV = view.findViewById(R.id.rvNewsInfo);
         newsVideoRV = view.findViewById(R.id.rvNewsVideo);
 
-//        topics = new ArrayList<>();
         newsArrayList = new ArrayList<>();
         newsVideoList = new ArrayList<>();
         newsInfoList = new ArrayList<>();
@@ -138,9 +138,6 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
 
         s = s.trim();
 
-        Log.d("s: ", s);
-
-
         ArrayList<News> list = MyList.listNews;
 
         for(int i=0; i<list.size(); i++) {
@@ -157,12 +154,12 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
                 }
             }
         }
-//        categoriesAdapter.setData(topics);
         setDataAdapter();
     }
 
     @Override
     public void onCategoryClick(int position) {
+        posi = position;
         String category = topics.get(position);
         cate = category;
 
@@ -171,23 +168,11 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
             newsRV.setVisibility(View.GONE);
             newsVideoRV.setVisibility(View.GONE);
             newsInfoRV.setVisibility(View.GONE);
-
         }
         else {
             hideFragment();
-
             setVisi();
-
-            newsArrayList = MyList.sqLite.getAllNewsByTypeAsTopic(category, "textnews");
-            ArrayList<News> listAudio = MyList.sqLite.getAllNewsByTypeAsTopic(category,"audio");
-            for(int i=0; i< listAudio.size(); i++){
-                newsArrayList.add(listAudio.get(i));
-            }
-            newsVideoList = MyList.sqLite.getAllNewsByTypeAsTopic(category, "video");
-            newsInfoList = MyList.sqLite.getAllNewsByTypeAsTopic(category, "info");
-
-            setDataAdapter();
-
+            setListData(category);
         }
     }
 
@@ -234,14 +219,9 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
     }
 
     public void setTopic(){
-//        newsArrayList.clear();
-//        newsVideoList.clear();
-//        newsInfoList.clear();
-
         ArrayList<Topic> list1 = MyList.setListChoseSubjectFV(getContext());
         topics.add("Địa phương");
         for(int i=0; i<list1.size(); i++){
-            Log.d("list fv: "+i+1, list1.get(i).getName());
             topics.add(list1.get(i).getName());
         }
     }
@@ -251,16 +231,41 @@ public class CategoriesFragment extends Fragment implements NewsCallBack, Catego
         newsInfoRV.setVisibility(View.VISIBLE);
     }
 
+    public void setListData(String s){
+        newsArrayList = MyList.sqLite.getAllNewsByTypeAsTopic(s, "textnews");
+        ArrayList<News> listAudio = MyList.sqLite.getAllNewsByTypeAsTopic(s,"audio");
+        for(int i=0; i< listAudio.size(); i++){
+            newsArrayList.add(listAudio.get(i));
+        }
+        newsVideoList = MyList.sqLite.getAllNewsByTypeAsTopic(s, "video");
+        newsInfoList = MyList.sqLite.getAllNewsByTypeAsTopic(s, "info");
+
+        setDataAdapter();
+    }
     @Override
     public void onStart() {
         super.onStart();
 
         hideFragment();
         setVisi();
+
         topics.clear();
         setTopic();
-        setCate1();
-        categoriesAdapter.setData(topics);
-        setDataAdapter();
+        categoriesAdapter.notifyDataSetChanged();
+        if(posi !=-1 && posi >0 && posi <topics.size()){
+            categoriesAdapter.setCate(posi, topics);
+            String s = topics.get(posi);
+            setListData(s);
+        }
+        else if(posi==0){
+            setVisi();
+            searchProvince(p);
+        }
+        else{
+            categoriesAdapter.setData(topics);
+            setCate1();
+            setDataAdapter();
+        }
+        posi = -1;
     }
 }
