@@ -27,6 +27,7 @@ import com.nguyenhoa.diginew.common.MyList;
 import com.nguyenhoa.diginew.common.NewsCallBack;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.news.News1Activity;
+import com.nguyenhoa.diginew.user.UserActivity;
 import com.smarteist.autoimageslider.SliderView;
 
 import java.util.Arrays;
@@ -108,7 +109,7 @@ public class HomeFragment extends Fragment implements  NewsCallBack {
         ivUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CategoryFvActivity.class);
+                Intent intent = new Intent(getActivity(), UserActivity.class);
                 startActivity(intent);
             }
         });

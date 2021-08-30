@@ -5,25 +5,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.nguyenhoa.diginew.CategoryFvActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.categories.ProvincesBottomSheet;
+import com.nguyenhoa.diginew.categories.ProvincesFragment;
+import com.nguyenhoa.diginew.home.HomeFragment;
 import com.nguyenhoa.diginew.model.User;
+import com.nguyenhoa.diginew.splash.SubjectsFavorite;
 
 public class UserSettingActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView tvEditUser, tvLocalNews;
     private EditText etUser_name, etUser_address, et_User_dob, etUser_phoneNum;
     private int EditUserStatus = 0;
     private String username, servicePack;
-    private LinearLayout layoutLocalNews, bottom_sheet_provinces;
+    private LinearLayout layoutLocalNews, subjectFav;
+    private Button btLogout;
     private ImageView ivBack;
 
     @Override
@@ -48,14 +55,18 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
         et_User_dob = findViewById(R.id.et_User_dob);
         etUser_phoneNum = findViewById(R.id.etUser_phoneNum);
         layoutLocalNews = findViewById(R.id.layoutLocalNews);
-        bottom_sheet_provinces = findViewById(R.id.bottom_sheet_provinces);
+        subjectFav = findViewById(R.id.subjectFav);
         ivBack = findViewById(R.id.ivBack);
+        btLogout = findViewById(R.id.btLogout);
+
     }
 
     public void setOnClick() {
         tvEditUser.setOnClickListener(this);
         layoutLocalNews.setOnClickListener(this);
         ivBack.setOnClickListener(this);
+        subjectFav.setOnClickListener(this);
+        btLogout.setOnClickListener(this);
     }
 
     public void AllowEdit(int check) {
@@ -98,8 +109,8 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void showLocalNews() {
-//        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_provinces);
-//        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        getSupportFragmentManager().beginTransaction()
+                .add(android.R.id.content, new ProvincesFragment()).commit();
 
     }
 
@@ -111,6 +122,14 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
             showLocalNews();
         } else if (v.getId() == ivBack.getId()) {
             finish();
+        }
+        else if (v.getId() == subjectFav.getId()) {
+            Intent in = new Intent(this, CategoryFvActivity.class);
+            startActivity(in);
+        }
+        else if (v.getId() == btLogout.getId()) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(android.R.id.content, new HomeFragment()).commit();
         }
 
     }

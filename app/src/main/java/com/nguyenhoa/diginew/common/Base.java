@@ -53,6 +53,21 @@ public final class Base {
         public static final String COLUMN_ID_TOPIC = "topic";
     }
 
+    public static class PacketTable implements BaseColumns{
+        public static final String TABLE_NAME = "packets";
+        public static final String COLUMN_DATA = "data";
+        public static final String COLUMN_ONNET = "onNet";
+        public static final String COLUMN_INNET = "inNet";
+        public static final String COLUMN_SMS = "sms";
+        public static final String COLUMN_MYTV = "myTV";
+        public static final String COLUMN_CLIPS = "clips";
+        public static final String COLUMN_HOTNEWS = "hotNews";
+        public static final String COLUMN_MUSIC = "music";
+        public static final String COLUMN_MOVIE = "movie";
+        public static final String COLUMN_DATAREMAINING = "dataRemaining";
+
+    }
+
     public static class TagTable implements BaseColumns{
         public static final String TABLE_NAME = "tags";
         public static final String COLUMN_NAME = "name";

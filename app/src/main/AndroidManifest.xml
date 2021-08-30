@@ -24,23 +24,28 @@
         <activity android:name=".video.PlayVideoActivity" />
         <activity android:name=".news.AudioNewsActivity" />
         <activity android:name=".home.SearchActivity" />
-        <activity android:name=".splash.Splash">
+        <activity android:name=".splash.Splash"/>
 
-        </activity>
         <activity android:name=".splash.Splash1" />
         <activity android:name=".splash.Splash2" />
+        <activity android:name=".digiPack.DigiAdvance"/>
+        <activity android:name=".digiPack.DigiLife"/>
+        <activity android:name=".digiPack.DigiStandard"/>
+        <activity android:name=".digiPack.DigiRegister"/>
+        <activity android:name=".user.UserSettingActivity"/>
+        <activity android:name=".user.UserActivity"/>
+        <activity android:name=".user.User_Free_Activity"/>
         <activity
             android:name=".splash.Terms"
             android:parentActivityName=".splash.Splash2" />
-        <activity android:name=".splash.SubjectsFavorite" >
+        <activity android:name=".splash.SubjectsFavorite">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
-
+        <activity android:name=".MainActivity">
         </activity>
 
         <meta-data

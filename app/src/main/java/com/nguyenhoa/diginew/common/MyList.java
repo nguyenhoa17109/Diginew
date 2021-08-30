@@ -19,6 +19,7 @@ import com.nguyenhoa.diginew.model.NLike;
 import com.nguyenhoa.diginew.model.NSave;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.OtherApp;
+import com.nguyenhoa.diginew.model.Packet;
 import com.nguyenhoa.diginew.model.Province;
 import com.nguyenhoa.diginew.model.Tag;
 import com.nguyenhoa.diginew.model.TagNews;
@@ -44,6 +45,7 @@ public class MyList extends Application {
     public static ArrayList<OtherApp> list_dis;
     public static ArrayList<Comment> list_Cmt;
     public static ArrayList<Keyword> listKey, listRecentKey, listHotKey;
+    public static ArrayList<Packet> packets;
     public static ArrayList<ArrayList<News>> lists_audio, lists_video_as_topic, lists_info;
     public static String[] spinnerTime = {"Năm nay", "2020", "2019", "2018", "2017"};
     public static String today = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
@@ -62,7 +64,7 @@ public class MyList extends Application {
         list_unFv = new ArrayList<>();
         list_Cmt = new ArrayList<>();
 
-//        runOnce();
+      //  runOnce();
 
         listNews = setListNews();
 
@@ -101,6 +103,14 @@ public class MyList extends Application {
     private void runOnce() {
         if(!sqLite.CheckDataAccountExist(account)){
             sqLite.addAccount(account);
+        }
+
+        packets = new ArrayList<Packet>();
+        packets.add(new Packet("3GB/ngày","3GB/ngày","???phút","30 tin nhắn","Chuẩn","Basic","Basic","Basic","Basic","3GB/ngày"));
+        packets.add(new Packet("5GB/ngày","5GB/ngày","???phút","50 tin nhắn","Chuẩn","Pro","Pro","Pro","Pro","5GB/ngày"));
+        for(int i=0; i<packets.size(); i++){
+            Packet packet = packets.get(i);
+            sqLite.addPacket(packet);
         }
 
         ArrayList<Keyword> keywordArrayList = new ArrayList<>();

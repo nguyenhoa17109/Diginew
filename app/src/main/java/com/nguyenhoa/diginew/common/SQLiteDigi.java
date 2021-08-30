@@ -13,6 +13,7 @@ import com.nguyenhoa.diginew.model.Comment;
 import com.nguyenhoa.diginew.model.Keyword;
 import com.nguyenhoa.diginew.model.News;
 import com.nguyenhoa.diginew.model.OtherApp;
+import com.nguyenhoa.diginew.model.Packet;
 import com.nguyenhoa.diginew.model.Province;
 import com.nguyenhoa.diginew.model.Tag;
 import com.nguyenhoa.diginew.model.TagNews;
@@ -88,6 +89,20 @@ public class SQLiteDigi extends SQLiteOpenHelper {
                 "FOREIGN KEY (" +Base.NewsTable.COLUMN_ID_TOPIC + ") REFERENCES "+Base.TopicTable._ID+ ");";
         db.execSQL(createTblNews);
 
+        final String createTblPacket = "CREATE TABLE " + Base.PacketTable.TABLE_NAME+ "(" +
+                Base.PacketTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                Base.PacketTable.COLUMN_DATA + " TEXT, " +
+                Base.PacketTable.COLUMN_ONNET + " TEXT, " +
+                Base.PacketTable.COLUMN_INNET + " TEXT, " +
+                Base.PacketTable.COLUMN_SMS + " TEXT, " +
+                Base.PacketTable.COLUMN_MYTV + " TEXT, " +
+                Base.PacketTable.COLUMN_CLIPS + " TEXT, " +
+                Base.PacketTable.COLUMN_HOTNEWS + " TEXT, " +
+                Base.PacketTable.COLUMN_MUSIC + " TEXT, " +
+                Base.PacketTable.COLUMN_MOVIE + " TEXT, " +
+                Base.PacketTable.COLUMN_DATAREMAINING + " TEXT);";
+        db.execSQL(createTblPacket);
+
         final String createTblTag = "CREATE TABLE " + Base.TagTable.TABLE_NAME + "(" +
                 Base.TagTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 Base.TagTable.COLUMN_NAME + " TEXT);";
@@ -135,6 +150,7 @@ public class SQLiteDigi extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + Base.CommentTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + Base.ProvinceTable.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + Base.KeywordTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + Base.PacketTable.TABLE_NAME);
     }
     public boolean CheckIsDataAlreadyInDBorNot(String TableName,
                                                       String dbfield, String fieldValue) {
@@ -312,6 +328,23 @@ public class SQLiteDigi extends SQLiteOpenHelper {
         values.put(Base.TopicTable.COLUMN_IMG , topic.getImg());
         values.put(Base.TopicTable.COLUMN_NAME , topic.getName());
         return r.insert(Base.TopicTable.TABLE_NAME , null, values);
+    }
+
+    public long addPacket(Packet packet){
+        SQLiteDatabase r = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Base.PacketTable.COLUMN_DATA , packet.getData());
+        values.put(Base.PacketTable.COLUMN_ONNET , packet.getOnNet());
+        values.put(Base.PacketTable.COLUMN_INNET , packet.getInNet());
+        values.put(Base.PacketTable.COLUMN_SMS , packet.getSms());
+        values.put(Base.PacketTable.COLUMN_MYTV , packet.getMyTV());
+        values.put(Base.PacketTable.COLUMN_CLIPS , packet.getClips());
+        values.put(Base.PacketTable.COLUMN_HOTNEWS , packet.getHotNews());
+        values.put(Base.PacketTable.COLUMN_MUSIC , packet.getMusic());
+        values.put(Base.PacketTable.COLUMN_MOVIE , packet.getMovie());
+        values.put(Base.PacketTable.COLUMN_DATAREMAINING , packet.getDataRemaining());
+
+        return r.insert(Base.PacketTable.TABLE_NAME , null, values);
     }
 
     public long updateTopic(Topic topic){
@@ -929,6 +962,28 @@ public class SQLiteDigi extends SQLiteOpenHelper {
         return user;
     }
 
+    public ArrayList<Account> getAllAccount(){
+        ArrayList<Account> list = new ArrayList<>();
+        String sql = "SELECT * FROM "+Base.AccountTable.TABLE_NAME;
+        SQLiteDatabase r = getReadableDatabase();
+        Cursor cursor = r.rawQuery(sql, null);
+        while (cursor.moveToNext()){
+            list.add(new Account(cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+        }
+        return list;
+    }
+
+    public Account getAccountByID(int idAccount) {
+        String sql = "SELECT * FROM "+Base.AccountTable.TABLE_NAME+" WHERE "+Base.AccountTable._ID
+                +" = "+idAccount;
+        SQLiteDatabase r = getReadableDatabase();
+        Cursor cursor = r.rawQuery(sql, null);
+        Account account = new Account();
+        if(cursor.moveToFirst())
+            account = new Account(idAccount, cursor.getString(1), cursor.getString(2), cursor.getString(3),cursor.getString(4),cursor.getString(5) );
+        return account;
+    }
+
 
 //    public long addComment(Comment comment){
 //        SQLiteDatabase r = getWritableDatabase();
@@ -1157,6 +1212,18 @@ public class SQLiteDigi extends SQLiteOpenHelper {
         while (cursor.moveToNext()){
             list.add(new Keyword(cursor.getInt(0),cursor.getString(1),
                     cursor.getInt(2), cursor.getString(3)));
+        }
+        return list;
+    }
+
+    public ArrayList<Packet> getAllPacket(){
+        ArrayList<Packet> list = new ArrayList<>();
+        String sql = "SELECT * FROM "+Base.PacketTable.TABLE_NAME;
+        SQLiteDatabase r = getReadableDatabase();
+        Cursor cursor = r.rawQuery(sql, null);
+        while (cursor.moveToNext()){
+            list.add(new Packet(cursor.getString(1),
+                    cursor.getString(2), cursor.getString(3),cursor.getString(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10)));
         }
         return list;
     }
