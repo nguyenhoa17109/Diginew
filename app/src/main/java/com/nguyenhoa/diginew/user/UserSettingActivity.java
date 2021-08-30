@@ -20,7 +20,9 @@ import com.nguyenhoa.diginew.CategoryFvActivity;
 import com.nguyenhoa.diginew.R;
 import com.nguyenhoa.diginew.categories.ProvincesBottomSheet;
 import com.nguyenhoa.diginew.categories.ProvincesFragment;
+import com.nguyenhoa.diginew.common.SQLiteDigi;
 import com.nguyenhoa.diginew.home.HomeFragment;
+import com.nguyenhoa.diginew.model.Account;
 import com.nguyenhoa.diginew.model.User;
 import com.nguyenhoa.diginew.splash.SubjectsFavorite;
 
@@ -32,6 +34,7 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
     private LinearLayout layoutLocalNews, subjectFav;
     private Button btLogout;
     private ImageView ivBack;
+    public static SQLiteDigi sqLite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,8 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
         ivBack = findViewById(R.id.ivBack);
         btLogout = findViewById(R.id.btLogout);
 
+        sqLite = new SQLiteDigi(getApplicationContext());
+        setUser();
     }
 
     public void setOnClick() {
@@ -67,6 +72,16 @@ public class UserSettingActivity extends AppCompatActivity implements View.OnCli
         ivBack.setOnClickListener(this);
         subjectFav.setOnClickListener(this);
         btLogout.setOnClickListener(this);
+    }
+
+    public void setUser() {
+        Account account = new Account();
+        account = sqLite.getAccountByID(1);
+        etUser_name.setText(account.getName());
+        etUser_address.setText(account.getAddress());
+        et_User_dob.setText(account.getBirth());
+        etUser_phoneNum.setText(account.getPhone());
+
     }
 
     public void AllowEdit(int check) {

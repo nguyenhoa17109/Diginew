@@ -37,6 +37,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.nguyenhoa.diginew.R;
+import com.nguyenhoa.diginew.common.SQLiteDigi;
+import com.nguyenhoa.diginew.model.Account;
 
 public class Splash2 extends AppCompatActivity {
     TextView tvTerms, tvSkip;
@@ -45,6 +47,7 @@ public class Splash2 extends AppCompatActivity {
     private LoginButton btLoginFb;
     private Button btLoginGg;
     private static final int GOOGLE_SIGN_IN_REQUEST = 112;
+    public static SQLiteDigi sqLite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,7 @@ public class Splash2 extends AppCompatActivity {
 
         tvTerms = findViewById(R.id.tvTerms);
         tvSkip = findViewById(R.id.tvSkipLogin);
+        sqLite = new SQLiteDigi(getApplicationContext());
 
         SpannableString ss = new SpannableString("Bằng việc đăng nhập, bạn đồng ý với các Điều khoản và Chính sách của DigiNews");
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -207,6 +211,13 @@ public class Splash2 extends AppCompatActivity {
         if (user != null) {
             startActivity(new Intent(Splash2.this, SubjectsFavorite.class));
             Toast.makeText(getApplicationContext(), "User: " + user.getDisplayName() + "\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
+            Account account = new Account(user.getDisplayName(), user.getPhotoUrl().toString(), "Ha Noi"
+                    , "13/02/1989", user.getPhoneNumber());
+
+            if(!sqLite.CheckDataAccountExist(account)){
+                sqLite.addAccount(account);
+            }
+
         }
     }
 }
