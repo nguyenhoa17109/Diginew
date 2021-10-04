@@ -78,6 +78,7 @@ public class VideoFragment extends Fragment {
         init(v);
         return v;
     }
+
     private void init(View v) {
         arrayLists = MyList.lists_video_as_topic;
 
@@ -89,7 +90,7 @@ public class VideoFragment extends Fragment {
         rcTopic.setLayoutManager(manager);
         rcTopic.setAdapter(adapterTopic);
 
-        adapterVideo= new VideoAdapter(v.getContext(), arrayLists.get(0));
+        adapterVideo = new VideoAdapter(v.getContext(), arrayLists.get(0));
         LinearLayoutManager manager1 = new LinearLayoutManager(v.getContext(),
                 RecyclerView.VERTICAL, false);
         rcVideo.setLayoutManager(manager1);

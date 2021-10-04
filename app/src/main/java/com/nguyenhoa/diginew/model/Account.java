@@ -27,6 +27,9 @@ public class Account implements Serializable {
         this.phone = phone;
     }
 
+    public Account() {
+    }
+
     public int getId() {
         return id;
     }

@@ -29,4 +29,21 @@
         <item name="android:windowEnterAnimation">@anim/dialog_show</item>
         <item name="android:windowExitAnimation">@anim/dialog_hide</item>
     </style>
+
+    <style name="MySwitch" parent="@style/Widget.AppCompat.CompoundButton.Switch">
+        <item name="android:textColorPrimaryDisableOnly">#b71c1c</item>
+        <item name="android:colorControlActivated">#5379F5</item>
+        <item name="android:colorForeground">#A2A6BB</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
+    </style>
+
+    <style name="ProgressBarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/blue_300
+        </item>
+    </style>
+
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/blue_100</item>
+    </style>
+
 </resources>
